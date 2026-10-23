@@ -1,5 +1,5 @@
 import { AnimatePresence, animate, motion, useDragControls, useMotionValue, useTransform } from 'motion/react'
-import { ChevronsRight } from 'lucide-react'
+import { ChevronRight } from 'lucide-react'
 import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react'
 import { CATEGORIES, MENU, itemsOf } from '../data/menu'
 import { clamp } from '../lib/format'
@@ -14,7 +14,9 @@ const PEEK = 190
 const PEEK_PAD = 6
 /** Tallest a collapsed sheet can get; the stage only reacts once the sheet rises above this, so it never moves between dishes. */
 const MAX_PEEK = 290
-const PAGE_SPRING = { type: 'spring', stiffness: 230, damping: 30, mass: 0.9 } as const
+/** Finger travel before a gesture commits to dishes (←→) or categories (↑↓). */
+const AXIS_LOCK_PX = 10
+const PAGE_SPRING ={ type: 'spring', stiffness: 230, damping: 30, mass: 0.9 } as const
 
 /** Static paper grain: drawn once, never animated. */
 const GRAIN =
@@ -189,6 +191,7 @@ export function MenuScreen({ width, height }: Props) {
 
   // ---- gestures: horizontal = dishes, vertical = categories -----------------
   const axis = useRef<'x' | 'y' | null>(null)
+  const lockAt = useRef({ x: 0, y: 0 })
   const active = () => apis.current[catRef.current]
   const pageRubber = (dy: number) => {
     const c = catRef.current
@@ -202,24 +205,31 @@ export function MenuScreen({ width, height }: Props) {
       <motion.div
         className="absolute inset-x-0 top-0"
         style={{ y: trackY, height: pitch * (CATEGORIES.length - 1) + height, touchAction: 'none', willChange: 'transform' }}
-        onPanStart={(_, info) => {
-          if (openRef.current) return
-          axis.current = Math.abs(info.offset.x) >= Math.abs(info.offset.y) ? 'x' : 'y'
-          if (axis.current === 'x') active()?.panStart()
-          else trackY.stop()
+        onPanStart={() => {
+          axis.current = null
         }}
         onPan={(_, info) => {
-          if (openRef.current || !axis.current) return
-          if (axis.current === 'x') active()?.pan(info.offset.x)
-          else trackY.set(-catRef.current * pitch + pageRubber(info.offset.y))
+          if (openRef.current) return
+          const { x: dx, y: dy } = info.offset
+          if (!axis.current) {
+            // lock the axis only once the finger has clearly picked a direction; dishes win ties
+            if (Math.hypot(dx, dy) < AXIS_LOCK_PX) return
+            axis.current = Math.abs(dy) > Math.abs(dx) * 1.4 ? 'y' : 'x'
+            lockAt.current = { x: dx, y: dy }
+            if (axis.current === 'x') active()?.panStart()
+            else trackY.stop()
+          }
+          if (axis.current === 'x') active()?.pan(dx - lockAt.current.x)
+          else trackY.set(-catRef.current * pitch + pageRubber(dy - lockAt.current.y))
         }}
         onPanEnd={(_, info) => {
           if (openRef.current || !axis.current) return
           if (axis.current === 'x') active()?.panEnd(info.velocity.x)
           else {
-            const { y } = info.offset
-            const v = info.velocity.y
-            const dir = y < -70 || v < -500 ? 1 : y > 70 || v > 500 ? -1 : 0
+            const y = info.offset.y - lockAt.current.y
+            const { x: vx, y: vy } = info.velocity
+            const flick = Math.abs(vy) > 650 && Math.abs(vy) > Math.abs(vx) * 1.4
+            const dir = y < -110 || (flick && vy < 0) ? 1 : y > 110 || (flick && vy > 0) ? -1 : 0
             if (!dir || !switchCategory(catRef.current + dir, dir)) animate(trackY, -catRef.current * pitch, PAGE_SPRING)
           }
           axis.current = null
@@ -254,27 +264,33 @@ export function MenuScreen({ width, height }: Props) {
 
       <div aria-hidden className="pointer-events-none absolute inset-0 opacity-[0.22]" style={{ backgroundImage: GRAIN }} />
 
-      {/* swipe hint, resting on the plate's lower rim */}
+      {/* swipe hint: three chevrons pulsing in a cascade by the right edge, where the plate's curve leaves room */}
       <AnimatePresence>
         {showHint && (
           <motion.div
             key="hint"
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0, transition: { delay: 0.6, duration: 0.4 } }}
-            exit={{ opacity: 0, y: 6, transition: { duration: 0.2 } }}
-            className="pointer-events-none absolute left-1/2 z-10 -translate-x-1/2"
-            style={{ top: plateCenter + size / 2 - 18 }}
+            role="note"
+            aria-label="Desliza para ver más"
+            initial={{ opacity: 0, x: -6 }}
+            animate={{ opacity: 1, x: 0, transition: { delay: 0.8, duration: 0.5 } }}
+            exit={{ opacity: 0, transition: { duration: 0.2 } }}
+            className="pointer-events-none absolute right-3 z-10 flex flex-col items-center gap-0.5 text-espresso"
+            style={{ top: plateCenter + size * 0.3 }}
           >
-            <p className="flex items-center gap-1 rounded-full bg-white/80 py-1.5 pl-3.5 pr-2.5 text-[12px] font-bold text-espresso shadow-[0_6px_16px_-8px_rgba(42,26,18,.5)] ring-1 ring-white/90">
-              Desliza
-              <motion.span
-                aria-hidden
-                animate={{ x: [0, 4, 0] }}
-                transition={{ duration: 0.9, repeat: 3, ease: 'easeInOut', delay: 1 }}
-              >
-                <ChevronsRight size={15} strokeWidth={2.6} />
-              </motion.span>
-            </p>
+            <span className="flex -space-x-2" aria-hidden>
+              {[0, 1, 2].map((i) => (
+                <motion.span
+                  key={i}
+                  animate={{ opacity: [0.15, 0.9, 0.15] }}
+                  transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut', delay: 1 + i * 0.18 }}
+                >
+                  <ChevronRight size={16} strokeWidth={2.6} />
+                </motion.span>
+              ))}
+            </span>
+            <span className="text-[9px] font-bold uppercase tracking-[0.14em] opacity-60" aria-hidden>
+              desliza
+            </span>
           </motion.div>
         )}
       </AnimatePresence>

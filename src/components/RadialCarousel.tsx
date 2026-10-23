@@ -126,7 +126,7 @@ export const CategoryScene = memo(function CategoryScene({
       nudge: () => {
         if (dragging.current || n < 2) return
         const at = targetRef.current
-        animate(progress, [at, at + 0.22, at], { duration: 1.2, ease: 'easeInOut', times: [0, 0.45, 1] })
+        animate(progress, [at, at + 0.14, at], { duration: 1.3, ease: 'easeInOut', times: [0, 0.45, 1] })
       },
     })
   })
