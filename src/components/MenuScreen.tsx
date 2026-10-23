@@ -1,4 +1,5 @@
-import { animate, motion, useDragControls, useMotionValue, useTransform } from 'motion/react'
+import { AnimatePresence, animate, motion, useDragControls, useMotionValue, useTransform } from 'motion/react'
+import { ChevronsRight } from 'lucide-react'
 import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react'
 import { CATEGORIES, MENU, itemsOf } from '../data/menu'
 import { clamp } from '../lib/format'
@@ -20,6 +21,22 @@ const GRAIN =
   "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .2 0 0 0 0 .12 0 0 0 0 .08 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")"
 
 const ITEMS = CATEGORIES.map((c) => itemsOf(c.id))
+
+const HINT_KEY = 'terra:swipe-hint-seen'
+const hintAlreadySeen = () => {
+  try {
+    return localStorage.getItem(HINT_KEY) === '1'
+  } catch {
+    return false
+  }
+}
+const rememberHintSeen = () => {
+  try {
+    localStorage.setItem(HINT_KEY, '1')
+  } catch {
+    // private mode: the hint simply shows again next visit
+  }
+}
 
 type Props = { width: number; height: number }
 
@@ -56,6 +73,16 @@ export function MenuScreen({ width, height }: Props) {
   const category = CATEGORIES[catIndex]
   const item = ITEMS[catIndex][clamp(nav.index, 0, ITEMS[catIndex].length - 1)]
 
+  // first-visit swipe hint: only on the very first dish, gone (and remembered) after the first move
+  const [hintSeen, setHintSeen] = useState(hintAlreadySeen)
+  const hintDone = useRef(hintSeen)
+  const markHintSeen = () => {
+    if (hintDone.current) return
+    hintDone.current = true
+    setHintSeen(true)
+    rememberHintSeen()
+  }
+
   // categories are stacked vertically; switching is a single translate of the whole track
   const trackY = useMotionValue(0)
   const catRef = useRef(0)
@@ -67,6 +94,7 @@ export function MenuScreen({ width, height }: Props) {
       dishOf.current[next] = at
     }
     catRef.current = next
+    markHintSeen()
     setCatIndex(next)
     setNav({ index: dishOf.current[next], direction: dir, axis: 'y' })
     animate(trackY, -next * pitch, PAGE_SPRING)
@@ -140,8 +168,17 @@ export function MenuScreen({ width, height }: Props) {
   })
   const onIndex = useCallback((cat: number, index: number, direction: 1 | -1) => {
     dishOf.current[cat] = index
-    if (cat === catRef.current) setNav({ index, direction, axis: 'x' })
+    if (cat !== catRef.current) return
+    setNav({ index, direction, axis: 'x' })
+    if (index !== 0) markHintSeen()
   }, [])
+
+  const showHint = !hintSeen && catIndex === 0 && nav.index === 0 && !isOpen
+  useEffect(() => {
+    if (hintSeen || matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const t = setTimeout(() => apis.current[0]?.nudge(), 1500)
+    return () => clearTimeout(t)
+  }, [hintSeen])
   const register = useCallback((cat: number, api: CarouselApi) => {
     apis.current[cat] = api
   }, [])
@@ -216,6 +253,31 @@ export function MenuScreen({ width, height }: Props) {
       </motion.div>
 
       <div aria-hidden className="pointer-events-none absolute inset-0 opacity-[0.22]" style={{ backgroundImage: GRAIN }} />
+
+      {/* swipe hint, resting on the plate's lower rim */}
+      <AnimatePresence>
+        {showHint && (
+          <motion.div
+            key="hint"
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0, transition: { delay: 0.6, duration: 0.4 } }}
+            exit={{ opacity: 0, y: 6, transition: { duration: 0.2 } }}
+            className="pointer-events-none absolute left-1/2 z-10 -translate-x-1/2"
+            style={{ top: plateCenter + size / 2 - 18 }}
+          >
+            <p className="flex items-center gap-1 rounded-full bg-white/80 py-1.5 pl-3.5 pr-2.5 text-[12px] font-bold text-espresso shadow-[0_6px_16px_-8px_rgba(42,26,18,.5)] ring-1 ring-white/90">
+              Desliza
+              <motion.span
+                aria-hidden
+                animate={{ x: [0, 4, 0] }}
+                transition={{ duration: 0.9, repeat: 3, ease: 'easeInOut', delay: 1 }}
+              >
+                <ChevronsRight size={15} strokeWidth={2.6} />
+              </motion.span>
+            </p>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* keyboard: ← → dishes, ↑ ↓ categories */}
       <div

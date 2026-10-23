@@ -15,6 +15,8 @@ export type CarouselApi = {
   pan: (dx: number) => void
   panEnd: (vx: number) => void
   isDragging: () => boolean
+  /** Roll a little towards the next dish and back: a hint that the wheel turns. */
+  nudge: () => void
 }
 
 type Props = {
@@ -121,6 +123,11 @@ export const CategoryScene = memo(function CategoryScene({
         goTo(clamp(Math.round(projected), from - 1, from + 1))
       },
       isDragging: () => dragging.current,
+      nudge: () => {
+        if (dragging.current || n < 2) return
+        const at = targetRef.current
+        animate(progress, [at, at + 0.22, at], { duration: 1.2, ease: 'easeInOut', times: [0, 0.45, 1] })
+      },
     })
   })
 
