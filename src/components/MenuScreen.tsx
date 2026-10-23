@@ -1,8 +1,8 @@
-import { AnimatePresence, animate, motion, useDragControls, useMotionValue, useTransform } from 'motion/react'
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { animate, motion, useDragControls, useMotionValue, useTransform } from 'motion/react'
+import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react'
 import { CATEGORIES, MENU, itemsOf } from '../data/menu'
 import { clamp } from '../lib/format'
-import { CategoryCarousel, type CarouselApi } from './RadialCarousel'
+import { CategoryScene, type CarouselApi } from './RadialCarousel'
 import { DishSheet } from './DishSheet'
 
 const HEADER = 68
@@ -11,12 +11,24 @@ const CHIPS = 52
 const PEEK = 190
 /** Breathing room under the collapsed sheet's content. */
 const PEEK_PAD = 6
+const PAGE_SPRING = { type: 'spring', stiffness: 230, damping: 30, mass: 0.9 } as const
 
 /** Static paper grain: drawn once, never animated. */
 const GRAIN =
   "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .2 0 0 0 0 .12 0 0 0 0 .08 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")"
 
+const ITEMS = CATEGORIES.map((c) => itemsOf(c.id))
+
 type Props = { width: number; height: number }
+
+/** One category's place on the vertical track. (No group opacity here: fading a stack of layers costs a render surface per frame.) */
+function SceneSlot({ index, pitch, height, children }: { index: number; pitch: number; height: number; children: ReactNode }) {
+  return (
+    <div className="absolute inset-x-0" style={{ top: index * pitch, height }}>
+      {children}
+    </div>
+  )
+}
 
 export function MenuScreen({ width, height }: Props) {
   // ---- geometry -----------------------------------------------------------
@@ -30,33 +42,47 @@ export function MenuScreen({ width, height }: Props) {
   const collapsedY = sheetH - peek - PEEK_PAD
   const plateCenter = stageTop + stageH / 2
   const shift = (HEADER + openTop) / 2 + 6 - plateCenter
-  // like the reference: the blurred surface ends exactly at the plate's equator
-  const backdropH = plateCenter
+  // vertical distance between category scenes: the next one waits just behind the sheet
+  const pitch = height - PEEK + 40
 
   // ---- category + dish ----------------------------------------------------
   const [catIndex, setCatIndex] = useState(0)
-  const [entry, setEntry] = useState<{ at: number; from: 1 | -1 }>({ at: 0, from: 1 })
-  const [nav, setNav] = useState({ index: 0, direction: 1 })
-  const exitDirRef = useRef<1 | -1>(1)
-  const apiRef = useRef<CarouselApi | null>(null)
-  const [backdropEl, setBackdropEl] = useState<HTMLDivElement | null>(null)
+  const [nav, setNav] = useState({ index: 0, direction: 1, axis: 'x' as 'x' | 'y' })
+  const dishOf = useRef(CATEGORIES.map(() => 0))
+  const apis = useRef<(CarouselApi | null)[]>([])
   const category = CATEGORIES[catIndex]
-  const items = useMemo(() => itemsOf(category.id), [category.id])
-  const item = items[clamp(nav.index, 0, items.length - 1)]
+  const item = ITEMS[catIndex][clamp(nav.index, 0, ITEMS[catIndex].length - 1)]
 
-  const switchCategory = (next: number, dir: 1 | -1, landAtEnd = false) => {
+  // categories are stacked vertically; switching is a single translate of the whole track
+  const trackY = useMotionValue(0)
+  const catRef = useRef(0)
+  const switchCategory = (next: number, dir: 1 | -1, land?: 'start' | 'end') => {
     if (next < 0 || next >= CATEGORIES.length) return false
-    const at = landAtEnd ? itemsOf(CATEGORIES[next].id).length - 1 : 0
-    exitDirRef.current = dir
-    setEntry({ at, from: dir })
+    if (land) {
+      const at = land === 'end' ? ITEMS[next].length - 1 : 0
+      apis.current[next]?.jump(at)
+      dishOf.current[next] = at
+    }
+    catRef.current = next
     setCatIndex(next)
-    setNav({ index: at, direction: dir })
+    setNav({ index: dishOf.current[next], direction: dir, axis: 'y' })
+    animate(trackY, -next * pitch, PAGE_SPRING)
     return true
   }
-
-  // warm the cache so switching categories never waits on the network
   useEffect(() => {
-    const t = setTimeout(() => MENU.forEach((m) => (new Image().src = m.img)), 1200)
+    trackY.set(-catRef.current * pitch)
+  }, [pitch, trackY])
+
+  // decode every photo ahead of time so nothing is decoded mid-transition
+  useEffect(() => {
+    const t = setTimeout(() => {
+      for (const m of MENU)
+        for (const src of [m.img, m.imgBlur, m.imgBack]) {
+          const im = new Image()
+          im.src = src
+          im.decode().catch(() => {})
+        }
+    }, 900)
     return () => clearTimeout(t)
   }, [])
 
@@ -98,36 +124,105 @@ export function MenuScreen({ width, height }: Props) {
   const stageScale = useTransform(open, [0, 1], [1, 0.6])
   const chipsOpacity = useTransform(open, [0, 0.4], [1, 0])
 
-  // stable callbacks keep the memoised carousel from re-rendering on every dish change
-  const latest = useRef({ switchCategory, catIndex, snap })
+  // stable callbacks keep the memoised scenes from re-rendering on every dish change
+  const latest = useRef({ switchCategory })
   useEffect(() => {
-    latest.current = { switchCategory, catIndex, snap }
+    latest.current = { switchCategory }
   })
-  const onIndex = useCallback((index: number, direction: 1 | -1) => setNav({ index, direction }), [])
-  const onOverflow = useCallback((dir: 1 | -1) => {
-    const { switchCategory, catIndex } = latest.current
-    return switchCategory(catIndex + dir, dir, dir < 0)
+  const onIndex = useCallback((cat: number, index: number, direction: 1 | -1) => {
+    dishOf.current[cat] = index
+    if (cat === catRef.current) setNav({ index, direction, axis: 'x' })
   }, [])
-  const onTapLocked = useCallback(() => latest.current.snap(false), [])
+  const register = useCallback((cat: number, api: CarouselApi) => {
+    apis.current[cat] = api
+  }, [])
+  const onOverflow = useCallback(
+    (dir: 1 | -1) => latest.current.switchCategory(catRef.current + dir, dir, dir > 0 ? 'start' : 'end'),
+    [],
+  )
+
+  // ---- gestures: horizontal = dishes, vertical = categories -----------------
+  const axis = useRef<'x' | 'y' | null>(null)
+  const active = () => apis.current[catRef.current]
+  const pageRubber = (dy: number) => {
+    const c = catRef.current
+    const atEdge = (dy > 0 && c === 0) || (dy < 0 && c === CATEGORIES.length - 1)
+    return atEdge ? dy * 0.25 : dy
+  }
 
   return (
-    <motion.div
-      className="absolute inset-0 overflow-hidden"
-      animate={{ backgroundColor: category.bg }}
-      transition={{ duration: 0.6 }}
-    >
-      {/* the dish itself, big and out of focus, as the surface behind the top third */}
-      <div
-        ref={setBackdropEl}
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 overflow-hidden"
-        style={{
-          height: backdropH,
-          maskImage: 'linear-gradient(to bottom, #000 calc(100% - 18px), transparent)',
-          WebkitMaskImage: 'linear-gradient(to bottom, #000 calc(100% - 18px), transparent)',
+    <div className="absolute inset-0 overflow-hidden bg-[#F1E6DA]">
+      {/* category track */}
+      <motion.div
+        className="absolute inset-x-0 top-0"
+        style={{ y: trackY, height: pitch * (CATEGORIES.length - 1) + height, touchAction: 'none', willChange: 'transform' }}
+        onPanStart={(_, info) => {
+          if (openRef.current) return
+          axis.current = Math.abs(info.offset.x) >= Math.abs(info.offset.y) ? 'x' : 'y'
+          if (axis.current === 'x') active()?.panStart()
+          else trackY.stop()
         }}
-      />
+        onPan={(_, info) => {
+          if (openRef.current || !axis.current) return
+          if (axis.current === 'x') active()?.pan(info.offset.x)
+          else trackY.set(-catRef.current * pitch + pageRubber(info.offset.y))
+        }}
+        onPanEnd={(_, info) => {
+          if (openRef.current || !axis.current) return
+          if (axis.current === 'x') active()?.panEnd(info.velocity.x)
+          else {
+            const { y } = info.offset
+            const v = info.velocity.y
+            const dir = y < -70 || v < -500 ? 1 : y > 70 || v > 500 ? -1 : 0
+            if (!dir || !switchCategory(catRef.current + dir, dir)) animate(trackY, -catRef.current * pitch, PAGE_SPRING)
+          }
+          axis.current = null
+        }}
+        onClick={() => {
+          if (openRef.current) snap(false)
+        }}
+      >
+        {CATEGORIES.map((c, ci) => (
+          <SceneSlot key={c.id} index={ci} pitch={pitch} height={height}>
+            <CategoryScene
+              catIndex={ci}
+              items={ITEMS[ci]}
+              width={width}
+              stageTop={stageTop}
+              stageH={stageH}
+              backdropH={plateCenter}
+              size={size}
+              radius={radius}
+              stepPx={width * 0.65}
+              open={open}
+              stageY={stageY}
+              stageScale={stageScale}
+              lockedRef={openRef}
+              register={register}
+              onIndex={onIndex}
+              onOverflow={onOverflow}
+            />
+          </SceneSlot>
+        ))}
+      </motion.div>
+
       <div aria-hidden className="pointer-events-none absolute inset-0 opacity-[0.22]" style={{ backgroundImage: GRAIN }} />
+
+      {/* keyboard: ← → dishes, ↑ ↓ categories */}
+      <div
+        role="region"
+        aria-roledescription="carrusel"
+        aria-label={`${category.name}: ${item.name}`}
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === 'ArrowRight') active()?.step(1)
+          if (e.key === 'ArrowLeft') active()?.step(-1)
+          if (e.key === 'ArrowDown') switchCategory(catRef.current + 1, 1)
+          if (e.key === 'ArrowUp') switchCategory(catRef.current - 1, -1)
+        }}
+        className="pointer-events-none absolute inset-x-0 outline-none"
+        style={{ top: stageTop, height: stageH }}
+      />
 
       {/* header */}
       <header className="absolute inset-x-0 top-0 z-30 flex items-center justify-between px-4" style={{ height: HEADER }}>
@@ -140,7 +235,7 @@ export function MenuScreen({ width, height }: Props) {
             <p className="mt-0.5 text-[9px] font-bold uppercase tracking-[0.24em] text-cocoa">café · cocina</p>
           </div>
         </div>
-        <p className="flex items-center gap-2 rounded-full bg-white/60 px-3 py-2 text-[12px] font-bold text-espresso ring-1 ring-white/70 backdrop-blur-md">
+        <p className="flex items-center gap-2 rounded-full bg-white/70 px-3 py-2 text-[12px] font-bold text-espresso ring-1 ring-white/80">
           <span className="size-2 rounded-full bg-olive" aria-hidden />
           Abierto · hasta 22:00
         </p>
@@ -157,7 +252,7 @@ export function MenuScreen({ width, height }: Props) {
           className="no-scrollbar relative mx-auto flex max-w-full gap-0.5 overflow-x-auto rounded-full bg-white/70 p-1 ring-1 ring-white/80"
         >
           {CATEGORIES.map((c, i) => {
-            const active = i === catIndex
+            const isActive = i === catIndex
             return (
               <button
                 key={c.id}
@@ -165,14 +260,14 @@ export function MenuScreen({ width, height }: Props) {
                   chipRefs.current[i] = el
                 }}
                 type="button"
-                aria-current={active}
+                aria-current={isActive}
                 onClick={() => i !== catIndex && switchCategory(i, i > catIndex ? 1 : -1)}
                 className={`relative min-h-10 shrink-0 rounded-full px-3 text-[13px] font-bold transition-colors duration-300 ${
-                  active ? '' : 'text-cocoa'
+                  isActive ? '' : 'text-cocoa'
                 }`}
-                style={active ? { color: c.ink } : undefined}
+                style={isActive ? { color: c.ink } : undefined}
               >
-                {active && (
+                {isActive && (
                   <motion.span
                     layoutId="chip"
                     transition={{ type: 'spring', stiffness: 420, damping: 34 }}
@@ -187,41 +282,6 @@ export function MenuScreen({ width, height }: Props) {
         </div>
       </motion.nav>
 
-      {/* stage: swipe, tap a side plate, or use ← → */}
-      <motion.div
-        role="region"
-        aria-roledescription="carrusel"
-        aria-label={`${category.name}: ${item.name}`}
-        tabIndex={0}
-        onKeyDown={(e) => {
-          if (e.key === 'ArrowRight') apiRef.current?.step(1)
-          if (e.key === 'ArrowLeft') apiRef.current?.step(-1)
-        }}
-        className="absolute inset-x-0 z-10 select-none outline-none"
-        style={{ top: stageTop, height: stageH, y: stageY, scale: stageScale, willChange: 'transform' }}
-      >
-        <AnimatePresence initial={false}>
-          <CategoryCarousel
-            key={category.id}
-            items={items}
-            size={size}
-            radius={radius}
-            width={width}
-            backdropEl={backdropEl}
-            stepPx={width * 0.65}
-            open={open}
-            lockedRef={openRef}
-            startAt={entry.at}
-            enterFrom={entry.from}
-            exitDirRef={exitDirRef}
-            apiRef={apiRef}
-            onIndex={onIndex}
-            onOverflow={onOverflow}
-            onTapLocked={onTapLocked}
-          />
-        </AnimatePresence>
-      </motion.div>
-
       {/* dish sheet, wearing the category's colour */}
       <motion.section
         aria-label="Descripción del plato"
@@ -235,22 +295,32 @@ export function MenuScreen({ width, height }: Props) {
           const v = info.velocity.y
           snap(v < -300 || (v < 300 && sheetY.get() < collapsedRef.current / 2))
         }}
-        animate={{ backgroundColor: category.sheet, color: category.ink }}
-        transition={{ duration: 0.5, ease: 'easeOut' }}
-        style={{ y: sheetY, height: sheetH }}
-        className="absolute inset-x-0 bottom-0 z-20 rounded-t-[36px] shadow-[0_-10px_28px_-6px_rgba(42,26,18,.32),0_-2px_6px_rgba(42,26,18,.12),inset_0_1px_0_rgba(255,255,255,.22)]"
+        style={{ y: sheetY, height: sheetH, color: category.ink, transition: 'color .4s' }}
+        className="absolute inset-x-0 bottom-0 z-20 rounded-t-[36px] shadow-[0_-10px_28px_-6px_rgba(42,26,18,.32),0_-2px_6px_rgba(42,26,18,.12)]"
       >
-        <DishSheet
-          item={item}
-          category={category}
-          direction={nav.direction}
-          expanded={isOpen}
-          open={open}
-          dragControls={dragControls}
-          onToggle={() => snap(!openRef.current)}
-          onPeekHeight={setPeek}
-        />
+        {/* colour layers cross-fade (opacity only) instead of repainting the sheet */}
+        {CATEGORIES.map((c) => (
+          <div
+            key={c.id}
+            aria-hidden
+            className="absolute inset-0 rounded-t-[36px] shadow-[inset_0_1px_0_rgba(255,255,255,.22)] transition-opacity duration-500"
+            style={{ backgroundColor: c.sheet, opacity: c.id === category.id ? 1 : 0, willChange: 'opacity' }}
+          />
+        ))}
+        <div className="relative h-full">
+          <DishSheet
+            item={item}
+            category={category}
+            direction={nav.direction}
+            axis={nav.axis}
+            expanded={isOpen}
+            open={open}
+            dragControls={dragControls}
+            onToggle={() => snap(!openRef.current)}
+            onPeekHeight={setPeek}
+          />
+        </div>
       </motion.section>
-    </motion.div>
+    </div>
   )
 }

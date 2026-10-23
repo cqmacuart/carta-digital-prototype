@@ -5,11 +5,11 @@ import type { Category, MenuItem } from '../types'
 // Each category reads as its food: espresso, baked crust, terracotta, brick, rose clay.
 // Sheet ink/accent pairs are ≥4.5:1 against their sheet.
 export const CATEGORIES: Category[] = [
-  { id: 'cafe', name: 'Café', bg: '#EFE5DA', sheet: '#7A4E35', ink: '#FBF1E6', accent: '#F6CBA8' },
-  { id: 'panaderia', name: 'Panadería', bg: '#F3E7D2', sheet: '#D9A462', ink: '#2B1B13', accent: '#5E2810' },
-  { id: 'brunch', name: 'Brunch', bg: '#F2E1D6', sheet: '#A9472A', ink: '#FFF4EA', accent: '#FFD9BD' },
-  { id: 'platos', name: 'Platos', bg: '#EFDFD8', sheet: '#6E2A20', ink: '#FAEEE6', accent: '#F4B597' },
-  { id: 'postres', name: 'Postres', bg: '#F5E6E2', sheet: '#EBC9C0', ink: '#3A1E19', accent: '#8C2F25' },
+  { id: 'cafe', name: 'Café', sheet: '#7A4E35', ink: '#FBF1E6', accent: '#F6CBA8' },
+  { id: 'panaderia', name: 'Panadería', sheet: '#D9A462', ink: '#2B1B13', accent: '#5E2810' },
+  { id: 'brunch', name: 'Brunch', sheet: '#A9472A', ink: '#FFF4EA', accent: '#FFD9BD' },
+  { id: 'platos', name: 'Platos', sheet: '#6E2A20', ink: '#FAEEE6', accent: '#F4B597' },
+  { id: 'postres', name: 'Postres', sheet: '#EBC9C0', ink: '#3A1E19', accent: '#8C2F25' },
 ]
 
 export const MENU: MenuItem[] = [

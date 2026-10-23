@@ -1,173 +1,168 @@
-import { animate, motion, useMotionValue, useMotionValueEvent, usePresence, useTransform, type MotionValue } from 'motion/react'
-import { memo, useEffect, useRef, type RefObject } from 'react'
-import { createPortal } from 'react-dom'
+import { animate, motion, useMotionValue, useMotionValueEvent, useTransform, type MotionValue } from 'motion/react'
+import { memo, useEffect, useRef, useState, type RefObject } from 'react'
 import { clamp } from '../lib/format'
 import type { MenuItem } from '../types'
 
 /** Angle (radians) between neighbouring plates on the orbit. */
 const ANGLE = 0.58
-/** How far off-centre (in items) a category starts before rolling in, and ends when rolling out. */
-const OFFSTAGE = 1.7
 const SPRING = { type: 'spring', stiffness: 170, damping: 24, mass: 0.9 } as const
 
-export type CarouselApi = { step: (dir: 1 | -1) => void }
+/** Imperative handle; gestures are recognised by the parent, which owns the axis lock. */
+export type CarouselApi = {
+  step: (dir: 1 | -1) => void
+  jump: (index: number) => void
+  panStart: () => void
+  pan: (dx: number) => void
+  panEnd: (vx: number) => void
+  isDragging: () => boolean
+}
 
 type Props = {
+  catIndex: number
   items: MenuItem[]
+  width: number
+  /** Scene geometry */
+  stageTop: number
+  stageH: number
+  backdropH: number
   size: number
   radius: number
-  width: number
-  /** Where the full-bleed blurred photos are drawn (behind header and chips, outside the stage transform). */
-  backdropEl: HTMLElement | null
   /** Finger travel (px) that moves the wheel by one plate. */
   stepPx: number
+  /** Sheet openness (0–1) and the stage transform it drives. */
   open: MotionValue<number>
+  stageY: MotionValue<number>
+  stageScale: MotionValue<number>
   lockedRef: RefObject<boolean>
-  startAt: number
-  enterFrom: 1 | -1
-  exitDirRef: RefObject<1 | -1>
-  apiRef: RefObject<CarouselApi | null>
-  onIndex: (index: number, dir: 1 | -1) => void
+  register: (catIndex: number, api: CarouselApi) => void
+  onIndex: (catIndex: number, index: number, dir: 1 | -1) => void
   onOverflow: (dir: 1 | -1) => boolean
-  onTapLocked: () => void
 }
 
 /**
- * Plates ride an invisible wheel whose centre sits below the stage:
- * the focused plate is at the top of the wheel, neighbours roll down the sides,
- * shrinking, spinning and losing focus the further they are from the top.
- * Each category gets its own wheel; switching rolls the old one out while the new one rolls in.
+ * One category = one scene: the dish's blurred photo as the surface of the top third, and a wheel
+ * of plates whose centre sits below the stage. The focused plate sits at the top of the wheel;
+ * neighbours roll down the sides, shrinking, spinning and losing focus.
+ * Only the focused plate and its two neighbours are mounted.
  */
-export const CategoryCarousel = memo(function CategoryCarousel({
+export const CategoryScene = memo(function CategoryScene({
+  catIndex,
   items,
+  width,
+  stageTop,
+  stageH,
+  backdropH,
   size,
   radius,
-  width,
-  backdropEl,
   stepPx,
   open,
+  stageY,
+  stageScale,
   lockedRef,
-  startAt,
-  enterFrom,
-  exitDirRef,
-  apiRef,
+  register,
   onIndex,
   onOverflow,
-  onTapLocked,
 }: Props) {
   const n = items.length
-  const progress = useMotionValue(startAt - enterFrom * OFFSTAGE)
-  const [isPresent, safeToRemove] = usePresence()
-  const silent = useRef(true)
-  const indexRef = useRef(startAt)
-  const targetRef = useRef(startAt)
+  const progress = useMotionValue(0)
+  const [near, setNear] = useState(0)
+  const indexRef = useRef(0)
+  const targetRef = useRef(0)
   const panStart = useRef(0)
   const raw = useRef(0)
-  const dragged = useRef(false)
+  const dragging = useRef(false)
 
   const goTo = (i: number) => {
-    silent.current = false
     targetRef.current = clamp(i, 0, n - 1)
     animate(progress, targetRef.current, SPRING)
   }
 
-  // roll in
-  useEffect(() => {
-    const c = animate(progress, startAt, {
-      ...SPRING,
-      onComplete: () => {
-        silent.current = false
-      },
-    })
-    return () => c.stop()
-  }, [progress, startAt])
-
-  // roll out, in the direction of travel
-  useEffect(() => {
-    if (isPresent) return
-    silent.current = true
-    const out = exitDirRef.current > 0 ? n - 1 + OFFSTAGE + 0.3 : -OFFSTAGE - 0.3
-    const c = animate(progress, out, { duration: 0.5, ease: [0.4, 0, 0.7, 0.6] })
-    c.then(safeToRemove)
-    return () => c.stop()
-  }, [isPresent, exitDirRef, n, progress, safeToRemove])
-
-  useEffect(() => {
-    if (!isPresent) return
-    apiRef.current = {
-      step: (dir) => {
-        const t = targetRef.current + dir
-        if (t < 0 || t > n - 1) {
-          if (!onOverflow(dir)) goTo(targetRef.current)
-        } else goTo(t)
-      },
-    }
-  })
-
   useMotionValueEvent(progress, 'change', (v) => {
-    if (silent.current) return
     const r = clamp(Math.round(v), 0, n - 1)
     if (r !== indexRef.current) {
       const dir = r > indexRef.current ? 1 : -1
       indexRef.current = r
-      onIndex(r, dir)
+      setNear(r)
+      onIndex(catIndex, r, dir)
     }
   })
 
   const rubber = (v: number) => (v < 0 ? v * 0.3 : v > n - 1 ? n - 1 + (v - n + 1) * 0.3 : v)
 
-  return (
-    <motion.div
-      className="absolute inset-0"
-      style={{ touchAction: 'none', pointerEvents: isPresent ? 'auto' : 'none' }}
-      onPointerDown={() => {
-        dragged.current = false
-      }}
-      onPanStart={() => {
-        if (lockedRef.current) return
-        dragged.current = true
-        silent.current = false
+  useEffect(() => {
+    register(catIndex, {
+      step: (dir) => {
+        const t = targetRef.current + dir
+        if (t < 0 || t > n - 1) onOverflow(dir)
+        else goTo(t)
+      },
+      jump: (i) => {
+        progress.stop()
+        targetRef.current = clamp(i, 0, n - 1)
+        progress.set(targetRef.current)
+      },
+      panStart: () => {
+        dragging.current = true
         progress.stop()
         panStart.current = progress.get()
-      }}
-      onPan={(_, info) => {
-        if (lockedRef.current) return
-        raw.current = panStart.current - info.offset.x / stepPx
+      },
+      pan: (dx) => {
+        raw.current = panStart.current - dx / stepPx
         progress.set(rubber(raw.current))
-      }}
-      onPanEnd={(_, info) => {
-        if (lockedRef.current) return
+      },
+      panEnd: (vx) => {
         const from = Math.round(panStart.current)
-        if (raw.current < -0.45 && onOverflow(-1)) return
-        if (raw.current > n - 1 + 0.45 && onOverflow(1)) return
+        // let the tap that ends this gesture be ignored by the plates
+        setTimeout(() => (dragging.current = false), 0)
+        if (raw.current < -0.45 && onOverflow(-1)) return goTo(0)
+        if (raw.current > n - 1 + 0.45 && onOverflow(1)) return goTo(n - 1)
         // a flick advances one dish at most; a slow drag needs to pass the halfway point
-        const projected = progress.get() - (info.velocity.x / stepPx) * 0.12
+        const projected = progress.get() - (vx / stepPx) * 0.12
         goTo(clamp(Math.round(projected), from - 1, from + 1))
-      }}
-      onClick={() => {
-        if (lockedRef.current) onTapLocked()
-      }}
-    >
-      {backdropEl &&
-        createPortal(
-          items.map((item, i) => <Backdrop key={item.id} item={item} index={i} progress={progress} width={width} />),
-          backdropEl,
-        )}
-      {items.map((item, i) => (
-        <Plate
-          key={item.id}
-          item={item}
-          index={i}
-          progress={progress}
-          open={open}
-          size={size}
-          radius={radius}
-          onSelect={() => {
-            if (!dragged.current && !lockedRef.current) goTo(i)
-          }}
-        />
-      ))}
-    </motion.div>
+      },
+      isDragging: () => dragging.current,
+    })
+  })
+
+  const visible = items.map((item, i) => ({ item, i })).filter(({ i }) => Math.abs(i - near) <= 1)
+
+  return (
+    <>
+      {/* the dish itself, big and out of focus; ends exactly at the plate's equator */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 overflow-hidden"
+        style={{
+          height: backdropH,
+          maskImage: 'linear-gradient(to bottom, #000 calc(100% - 18px), transparent)',
+          WebkitMaskImage: 'linear-gradient(to bottom, #000 calc(100% - 18px), transparent)',
+        }}
+      >
+        {visible.map(({ item, i }) => (
+          <Backdrop key={item.id} item={item} index={i} progress={progress} width={width} />
+        ))}
+      </div>
+
+      <motion.div
+        className="absolute inset-x-0"
+        style={{ top: stageTop, height: stageH, y: stageY, scale: stageScale, willChange: 'transform' }}
+      >
+        {visible.map(({ item, i }) => (
+          <Plate
+            key={item.id}
+            item={item}
+            index={i}
+            progress={progress}
+            open={open}
+            size={size}
+            radius={radius}
+            onSelect={() => {
+              if (!dragging.current && !lockedRef.current) goTo(i)
+            }}
+          />
+        ))}
+      </motion.div>
+    </>
   )
 })
 

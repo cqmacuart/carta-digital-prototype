@@ -17,6 +17,8 @@ type Props = {
   item: MenuItem
   category: Category
   direction: number
+  /** 'x' when the dish changed, 'y' when the category changed */
+  axis: 'x' | 'y'
   expanded: boolean
   open: MotionValue<number>
   dragControls: DragControls
@@ -25,10 +27,12 @@ type Props = {
   onPeekHeight: (h: number) => void
 }
 
+type Swap = { dir: number; axis: 'x' | 'y' }
+const offset = ({ dir, axis }: Swap, d: number) => (axis === 'x' ? { x: dir * d, y: 0 } : { x: 0, y: dir * d })
 const swap: Variants = {
-  enter: (dir: number) => ({ x: dir * 36, opacity: 0 }),
-  center: { x: 0, opacity: 1 },
-  exit: (dir: number) => ({ x: dir * -36, opacity: 0, transition: { duration: 0.14 } }),
+  enter: (s: Swap) => ({ ...offset(s, 36), opacity: 0 }),
+  center: { x: 0, y: 0, opacity: 1 },
+  exit: (s: Swap) => ({ ...offset(s, -36), opacity: 0, transition: { duration: 0.14 } }),
 }
 
 const list: Variants = {
@@ -44,10 +48,11 @@ const rise: Variants = {
 /** Soft chip tinted from the sheet's own text colour, so it works on light and dark sheets alike. */
 const chip = 'rounded-full bg-current/10 ring-1 ring-current/15'
 
-export function DishSheet({ item, category, direction, expanded, open, dragControls, onToggle, onPeekHeight }: Props) {
+export function DishSheet({ item, category, direction, axis, expanded, open, dragControls, onToggle, onPeekHeight }: Props) {
   const bodyOpacity = useTransform(open, [0.05, 0.45], [0, 1])
   const caret = useTransform(open, [0, 1], [0, 180])
-  const accent = { color: category.accent, transition: 'color .5s' }
+  const accent = { color: category.accent }
+  const custom: Swap = { dir: direction, axis }
 
   const peekRef = useRef<HTMLDivElement>(null)
   const report = useRef(onPeekHeight)
@@ -82,16 +87,17 @@ export function DishSheet({ item, category, direction, expanded, open, dragContr
           </motion.span>
         </button>
         <div className="relative pb-5">
-          <AnimatePresence mode="popLayout" initial={false} custom={direction}>
+          <AnimatePresence mode="popLayout" initial={false} custom={custom}>
             <motion.div
               key={item.id}
-              custom={direction}
+              custom={custom}
               variants={swap}
               initial="enter"
               animate="center"
               exit="exit"
               transition={{ type: 'spring', stiffness: 420, damping: 36 }}
               className="w-full"
+              style={{ color: category.ink }}
             >
               <p className="text-[11px] font-bold uppercase tracking-[0.22em] opacity-75">{category.name}</p>
               <div className="mt-1 flex items-start justify-between gap-4">

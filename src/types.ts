@@ -4,8 +4,6 @@ export type Tag = 'casa' | 'nuevo' | 'vegano' | 'vegetariano' | 'sin-gluten' | '
 export type Category = {
   id: string
   name: string
-  /** page surface */
-  bg: string
   /** dish sheet surface */
   sheet: string
   /** text on the sheet */
