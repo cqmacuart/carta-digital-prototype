@@ -1,6 +1,6 @@
 import { AnimatePresence, motion, useTransform, type DragControls, type MotionValue, type Variants } from 'motion/react'
 import { ChevronUp, Info, Leaf, Flame, Sparkles, Sprout, Star, WheatOff, type LucideIcon } from 'lucide-react'
-import { useEffect, useLayoutEffect, useRef } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { money } from '../lib/format'
 import type { Category, MenuItem, Tag } from '../types'
 
@@ -67,6 +67,49 @@ export function DishSheet({ item, category, direction, axis, expanded, open, dra
     return () => ro.disconnect()
   }, [])
 
+  // does the description need its own scroll?
+  const bodyRef = useRef<HTMLDivElement>(null)
+  const [overflows, setOverflows] = useState(false)
+  useLayoutEffect(() => {
+    const el = bodyRef.current
+    if (!el) return
+    const check = () => setOverflows(el.scrollHeight > el.clientHeight + 1)
+    const ro = new ResizeObserver(check)
+    ro.observe(el)
+    if (el.firstElementChild) ro.observe(el.firstElementChild)
+    return () => ro.disconnect()
+  }, [])
+
+  // scrollable body: pulling down while already at the top drags the sheet instead of scrolling
+  const downEvent = useRef<PointerEvent | null>(null)
+  const controls = useRef(dragControls)
+  useEffect(() => {
+    controls.current = dragControls
+  })
+  useEffect(() => {
+    const el = bodyRef.current
+    if (!el) return
+    let startY = 0
+    const onStart = (e: TouchEvent) => {
+      startY = e.touches[0].clientY
+    }
+    const onMove = (e: TouchEvent) => {
+      const down = downEvent.current
+      if (!down) return
+      if (e.touches[0].clientY - startY > 6 && el.scrollTop <= 0) {
+        e.preventDefault()
+        downEvent.current = null
+        controls.current.start(down)
+      } else if (Math.abs(e.touches[0].clientY - startY) > 6) downEvent.current = null
+    }
+    el.addEventListener('touchstart', onStart, { passive: true })
+    el.addEventListener('touchmove', onMove, { passive: false })
+    return () => {
+      el.removeEventListener('touchstart', onStart)
+      el.removeEventListener('touchmove', onMove)
+    }
+  }, [])
+
   return (
     <div className="flex h-full flex-col">
       {/* drag zone: caret tab + title */}
@@ -125,10 +168,18 @@ export function DishSheet({ item, category, direction, axis, expanded, open, dra
         </div>
       </div>
 
-      {/* description body, scrolls natively */}
+      {/* description body: drags the sheet; only scrolls natively when it doesn't fit */}
       <motion.div
+        ref={bodyRef}
         style={{ opacity: bodyOpacity }}
-        className="no-scrollbar min-h-0 flex-1 overflow-y-auto overscroll-contain px-6 pb-[max(24px,env(safe-area-inset-bottom))]"
+        onPointerDown={(e) => {
+          // a short body (or a mouse) drags straight away; a scrollable one hands over on pull-down at the top
+          if (!overflows || e.pointerType === 'mouse') dragControls.start(e)
+          else downEvent.current = e.nativeEvent
+        }}
+        className={`no-scrollbar min-h-0 flex-1 overflow-y-auto overscroll-contain px-6 pb-[max(24px,env(safe-area-inset-bottom))] ${
+          overflows ? 'touch-pan-y' : 'touch-none'
+        }`}
       >
         <motion.div key={item.id} variants={list} initial="hidden" animate={expanded ? 'show' : 'hidden'}>
           <motion.div variants={rise} className="h-px bg-current/15" />

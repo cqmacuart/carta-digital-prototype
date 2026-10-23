@@ -11,6 +11,8 @@ const CHIPS = 52
 const PEEK = 190
 /** Breathing room under the collapsed sheet's content. */
 const PEEK_PAD = 6
+/** Tallest a collapsed sheet can get; the stage only reacts once the sheet rises above this, so it never moves between dishes. */
+const MAX_PEEK = 290
 const PAGE_SPRING = { type: 'spring', stiffness: 230, damping: 30, mass: 0.9 } as const
 
 /** Static paper grain: drawn once, never animated. */
@@ -113,7 +115,13 @@ export function MenuScreen({ width, height }: Props) {
     else sheetY.set(collapsedY)
     placed.current = true
   }, [collapsedY, shift, sheetY])
-  const open = useTransform(sheetY, (v) => clamp(1 - v / collapsedRef.current, 0, 1))
+  // measured against a fixed reference, not the current dish's collapsed position
+  const openStart = sheetH - MAX_PEEK - PEEK_PAD
+  const openStartRef = useRef(openStart)
+  useEffect(() => {
+    openStartRef.current = openStart
+  }, [openStart])
+  const open = useTransform(sheetY, (v) => clamp(1 - v / openStartRef.current, 0, 1))
   const snap = (toOpen: boolean) => {
     openRef.current = toOpen
     setOpen(toOpen)
