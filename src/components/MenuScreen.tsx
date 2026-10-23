@@ -35,7 +35,8 @@ function SceneSlot({ index, pitch, height, children }: { index: number; pitch: n
 export function MenuScreen({ width, height }: Props) {
   // ---- geometry -----------------------------------------------------------
   const stageTop = HEADER + CHIPS
-  const stageH = Math.max(240, height - stageTop - PEEK + 28)
+  // the stage ends well above the sheet, so the plate keeps breathing room on short phones too
+  const stageH = Math.max(220, height - stageTop - PEEK - 40)
   const size = Math.min(stageH * 0.66, width * 0.72, 310)
   const radius = width * 0.86
   const openTop = Math.round(height * 0.3)
