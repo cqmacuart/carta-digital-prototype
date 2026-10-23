@@ -67,6 +67,22 @@ export function DishSheet({ item, category, direction, axis, expanded, open, dra
     return () => ro.disconnect()
   }, [])
 
+  // the collapsed sheet shows at most two lines of tagline; warn while editing the menu if one gets cut
+  const taglineRef = useRef<HTMLParagraphElement>(null)
+  useEffect(() => {
+    if (!import.meta.env.DEV) return
+    let live = true
+    // measure with the real web font: the fallback is narrower and would hide the overflow
+    document.fonts.ready.then(() => {
+      const p = taglineRef.current
+      if (live && p && p.scrollHeight > p.clientHeight + 1)
+        console.warn(`[menu] La frase de "${item.name}" pasa de dos líneas; acórtala en src/data/menu.ts:`, item.tagline)
+    })
+    return () => {
+      live = false
+    }
+  }, [item])
+
   // does the description need its own scroll?
   const bodyRef = useRef<HTMLDivElement>(null)
   const [overflows, setOverflows] = useState(false)
@@ -149,7 +165,9 @@ export function DishSheet({ item, category, direction, axis, expanded, open, dra
                   {money(item.price)}
                 </p>
               </div>
-              <p className="mt-2 line-clamp-2 text-[15px] leading-snug opacity-80">{item.tagline}</p>
+              <p ref={taglineRef} className="mt-2 line-clamp-2 text-[15px] leading-snug opacity-80">
+                {item.tagline}
+              </p>
               {item.tags && (
                 <div className="mt-3 flex flex-wrap items-center gap-1.5">
                   {item.tags.map((t) => {
