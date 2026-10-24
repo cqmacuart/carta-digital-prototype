@@ -24,22 +24,6 @@ const GRAIN =
 
 const ITEMS = CATEGORIES.map((c) => itemsOf(c.id))
 
-const HINT_KEY = 'terra:swipe-hint-seen'
-const hintAlreadySeen = () => {
-  try {
-    return localStorage.getItem(HINT_KEY) === '1'
-  } catch {
-    return false
-  }
-}
-const rememberHintSeen = () => {
-  try {
-    localStorage.setItem(HINT_KEY, '1')
-  } catch {
-    // private mode: the hint simply shows again next visit
-  }
-}
-
 type Props = { width: number; height: number }
 
 /** One category's place on the vertical track. (No group opacity here: fading a stack of layers costs a render surface per frame.) */
@@ -75,14 +59,13 @@ export function MenuScreen({ width, height }: Props) {
   const category = CATEGORIES[catIndex]
   const item = ITEMS[catIndex][clamp(nav.index, 0, ITEMS[catIndex].length - 1)]
 
-  // first-visit swipe hint: only on the very first dish, gone (and remembered) after the first move
-  const [hintSeen, setHintSeen] = useState(hintAlreadySeen)
-  const hintDone = useRef(hintSeen)
+  // swipe hint: shown on every visit on the very first dish, gone after that visit's first move
+  const [hintSeen, setHintSeen] = useState(false)
+  const hintDone = useRef(false)
   const markHintSeen = () => {
     if (hintDone.current) return
     hintDone.current = true
     setHintSeen(true)
-    rememberHintSeen()
   }
 
   // categories are stacked vertically; switching is a single translate of the whole track
