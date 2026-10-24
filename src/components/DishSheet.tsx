@@ -1,5 +1,5 @@
 import { AnimatePresence, motion, useTransform, type DragControls, type MotionValue, type Variants } from 'motion/react'
-import { ChevronUp, Info, Leaf, Flame, Sparkles, Sprout, Star, WheatOff, type LucideIcon } from 'lucide-react'
+import { ChevronUp, Info, Leaf, Flame, Sparkles, Sprout, Star, Users, WheatOff, type LucideIcon } from 'lucide-react'
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { money } from '../lib/format'
 import type { Category, MenuItem, Tag } from '../types'
@@ -11,6 +11,7 @@ const TAGS: Record<Tag, { label: string; icon: LucideIcon }> = {
   vegetariano: { label: 'Vegetariano', icon: Sprout },
   'sin-gluten': { label: 'Sin gluten', icon: WheatOff },
   picante: { label: 'Picante', icon: Flame },
+  compartir: { label: 'Para compartir', icon: Users },
 }
 
 type Props = {
@@ -52,6 +53,7 @@ export function DishSheet({ item, category, direction, axis, expanded, open, dra
   const bodyOpacity = useTransform(open, [0.05, 0.45], [0, 1])
   const caret = useTransform(open, [0, 1], [0, 180])
   const accent = { color: category.accent }
+  const subName = category.subcategories.find((s) => s.id === item.sub)?.name
   const custom: Swap = { dir: direction, axis }
 
   const peekRef = useRef<HTMLDivElement>(null)
@@ -158,11 +160,15 @@ export function DishSheet({ item, category, direction, axis, expanded, open, dra
               className="w-full"
               style={{ color: category.ink }}
             >
-              <p className="text-[11px] font-bold uppercase tracking-[0.22em] opacity-75">{category.name}</p>
+              <p className="text-[11px] font-bold uppercase tracking-[0.22em] opacity-75">
+                {category.name}
+                {subName && <span className="opacity-70"> · {subName}</span>}
+              </p>
               <div className="mt-1 flex items-start justify-between gap-4">
                 <h1 className="text-balance font-display text-[29px] font-semibold leading-[1.06] tracking-tight">{item.name}</h1>
-                <p className="shrink-0 pt-1 font-display text-[24px] font-semibold tabular-nums" style={accent}>
-                  {money(item.price)}
+                <p className="flex shrink-0 flex-col items-end pt-1 text-right" style={accent}>
+                  {item.variants && <span className="text-[10px] font-bold uppercase tracking-[0.16em] opacity-80">desde</span>}
+                  <span className="font-display text-[24px] font-semibold leading-none tabular-nums">{money(item.price)}</span>
                 </p>
               </div>
               <p ref={taglineRef} className="mt-2 line-clamp-2 text-[15px] leading-snug opacity-80">
@@ -204,6 +210,28 @@ export function DishSheet({ item, category, direction, axis, expanded, open, dra
           <motion.p variants={rise} className="pt-5 text-[16px] leading-relaxed opacity-90">
             {item.description}
           </motion.p>
+
+          {item.variants && (
+            <motion.section variants={rise} className="mt-6">
+              <h2 className="mb-1 font-display text-lg font-semibold">Elige</h2>
+              <ul className="divide-y divide-current/10">
+                {item.variants.map((v) => {
+                  const [title, detail] = v.name.split(' — ')
+                  return (
+                    <li key={v.name} className="flex items-baseline justify-between gap-4 py-2.5">
+                      <span className="text-[15px] leading-snug">
+                        <span className="font-semibold">{title}</span>
+                        {detail && <span className="block text-[13px] opacity-75">{detail}</span>}
+                      </span>
+                      <span className="shrink-0 font-display text-[17px] font-semibold tabular-nums" style={accent}>
+                        {money(v.price)}
+                      </span>
+                    </li>
+                  )
+                })}
+              </ul>
+            </motion.section>
+          )}
 
           {item.ingredients && (
             <motion.section variants={rise} className="mt-6">

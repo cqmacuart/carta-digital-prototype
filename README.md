@@ -1,4 +1,14 @@
-# Terra · Carta digital
+# Carta digital · rama `carta-la-sablee`
+
+Versión para **La Sablée (Calle Real)**: 64 productos en dos niveles de navegación, sobre la base de la carta Terra (`main`).
+
+- **Riel lateral de íconos = categorías** (Desayunos, Sándwiches, Panadería, Dulce, Bebidas, Para llevar). Es vertical, como el gesto que las cambia: deslizar ↑ ↓.
+- **Chips = subcategorías**, bajo el nombre de la categoría. Deslizar ← → recorre los productos y cruza de subcategoría en subcategoría; el chip activo se actualiza solo y tocar uno salta ahí con un rodado corto.
+- El plato se corre a la derecha para dejar sitio al riel; el fondo desenfocado sigue centrado.
+- **Una tarjeta = un producto base**: tamaños, sabores y adiciones son variantes, con precio "desde" y la lista en la hoja. Precios en COP.
+- Datos en `src/data/menu.ts`, tomados de `carta-optimizada.md`. Las fotos son de Unsplash como referencia; hay que reemplazarlas por fotos reales del negocio.
+
+---
 
 Carta descriptiva, mobile-first, para un café restaurante. Inspirada en el "Food App Challenge" de Flutter, pero hecha como web.
 

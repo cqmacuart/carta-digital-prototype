@@ -17,14 +17,17 @@ export type CarouselApi = {
   isDragging: () => boolean
   /** Roll a little towards the next dish and back: a hint that the wheel turns. */
   nudge: () => void
+  /** Go to any dish; far jumps roll in from just beside it instead of spinning past everything in between. */
+  roll: (index: number) => void
 }
 
 type Props = {
   catIndex: number
   items: MenuItem[]
   width: number
-  /** Scene geometry */
+  /** Scene geometry; the stage starts at stageLeft so the plate sits beside the category rail */
   stageTop: number
+  stageLeft: number
   stageH: number
   backdropH: number
   size: number
@@ -33,6 +36,7 @@ type Props = {
   stepPx: number
   /** Sheet openness (0–1) and the stage transform it drives. */
   open: MotionValue<number>
+  stageX: MotionValue<number>
   stageY: MotionValue<number>
   stageScale: MotionValue<number>
   lockedRef: RefObject<boolean>
@@ -52,12 +56,14 @@ export const CategoryScene = memo(function CategoryScene({
   items,
   width,
   stageTop,
+  stageLeft,
   stageH,
   backdropH,
   size,
   radius,
   stepPx,
   open,
+  stageX,
   stageY,
   stageScale,
   lockedRef,
@@ -73,6 +79,8 @@ export const CategoryScene = memo(function CategoryScene({
   const panStart = useRef(0)
   const raw = useRef(0)
   const dragging = useRef(false)
+  /** While a far jump rolls in, ignore the dishes it passes on the way. */
+  const quietUntil = useRef<number | null>(null)
 
   const goTo = (i: number) => {
     targetRef.current = clamp(i, 0, n - 1)
@@ -81,6 +89,10 @@ export const CategoryScene = memo(function CategoryScene({
 
   useMotionValueEvent(progress, 'change', (v) => {
     const r = clamp(Math.round(v), 0, n - 1)
+    if (quietUntil.current !== null) {
+      if (r !== quietUntil.current) return
+      quietUntil.current = null
+    }
     if (r !== indexRef.current) {
       const dir = r > indexRef.current ? 1 : -1
       indexRef.current = r
@@ -99,9 +111,8 @@ export const CategoryScene = memo(function CategoryScene({
         else goTo(t)
       },
       jump: (i) => {
-        progress.stop()
         targetRef.current = clamp(i, 0, n - 1)
-        progress.set(targetRef.current)
+        progress.jump(targetRef.current)
       },
       panStart: () => {
         dragging.current = true
@@ -123,6 +134,20 @@ export const CategoryScene = memo(function CategoryScene({
         goTo(clamp(Math.round(projected), from - 1, from + 1))
       },
       isDragging: () => dragging.current,
+      roll: (i) => {
+        const to = clamp(i, 0, n - 1)
+        const dist = to - targetRef.current
+        if (Math.abs(dist) > 1) {
+          // announce the destination now and stay quiet while the wheel rolls in from beside it
+          quietUntil.current = to
+          indexRef.current = to
+          setNear(to)
+          onIndex(catIndex, to, dist > 0 ? 1 : -1)
+          // jump() resets velocity: set() would hand the spring the teleport as speed and it would overshoot
+          progress.jump(to - Math.sign(dist) * 0.9)
+        }
+        goTo(to)
+      },
       nudge: () => {
         if (dragging.current || n < 2) return
         const at = targetRef.current
@@ -151,8 +176,8 @@ export const CategoryScene = memo(function CategoryScene({
       </div>
 
       <motion.div
-        className="absolute inset-x-0"
-        style={{ top: stageTop, height: stageH, y: stageY, scale: stageScale, willChange: 'transform' }}
+        className="absolute right-0"
+        style={{ top: stageTop, left: stageLeft, height: stageH, x: stageX, y: stageY, scale: stageScale, willChange: 'transform' }}
       >
         {visible.map(({ item, i }) => (
           <Plate
