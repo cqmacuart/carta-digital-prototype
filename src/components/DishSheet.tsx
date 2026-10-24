@@ -53,7 +53,8 @@ export function DishSheet({ item, category, direction, axis, expanded, open, dra
   const bodyOpacity = useTransform(open, [0.05, 0.45], [0, 1])
   const caret = useTransform(open, [0, 1], [0, 180])
   const accent = { color: category.accent }
-  const subName = category.subcategories.find((s) => s.id === item.sub)?.name
+  // a lone subcategory would just repeat the category name
+  const subName = category.subcategories.length > 1 ? category.subcategories.find((s) => s.id === item.sub)?.name : undefined
   const custom: Swap = { dir: direction, axis }
 
   const peekRef = useRef<HTMLDivElement>(null)

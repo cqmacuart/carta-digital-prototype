@@ -2,8 +2,10 @@
 
 Versión para **La Sablée (Calle Real)**: 64 productos en dos niveles de navegación, sobre la base de la carta Terra (`main`).
 
-- **Riel lateral de íconos = categorías** (Desayunos, Sándwiches, Panadería, Dulce, Bebidas, Para llevar). Es vertical, como el gesto que las cambia: deslizar ↑ ↓.
-- **Chips = subcategorías**, bajo el nombre de la categoría. Deslizar ← → recorre los productos y cruza de subcategoría en subcategoría; el chip activo se actualiza solo y tocar uno salta ahí con un rodado corto.
+- **Riel lateral de íconos = categorías**, siguiendo las secciones de la carta impresa (Desayunos, Sándwiches, Panadería, Waffles y bowls, Postres, Bebidas, Para llevar). Es vertical, como el gesto que las cambia: deslizar ↑ ↓.
+- **Chips = subcategorías**, con su conteo ("Frías (8)"), en un panel centrado bajo el nombre de la categoría. Deslizar ← → recorre los productos y cruza de subcategoría en subcategoría; el chip activo se actualiza solo y tocar uno salta ahí con un rodado corto. Una categoría con una sola subcategoría no muestra chips.
+- **Etiquetas = tercer nivel** (por ejemplo Aves · Res · Cerdo, o Jugos y limonadas · Sodas · Alcohol), en chips claros bajo el panel. Siguen al plato y tocar una salta al primero de su grupo. Los productos de un grupo van juntos (`group` en `src/data/menu.ts`).
+- Si chips, etiquetas o riel no caben, se desplazan entre carets pulsantes que tienen su propio espacio (`ScrollStrip` en `src/components/ScrollCaret.tsx`); nunca se montan sobre los ítems.
 - El plato se corre a la derecha para dejar sitio al riel; el fondo desenfocado sigue centrado.
 - **Una tarjeta = un producto base**: tamaños, sabores y adiciones son variantes, con precio "desde" y la lista en la hoja. Precios en COP.
 - Datos en `src/data/menu.ts`, tomados de `carta-optimizada.md`. Las fotos son de Unsplash como referencia; hay que reemplazarlas por fotos reales del negocio.

@@ -25,6 +25,8 @@ export type MenuItem = {
   id: string
   category: string
   sub: string
+  /** third level inside a subcategory (e.g. Jugos, Cerdo); items of one group sit together */
+  group?: string
   name: string
   /** base price; with variants it is the lowest one ("desde") */
   price: number

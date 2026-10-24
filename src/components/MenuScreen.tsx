@@ -5,17 +5,18 @@ import { CATEGORIES, MENU, itemsOf } from '../data/menu'
 import { clamp } from '../lib/format'
 import { CategoryScene, type CarouselApi } from './RadialCarousel'
 import { DishSheet } from './DishSheet'
-import { ScrollCaret } from './ScrollCaret'
-import { useScrollEdges } from '../lib/useScrollEdges'
+import { ScrollStrip } from './ScrollCaret'
 
 const HEADER = 64
 /** Category name + subcategory chips */
 const NAV = 76
+/** Third level: group chips under the panel (room is always kept, so the stage never moves) */
+const TAGS = 40
 /** Category rail on the left; the plate sits to its right */
 const RAIL_X = 10
 const RAIL_W = 52
-/** Widest the subcategory panel gets; beyond it the chips scroll behind pulsing carets. */
-const PANEL_MAX = 340
+/** Side margin for the centred panels; wider content scrolls between carets. */
+const SIDE = 16
 /** Typical collapsed-sheet height, used to lay out the stage so the plate never jumps between dishes. */
 const PEEK = 190
 /** Breathing room under the collapsed sheet's content. */
@@ -45,18 +46,20 @@ function SceneSlot({ index, pitch, height, children }: { index: number; pitch: n
 
 export function MenuScreen({ width, height }: Props) {
   // ---- geometry -----------------------------------------------------------
-  const stageTop = HEADER + NAV
+  const stageTop = HEADER + NAV + TAGS
   const stageLeft = RAIL_X + RAIL_W
   // the stage ends well above the sheet, so the plate keeps breathing room on short phones too
   const stageH = Math.max(220, height - stageTop - PEEK + 10)
   const size = Math.min(stageH * 0.62, (width - stageLeft) * 0.86, 300)
   const railButton = height < 720 ? 38 : 44
-  // the rail stops above the sheet; any categories beyond scroll behind carets
-  const railMax = Math.max(railButton * 3 + 16, height - PEEK - (stageTop + 6) - 24)
   const radius = width * 0.86
   const openTop = Math.round(height * 0.3)
   const sheetH = height - openTop
   const [peek, setPeek] = useState(PEEK)
+  // the rail stops above the collapsed sheet (its real height); categories beyond scroll between carets
+  const railRoom = height - (peek + PEEK_PAD) - (stageTop + 6) - 12
+  const railFits = CATEGORIES.length * (railButton + 4) + 8 <= railRoom
+  const railMax = Math.max(railButton * 2 + 4, railFits ? railRoom : railRoom - 64)
   const collapsedY = sheetH - peek - PEEK_PAD
   const plateCenter = stageTop + stageH / 2
   const shift = (HEADER + openTop) / 2 + 6 - plateCenter
@@ -119,27 +122,31 @@ export function MenuScreen({ width, height }: Props) {
     return () => cancel(handle)
   }, [])
 
-  // subcategory chips follow the dish on stage; tapping one rolls the wheel there
+  // subcategory and group chips follow the dish on stage; tapping one rolls the wheel there
   const subIndex = Math.max(0, category.subcategories.findIndex((s) => s.id === item.sub))
-  const goToSub = (subId: string) => {
+  const subItems = ITEMS[catIndex].filter((m) => m.sub === item.sub)
+  const groups = [...new Set(subItems.map((m) => m.group).filter((g): g is string => !!g))]
+  const rollTo = (match: (m: (typeof ITEMS)[number][number]) => boolean) => {
     markHintSeen()
-    apis.current[catIndex]?.roll(ITEMS[catIndex].findIndex((m) => m.sub === subId))
+    apis.current[catIndex]?.roll(ITEMS[catIndex].findIndex(match))
   }
 
   // keep the active chip / rail icon in view (scroll only their own containers, never the page)
   const hasChips = category.subcategories.length > 1
   const chipRefs = useRef<(HTMLButtonElement | null)[]>([])
+  const tagRefs = useRef<(HTMLButtonElement | null)[]>([])
   const railRef = useRef<HTMLDivElement>(null)
+  const tagRailRef = useRef<HTMLDivElement>(null)
   const catRailRef = useRef<HTMLDivElement>(null)
-  const chipEdges = useScrollEdges(railRef, 'x', category.id)
-  const railEdges = useScrollEdges(catRailRef, 'y', railMax)
-  const chipFade = `linear-gradient(to right, ${chipEdges.start ? 'transparent, #000 14%' : '#000'}, ${chipEdges.end ? '#000 86%, transparent' : '#000'})`
+  const groupIndex = groups.indexOf(item.group ?? '')
   useEffect(() => {
-    const chip = chipRefs.current[subIndex]
-    const rail = railRef.current
-    if (!chip || !rail) return
-    rail.scrollTo({ left: chip.offsetLeft - (rail.clientWidth - chip.offsetWidth) / 2, behavior: 'smooth' })
-  }, [subIndex, catIndex])
+    const center = (rail: HTMLDivElement | null, chip: HTMLElement | null | undefined) => {
+      if (!chip || !rail) return
+      rail.scrollTo({ left: chip.offsetLeft - (rail.clientWidth - chip.offsetWidth) / 2, behavior: 'smooth' })
+    }
+    center(railRef.current, chipRefs.current[subIndex])
+    center(tagRailRef.current, tagRefs.current[groupIndex])
+  }, [subIndex, groupIndex, catIndex])
   useEffect(() => {
     const rail = catRailRef.current
     const btn = rail?.children[catIndex] as HTMLElement | undefined
@@ -350,15 +357,15 @@ export function MenuScreen({ width, height }: Props) {
         </p>
       </header>
 
-      {/* category name over its subcategories: centred, capped width, scrolls with carets when it overflows */}
+      {/* category name over its subcategories: centred, as wide as the screen allows; carets get their own room */}
       <motion.nav
         aria-label={`Subcategorías de ${category.name}`}
         style={{ top: HEADER, height: NAV, opacity: chipsOpacity }}
-        className="absolute inset-x-0 z-30 flex items-center justify-center px-3"
+        className="absolute inset-x-0 z-30 flex items-center justify-center"
       >
         <div
-          className="flex min-w-0 flex-col items-center gap-1 rounded-[24px] bg-white/70 p-1 pt-1.5 ring-1 ring-white/80"
-          style={{ maxWidth: Math.min(width - 24, PANEL_MAX) }}
+          className="flex w-fit min-w-0 flex-col items-center gap-1 rounded-[24px] bg-white/70 p-1 pt-1.5 ring-1 ring-white/80"
+          style={{ maxWidth: width - SIDE * 2 }}
         >
           <div className="relative h-5 w-full overflow-hidden px-3">
             <AnimatePresence initial={false} mode="popLayout" custom={nav.direction}>
@@ -369,68 +376,130 @@ export function MenuScreen({ width, height }: Props) {
                 animate={{ y: 0, opacity: 1 }}
                 exit={{ y: nav.direction * -18, opacity: 0, transition: { duration: 0.15 } }}
                 transition={{ type: 'spring', stiffness: 420, damping: 34 }}
-                className="flex items-baseline justify-center gap-1.5 whitespace-nowrap font-display text-[17px] font-semibold leading-5 text-espresso"
+                className="whitespace-nowrap text-center font-display text-[17px] font-semibold leading-5 text-espresso"
               >
                 {category.name}
-                <span className="font-sans text-[12px] font-bold text-cocoa">({ITEMS[catIndex].length})</span>
               </motion.p>
             </AnimatePresence>
           </div>
           {hasChips && (
-            <div className="relative max-w-full">
-              <ScrollCaret target={railRef} axis="x" side="start" show={chipEdges.start} label="Ver subcategorías anteriores" className="left-0.5 top-1" />
-              <ScrollCaret target={railRef} axis="x" side="end" show={chipEdges.end} label="Ver más subcategorías" className="right-0.5 top-1" />
-              <div
-                ref={railRef}
-                className="no-scrollbar relative flex max-w-full gap-0.5 overflow-x-auto rounded-full"
-                style={{ maskImage: chipFade, WebkitMaskImage: chipFade }}
+            <ScrollStrip
+              axis="x"
+              scrollRef={railRef}
+              watch={category.id}
+              labels={['Ver subcategorías anteriores', 'Ver más subcategorías']}
+              className="max-w-full"
+              scrollerClassName="gap-0.5 rounded-full"
+            >
+              {category.subcategories.map((s, i) => {
+                const isActive = i === subIndex
+                const count = ITEMS[catIndex].filter((m) => m.sub === s.id).length
+                return (
+                  <button
+                    key={`${category.id}-${s.id}`}
+                    ref={(el) => {
+                      chipRefs.current[i] = el
+                    }}
+                    type="button"
+                    aria-current={isActive}
+                    onClick={() => !isActive && rollTo((m) => m.sub === s.id)}
+                    className={`relative min-h-9 shrink-0 whitespace-nowrap rounded-full px-3.5 text-[13px] font-bold transition-colors duration-300 ${
+                      isActive ? '' : 'text-cocoa'
+                    }`}
+                    style={isActive ? { color: category.ink } : undefined}
+                  >
+                    {isActive && (
+                      <motion.span
+                        layoutId="sub"
+                        transition={{ type: 'spring', stiffness: 420, damping: 34 }}
+                        className="absolute inset-0 rounded-full"
+                        style={{ backgroundColor: category.sheet }}
+                      />
+                    )}
+                    <span className="relative">
+                      {s.name} <span className="font-semibold opacity-70">({count})</span>
+                    </span>
+                  </button>
+                )
+              })}
+            </ScrollStrip>
+          )}
+        </div>
+      </motion.nav>
+
+      {/* third level: groups inside the current subcategory, as lighter chips outside the panel */}
+      <motion.nav
+        aria-label="Etiquetas"
+        style={{ top: HEADER + NAV, height: TAGS, opacity: chipsOpacity }}
+        className="absolute inset-x-0 z-30 flex items-center justify-center"
+      >
+        <AnimatePresence mode="wait" initial={false}>
+          {groups.length > 1 && (
+            <motion.div
+              key={`${category.id}-${item.sub}`}
+              initial={{ opacity: 0, y: -6 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -6, transition: { duration: 0.12 } }}
+              transition={{ duration: 0.22 }}
+              className="flex w-fit min-w-0 justify-center"
+              style={{ maxWidth: width - SIDE * 2 }}
+            >
+              <ScrollStrip
+                axis="x"
+                scrollRef={tagRailRef}
+                watch={`${category.id}-${item.sub}`}
+                labels={['Ver etiquetas anteriores', 'Ver más etiquetas']}
+                className="max-w-full rounded-full bg-white/45 px-0.5 ring-1 ring-white/60"
+                scrollerClassName="gap-1 py-1"
               >
-                {category.subcategories.map((s, i) => {
-                  const isActive = i === subIndex
+                {groups.map((g, i) => {
+                  const isActive = g === item.group
                   return (
                     <button
-                      key={`${category.id}-${s.id}`}
+                      key={g}
                       ref={(el) => {
-                        chipRefs.current[i] = el
+                        tagRefs.current[i] = el
                       }}
                       type="button"
                       aria-current={isActive}
-                      onClick={() => !isActive && goToSub(s.id)}
-                      className={`relative min-h-9 shrink-0 rounded-full px-3.5 text-[13px] font-bold transition-colors duration-300 ${
-                        isActive ? '' : 'text-cocoa'
+                      onClick={() => !isActive && rollTo((m) => m.sub === item.sub && m.group === g)}
+                      className={`relative min-h-7 shrink-0 whitespace-nowrap rounded-full px-3 text-[12px] font-bold transition-colors duration-300 ${
+                        isActive ? '' : 'text-espresso/80'
                       }`}
                       style={isActive ? { color: category.ink } : undefined}
                     >
                       {isActive && (
                         <motion.span
-                          layoutId="sub"
+                          layoutId="tag"
                           transition={{ type: 'spring', stiffness: 420, damping: 34 }}
                           className="absolute inset-0 rounded-full"
                           style={{ backgroundColor: category.sheet }}
                         />
                       )}
-                      <span className="relative">{s.name}</span>
+                      <span className="relative">{g}</span>
                     </button>
                   )
                 })}
-              </div>
-            </div>
+              </ScrollStrip>
+            </motion.div>
           )}
-        </div>
+        </AnimatePresence>
       </motion.nav>
 
-      {/* category rail: one icon per category, vertical like the swipe that changes it; scrolls with carets when taller than its room */}
+      {/* category rail: one icon per category, vertical like the swipe that changes it; carets get their own room */}
       <motion.nav
         aria-label="Categorías"
         style={{ top: stageTop + 6, left: RAIL_X, width: RAIL_W, opacity: chipsOpacity }}
         className="absolute z-30 rounded-full bg-white/70 ring-1 ring-white/80"
       >
-        <ScrollCaret target={catRailRef} axis="y" side="start" show={railEdges.start} label="Ver categorías anteriores" className="left-1/2 -top-2 -translate-x-1/2" />
-        <ScrollCaret target={catRailRef} axis="y" side="end" show={railEdges.end} label="Ver más categorías" className="left-1/2 -bottom-2 -translate-x-1/2" />
-        <div
-          ref={catRailRef}
-          className="no-scrollbar flex flex-col items-center gap-1 overflow-y-auto overscroll-contain rounded-full p-1"
-          style={{ maxHeight: railMax }}
+        <ScrollStrip
+          axis="y"
+          scrollRef={catRailRef}
+          watch={railMax}
+          labels={['Ver categorías anteriores', 'Ver más categorías']}
+          className="py-1"
+          scrollerClassName="items-center gap-1 px-1"
+          scrollerStyle={{ maxHeight: railMax, transition: 'max-height .3s ease' }}
         >
           {CATEGORIES.map((c, i) => {
             const isActive = i === catIndex
@@ -457,7 +526,7 @@ export function MenuScreen({ width, height }: Props) {
               </button>
             )
           })}
-        </div>
+        </ScrollStrip>
       </motion.nav>
 
       {/* dish sheet, wearing the category's colour */}
