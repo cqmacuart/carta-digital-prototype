@@ -1,14 +1,27 @@
-import { motion } from 'motion/react'
+import { motion, type Variants } from 'motion/react'
 import { Search, X } from 'lucide-react'
-import { useMemo, useState } from 'react'
+import { useDeferredValue, useMemo, useState } from 'react'
 import { money } from '../lib/format'
-import { buildIndex, highlight, search } from '../lib/search'
+import { highlight, search, type SearchIndex } from '../lib/search'
 import type { Menu, MenuItem } from '../types'
 
 type Props = {
   menu: Menu
+  /** built once when the menu loads, not when the overlay opens */
+  index: SearchIndex
   onClose: () => void
   onSelect: (item: MenuItem) => void
+  /** the open animation finished: whatever is underneath can stop painting */
+  onOpened: () => void
+}
+
+/** How far the blind extends above the screen to hide its bounce. */
+const BLIND_OVERSHOOT = 96
+const POP ={ type: 'spring', stiffness: 520, damping: 22 } as const
+const list: Variants = { hidden: {}, show: { transition: { staggerChildren: 0.025, delayChildren: 0.06 } } }
+const pop: Variants = {
+  hidden: { opacity: 0, scale: 0.85, y: 8 },
+  show: { opacity: 1, scale: 1, y: 0, transition: POP },
 }
 
 /** Words in the result that match the query, emphasised. */
@@ -32,10 +45,11 @@ function Marked({ text, query }: { text: string; query: string }) {
  * Full-screen search over every datum of the menu: names, categories, subcategories, groups,
  * tags, ingredients, variants, descriptions. Picking a result takes the carousel to that dish.
  */
-export function SearchOverlay({ menu, onClose, onSelect }: Props) {
+export function SearchOverlay({ menu, index, onClose, onSelect, onOpened }: Props) {
   const [query, setQuery] = useState('')
-  const index = useMemo(() => buildIndex(menu), [menu])
-  const hits = useMemo(() => search(index, query), [index, query])
+  // the field updates on every key; the result list follows when the main thread is free
+  const deferred = useDeferredValue(query)
+  const hits = useMemo(() => search(index, deferred), [index, deferred])
   const cats = useMemo(() => new Map(menu.categories.map((c) => [c.id, c])), [menu.categories])
 
   // grouped by category; the category holding the best match comes first, best matches first inside each
@@ -58,13 +72,20 @@ export function SearchOverlay({ menu, onClose, onSelect }: Props) {
       role="dialog"
       aria-modal="true"
       aria-label="Buscar en la carta"
-      initial={{ opacity: 0, y: -12 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -12, transition: { duration: 0.16 } }}
-      transition={{ type: 'spring', stiffness: 380, damping: 34 }}
+      // a roller blind: drops from the top and overshoots a little (boing); on close it dips, then rolls up.
+      // Opaque and transform-only: a backdrop blur here was re-rendered every frame over the animated carta.
+      initial={{ y: '-102%' }}
+      animate={{ y: '0%' }}
+      exit={{ y: ['0%', '3%', '-102%'], transition: { duration: 0.42, times: [0, 0.22, 1], ease: ['easeOut', [0.55, 0, 0.8, 0.3]] } }}
+      transition={{ type: 'spring', stiffness: 240, damping: 19, mass: 0.9 }}
+      onAnimationComplete={(def) => (def as { y?: unknown }).y === '0%' && onOpened()}
       onKeyDown={(e) => e.key === 'Escape' && onClose()}
-      className="absolute inset-0 z-50 flex flex-col bg-[#F1E6DA]/97 backdrop-blur-sm"
+      // the blind reaches above the screen, so its overshoot never uncovers a gap at the top
+      style={{ top: -BLIND_OVERSHOOT, paddingTop: BLIND_OVERSHOOT, height: `calc(100% + ${BLIND_OVERSHOOT}px)`, willChange: 'transform', visibility: 'visible' }}
+      className="absolute inset-x-0 z-50 flex flex-col rounded-b-[28px] bg-[#F1E6DA] shadow-[0_18px_36px_-14px_rgba(42,26,18,.55)]"
     >
+      {/* the blind's bottom bar */}
+      <span aria-hidden className="absolute inset-x-0 bottom-2 mx-auto h-1.5 w-12 rounded-full bg-espresso/20" />
       {/* search field */}
       <div className="flex shrink-0 items-center gap-2 px-4 pb-3 pt-4">
         <label className="flex min-h-12 flex-1 items-center gap-2 rounded-full bg-white/85 pl-4 pr-1.5 ring-1 ring-white shadow-[0_6px_18px_-10px_rgba(42,26,18,.45)]">
@@ -95,11 +116,11 @@ export function SearchOverlay({ menu, onClose, onSelect }: Props) {
       </div>
 
       <div className="no-scrollbar min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 pb-[max(24px,env(safe-area-inset-bottom))]">
-        {!query.trim() ? (
+        {!deferred.trim() ? (
           <Suggestions suggestions={suggestions} onPick={setQuery} />
         ) : sections.length === 0 ? (
           <div className="pt-10 text-center">
-            <p className="font-display text-xl font-semibold text-espresso">Sin resultados para “{query.trim()}”</p>
+            <p className="font-display text-xl font-semibold text-espresso">Sin resultados para “{deferred.trim()}”</p>
             <p className="mt-1 text-[14px] text-cocoa">Prueba con otra palabra o una de estas:</p>
             <div className="mt-5">
               <Suggestions suggestions={suggestions} onPick={setQuery} compact />
@@ -126,12 +147,12 @@ export function SearchOverlay({ menu, onClose, onSelect }: Props) {
                           <img src={item.imgThumb} alt="" loading="lazy" className="size-12 shrink-0 rounded-full object-cover shadow-[0_4px_10px_-4px_rgba(74,36,16,.5)]" />
                           <span className="min-w-0 flex-1">
                             <span className="block truncate text-[15px] font-bold text-espresso">
-                              <Marked text={item.name} query={query} />
+                              <Marked text={item.name} query={deferred} />
                             </span>
                             <span className="block truncate text-[12px] text-cocoa">
                               {reason ? (
                                 <>
-                                  {reason.kind} · <Marked text={reason.text} query={query} />
+                                  {reason.kind} · <Marked text={reason.text} query={deferred} />
                                 </>
                               ) : (
                                 [sub && cats.get(item.category)!.subcategories.length > 1 ? sub.name : null, item.group].filter(Boolean).join(' · ') || item.tagline
@@ -156,6 +177,22 @@ export function SearchOverlay({ menu, onClose, onSelect }: Props) {
   )
 }
 
+/** One quick-search suggestion. */
+function Chip({ label, icon: Icon, onPick }: { label: string; icon: Menu['categories'][number]['icon']; onPick: (q: string) => void }) {
+  return (
+    <motion.button
+      variants={pop}
+      whileTap={{ scale: 0.9 }}
+      type="button"
+      onClick={() => onPick(label)}
+      className="flex min-h-10 items-center gap-1.5 rounded-full bg-white/70 px-3.5 text-[13px] font-bold text-espresso ring-1 ring-white/80"
+    >
+      <Icon size={15} strokeWidth={2.2} aria-hidden className="text-cocoa" />
+      {label}
+    </motion.button>
+  )
+}
+
 function Suggestions({
   suggestions,
   onPick,
@@ -165,27 +202,21 @@ function Suggestions({
   onPick: (q: string) => void
   compact?: boolean
 }) {
-  const chip = 'flex min-h-10 items-center gap-1.5 rounded-full bg-white/70 px-3.5 text-[13px] font-bold text-espresso ring-1 ring-white/80 active:bg-white'
+  // chips pop in one after another, with a little bounce
   return (
-    <div className={compact ? 'flex flex-wrap justify-center gap-2' : 'pt-2'}>
+    <motion.div variants={list} initial="hidden" animate="show" className={compact ? 'flex flex-wrap justify-center gap-2' : 'pt-2'}>
       {!compact && <h2 className="px-1 pb-2 text-[11px] font-bold uppercase tracking-[0.2em] text-cocoa">Categorías</h2>}
-      <div className={compact ? 'contents' : 'flex flex-wrap gap-2'}>
-        {suggestions.categories.map(({ id, name, icon: Icon }) => (
-          <button key={id} type="button" onClick={() => onPick(name)} className={chip}>
-            <Icon size={15} strokeWidth={2.2} aria-hidden className="text-cocoa" />
-            {name}
-          </button>
+      <motion.div variants={list} className={compact ? 'contents' : 'flex flex-wrap gap-2'}>
+        {suggestions.categories.map(({ id, name, icon }) => (
+          <Chip key={id} label={name} icon={icon} onPick={onPick} />
         ))}
-      </div>
+      </motion.div>
       {!compact && <h2 className="px-1 pb-2 pt-6 text-[11px] font-bold uppercase tracking-[0.2em] text-cocoa">Preferencias</h2>}
-      <div className={compact ? 'contents' : 'flex flex-wrap gap-2'}>
-        {suggestions.tags.map(({ id, label, icon: Icon }) => (
-          <button key={id} type="button" onClick={() => onPick(label)} className={chip}>
-            <Icon size={15} strokeWidth={2.2} aria-hidden className="text-cocoa" />
-            {label}
-          </button>
+      <motion.div variants={list} className={compact ? 'contents' : 'flex flex-wrap gap-2'}>
+        {suggestions.tags.map(({ id, label, icon }) => (
+          <Chip key={id} label={label} icon={icon} onPick={onPick} />
         ))}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   )
 }

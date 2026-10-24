@@ -3,7 +3,15 @@ import { ICONS } from '../lib/icons'
 import type { MenuDatabase } from '../models/db'
 import type { Badge, Category, Menu, MenuItem } from '../types'
 
-const bySort = <T extends { sortOrder: number }>(a: T, b: T) => a.sortOrder - b.sortOrder
+/** WCAG relative luminance of a #RRGGBB colour */
+const luminance = (hex: string) => {
+  const [r, g, b] = [1, 3, 5]
+    .map((i) => parseInt(hex.slice(i, i + 2), 16) / 255)
+    .map((c) => (c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4))
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b
+}
+
+const bySort =<T extends { sortOrder: number }>(a: T, b: T) => a.sortOrder - b.sortOrder
 
 /** Database rows → what the screens render (sorted, joined, icons resolved, image URLs built). */
 export function toMenu(db: MenuDatabase): Menu {
@@ -16,6 +24,8 @@ export function toMenu(db: MenuDatabase): Menu {
       .sort(bySort)
       .map((s) => ({ id: s.id, name: s.name })),
     ...c.palette,
+    // dark sheets read on cream as they are; light ones lend their (dark) accent instead
+    strong: luminance(c.palette.sheet) < 0.2 ? c.palette.sheet : c.palette.accent,
   }))
 
   const catOrder = new Map(db.categories.map((c) => [c.id, c.sortOrder]))
@@ -58,7 +68,13 @@ export function toMenu(db: MenuDatabase): Menu {
 
   const branch = db.business.branches.find((b) => b.id === db.business.branchId)
   return {
-    business: { name: db.business.name, tagline: db.business.tagline, branch: branch?.name ?? '' },
+    business: {
+      name: db.business.name,
+      tagline: db.business.tagline,
+      branch: branch?.name ?? '',
+      hours: branch?.hours ?? [],
+      timezone: branch?.timezone ?? 'America/Bogota',
+    },
     categories,
     items,
   }

@@ -2,9 +2,9 @@
   "schemaVersion": 1,
   "updatedAt": "2026-10-24",
   "business": {
-    "id": "la-sablee",
-    "name": "La Sablée",
-    "tagline": "café · pastelería",
+    "id": "terra",
+    "name": "Terra",
+    "tagline": "café · cocina",
     "currency": "COP",
     "locale": "es-CO",
     "branchId": "calle-real",
@@ -13,13 +13,89 @@
         "id": "calle-real",
         "name": "Calle Real",
         "address": "Carrera 6 # 8b-30",
-        "city": "Pamplona"
+        "city": "Pamplona",
+        "timezone": "America/Bogota",
+        "hours": [
+          {
+            "day": 1,
+            "open": "07:00",
+            "close": "21:00"
+          },
+          {
+            "day": 2,
+            "open": "07:00",
+            "close": "21:00"
+          },
+          {
+            "day": 3,
+            "open": "07:00",
+            "close": "21:00"
+          },
+          {
+            "day": 4,
+            "open": "07:00",
+            "close": "21:00"
+          },
+          {
+            "day": 5,
+            "open": "07:00",
+            "close": "21:00"
+          },
+          {
+            "day": 6,
+            "open": "07:00",
+            "close": "21:00"
+          },
+          {
+            "day": 0,
+            "open": "08:00",
+            "close": "19:00"
+          }
+        ]
       },
       {
         "id": "via-nacional",
         "name": "Vía Nacional",
         "address": "Calle 5 # 5-29",
-        "city": "Pamplona"
+        "city": "Pamplona",
+        "timezone": "America/Bogota",
+        "hours": [
+          {
+            "day": 1,
+            "open": "06:30",
+            "close": "20:00"
+          },
+          {
+            "day": 2,
+            "open": "06:30",
+            "close": "20:00"
+          },
+          {
+            "day": 3,
+            "open": "06:30",
+            "close": "20:00"
+          },
+          {
+            "day": 4,
+            "open": "06:30",
+            "close": "20:00"
+          },
+          {
+            "day": 5,
+            "open": "06:30",
+            "close": "20:00"
+          },
+          {
+            "day": 6,
+            "open": "06:30",
+            "close": "20:00"
+          },
+          {
+            "day": 0,
+            "open": "07:30",
+            "close": "14:00"
+          }
+        ]
       }
     ],
     "contact": {
@@ -34,9 +110,9 @@
       "icon": "egg-fried",
       "sortOrder": 1,
       "palette": {
-        "sheet": "#A9472A",
-        "ink": "#FFF4EA",
-        "accent": "#FFD9BD"
+        "sheet": "#E2A43C",
+        "ink": "#2A1A0E",
+        "accent": "#6A2C0A"
       }
     },
     {
@@ -45,9 +121,9 @@
       "icon": "sandwich",
       "sortOrder": 2,
       "palette": {
-        "sheet": "#6E2A20",
-        "ink": "#FAEEE6",
-        "accent": "#F4B597"
+        "sheet": "#525D34",
+        "ink": "#F7F2E2",
+        "accent": "#ECE2B2"
       }
     },
     {
@@ -56,9 +132,9 @@
       "icon": "croissant",
       "sortOrder": 3,
       "palette": {
-        "sheet": "#B9773F",
-        "ink": "#2B1B13",
-        "accent": "#3E1A08"
+        "sheet": "#C4884C",
+        "ink": "#22140A",
+        "accent": "#3E1904"
       }
     },
     {
@@ -67,9 +143,9 @@
       "icon": "ice-cream-bowl",
       "sortOrder": 4,
       "palette": {
-        "sheet": "#E0B36A",
-        "ink": "#2B1B13",
-        "accent": "#5E2810"
+        "sheet": "#EBD3A0",
+        "ink": "#33200F",
+        "accent": "#874613"
       }
     },
     {
@@ -78,9 +154,9 @@
       "icon": "cake-slice",
       "sortOrder": 5,
       "palette": {
-        "sheet": "#EBC9C0",
-        "ink": "#3A1E19",
-        "accent": "#8C2F25"
+        "sheet": "#94404F",
+        "ink": "#FFF3F2",
+        "accent": "#FFDCDA"
       }
     },
     {
@@ -89,9 +165,9 @@
       "icon": "coffee",
       "sortOrder": 6,
       "palette": {
-        "sheet": "#7A4E35",
-        "ink": "#FBF1E6",
-        "accent": "#F6CBA8"
+        "sheet": "#4A2E20",
+        "ink": "#F7ECDF",
+        "accent": "#E8BC86"
       }
     },
     {
@@ -100,9 +176,9 @@
       "icon": "shopping-bag",
       "sortOrder": 7,
       "palette": {
-        "sheet": "#4A3A30",
-        "ink": "#FBF1E6",
-        "accent": "#E9C29F"
+        "sheet": "#C9AE86",
+        "ink": "#2A1C10",
+        "accent": "#5C3816"
       }
     }
   ],

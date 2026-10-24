@@ -59,6 +59,18 @@ export interface Branch {
   name: string
   address: string
   city: string
+  /** IANA zone the hours are written in */
+  timezone: string
+  /** one row per opening span; a day without rows is closed */
+  hours: OpeningHours[]
+}
+
+export interface OpeningHours {
+  /** 0 = domingo … 6 = sábado */
+  day: number
+  /** 24h "HH:MM"; `close` may be after midnight ("01:00") */
+  open: string
+  close: string
 }
 
 /** Level 1 — the rail */

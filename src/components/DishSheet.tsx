@@ -127,8 +127,10 @@ export function DishSheet({ item, category, direction, axis, expanded, open, dra
         className="shrink-0 touch-none px-6 pb-[env(safe-area-inset-bottom)]"
         onPointerDown={(e) => dragControls.start(e)}
       >
-        <button
+        <motion.button
           type="button"
+          whileTap={{ scale: 0.85 }}
+          transition={{ type: 'spring', stiffness: 520, damping: 15 }}
           onClick={onToggle}
           aria-expanded={expanded}
           aria-label={expanded ? 'Ocultar descripción' : 'Ver descripción'}
@@ -137,7 +139,7 @@ export function DishSheet({ item, category, direction, axis, expanded, open, dra
           <motion.span style={{ rotate: caret }} className="grid h-6 w-10 place-items-center rounded-full bg-current/12">
             <ChevronUp size={18} strokeWidth={2.6} aria-hidden />
           </motion.span>
-        </button>
+        </motion.button>
         <div className="relative pb-5">
           <AnimatePresence mode="popLayout" initial={false} custom={custom}>
             <motion.div

@@ -1,5 +1,5 @@
 import type { LucideIcon } from 'lucide-react'
-import type { TagId } from './models/db'
+import type { OpeningHours, TagId } from './models/db'
 
 // View models: what the screens render, built from the database by src/data/adapter.ts.
 
@@ -17,6 +17,8 @@ export type Category = {
   ink: string
   /** price + icons on the sheet */
   accent: string
+  /** the palette's colour that reads on the light page (outlined chips, highlights) */
+  strong: string
 }
 
 /** One card = one base product; sizes, flavours and add-ons are its variants. */
@@ -54,6 +56,9 @@ export type Business = {
   name: string
   tagline: string
   branch: string
+  /** to tell whether it is open right now */
+  hours: OpeningHours[]
+  timezone: string
 }
 
 export type Menu = {

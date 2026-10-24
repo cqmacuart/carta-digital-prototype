@@ -25,7 +25,7 @@ function useMenu() {
   const [attempt, setAttempt] = useState(0)
   useEffect(() => {
     const ctrl = new AbortController()
-    fetchMenu('la-sablee', ctrl.signal)
+    fetchMenu('terra', ctrl.signal)
       .then((db) => setLoad({ status: 'ready', menu: toMenu(db) }))
       .catch((e: unknown) => {
         if (!ctrl.signal.aborted) setLoad({ status: 'error', message: e instanceof Error ? e.message : String(e) })
@@ -66,7 +66,7 @@ export default function App() {
                     transition={{ duration: 1.2, repeat: Infinity, ease: 'easeInOut' }}
                     className="grid size-14 place-items-center rounded-full bg-espresso font-display text-2xl font-semibold italic text-cream"
                   >
-                    S
+                    t
                   </motion.span>
                 ) : (
                   <div role="alert">

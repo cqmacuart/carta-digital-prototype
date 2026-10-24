@@ -1,6 +1,6 @@
 # Carta digital · rama `carta-la-sablee`
 
-Versión para **La Sablée (Calle Real)**: 64 productos en dos niveles de navegación, sobre la base de la carta Terra (`main`).
+Plantilla de carta con el negocio de ejemplo **Terra · café · cocina**: 65 productos en tres niveles de navegación (categoría, subcategoría y etiqueta), datos en JSON y buscador, sobre la base de la carta de `main`. Contexto completo para retomar el proyecto: [`CLAUDE.md`](CLAUDE.md) y [`docs/CONTEXTO.md`](docs/CONTEXTO.md).
 
 - **Riel lateral de íconos = categorías**, siguiendo las secciones de la carta impresa (Desayunos, Sándwiches, Panadería, Waffles y bowls, Postres, Bebidas, Para llevar). Es vertical, como el gesto que las cambia: deslizar ↑ ↓.
 - **Chips = subcategorías**, con su conteo ("Frías (8)"), en un panel centrado bajo el nombre de la categoría. Deslizar ← → recorre los productos y cruza de subcategoría en subcategoría; el chip activo se actualiza solo y tocar uno salta ahí con un rodado corto. Una categoría con una sola subcategoría no muestra chips.
@@ -13,7 +13,7 @@ Versión para **La Sablée (Calle Real)**: 64 productos en dos niveles de navega
 
 ### Datos (simulación de base de datos)
 
-La carta vive en **`public/data/la-sablee.json`**, normalizada como tablas de una base de datos. Los modelos están en **`src/models/db.ts`**:
+La carta vive en **`public/data/terra.json`**, normalizada como tablas de una base de datos. Los modelos están en **`src/models/db.ts`**:
 
 | Tabla | Qué guarda |
 |---|---|

@@ -72,8 +72,10 @@ function Caret({
     el.scrollBy(axis === 'x' ? { left: page, behavior: 'smooth' } : { top: page, behavior: 'smooth' })
   }
   return (
-    <button
+    <motion.button
       type="button"
+      whileTap={active ? { scale: 0.8 } : undefined}
+      transition={{ type: 'spring', stiffness: 520, damping: 15 }}
       aria-label={label}
       disabled={!active}
       onClick={scroll}
@@ -86,6 +88,6 @@ function Caret({
       >
         <Icon size={16} strokeWidth={2.6} />
       </motion.span>
-    </button>
+    </motion.button>
   )
 }

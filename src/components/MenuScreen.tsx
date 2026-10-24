@@ -7,6 +7,8 @@ import { CategoryScene, type CarouselApi } from './RadialCarousel'
 import { DishSheet } from './DishSheet'
 import { ScrollStrip } from './ScrollCaret'
 import { SearchOverlay } from './SearchOverlay'
+import { buildIndex } from '../lib/search'
+import { useOpenStatus } from '../lib/useOpenStatus'
 
 const HEADER = 64
 /** Category name + subcategory chips */
@@ -34,6 +36,30 @@ const GRAIN =
 
 type Props = { width: number; height: number; menu: Menu }
 
+/** A tap that squashes and springs back with a little bounce. */
+const TAP = { type: 'spring', stiffness: 520, damping: 15 } as const
+/** Active pill sliding to its new chip, landing with a small overshoot. */
+const PILL = { type: 'spring', stiffness: 460, damping: 24 } as const
+
+/** Number of dishes in a chip, inside a circle; filled when its chip is active. */
+function Count({ n, active, fill, text, small = false }: { n: number; active: boolean; fill: string; text: string; small?: boolean }) {
+  return (
+    <motion.span
+      key={active ? 'on' : 'off'}
+      initial={active ? { scale: 0.6 } : false}
+      animate={{ scale: 1 }}
+      transition={{ type: 'spring', stiffness: 600, damping: 14 }}
+      className={`grid shrink-0 place-items-center rounded-full font-bold tabular-nums ${small ? 'size-[18px] text-[10px]' : 'size-5 text-[11px]'} ${
+        active ? '' : 'bg-espresso/10 text-espresso/70'
+      }`}
+      style={active ? { backgroundColor: fill, color: text } : undefined}
+      aria-label={`${n} ${n === 1 ? 'plato' : 'platos'}`}
+    >
+      {n}
+    </motion.span>
+  )
+}
+
 /** One category's place on the vertical track. (No group opacity here: fading a stack of layers costs a render surface per frame.) */
 function SceneSlot({ index, pitch, height, children }: { index: number; pitch: number; height: number; children: ReactNode }) {
   return (
@@ -45,6 +71,7 @@ function SceneSlot({ index, pitch, height, children }: { index: number; pitch: n
 
 export function MenuScreen({ width, height, menu }: Props) {
   const { business, categories } = menu
+  const status = useOpenStatus(business.hours, business.timezone)
   // dishes of each category, in menu order
   const itemsByCat = useMemo(() => categories.map((c) => menu.items.filter((m) => m.category === c.id)), [categories, menu.items])
 
@@ -192,6 +219,13 @@ export function MenuScreen({ width, height, menu }: Props) {
 
   // ---- search: an overlay that can take the carta to any dish ---------------
   const [searching, setSearching] = useState(false)
+  // once the overlay covers the screen the carta underneath stops painting (its loops, pulses, images)
+  const [covered, setCovered] = useState(false)
+  const searchIndex = useMemo(() => buildIndex(menu), [menu])
+  const closeSearch = () => {
+    setCovered(false)
+    setSearching(false)
+  }
   const goToItem = (id: string) => {
     const cat = itemsByCat.findIndex((list) => list.some((m) => m.id === id))
     if (cat < 0) return
@@ -245,7 +279,7 @@ export function MenuScreen({ width, height, menu }: Props) {
   }
 
   return (
-    <div className="absolute inset-0 overflow-hidden bg-[#F1E6DA]">
+    <div className="absolute inset-0 overflow-hidden bg-[#F1E6DA]" style={covered ? { visibility: 'hidden' } : undefined}>
       {/* category track */}
       <motion.div
         className="absolute inset-x-0 top-0"
@@ -361,8 +395,8 @@ export function MenuScreen({ width, height, menu }: Props) {
       {/* header */}
       <header className="absolute inset-x-0 top-0 z-30 flex items-center justify-between px-4" style={{ height: HEADER }}>
         <div className="flex items-center gap-2 rounded-full bg-white/70 py-1 pl-1 pr-4 ring-1 ring-white/80">
-          <span className="grid size-9 place-items-center rounded-full bg-espresso font-display text-[17px] font-semibold italic text-cream">
-            S
+          <span className="grid size-9 place-items-center rounded-full bg-espresso font-display text-[17px] font-semibold italic text-cream" aria-hidden>
+            {business.name.charAt(0).toLowerCase()}
           </span>
           <div className="leading-none">
             <p className="font-display text-[19px] font-semibold tracking-tight">{business.name}</p>
@@ -370,20 +404,37 @@ export function MenuScreen({ width, height, menu }: Props) {
           </div>
         </div>
         <div className="flex items-center gap-2">
+          {/* branch, and below it whether it is open right now; narrow phones keep only the status */}
           <p
-            aria-label={`Sede ${business.branch}`}
-            className={`flex min-h-11 items-center gap-1.5 whitespace-nowrap rounded-full bg-white/70 text-[12px] font-bold text-espresso ring-1 ring-white/80 ${
-              compactHeader ? 'w-11 justify-center' : 'px-3'
-            }`}
+            aria-label={`Sede ${business.branch}. ${status.label}`}
+            className="flex min-h-11 flex-col justify-center whitespace-nowrap rounded-full bg-white/70 px-3.5 leading-tight text-espresso ring-1 ring-white/80"
           >
-            <MapPin size={14} strokeWidth={2.4} aria-hidden />
-            {!compactHeader && <span aria-hidden>{business.branch}</span>}
+            {!compactHeader && (
+              <span className="flex items-center gap-1 text-[12px] font-bold" aria-hidden>
+                <MapPin size={12} strokeWidth={2.6} />
+                {business.branch}
+              </span>
+            )}
+            <span className={`flex items-center gap-1.5 font-semibold ${compactHeader ? 'text-[12px]' : 'text-[10.5px]'}`} aria-hidden>
+              <span className="relative grid size-2 place-items-center">
+                {status.open && (
+                  <motion.span
+                    className="absolute size-2 rounded-full bg-olive"
+                    animate={{ scale: [1, 2.2], opacity: [0.5, 0] }}
+                    transition={{ duration: 1.8, repeat: Infinity, ease: 'easeOut' }}
+                  />
+                )}
+                <span className={`size-2 rounded-full ${status.open ? 'bg-olive' : 'bg-[#B4463A]'}`} />
+              </span>
+              {compactHeader ? (status.open ? 'Abierto' : 'Cerrado') : status.label}
+            </span>
           </p>
           <motion.button
             type="button"
             aria-label="Buscar en la carta"
             aria-haspopup="dialog"
             whileTap={{ scale: 0.9 }}
+            transition={TAP}
             onClick={() => setSearching(true)}
             className="grid size-11 place-items-center rounded-full bg-espresso text-cream shadow-[0_6px_14px_-6px_rgba(42,26,18,.6)]"
           >
@@ -397,9 +448,11 @@ export function MenuScreen({ width, height, menu }: Props) {
           <SearchOverlay
             key="search"
             menu={menu}
-            onClose={() => setSearching(false)}
+            index={searchIndex}
+            onOpened={() => setCovered(true)}
+            onClose={closeSearch}
             onSelect={(picked) => {
-              setSearching(false)
+              closeSearch()
               goToItem(picked.id)
             }}
           />
@@ -444,8 +497,10 @@ export function MenuScreen({ width, height, menu }: Props) {
                 const isActive = i === subIndex
                 const count = itemsByCat[catIndex].filter((m) => m.sub === s.id).length
                 return (
-                  <button
+                  <motion.button
                     key={`${category.id}-${s.id}`}
+                    whileTap={{ scale: 0.92 }}
+                    transition={TAP}
                     ref={(el) => {
                       chipRefs.current[i] = el
                     }}
@@ -460,15 +515,16 @@ export function MenuScreen({ width, height, menu }: Props) {
                     {isActive && (
                       <motion.span
                         layoutId="sub"
-                        transition={{ type: 'spring', stiffness: 420, damping: 34 }}
+                        transition={PILL}
                         className="absolute inset-0 rounded-full"
                         style={{ backgroundColor: category.sheet }}
                       />
                     )}
-                    <span className="relative">
-                      {s.name} <span className="font-semibold opacity-70">({count})</span>
+                    <span className="relative flex items-center gap-1.5">
+                      {s.name}
+                      <Count n={count} active={isActive} fill={category.ink} text={category.sheet} />
                     </span>
-                  </button>
+                  </motion.button>
                 )
               })}
             </ScrollStrip>
@@ -498,35 +554,42 @@ export function MenuScreen({ width, height, menu }: Props) {
                 scrollRef={tagRailRef}
                 watch={`${category.id}-${item.sub}`}
                 labels={['Ver etiquetas anteriores', 'Ver más etiquetas']}
-                className="max-w-full rounded-full bg-white/45 px-0.5 ring-1 ring-white/60"
-                scrollerClassName="gap-1 py-1"
+                className="max-w-full rounded-full bg-white/35 px-0.5 ring-1 ring-white/50"
+                scrollerClassName="gap-1 p-1"
               >
                 {groups.map((g, i) => {
                   const isActive = g === item.group
+                  const count = subItems.filter((m) => m.group === g).length
                   return (
-                    <button
+                    <motion.button
                       key={g}
                       ref={(el) => {
                         tagRefs.current[i] = el
                       }}
                       type="button"
                       aria-current={isActive}
+                      whileTap={{ scale: 0.92 }}
+                      transition={TAP}
                       onClick={() => !isActive && rollTo((m) => m.sub === item.sub && m.group === g)}
-                      className={`relative min-h-7 shrink-0 whitespace-nowrap rounded-full px-3 text-[12px] font-bold transition-colors duration-300 ${
-                        isActive ? '' : 'text-espresso/80'
+                      className={`relative flex min-h-7 shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full py-0.5 pl-3 pr-1 text-[12px] transition-colors duration-300 ${
+                        isActive ? 'font-extrabold' : 'font-bold text-espresso/75'
                       }`}
-                      style={isActive ? { color: category.ink } : undefined}
+                      style={isActive ? { color: category.strong } : undefined}
                     >
+                      {/* outline only: a resting hairline, and a coloured ring that slides to the active tag */}
+                      <span className="absolute inset-0 rounded-full border border-espresso/20" aria-hidden />
                       {isActive && (
                         <motion.span
                           layoutId="tag"
-                          transition={{ type: 'spring', stiffness: 420, damping: 34 }}
-                          className="absolute inset-0 rounded-full"
-                          style={{ backgroundColor: category.sheet }}
+                          transition={{ type: 'spring', stiffness: 460, damping: 26 }}
+                          className="absolute inset-0 rounded-full border-[1.5px]"
+                          style={{ borderColor: category.strong }}
+                          aria-hidden
                         />
                       )}
                       <span className="relative">{g}</span>
-                    </button>
+                      <Count n={count} active={isActive} fill={category.strong} text="#FFFFFF" small />
+                    </motion.button>
                   )
                 })}
               </ScrollStrip>
@@ -554,8 +617,10 @@ export function MenuScreen({ width, height, menu }: Props) {
             const isActive = i === catIndex
             const Icon = c.icon
             return (
-              <button
+              <motion.button
                 key={c.id}
+                whileTap={{ scale: 0.86 }}
+                transition={TAP}
                 type="button"
                 aria-label={c.name}
                 aria-current={isActive}
@@ -566,13 +631,13 @@ export function MenuScreen({ width, height, menu }: Props) {
                 {isActive && (
                   <motion.span
                     layoutId="rail"
-                    transition={{ type: 'spring', stiffness: 420, damping: 34 }}
+                    transition={PILL}
                     className="absolute inset-0 rounded-full shadow-[0_6px_14px_-6px_rgba(42,26,18,.55)]"
                     style={{ backgroundColor: c.sheet }}
                   />
                 )}
                 <Icon size={railButton < 44 ? 18 : 20} strokeWidth={2.1} className="relative" aria-hidden />
-              </button>
+              </motion.button>
             )
           })}
         </ScrollStrip>
