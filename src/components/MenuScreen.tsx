@@ -1,8 +1,8 @@
 import { AnimatePresence, animate, motion, useDragControls, useMotionValue, useTransform } from 'motion/react'
 import { ChevronRight, MapPin } from 'lucide-react'
-import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react'
-import { CATEGORIES, MENU, itemsOf } from '../data/menu'
+import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import { clamp } from '../lib/format'
+import type { Menu, MenuItem } from '../types'
 import { CategoryScene, type CarouselApi } from './RadialCarousel'
 import { DishSheet } from './DishSheet'
 import { ScrollStrip } from './ScrollCaret'
@@ -31,9 +31,7 @@ const PAGE_SPRING ={ type: 'spring', stiffness: 230, damping: 30, mass: 0.9 } as
 const GRAIN =
   "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .2 0 0 0 0 .12 0 0 0 0 .08 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")"
 
-const ITEMS = CATEGORIES.map((c) => itemsOf(c.id))
-
-type Props = { width: number; height: number }
+type Props = { width: number; height: number; menu: Menu }
 
 /** One category's place on the vertical track. (No group opacity here: fading a stack of layers costs a render surface per frame.) */
 function SceneSlot({ index, pitch, height, children }: { index: number; pitch: number; height: number; children: ReactNode }) {
@@ -44,7 +42,11 @@ function SceneSlot({ index, pitch, height, children }: { index: number; pitch: n
   )
 }
 
-export function MenuScreen({ width, height }: Props) {
+export function MenuScreen({ width, height, menu }: Props) {
+  const { business, categories } = menu
+  // dishes of each category, in menu order
+  const itemsByCat = useMemo(() => categories.map((c) => menu.items.filter((m) => m.category === c.id)), [categories, menu.items])
+
   // ---- geometry -----------------------------------------------------------
   const stageTop = HEADER + NAV + TAGS
   const stageLeft = RAIL_X + RAIL_W
@@ -58,7 +60,7 @@ export function MenuScreen({ width, height }: Props) {
   const [peek, setPeek] = useState(PEEK)
   // the rail stops above the collapsed sheet (its real height); categories beyond scroll between carets
   const railRoom = height - (peek + PEEK_PAD) - (stageTop + 6) - 12
-  const railFits = CATEGORIES.length * (railButton + 4) + 8 <= railRoom
+  const railFits = categories.length * (railButton + 4) + 8 <= railRoom
   const railMax = Math.max(railButton * 2 + 4, railFits ? railRoom : railRoom - 64)
   const collapsedY = sheetH - peek - PEEK_PAD
   const plateCenter = stageTop + stageH / 2
@@ -69,10 +71,10 @@ export function MenuScreen({ width, height }: Props) {
   // ---- category + dish ----------------------------------------------------
   const [catIndex, setCatIndex] = useState(0)
   const [nav, setNav] = useState({ index: 0, direction: 1, axis: 'x' as 'x' | 'y' })
-  const dishOf = useRef(CATEGORIES.map(() => 0))
+  const dishOf = useRef(categories.map(() => 0))
   const apis = useRef<(CarouselApi | null)[]>([])
-  const category = CATEGORIES[catIndex]
-  const item = ITEMS[catIndex][clamp(nav.index, 0, ITEMS[catIndex].length - 1)]
+  const category = categories[catIndex]
+  const item = itemsByCat[catIndex][clamp(nav.index, 0, itemsByCat[catIndex].length - 1)]
 
   // swipe hint: shown on every visit on the very first dish, gone after that visit's first move
   const [hintSeen, setHintSeen] = useState(false)
@@ -87,9 +89,9 @@ export function MenuScreen({ width, height }: Props) {
   const trackY = useMotionValue(0)
   const catRef = useRef(0)
   const switchCategory = (next: number, dir: 1 | -1, land?: 'start' | 'end') => {
-    if (next < 0 || next >= CATEGORIES.length) return false
+    if (next < 0 || next >= categories.length) return false
     if (land) {
-      const at = land === 'end' ? ITEMS[next].length - 1 : 0
+      const at = land === 'end' ? itemsByCat[next].length - 1 : 0
       apis.current[next]?.jump(at)
       dishOf.current[next] = at
     }
@@ -106,7 +108,7 @@ export function MenuScreen({ width, height }: Props) {
 
   // decode photos ahead of time, a few per idle slot (menu order = nearest first), so it never competes with a swipe
   useEffect(() => {
-    const queue = MENU.flatMap((m) => [m.imgBlur, m.imgBack, m.img])
+    const queue = menu.items.flatMap((m) => [m.imgBlur, m.imgBack, m.img])
     const idle = window.requestIdleCallback ?? ((cb: IdleRequestCallback) => setTimeout(() => cb({ didTimeout: false, timeRemaining: () => 8 }), 50))
     const cancel = window.cancelIdleCallback ?? clearTimeout
     let handle = 0
@@ -120,15 +122,15 @@ export function MenuScreen({ width, height }: Props) {
     }
     handle = idle(pump)
     return () => cancel(handle)
-  }, [])
+  }, [menu.items])
 
   // subcategory and group chips follow the dish on stage; tapping one rolls the wheel there
   const subIndex = Math.max(0, category.subcategories.findIndex((s) => s.id === item.sub))
-  const subItems = ITEMS[catIndex].filter((m) => m.sub === item.sub)
+  const subItems = itemsByCat[catIndex].filter((m) => m.sub === item.sub)
   const groups = [...new Set(subItems.map((m) => m.group).filter((g): g is string => !!g))]
-  const rollTo = (match: (m: (typeof ITEMS)[number][number]) => boolean) => {
+  const rollTo = (match: (m: MenuItem) => boolean) => {
     markHintSeen()
-    apis.current[catIndex]?.roll(ITEMS[catIndex].findIndex(match))
+    apis.current[catIndex]?.roll(itemsByCat[catIndex].findIndex(match))
   }
 
   // keep the active chip / rail icon in view (scroll only their own containers, never the page)
@@ -222,7 +224,7 @@ export function MenuScreen({ width, height }: Props) {
   const active = () => apis.current[catRef.current]
   const pageRubber = (dy: number) => {
     const c = catRef.current
-    const atEdge = (dy > 0 && c === 0) || (dy < 0 && c === CATEGORIES.length - 1)
+    const atEdge = (dy > 0 && c === 0) || (dy < 0 && c === categories.length - 1)
     return atEdge ? dy * 0.25 : dy
   }
 
@@ -231,7 +233,7 @@ export function MenuScreen({ width, height }: Props) {
       {/* category track */}
       <motion.div
         className="absolute inset-x-0 top-0"
-        style={{ y: trackY, height: pitch * (CATEGORIES.length - 1) + height, touchAction: 'none', willChange: 'transform' }}
+        style={{ y: trackY, height: pitch * (categories.length - 1) + height, touchAction: 'none', willChange: 'transform' }}
         onPanStart={() => {
           axis.current = null
         }}
@@ -265,11 +267,11 @@ export function MenuScreen({ width, height }: Props) {
           if (openRef.current) snap(false)
         }}
       >
-        {CATEGORIES.map((c, ci) => (
+        {categories.map((c, ci) => (
           <SceneSlot key={c.id} index={ci} pitch={pitch} height={height}>
             <CategoryScene
               catIndex={ci}
-              items={ITEMS[ci]}
+              items={itemsByCat[ci]}
               width={width}
               stageTop={stageTop}
               stageLeft={stageLeft}
@@ -347,13 +349,13 @@ export function MenuScreen({ width, height }: Props) {
             S
           </span>
           <div className="leading-none">
-            <p className="font-display text-[19px] font-semibold tracking-tight">La Sablée</p>
-            <p className="mt-0.5 text-[9px] font-bold uppercase tracking-[0.24em] text-cocoa">café · pastelería</p>
+            <p className="font-display text-[19px] font-semibold tracking-tight">{business.name}</p>
+            <p className="mt-0.5 text-[9px] font-bold uppercase tracking-[0.24em] text-cocoa">{business.tagline}</p>
           </div>
         </div>
         <p className="flex items-center gap-1.5 rounded-full bg-white/70 px-3 py-2 text-[12px] font-bold text-espresso ring-1 ring-white/80">
           <MapPin size={14} strokeWidth={2.4} aria-hidden />
-          Calle Real
+          {business.branch}
         </p>
       </header>
 
@@ -393,7 +395,7 @@ export function MenuScreen({ width, height }: Props) {
             >
               {category.subcategories.map((s, i) => {
                 const isActive = i === subIndex
-                const count = ITEMS[catIndex].filter((m) => m.sub === s.id).length
+                const count = itemsByCat[catIndex].filter((m) => m.sub === s.id).length
                 return (
                   <button
                     key={`${category.id}-${s.id}`}
@@ -501,7 +503,7 @@ export function MenuScreen({ width, height }: Props) {
           scrollerClassName="items-center gap-1 px-1"
           scrollerStyle={{ maxHeight: railMax, transition: 'max-height .3s ease' }}
         >
-          {CATEGORIES.map((c, i) => {
+          {categories.map((c, i) => {
             const isActive = i === catIndex
             const Icon = c.icon
             return (
@@ -546,7 +548,7 @@ export function MenuScreen({ width, height }: Props) {
         className="absolute inset-x-0 bottom-0 z-20 rounded-t-[36px] shadow-[0_-10px_28px_-6px_rgba(42,26,18,.32),0_-2px_6px_rgba(42,26,18,.12)]"
       >
         {/* colour layers cross-fade (opacity only) instead of repainting the sheet */}
-        {CATEGORIES.map((c) => (
+        {categories.map((c) => (
           <div
             key={c.id}
             aria-hidden

@@ -1,0 +1,2771 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-10-24",
+  "business": {
+    "id": "la-sablee",
+    "name": "La Sablée",
+    "tagline": "café · pastelería",
+    "currency": "COP",
+    "locale": "es-CO",
+    "branchId": "calle-real",
+    "branches": [
+      {
+        "id": "calle-real",
+        "name": "Calle Real",
+        "address": "Carrera 6 # 8b-30",
+        "city": "Pamplona"
+      },
+      {
+        "id": "via-nacional",
+        "name": "Vía Nacional",
+        "address": "Calle 5 # 5-29",
+        "city": "Pamplona"
+      }
+    ],
+    "contact": {
+      "deliveryPhone": "313 223 6769",
+      "instagram": null
+    }
+  },
+  "categories": [
+    {
+      "id": "desayunos",
+      "name": "Desayunos",
+      "icon": "egg-fried",
+      "sortOrder": 1,
+      "palette": {
+        "sheet": "#A9472A",
+        "ink": "#FFF4EA",
+        "accent": "#FFD9BD"
+      }
+    },
+    {
+      "id": "sandwiches",
+      "name": "Sándwiches",
+      "icon": "sandwich",
+      "sortOrder": 2,
+      "palette": {
+        "sheet": "#6E2A20",
+        "ink": "#FAEEE6",
+        "accent": "#F4B597"
+      }
+    },
+    {
+      "id": "panaderia",
+      "name": "Panadería",
+      "icon": "croissant",
+      "sortOrder": 3,
+      "palette": {
+        "sheet": "#B9773F",
+        "ink": "#2B1B13",
+        "accent": "#3E1A08"
+      }
+    },
+    {
+      "id": "waffles",
+      "name": "Waffles y bowls",
+      "icon": "ice-cream-bowl",
+      "sortOrder": 4,
+      "palette": {
+        "sheet": "#E0B36A",
+        "ink": "#2B1B13",
+        "accent": "#5E2810"
+      }
+    },
+    {
+      "id": "postres",
+      "name": "Postres",
+      "icon": "cake-slice",
+      "sortOrder": 5,
+      "palette": {
+        "sheet": "#EBC9C0",
+        "ink": "#3A1E19",
+        "accent": "#8C2F25"
+      }
+    },
+    {
+      "id": "bebidas",
+      "name": "Bebidas",
+      "icon": "coffee",
+      "sortOrder": 6,
+      "palette": {
+        "sheet": "#7A4E35",
+        "ink": "#FBF1E6",
+        "accent": "#F6CBA8"
+      }
+    },
+    {
+      "id": "llevar",
+      "name": "Para llevar",
+      "icon": "shopping-bag",
+      "sortOrder": 7,
+      "palette": {
+        "sheet": "#4A3A30",
+        "ink": "#FBF1E6",
+        "accent": "#E9C29F"
+      }
+    }
+  ],
+  "subcategories": [
+    {
+      "id": "desayunos-huevos",
+      "categoryId": "desayunos",
+      "name": "Huevos",
+      "sortOrder": 1
+    },
+    {
+      "id": "desayunos-brunch",
+      "categoryId": "desayunos",
+      "name": "Brunch",
+      "sortOrder": 2
+    },
+    {
+      "id": "sandwiches-todos",
+      "categoryId": "sandwiches",
+      "name": "Sándwiches",
+      "sortOrder": 1
+    },
+    {
+      "id": "panaderia-croissants",
+      "categoryId": "panaderia",
+      "name": "Croissants",
+      "sortOrder": 1
+    },
+    {
+      "id": "panaderia-dulce-sal",
+      "categoryId": "panaderia",
+      "name": "Dulce y sal",
+      "sortOrder": 2
+    },
+    {
+      "id": "waffles-waffles",
+      "categoryId": "waffles",
+      "name": "Waffles",
+      "sortOrder": 1
+    },
+    {
+      "id": "waffles-bowls",
+      "categoryId": "waffles",
+      "name": "Bowls",
+      "sortOrder": 2
+    },
+    {
+      "id": "postres-tortas",
+      "categoryId": "postres",
+      "name": "Tortas",
+      "sortOrder": 1
+    },
+    {
+      "id": "postres-pasteleria",
+      "categoryId": "postres",
+      "name": "Pastelería",
+      "sortOrder": 2
+    },
+    {
+      "id": "postres-helados",
+      "categoryId": "postres",
+      "name": "Helados",
+      "sortOrder": 3
+    },
+    {
+      "id": "bebidas-calientes",
+      "categoryId": "bebidas",
+      "name": "Calientes",
+      "sortOrder": 1
+    },
+    {
+      "id": "bebidas-frias",
+      "categoryId": "bebidas",
+      "name": "Frías",
+      "sortOrder": 2
+    },
+    {
+      "id": "llevar-tortas",
+      "categoryId": "llevar",
+      "name": "Tortas enteras",
+      "sortOrder": 1
+    },
+    {
+      "id": "llevar-panes",
+      "categoryId": "llevar",
+      "name": "Panes",
+      "sortOrder": 2
+    }
+  ],
+  "groups": [
+    {
+      "id": "desayunos-brunch-pannecook",
+      "subcategoryId": "desayunos-brunch",
+      "name": "Pannecook",
+      "sortOrder": 1
+    },
+    {
+      "id": "desayunos-brunch-cacerolas",
+      "subcategoryId": "desayunos-brunch",
+      "name": "Cacerolas",
+      "sortOrder": 2
+    },
+    {
+      "id": "sandwiches-todos-aves",
+      "subcategoryId": "sandwiches-todos",
+      "name": "Aves",
+      "sortOrder": 1
+    },
+    {
+      "id": "sandwiches-todos-res",
+      "subcategoryId": "sandwiches-todos",
+      "name": "Res",
+      "sortOrder": 2
+    },
+    {
+      "id": "sandwiches-todos-cerdo",
+      "subcategoryId": "sandwiches-todos",
+      "name": "Cerdo",
+      "sortOrder": 3
+    },
+    {
+      "id": "sandwiches-todos-atun",
+      "subcategoryId": "sandwiches-todos",
+      "name": "Atún",
+      "sortOrder": 4
+    },
+    {
+      "id": "sandwiches-todos-vegetariano",
+      "subcategoryId": "sandwiches-todos",
+      "name": "Vegetariano",
+      "sortOrder": 5
+    },
+    {
+      "id": "panaderia-croissants-clasico",
+      "subcategoryId": "panaderia-croissants",
+      "name": "Clásico",
+      "sortOrder": 1
+    },
+    {
+      "id": "panaderia-croissants-dulce",
+      "subcategoryId": "panaderia-croissants",
+      "name": "Dulce",
+      "sortOrder": 2
+    },
+    {
+      "id": "panaderia-croissants-con-huevo",
+      "subcategoryId": "panaderia-croissants",
+      "name": "Con huevo",
+      "sortOrder": 3
+    },
+    {
+      "id": "panaderia-dulce-sal-panes",
+      "subcategoryId": "panaderia-dulce-sal",
+      "name": "Panes",
+      "sortOrder": 1
+    },
+    {
+      "id": "panaderia-dulce-sal-hojaldres",
+      "subcategoryId": "panaderia-dulce-sal",
+      "name": "Hojaldres",
+      "sortOrder": 2
+    },
+    {
+      "id": "panaderia-dulce-sal-para-mojar",
+      "subcategoryId": "panaderia-dulce-sal",
+      "name": "Para mojar",
+      "sortOrder": 3
+    },
+    {
+      "id": "waffles-waffles-dulces",
+      "subcategoryId": "waffles-waffles",
+      "name": "Dulces",
+      "sortOrder": 1
+    },
+    {
+      "id": "waffles-waffles-salados",
+      "subcategoryId": "waffles-waffles",
+      "name": "Salados",
+      "sortOrder": 2
+    },
+    {
+      "id": "postres-pasteleria-cremosos",
+      "subcategoryId": "postres-pasteleria",
+      "name": "Cremosos",
+      "sortOrder": 1
+    },
+    {
+      "id": "postres-pasteleria-francesa",
+      "subcategoryId": "postres-pasteleria",
+      "name": "Francesa",
+      "sortOrder": 2
+    },
+    {
+      "id": "bebidas-calientes-cafe",
+      "subcategoryId": "bebidas-calientes",
+      "name": "Café",
+      "sortOrder": 1
+    },
+    {
+      "id": "bebidas-calientes-chocolate",
+      "subcategoryId": "bebidas-calientes",
+      "name": "Chocolate",
+      "sortOrder": 2
+    },
+    {
+      "id": "bebidas-calientes-infusiones",
+      "subcategoryId": "bebidas-calientes",
+      "name": "Infusiones",
+      "sortOrder": 3
+    },
+    {
+      "id": "bebidas-calientes-con-licor",
+      "subcategoryId": "bebidas-calientes",
+      "name": "Con licor",
+      "sortOrder": 4
+    },
+    {
+      "id": "bebidas-frias-cafe-frio",
+      "subcategoryId": "bebidas-frias",
+      "name": "Café frío",
+      "sortOrder": 1
+    },
+    {
+      "id": "bebidas-frias-frappes-y-malteadas",
+      "subcategoryId": "bebidas-frias",
+      "name": "Frappés y malteadas",
+      "sortOrder": 2
+    },
+    {
+      "id": "bebidas-frias-jugos-y-limonadas",
+      "subcategoryId": "bebidas-frias",
+      "name": "Jugos y limonadas",
+      "sortOrder": 3
+    },
+    {
+      "id": "bebidas-frias-sodas",
+      "subcategoryId": "bebidas-frias",
+      "name": "Sodas",
+      "sortOrder": 4
+    },
+    {
+      "id": "bebidas-frias-alcohol",
+      "subcategoryId": "bebidas-frias",
+      "name": "Alcohol",
+      "sortOrder": 5
+    }
+  ],
+  "tags": [
+    {
+      "id": "casa",
+      "label": "De la casa",
+      "icon": "star"
+    },
+    {
+      "id": "nuevo",
+      "label": "Nuevo",
+      "icon": "sparkles"
+    },
+    {
+      "id": "vegano",
+      "label": "Vegano",
+      "icon": "leaf"
+    },
+    {
+      "id": "vegetariano",
+      "label": "Vegetariano",
+      "icon": "sprout"
+    },
+    {
+      "id": "sin-gluten",
+      "label": "Sin gluten",
+      "icon": "wheat-off"
+    },
+    {
+      "id": "picante",
+      "label": "Picante",
+      "icon": "flame"
+    },
+    {
+      "id": "compartir",
+      "label": "Para compartir",
+      "icon": "users"
+    }
+  ],
+  "toppings": [
+    {
+      "id": "chocolate",
+      "name": "Chocolate",
+      "sortOrder": 1
+    },
+    {
+      "id": "arequipe",
+      "name": "Arequipe",
+      "sortOrder": 2
+    },
+    {
+      "id": "miel",
+      "name": "Miel",
+      "sortOrder": 3
+    },
+    {
+      "id": "leche-condensada",
+      "name": "Leche condensada",
+      "sortOrder": 4
+    },
+    {
+      "id": "frutos-amarillos",
+      "name": "Frutos amarillos",
+      "sortOrder": 5
+    },
+    {
+      "id": "frutos-rojos",
+      "name": "Frutos rojos",
+      "sortOrder": 6
+    },
+    {
+      "id": "yogurt-griego",
+      "name": "Yogurt griego",
+      "sortOrder": 7
+    },
+    {
+      "id": "crema-de-quesos",
+      "name": "Crema de quesos",
+      "sortOrder": 8
+    },
+    {
+      "id": "tartara",
+      "name": "Tártara",
+      "sortOrder": 9
+    },
+    {
+      "id": "queso-crema",
+      "name": "Queso crema",
+      "sortOrder": 10
+    }
+  ],
+  "modifiers": [
+    {
+      "id": "leche-almendras",
+      "name": "Leche de almendras",
+      "price": 3000
+    }
+  ],
+  "products": [
+    {
+      "id": "al-gusto",
+      "categoryId": "desayunos",
+      "subcategoryId": "desayunos-huevos",
+      "groupId": null,
+      "name": "Al gusto",
+      "tagline": "Tres huevos como los prefieras, con jamón y mozzarella.",
+      "description": "3 huevos pochados, revueltos, pericos o fritos, con jamón, queso mozzarella, pan francés y 1 topping.",
+      "price": 17000,
+      "variants": [],
+      "ingredients": [
+        "Huevos",
+        "Jamón",
+        "Mozzarella",
+        "Pan francés"
+      ],
+      "includedToppings": 1,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1652878530811-ab17edfcfff6",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Al gusto"
+      },
+      "available": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "rancheros",
+      "categoryId": "desayunos",
+      "subcategoryId": "desayunos-huevos",
+      "groupId": null,
+      "name": "Rancheros",
+      "tagline": "Huevos revueltos con chorizo santarrosano y hogao.",
+      "description": "3 huevos revueltos con chorizo santarrosano, jamón, mozzarella y hogao, con pan francés y 1 topping.",
+      "price": 20000,
+      "variants": [],
+      "ingredients": [
+        "Huevos",
+        "Chorizo santarrosano",
+        "Jamón",
+        "Mozzarella",
+        "Hogao"
+      ],
+      "includedToppings": 1,
+      "modifierIds": [],
+      "tagIds": [
+        "casa"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1633372363856-f2fe2669a26e",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Rancheros"
+      },
+      "available": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "omelettes",
+      "categoryId": "desayunos",
+      "subcategoryId": "desayunos-huevos",
+      "groupId": null,
+      "name": "Omelettes",
+      "tagline": "Americano o santarrosano, con pan francés y un topping.",
+      "description": "Elige tu omelette. Siempre con pan francés y 1 topping.",
+      "price": 22000,
+      "variants": [
+        {
+          "id": "americano",
+          "name": "Americano",
+          "detail": "jamón, mozzarella, tocineta, maicitos, crema de quesos",
+          "price": 22000
+        },
+        {
+          "id": "santarrosano",
+          "name": "Santarrosano",
+          "detail": "hogao, chorizo, crema de quesos, mozzarella",
+          "price": 22000
+        }
+      ],
+      "ingredients": [],
+      "includedToppings": 1,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1646579933415-92109f9805df",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Omelettes"
+      },
+      "available": true,
+      "sortOrder": 3
+    },
+    {
+      "id": "tortilla",
+      "categoryId": "desayunos",
+      "subcategoryId": "desayunos-huevos",
+      "groupId": null,
+      "name": "Tortilla española",
+      "tagline": "Papa, chorizo santarrosano y cebolla caramelizada.",
+      "description": "Huevos, chorizo santarrosano, papas, cebolla caramelizada y crema de quesos, con pan francés y 1 topping.",
+      "price": 24000,
+      "variants": [],
+      "ingredients": [
+        "Huevos",
+        "Papa",
+        "Chorizo santarrosano",
+        "Cebolla caramelizada",
+        "Crema de quesos"
+      ],
+      "includedToppings": 1,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1788462613199-779ba2bf4b70",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Tortilla española"
+      },
+      "available": true,
+      "sortOrder": 4
+    },
+    {
+      "id": "pannecook-huevos",
+      "categoryId": "desayunos",
+      "subcategoryId": "desayunos-brunch",
+      "groupId": "desayunos-brunch-pannecook",
+      "name": "Pannecook de huevos",
+      "tagline": "Dos pochados en pan horneado, en tres versiones.",
+      "description": "2 huevos pochados servidos en pannecook, con crema de quesos y 1 topping.",
+      "price": 22000,
+      "variants": [
+        {
+          "id": "benedictinos",
+          "name": "Benedictinos",
+          "detail": "holandesa, jamón, tocineta",
+          "price": 22000
+        },
+        {
+          "id": "champinones",
+          "name": "Champiñones",
+          "detail": "guacamole, tomates secos",
+          "price": 22000
+        },
+        {
+          "id": "tocineta",
+          "name": "Tocineta",
+          "detail": "parmesano, champiñones, tomates secos",
+          "price": 22000
+        }
+      ],
+      "ingredients": [],
+      "includedToppings": 1,
+      "modifierIds": [],
+      "tagIds": [
+        "casa"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1608039829572-78524f79c4c7",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Pannecook de huevos"
+      },
+      "available": true,
+      "sortOrder": 5
+    },
+    {
+      "id": "pannecook-pollo",
+      "categoryId": "desayunos",
+      "subcategoryId": "desayunos-brunch",
+      "groupId": "desayunos-brunch-pannecook",
+      "name": "Pannecook de pollo",
+      "tagline": "Pollo y champiñones gratinados con parmesano.",
+      "description": "Pannecook relleno de pollo y champiñones, gratinado con parmesano y mozzarella.",
+      "price": 26000,
+      "variants": [],
+      "ingredients": [
+        "Pollo",
+        "Champiñones",
+        "Parmesano",
+        "Mozzarella"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1683987143812-952dc1e75afa",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Pannecook de pollo"
+      },
+      "available": true,
+      "sortOrder": 6
+    },
+    {
+      "id": "cacerolas",
+      "categoryId": "desayunos",
+      "subcategoryId": "desayunos-brunch",
+      "groupId": "desayunos-brunch-cacerolas",
+      "name": "Cacerolas",
+      "tagline": "Papas criollas en cazuela, de morrillo o de chicharrón.",
+      "description": "Servidas en cazuela caliente con papas criollas.",
+      "price": 28000,
+      "variants": [
+        {
+          "id": "de-morrillo",
+          "name": "De morrillo",
+          "detail": "queso asado y huevo frito",
+          "price": 28000
+        },
+        {
+          "id": "de-chicharron-la-fazenda",
+          "name": "De chicharrón La Fazenda",
+          "detail": "guacamole y pico de gallo",
+          "price": 28000
+        }
+      ],
+      "ingredients": [],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1601579112521-5d6badb0bf3c",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Cacerolas"
+      },
+      "available": true,
+      "sortOrder": 7
+    },
+    {
+      "id": "pavo",
+      "categoryId": "sandwiches",
+      "subcategoryId": "sandwiches-todos",
+      "groupId": "sandwiches-todos-aves",
+      "name": "Jamón de pavo",
+      "tagline": "El clásico de la casa, ligero y fresco.",
+      "description": "Sándwich de jamón de pavo en pan artesanal.",
+      "price": 20000,
+      "variants": [],
+      "ingredients": [],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1553909489-cd47e0907980",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Jamón de pavo"
+      },
+      "available": true,
+      "sortOrder": 8
+    },
+    {
+      "id": "pollo-stroganoff",
+      "categoryId": "sandwiches",
+      "subcategoryId": "sandwiches-todos",
+      "groupId": "sandwiches-todos-aves",
+      "name": "Pollo stroganoff",
+      "tagline": "Pollo en salsa stroganoff, cremoso y tibio.",
+      "description": "Sándwich de pollo en salsa stroganoff.",
+      "price": 26000,
+      "variants": [],
+      "ingredients": [],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1670710029403-607db8eeec83",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Pollo stroganoff"
+      },
+      "available": true,
+      "sortOrder": 9
+    },
+    {
+      "id": "morillo",
+      "categoryId": "sandwiches",
+      "subcategoryId": "sandwiches-todos",
+      "groupId": "sandwiches-todos-res",
+      "name": "Carne de morillo",
+      "tagline": "Morrillo desmechado, jugoso y especiado.",
+      "description": "Sándwich de carne de morrillo.",
+      "price": 26000,
+      "variants": [],
+      "ingredients": [],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1667055251919-88fd6ff02e86",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Carne de morillo"
+      },
+      "available": true,
+      "sortOrder": 10
+    },
+    {
+      "id": "bondiola",
+      "categoryId": "sandwiches",
+      "subcategoryId": "sandwiches-todos",
+      "groupId": "sandwiches-todos-cerdo",
+      "name": "Bondiola de cerdo",
+      "tagline": "Bondiola La Fazenda, cocida lento.",
+      "description": "Sándwich de bondiola de cerdo La Fazenda.",
+      "price": 26000,
+      "variants": [],
+      "ingredients": [],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "casa"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1567529855370-57ecd066454c",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Bondiola de cerdo"
+      },
+      "available": true,
+      "sortOrder": 11
+    },
+    {
+      "id": "chicharron",
+      "categoryId": "sandwiches",
+      "subcategoryId": "sandwiches-todos",
+      "groupId": "sandwiches-todos-cerdo",
+      "name": "Chicharrón carnudo",
+      "tagline": "Chicharrón La Fazenda, crujiente y carnudo.",
+      "description": "Sándwich de chicharrón carnudo La Fazenda.",
+      "price": 26000,
+      "variants": [],
+      "ingredients": [],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "casa"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1700937244987-92488ab2ada5",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Chicharrón carnudo"
+      },
+      "available": true,
+      "sortOrder": 12
+    },
+    {
+      "id": "atun",
+      "categoryId": "sandwiches",
+      "subcategoryId": "sandwiches-todos",
+      "groupId": "sandwiches-todos-atun",
+      "name": "Atún Van Camps",
+      "tagline": "Ensalada de atún cremosa y crujiente.",
+      "description": "Sándwich de atún Van Camps en pan artesanal.",
+      "price": 24000,
+      "variants": [],
+      "ingredients": [],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1558985250-27a406d64cb3",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Atún Van Camps"
+      },
+      "available": true,
+      "sortOrder": 13
+    },
+    {
+      "id": "vegetariano",
+      "categoryId": "sandwiches",
+      "subcategoryId": "sandwiches-todos",
+      "groupId": "sandwiches-todos-vegetariano",
+      "name": "Vegetariano",
+      "tagline": "Vegetales frescos y quesos en pan artesanal.",
+      "description": "Sándwich de vegetales y quesos en pan artesanal.",
+      "price": 22000,
+      "variants": [],
+      "ingredients": [],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "vegetariano"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1590301155505-471f05cd02db",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Vegetariano"
+      },
+      "available": true,
+      "sortOrder": 14
+    },
+    {
+      "id": "croissant-clasico",
+      "categoryId": "panaderia",
+      "subcategoryId": "panaderia-croissants",
+      "groupId": "panaderia-croissants-clasico",
+      "name": "Croissant clásico",
+      "tagline": "Hojaldre de mantequilla, solo o relleno.",
+      "description": "Nuestro croissant de mantequilla, horneado cada mañana.",
+      "price": 7000,
+      "variants": [
+        {
+          "id": "solo",
+          "name": "Solo",
+          "detail": null,
+          "price": 7000
+        },
+        {
+          "id": "de-queso",
+          "name": "De queso",
+          "detail": null,
+          "price": 10000
+        },
+        {
+          "id": "de-jamon-y-queso",
+          "name": "De jamón y queso",
+          "detail": null,
+          "price": 12000
+        }
+      ],
+      "ingredients": [],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "casa"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1695055424321-a090931a97f1",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.3
+        },
+        "alt": "Croissant clásico"
+      },
+      "available": true,
+      "sortOrder": 15
+    },
+    {
+      "id": "croissants-dulces",
+      "categoryId": "panaderia",
+      "subcategoryId": "panaderia-croissants",
+      "groupId": "panaderia-croissants-dulce",
+      "name": "Croissants dulces",
+      "tagline": "Red velvet, Nutella, almendras o pistacho.",
+      "description": "Croissant relleno, a elegir: red velvet, Nutella, almendras o muselina de pistachos.",
+      "price": 14000,
+      "variants": [],
+      "ingredients": [],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "vegetariano"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1648141294401-ede697a33c02",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Croissants dulces"
+      },
+      "available": true,
+      "sortOrder": 16
+    },
+    {
+      "id": "croissant-huevos",
+      "categoryId": "panaderia",
+      "subcategoryId": "panaderia-croissants",
+      "groupId": "panaderia-croissants-con-huevo",
+      "name": "Croissant con huevos",
+      "tagline": "Dos huevos al gusto con tocineta La Fazenda.",
+      "description": "Croissant con 2 huevos al gusto, tocineta La Fazenda y crema de quesos.",
+      "price": 18000,
+      "variants": [],
+      "ingredients": [],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1709208702638-c0cb072a0142",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Croissant con huevos"
+      },
+      "available": true,
+      "sortOrder": 17
+    },
+    {
+      "id": "croissant-serrano",
+      "categoryId": "panaderia",
+      "subcategoryId": "panaderia-croissants",
+      "groupId": "panaderia-croissants-con-huevo",
+      "name": "Croissant serrano",
+      "tagline": "Jamón serrano, queso pera y aguacate.",
+      "description": "Croissant con 2 huevos, queso pera, jamón serrano, aguacate y crema de quesos.",
+      "price": 22000,
+      "variants": [],
+      "ingredients": [],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1639667852145-466e29aa49fd",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Croissant serrano"
+      },
+      "available": true,
+      "sortOrder": 18
+    },
+    {
+      "id": "almojabana",
+      "categoryId": "panaderia",
+      "subcategoryId": "panaderia-dulce-sal",
+      "groupId": "panaderia-dulce-sal-panes",
+      "name": "Almojábana y pan de bono",
+      "tagline": "Almojábana, pan de yuca o pan de bono, recién horneados.",
+      "description": "Elige almojábana, pan de yuca o pan de bono.",
+      "price": 5000,
+      "variants": [],
+      "ingredients": [],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "sin-gluten"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1559141680-d0bd7bc5af84",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Almojábana y pan de bono"
+      },
+      "available": true,
+      "sortOrder": 19
+    },
+    {
+      "id": "palito-queso",
+      "categoryId": "panaderia",
+      "subcategoryId": "panaderia-dulce-sal",
+      "groupId": "panaderia-dulce-sal-hojaldres",
+      "name": "Palito de queso",
+      "tagline": "Hojaldre crujiente relleno de queso.",
+      "description": "Palito de hojaldre relleno de queso.",
+      "price": 8000,
+      "variants": [],
+      "ingredients": [],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "vegetariano"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1778449665117-2c607bbc7415",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Palito de queso"
+      },
+      "available": true,
+      "sortOrder": 20
+    },
+    {
+      "id": "hojaldre",
+      "categoryId": "panaderia",
+      "subcategoryId": "panaderia-dulce-sal",
+      "groupId": "panaderia-dulce-sal-hojaldres",
+      "name": "Hojaldre salado",
+      "tagline": "De pollo stroganoff o de carne de morrillo.",
+      "description": "Hojaldre relleno, a elegir: pollo stroganoff o carne de morrillo.",
+      "price": 10000,
+      "variants": [],
+      "ingredients": [],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1682263167429-0dbcf2c1e127",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Hojaldre salado"
+      },
+      "available": true,
+      "sortOrder": 21
+    },
+    {
+      "id": "migaito",
+      "categoryId": "panaderia",
+      "subcategoryId": "panaderia-dulce-sal",
+      "groupId": "panaderia-dulce-sal-para-mojar",
+      "name": "Migaito",
+      "tagline": "Jarra de chocolate para mojar, a la colombiana.",
+      "description": "Jarra de chocolate con waffle, pan brioche, galletas, mozzarella, queso paipa y masmelos.",
+      "price": 18000,
+      "variants": [],
+      "ingredients": [
+        "Chocolate",
+        "Waffle",
+        "Pan brioche",
+        "Queso paipa",
+        "Masmelos"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "compartir"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1706341842409-39f198ac6e4c",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Migaito"
+      },
+      "available": true,
+      "sortOrder": 22
+    },
+    {
+      "id": "tostada-francesa",
+      "categoryId": "panaderia",
+      "subcategoryId": "panaderia-dulce-sal",
+      "groupId": "panaderia-dulce-sal-para-mojar",
+      "name": "Tostada francesa",
+      "tagline": "Brioche dorado con yogurt griego y fruta fresca.",
+      "description": "Pan brioche, yogurt griego, fresa, kiwi, arándanos y banano.",
+      "price": 22000,
+      "variants": [],
+      "ingredients": [
+        "Pan brioche",
+        "Yogurt griego",
+        "Fresa",
+        "Kiwi",
+        "Arándanos",
+        "Banano"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "vegetariano"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1484723091739-30a097e8f929",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Tostada francesa"
+      },
+      "available": true,
+      "sortOrder": 23
+    },
+    {
+      "id": "waffle-clasico",
+      "categoryId": "waffles",
+      "subcategoryId": "waffles-waffles",
+      "groupId": "waffles-waffles-dulces",
+      "name": "Waffle clásico",
+      "tagline": "Tradicional o de pan de yuca, con dos toppings.",
+      "description": "Waffle tradicional o de pan de yuca, con 2 toppings.",
+      "price": 14000,
+      "variants": [],
+      "ingredients": [],
+      "includedToppings": 2,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1773533276932-4ee7ea1d6361",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Waffle clásico"
+      },
+      "available": true,
+      "sortOrder": 24
+    },
+    {
+      "id": "waffle-helado",
+      "categoryId": "waffles",
+      "subcategoryId": "waffles-waffles",
+      "groupId": "waffles-waffles-dulces",
+      "name": "Waffle con helado",
+      "tagline": "Helado, crema montada y dos toppings.",
+      "description": "Waffle tradicional o de pan de yuca, con helado, crema montada y 2 toppings.",
+      "price": 20000,
+      "variants": [],
+      "ingredients": [],
+      "includedToppings": 2,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1562513872-634b8fae6dbe",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Waffle con helado"
+      },
+      "available": true,
+      "sortOrder": 25
+    },
+    {
+      "id": "waffle-frutas",
+      "categoryId": "waffles",
+      "subcategoryId": "waffles-waffles",
+      "groupId": "waffles-waffles-dulces",
+      "name": "Waffle con frutas",
+      "tagline": "Helado, crema y fruta fresca de temporada.",
+      "description": "Helado, crema montada, fresa, kiwi, arándanos y banano, con 2 toppings.",
+      "price": 24000,
+      "variants": [],
+      "ingredients": [],
+      "includedToppings": 2,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1653838049829-be00b1f4d59d",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Waffle con frutas"
+      },
+      "available": true,
+      "sortOrder": 26
+    },
+    {
+      "id": "waffle-huevos",
+      "categoryId": "waffles",
+      "subcategoryId": "waffles-waffles",
+      "groupId": "waffles-waffles-salados",
+      "name": "Waffle con huevos",
+      "tagline": "Tres huevos al gusto, jamón y mozzarella.",
+      "description": "Waffle con 3 huevos al gusto, jamón, mozzarella y 1 topping.",
+      "price": 22000,
+      "variants": [],
+      "ingredients": [],
+      "includedToppings": 1,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1648071588112-10acf7295463",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Waffle con huevos"
+      },
+      "available": true,
+      "sortOrder": 27
+    },
+    {
+      "id": "waffle-santarrosano",
+      "categoryId": "waffles",
+      "subcategoryId": "waffles-waffles",
+      "groupId": "waffles-waffles-salados",
+      "name": "Waffle santarrosano",
+      "tagline": "Con chorizo santarrosano y dos toppings.",
+      "description": "Waffle con chorizo santarrosano y 2 toppings.",
+      "price": 22000,
+      "variants": [],
+      "ingredients": [],
+      "includedToppings": 2,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1715398068878-ec85eecd44b1",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Waffle santarrosano"
+      },
+      "available": true,
+      "sortOrder": 28
+    },
+    {
+      "id": "bowl-frutas",
+      "categoryId": "waffles",
+      "subcategoryId": "waffles-bowls",
+      "groupId": null,
+      "name": "Bowl de frutas",
+      "tagline": "Fruta fresca, granola y dos toppings.",
+      "description": "Fresa, kiwi, arándanos, banano, granola y 2 toppings.",
+      "price": 14000,
+      "variants": [],
+      "ingredients": [],
+      "includedToppings": 2,
+      "modifierIds": [],
+      "tagIds": [
+        "vegetariano"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1575023497656-1b8d04dc6f75",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Bowl de frutas"
+      },
+      "available": true,
+      "sortOrder": 29
+    },
+    {
+      "id": "bowl-yogurt",
+      "categoryId": "waffles",
+      "subcategoryId": "waffles-bowls",
+      "groupId": null,
+      "name": "Bowl de yogurt",
+      "tagline": "Yogurt, fruta fresca y granola crocante.",
+      "description": "Fresa, kiwi, arándanos, banano, granola y 1 topping.",
+      "price": 20000,
+      "variants": [
+        {
+          "id": "con-yogurt-alpina",
+          "name": "Con yogurt Alpina",
+          "detail": null,
+          "price": 20000
+        },
+        {
+          "id": "con-yogurt-griego",
+          "name": "Con yogurt griego",
+          "detail": null,
+          "price": 22000
+        }
+      ],
+      "ingredients": [],
+      "includedToppings": 1,
+      "modifierIds": [],
+      "tagIds": [
+        "vegetariano"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1504712598893-24159a89200e",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Bowl de yogurt"
+      },
+      "available": true,
+      "sortOrder": 30
+    },
+    {
+      "id": "torta-porcion",
+      "categoryId": "postres",
+      "subcategoryId": "postres-tortas",
+      "groupId": null,
+      "name": "Torta por porción",
+      "tagline": "Once sabores en vitrina, de almendras a red velvet.",
+      "description": "Pregunta por los sabores del día.",
+      "price": 10000,
+      "variants": [],
+      "ingredients": [
+        "Almendras",
+        "Red velvet",
+        "Chocolate",
+        "Zanahoria",
+        "Coco",
+        "Guanábana",
+        "Yogurt griego",
+        "Vasca de queso",
+        "Ahuyama",
+        "Amapola",
+        "Genovesa"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1761637604809-735817ea2bd2",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Torta por porción"
+      },
+      "available": true,
+      "sortOrder": 31
+    },
+    {
+      "id": "cheesecake",
+      "categoryId": "postres",
+      "subcategoryId": "postres-tortas",
+      "groupId": null,
+      "name": "Cheesecake",
+      "tagline": "De frutos rojos o de Oreo.",
+      "description": "Cheesecake cremoso, a elegir: frutos rojos u Oreo.",
+      "price": 11000,
+      "variants": [],
+      "ingredients": [],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1695088957420-c3b97d1f1138",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Cheesecake"
+      },
+      "available": true,
+      "sortOrder": 32
+    },
+    {
+      "id": "pie",
+      "categoryId": "postres",
+      "subcategoryId": "postres-tortas",
+      "groupId": null,
+      "name": "Pie de limón o maracuyá",
+      "tagline": "Base crocante y crema ácida de fruta.",
+      "description": "Pie de limón o de maracuyá.",
+      "price": 11000,
+      "variants": [],
+      "ingredients": [],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1543508185-225c92847541",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Pie de limón o maracuyá"
+      },
+      "available": true,
+      "sortOrder": 33
+    },
+    {
+      "id": "philadelphia",
+      "categoryId": "postres",
+      "subcategoryId": "postres-tortas",
+      "groupId": null,
+      "name": "Philadelphia de moras",
+      "tagline": "Crema de queso con mermelada de moras.",
+      "description": "Postre de queso philadelphia con moras.",
+      "price": 11000,
+      "variants": [],
+      "ingredients": [],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1533134242443-d4fd215305ad",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Philadelphia de moras"
+      },
+      "available": true,
+      "sortOrder": 34
+    },
+    {
+      "id": "flan",
+      "categoryId": "postres",
+      "subcategoryId": "postres-tortas",
+      "groupId": null,
+      "name": "Flan de caramelo",
+      "tagline": "Suave, casero y bañado en caramelo.",
+      "description": "Flan casero de caramelo.",
+      "price": 11000,
+      "variants": [],
+      "ingredients": [],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "sin-gluten"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1702728109878-c61a98d80491",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Flan de caramelo"
+      },
+      "available": true,
+      "sortOrder": 35
+    },
+    {
+      "id": "rol-canela",
+      "categoryId": "postres",
+      "subcategoryId": "postres-tortas",
+      "groupId": null,
+      "name": "Rol de canela",
+      "tagline": "Masa suave, canela y glaseado.",
+      "description": "Rol de canela con glaseado.",
+      "price": 11000,
+      "variants": [],
+      "ingredients": [],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1593872571314-4a735d4b27b0",
+        "focal": {
+          "x": 0.5,
+          "y": 0.42,
+          "zoom": 1.4
+        },
+        "alt": "Rol de canela"
+      },
+      "available": true,
+      "sortOrder": 36
+    },
+    {
+      "id": "tiramisu",
+      "categoryId": "postres",
+      "subcategoryId": "postres-pasteleria",
+      "groupId": "postres-pasteleria-cremosos",
+      "name": "Tiramisú",
+      "tagline": "Café, mascarpone y cacao amargo.",
+      "description": "Tiramisú clásico con café y cacao.",
+      "price": 11000,
+      "variants": [],
+      "ingredients": [],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1568627175730-73d05bd69ca9",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Tiramisú"
+      },
+      "available": true,
+      "sortOrder": 37
+    },
+    {
+      "id": "mousse",
+      "categoryId": "postres",
+      "subcategoryId": "postres-pasteleria",
+      "groupId": "postres-pasteleria-cremosos",
+      "name": "Mousse",
+      "tagline": "Ligero, aireado y muy chocolatoso.",
+      "description": "Mousse de la casa.",
+      "price": 15000,
+      "variants": [],
+      "ingredients": [],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1574473322501-1e5e28104f27",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Mousse"
+      },
+      "available": true,
+      "sortOrder": 38
+    },
+    {
+      "id": "eclair",
+      "categoryId": "postres",
+      "subcategoryId": "postres-pasteleria",
+      "groupId": "postres-pasteleria-francesa",
+      "name": "Eclair",
+      "tagline": "Pasta choux rellena de crema.",
+      "description": "Eclair de pasta choux con crema pastelera.",
+      "price": 13000,
+      "variants": [],
+      "ingredients": [],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1616534900667-d1e0ec646975",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Eclair"
+      },
+      "available": true,
+      "sortOrder": 39
+    },
+    {
+      "id": "opera",
+      "categoryId": "postres",
+      "subcategoryId": "postres-pasteleria",
+      "groupId": "postres-pasteleria-francesa",
+      "name": "Ópera de chocolate",
+      "tagline": "Capas de bizcocho, café y ganache.",
+      "description": "Ópera de chocolate y café.",
+      "price": 13000,
+      "variants": [],
+      "ingredients": [],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1577660618074-40c460c56df4",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Ópera de chocolate"
+      },
+      "available": true,
+      "sortOrder": 40
+    },
+    {
+      "id": "milhojas",
+      "categoryId": "postres",
+      "subcategoryId": "postres-pasteleria",
+      "groupId": "postres-pasteleria-francesa",
+      "name": "Milhojas",
+      "tagline": "Hojaldre crujiente y crema pastelera.",
+      "description": "Milhojas de hojaldre y crema.",
+      "price": 15000,
+      "variants": [],
+      "ingredients": [],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1593424731252-a846f98af7e6",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Milhojas"
+      },
+      "available": true,
+      "sortOrder": 41
+    },
+    {
+      "id": "macarons",
+      "categoryId": "postres",
+      "subcategoryId": "postres-pasteleria",
+      "groupId": "postres-pasteleria-francesa",
+      "name": "Macarons y profiteroles",
+      "tagline": "Bocados franceses para el café.",
+      "description": "Macarons y profiteroles.",
+      "price": 8000,
+      "variants": [],
+      "ingredients": [],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "casa"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1569864358642-9d1684040f43",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Macarons y profiteroles"
+      },
+      "available": true,
+      "sortOrder": 42
+    },
+    {
+      "id": "brownie",
+      "categoryId": "postres",
+      "subcategoryId": "postres-helados",
+      "groupId": null,
+      "name": "Brownie",
+      "tagline": "Denso y tibio, solo o con helado.",
+      "description": "Brownie de chocolate.",
+      "price": 9000,
+      "variants": [
+        {
+          "id": "solo",
+          "name": "Solo",
+          "detail": null,
+          "price": 9000
+        },
+        {
+          "id": "con-helado",
+          "name": "Con helado",
+          "detail": null,
+          "price": 16000
+        }
+      ],
+      "ingredients": [],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1624353365286-3f8d62daad51",
+        "focal": {
+          "x": 0.5,
+          "y": 0.45,
+          "zoom": 1.2
+        },
+        "alt": "Brownie"
+      },
+      "available": true,
+      "sortOrder": 43
+    },
+    {
+      "id": "canasta-helado",
+      "categoryId": "postres",
+      "subcategoryId": "postres-helados",
+      "groupId": null,
+      "name": "Canasta de helado",
+      "tagline": "Con crema montada y un topping.",
+      "description": "Canasta de helado con crema montada y 1 topping.",
+      "price": 10000,
+      "variants": [
+        {
+          "id": "sencilla",
+          "name": "Sencilla",
+          "detail": null,
+          "price": 10000
+        },
+        {
+          "id": "doble",
+          "name": "Doble",
+          "detail": null,
+          "price": 16000
+        }
+      ],
+      "ingredients": [],
+      "includedToppings": 1,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1580915411954-282cb1b0d780",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Canasta de helado"
+      },
+      "available": true,
+      "sortOrder": 44
+    },
+    {
+      "id": "espresso",
+      "categoryId": "bebidas",
+      "subcategoryId": "bebidas-calientes",
+      "groupId": "bebidas-calientes-cafe",
+      "name": "Espresso y macchiato",
+      "tagline": "Espresso doble de origen, corto e intenso.",
+      "description": "Café de origen colombiano.",
+      "price": 5000,
+      "variants": [
+        {
+          "id": "espresso-doble-4-oz",
+          "name": "Espresso doble 4 oz",
+          "detail": null,
+          "price": 5000
+        },
+        {
+          "id": "macchiato",
+          "name": "Macchiato",
+          "detail": null,
+          "price": 7000
+        }
+      ],
+      "ingredients": [],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1585357351695-0bc221a9327a",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.4
+        },
+        "alt": "Espresso y macchiato"
+      },
+      "available": true,
+      "sortOrder": 45
+    },
+    {
+      "id": "americano",
+      "categoryId": "bebidas",
+      "subcategoryId": "bebidas-calientes",
+      "groupId": "bebidas-calientes-cafe",
+      "name": "Americano",
+      "tagline": "Del clásico al campesino con panela y limón.",
+      "description": "Café americano de origen.",
+      "price": 5000,
+      "variants": [
+        {
+          "id": "7-oz",
+          "name": "7 oz",
+          "detail": null,
+          "price": 5000
+        },
+        {
+          "id": "9-oz",
+          "name": "9 oz",
+          "detail": null,
+          "price": 6000
+        },
+        {
+          "id": "campesino",
+          "name": "Campesino",
+          "detail": "panela y limón",
+          "price": 7000
+        },
+        {
+          "id": "carajillo",
+          "name": "Carajillo",
+          "detail": "aguardiente o whisky",
+          "price": 10000
+        }
+      ],
+      "ingredients": [],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1601282354526-5907ac4dfef2",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Americano"
+      },
+      "available": true,
+      "sortOrder": 46
+    },
+    {
+      "id": "capuccino",
+      "categoryId": "bebidas",
+      "subcategoryId": "bebidas-calientes",
+      "groupId": "bebidas-calientes-cafe",
+      "name": "Capuccino o latte",
+      "tagline": "Espresso y leche sedosa, a tu manera.",
+      "description": "Capuccino o latte con leche texturizada.",
+      "price": 7000,
+      "variants": [
+        {
+          "id": "7-oz",
+          "name": "7 oz",
+          "detail": null,
+          "price": 7000
+        },
+        {
+          "id": "9-oz",
+          "name": "9 oz",
+          "detail": null,
+          "price": 8000
+        },
+        {
+          "id": "vainilla",
+          "name": "Vainilla",
+          "detail": null,
+          "price": 9000
+        },
+        {
+          "id": "con-crema-montada",
+          "name": "Con crema montada",
+          "detail": null,
+          "price": 10000
+        },
+        {
+          "id": "con-baileys-o-whisky",
+          "name": "Con Baileys o whisky",
+          "detail": null,
+          "price": 12000
+        }
+      ],
+      "ingredients": [],
+      "includedToppings": 0,
+      "modifierIds": [
+        "leche-almendras"
+      ],
+      "tagIds": [
+        "casa"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1506188044630-210826194885",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.7
+        },
+        "alt": "Capuccino o latte"
+      },
+      "available": true,
+      "sortOrder": 47
+    },
+    {
+      "id": "moka",
+      "categoryId": "bebidas",
+      "subcategoryId": "bebidas-calientes",
+      "groupId": "bebidas-calientes-cafe",
+      "name": "Moka",
+      "tagline": "Café, chocolate y leche, sola o con crema.",
+      "description": "Moka de café y chocolate.",
+      "price": 8000,
+      "variants": [
+        {
+          "id": "sola",
+          "name": "Sola",
+          "detail": null,
+          "price": 8000
+        },
+        {
+          "id": "con-crema-montada",
+          "name": "Con crema montada",
+          "detail": null,
+          "price": 11000
+        }
+      ],
+      "ingredients": [],
+      "includedToppings": 0,
+      "modifierIds": [
+        "leche-almendras"
+      ],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1618576230663-9714aecfb99a",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Moka"
+      },
+      "available": true,
+      "sortOrder": 48
+    },
+    {
+      "id": "affogato",
+      "categoryId": "bebidas",
+      "subcategoryId": "bebidas-calientes",
+      "groupId": "bebidas-calientes-cafe",
+      "name": "Affogato",
+      "tagline": "Espresso doble sobre helado de vainilla.",
+      "description": "Espresso doble servido sobre helado.",
+      "price": 11000,
+      "variants": [],
+      "ingredients": [],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1638543284847-3a6bed3e1689",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Affogato"
+      },
+      "available": true,
+      "sortOrder": 49
+    },
+    {
+      "id": "chocolate",
+      "categoryId": "bebidas",
+      "subcategoryId": "bebidas-calientes",
+      "groupId": "bebidas-calientes-chocolate",
+      "name": "Chocolate y Milo",
+      "tagline": "Chocolate espeso de taza o Milo caliente.",
+      "description": "Chocolate de taza o Milo.",
+      "price": 7000,
+      "variants": [
+        {
+          "id": "chocolate-9-oz",
+          "name": "Chocolate 9 oz",
+          "detail": null,
+          "price": 7000
+        },
+        {
+          "id": "milo",
+          "name": "Milo",
+          "detail": null,
+          "price": 8000
+        }
+      ],
+      "ingredients": [],
+      "includedToppings": 0,
+      "modifierIds": [
+        "leche-almendras"
+      ],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1731274128962-fc9bdf355952",
+        "focal": {
+          "x": 0.45,
+          "y": 0.42,
+          "zoom": 1.55
+        },
+        "alt": "Chocolate y Milo"
+      },
+      "available": true,
+      "sortOrder": 50
+    },
+    {
+      "id": "aguapanela",
+      "categoryId": "bebidas",
+      "subcategoryId": "bebidas-calientes",
+      "groupId": "bebidas-calientes-infusiones",
+      "name": "Aguapanela",
+      "tagline": "Sola, con leche o con queso, como en casa.",
+      "description": "Aguapanela caliente.",
+      "price": 4000,
+      "variants": [
+        {
+          "id": "sola",
+          "name": "Sola",
+          "detail": null,
+          "price": 4000
+        },
+        {
+          "id": "con-leche",
+          "name": "Con leche",
+          "detail": null,
+          "price": 5000
+        },
+        {
+          "id": "con-queso",
+          "name": "Con queso",
+          "detail": null,
+          "price": 8000
+        }
+      ],
+      "ingredients": [],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "vegano"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1792426429975-feb157a0f07c",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Aguapanela"
+      },
+      "available": true,
+      "sortOrder": 51
+    },
+    {
+      "id": "tes",
+      "categoryId": "bebidas",
+      "subcategoryId": "bebidas-calientes",
+      "groupId": "bebidas-calientes-infusiones",
+      "name": "Tés y aromáticas",
+      "tagline": "Infusiones, chai y aromática con frutas.",
+      "description": "Tés e infusiones.",
+      "price": 5000,
+      "variants": [
+        {
+          "id": "infusion",
+          "name": "Infusión",
+          "detail": null,
+          "price": 5000
+        },
+        {
+          "id": "te-con-leche",
+          "name": "Té con leche",
+          "detail": null,
+          "price": 7000
+        },
+        {
+          "id": "chai-original",
+          "name": "Chai original",
+          "detail": null,
+          "price": 8000
+        },
+        {
+          "id": "aromatica-con-frutas",
+          "name": "Aromática con frutas",
+          "detail": null,
+          "price": 10000
+        }
+      ],
+      "ingredients": [],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1766228271521-adcb73044667",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Tés y aromáticas"
+      },
+      "available": true,
+      "sortOrder": 52
+    },
+    {
+      "id": "licor",
+      "categoryId": "bebidas",
+      "subcategoryId": "bebidas-calientes",
+      "groupId": "bebidas-calientes-con-licor",
+      "name": "Calientes con licor",
+      "tagline": "Canelazo o vino caliente para la tarde.",
+      "description": "Bebidas calientes con licor.",
+      "price": 10000,
+      "variants": [
+        {
+          "id": "canelazo",
+          "name": "Canelazo",
+          "detail": null,
+          "price": 10000
+        },
+        {
+          "id": "vino-caliente",
+          "name": "Vino caliente",
+          "detail": null,
+          "price": 18000
+        }
+      ],
+      "ingredients": [],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1512589848202-673dfdab1972",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Calientes con licor"
+      },
+      "available": true,
+      "sortOrder": 53
+    },
+    {
+      "id": "frappe",
+      "categoryId": "bebidas",
+      "subcategoryId": "bebidas-frias",
+      "groupId": "bebidas-frias-cafe-frio",
+      "name": "Frappé de café",
+      "tagline": "Café helado y cremoso, con o sin licor.",
+      "description": "Frappé de café.",
+      "price": 15000,
+      "variants": [
+        {
+          "id": "clasico",
+          "name": "Clásico",
+          "detail": null,
+          "price": 15000
+        },
+        {
+          "id": "vainilla",
+          "name": "Vainilla",
+          "detail": null,
+          "price": 17000
+        },
+        {
+          "id": "baileys-o-whisky",
+          "name": "Baileys o whisky",
+          "detail": null,
+          "price": 20000
+        }
+      ],
+      "ingredients": [],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1589396575653-c09c794ff6a6",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Frappé de café"
+      },
+      "available": true,
+      "sortOrder": 54
+    },
+    {
+      "id": "latte-frio",
+      "categoryId": "bebidas",
+      "subcategoryId": "bebidas-frias",
+      "groupId": "bebidas-frias-cafe-frio",
+      "name": "Latte frío de vainilla",
+      "tagline": "Espresso, leche fría y vainilla.",
+      "description": "Latte frío de vainilla sobre hielo.",
+      "price": 12000,
+      "variants": [],
+      "ingredients": [],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1694718256173-add57556cb49",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.25
+        },
+        "alt": "Latte frío de vainilla"
+      },
+      "available": true,
+      "sortOrder": 55
+    },
+    {
+      "id": "frappe-milo",
+      "categoryId": "bebidas",
+      "subcategoryId": "bebidas-frias",
+      "groupId": "bebidas-frias-frappes-y-malteadas",
+      "name": "Frappé de Milo o chai",
+      "tagline": "Para los que prefieren sin café.",
+      "description": "Frappé de Milo o de chai.",
+      "price": 13000,
+      "variants": [],
+      "ingredients": [],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1702564696095-ba5110856bf2",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Frappé de Milo o chai"
+      },
+      "available": true,
+      "sortOrder": 56
+    },
+    {
+      "id": "malteada",
+      "categoryId": "bebidas",
+      "subcategoryId": "bebidas-frias",
+      "groupId": "bebidas-frias-frappes-y-malteadas",
+      "name": "Malteada",
+      "tagline": "Ocho sabores, de Oreo a red velvet.",
+      "description": "Malteada cremosa.",
+      "price": 20000,
+      "variants": [],
+      "ingredients": [
+        "Chocolate",
+        "Café",
+        "Milo",
+        "Brownie",
+        "Red velvet",
+        "Moka",
+        "Oreo",
+        "Arequipe"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1579954115545-a95591f28bfc",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Malteada"
+      },
+      "available": true,
+      "sortOrder": 57
+    },
+    {
+      "id": "jugo",
+      "categoryId": "bebidas",
+      "subcategoryId": "bebidas-frias",
+      "groupId": "bebidas-frias-jugos-y-limonadas",
+      "name": "Jugo natural",
+      "tagline": "Fruta fresca en agua o en leche.",
+      "description": "Jugo de fruta natural.",
+      "price": 9000,
+      "variants": [
+        {
+          "id": "en-agua",
+          "name": "En agua",
+          "detail": null,
+          "price": 9000
+        },
+        {
+          "id": "en-leche",
+          "name": "En leche",
+          "detail": null,
+          "price": 12000
+        }
+      ],
+      "ingredients": [],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1766391237554-6d7042d7fbc8",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Jugo natural"
+      },
+      "available": true,
+      "sortOrder": 58
+    },
+    {
+      "id": "limonada",
+      "categoryId": "bebidas",
+      "subcategoryId": "bebidas-frias",
+      "groupId": "bebidas-frias-jugos-y-limonadas",
+      "name": "Limonadas",
+      "tagline": "De panela, café, yerbabuena, cereza o coco.",
+      "description": "Limonadas de la casa.",
+      "price": 9000,
+      "variants": [
+        {
+          "id": "panela-cafe-o-yerbabuena",
+          "name": "Panela, café o yerbabuena",
+          "detail": null,
+          "price": 9000
+        },
+        {
+          "id": "cerezada-o-de-coco",
+          "name": "Cerezada o de coco",
+          "detail": null,
+          "price": 13000
+        }
+      ],
+      "ingredients": [],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1583571560278-e6799a3b98da",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Limonadas"
+      },
+      "available": true,
+      "sortOrder": 59
+    },
+    {
+      "id": "sodas",
+      "categoryId": "bebidas",
+      "subcategoryId": "bebidas-frias",
+      "groupId": "bebidas-frias-sodas",
+      "name": "Sodas",
+      "tagline": "Botella, michelada o refrescante de frutos.",
+      "description": "Sodas y refrescos.",
+      "price": 6000,
+      "variants": [
+        {
+          "id": "botella",
+          "name": "Botella",
+          "detail": null,
+          "price": 6000
+        },
+        {
+          "id": "michelada",
+          "name": "Michelada",
+          "detail": null,
+          "price": 8000
+        },
+        {
+          "id": "refrescante-de-frutos-rojos-o-amarillos",
+          "name": "Refrescante de frutos rojos o amarillos",
+          "detail": null,
+          "price": 12000
+        }
+      ],
+      "ingredients": [],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": "También: agua manantial $6.000 · Coca-Cola 400 ml $6.000 · té Hatsu $8.000.",
+      "image": {
+        "source": "unsplash",
+        "photoId": "1581636625402-29b2a704ef13",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Sodas"
+      },
+      "available": true,
+      "sortOrder": 60
+    },
+    {
+      "id": "cerveza",
+      "categoryId": "bebidas",
+      "subcategoryId": "bebidas-frias",
+      "groupId": "bebidas-frias-alcohol",
+      "name": "Cerveza",
+      "tagline": "Corona fría, sola o michelada.",
+      "description": "Cerveza Corona.",
+      "price": 12000,
+      "variants": [
+        {
+          "id": "corona",
+          "name": "Corona",
+          "detail": null,
+          "price": 12000
+        },
+        {
+          "id": "michelada",
+          "name": "Michelada",
+          "detail": null,
+          "price": 14000
+        }
+      ],
+      "ingredients": [],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1457382713369-161d1d986f54",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Cerveza"
+      },
+      "available": true,
+      "sortOrder": 61
+    },
+    {
+      "id": "tortas-enteras",
+      "categoryId": "llevar",
+      "subcategoryId": "llevar-tortas",
+      "groupId": null,
+      "name": "Tortas y postres enteros",
+      "tagline": "Para celebrar en casa, de 6 a 16 porciones.",
+      "description": "Encarga tu torta o postre entero.",
+      "price": 45000,
+      "variants": [
+        {
+          "id": "torta-lb",
+          "name": "Torta ¼ lb",
+          "detail": "6 a 8 porciones",
+          "price": 45000
+        },
+        {
+          "id": "torta-lb",
+          "name": "Torta ½ lb",
+          "detail": "12 a 16 porciones",
+          "price": 80000
+        },
+        {
+          "id": "postre-rectangular",
+          "name": "Postre rectangular",
+          "detail": "6 a 8 porciones",
+          "price": 66000
+        },
+        {
+          "id": "cheesecake",
+          "name": "Cheesecake",
+          "detail": "12 o 16 porciones",
+          "price": 88000
+        }
+      ],
+      "ingredients": [],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "compartir"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1588195538326-c5b1e9f80a1b",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Tortas y postres enteros"
+      },
+      "available": true,
+      "sortOrder": 62
+    },
+    {
+      "id": "masa-madre",
+      "categoryId": "llevar",
+      "subcategoryId": "llevar-panes",
+      "groupId": null,
+      "name": "Pan de masa madre",
+      "tagline": "Fermentación lenta, corteza crujiente.",
+      "description": "Pan de masa madre artesanal.",
+      "price": 12000,
+      "variants": [
+        {
+          "id": "solo",
+          "name": "Solo",
+          "detail": null,
+          "price": 12000
+        },
+        {
+          "id": "relleno",
+          "name": "Relleno",
+          "detail": null,
+          "price": 16000
+        }
+      ],
+      "ingredients": [],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1767065888377-e5ffb4e39645",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Pan de masa madre"
+      },
+      "available": true,
+      "sortOrder": 63
+    },
+    {
+      "id": "brioche",
+      "categoryId": "llevar",
+      "subcategoryId": "llevar-panes",
+      "groupId": null,
+      "name": "Pan brioche",
+      "tagline": "De molde, relleno o para hamburguesa.",
+      "description": "Pan brioche de mantequilla.",
+      "price": 3000,
+      "variants": [
+        {
+          "id": "hamburguesa",
+          "name": "Hamburguesa",
+          "detail": null,
+          "price": 3000
+        },
+        {
+          "id": "molde",
+          "name": "Molde",
+          "detail": null,
+          "price": 12000
+        },
+        {
+          "id": "relleno",
+          "name": "Relleno",
+          "detail": null,
+          "price": 16000
+        }
+      ],
+      "ingredients": [],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": "También: pan francés $3.000.",
+      "image": {
+        "source": "unsplash",
+        "photoId": "1620416328855-f56e4e98637b",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Pan brioche"
+      },
+      "available": true,
+      "sortOrder": 64
+    },
+    {
+      "id": "galletas",
+      "categoryId": "llevar",
+      "subcategoryId": "llevar-panes",
+      "groupId": null,
+      "name": "Galletas, hojaldres y merengues",
+      "tagline": "Para acompañar el café en casa.",
+      "description": "Galletas, hojaldres y merengues por paquete.",
+      "price": 7000,
+      "variants": [
+        {
+          "id": "galletas-o-merengues",
+          "name": "Galletas o merengues",
+          "detail": null,
+          "price": 7000
+        },
+        {
+          "id": "hojaldres",
+          "name": "Hojaldres",
+          "detail": null,
+          "price": 8000
+        }
+      ],
+      "ingredients": [],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1639678111962-88fffeb071cb",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Galletas, hojaldres y merengues"
+      },
+      "available": true,
+      "sortOrder": 65
+    }
+  ]
+}

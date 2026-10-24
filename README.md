@@ -8,7 +8,24 @@ Versión para **La Sablée (Calle Real)**: 64 productos en dos niveles de navega
 - Si chips, etiquetas o riel no caben, se desplazan entre carets pulsantes que tienen su propio espacio (`ScrollStrip` en `src/components/ScrollCaret.tsx`); nunca se montan sobre los ítems.
 - El plato se corre a la derecha para dejar sitio al riel; el fondo desenfocado sigue centrado.
 - **Una tarjeta = un producto base**: tamaños, sabores y adiciones son variantes, con precio "desde" y la lista en la hoja. Precios en COP.
-- Datos en `src/data/menu.ts`, tomados de `carta-optimizada.md`. Las fotos son de Unsplash como referencia; hay que reemplazarlas por fotos reales del negocio.
+- Las fotos son de Unsplash como referencia; hay que reemplazarlas por fotos reales del negocio.
+
+### Datos (simulación de base de datos)
+
+La carta vive en **`public/data/la-sablee.json`**, normalizada como tablas de una base de datos. Los modelos están en **`src/models/db.ts`**:
+
+| Tabla | Qué guarda |
+|---|---|
+| `business` | nombre, lema, moneda, sucursales (`branches`) y contacto |
+| `categories` | nivel 1 (riel): nombre, ícono, orden, paleta |
+| `subcategories` | nivel 2 (chips), con `categoryId` |
+| `groups` | nivel 3 (etiquetas), con `subcategoryId` |
+| `tags` | insignias: De la casa, Vegano, Sin gluten… |
+| `toppings` | el pool de toppings de la carta |
+| `modifiers` | adiciones pagas (leche de almendras +$3.000) |
+| `products` | nombre, frase, descripción, precio base, `variants`, ingredientes, `includedToppings`, `modifierIds`, `tagIds`, nota, imagen (id + recorte), `available`, orden |
+
+Flujo: `src/data/repository.ts` hace `fetch` del JSON (el día que haya backend, solo cambia esta función) → `src/data/adapter.ts` une las tablas y arma lo que pintan las pantallas (`src/types.ts`). Un producto con `available: false` no aparece. Las direcciones y el teléfono vienen de la carta impresa: verificarlos con el negocio.
 
 ---
 

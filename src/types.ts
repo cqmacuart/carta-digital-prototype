@@ -1,6 +1,7 @@
 import type { LucideIcon } from 'lucide-react'
+import type { TagId } from './models/db'
 
-export type Tag = 'casa' | 'nuevo' | 'vegano' | 'vegetariano' | 'sin-gluten' | 'picante' | 'compartir'
+// View models: what the screens render, built from the database by src/data/adapter.ts.
 
 export type Subcategory = { id: string; name: string }
 
@@ -19,7 +20,9 @@ export type Category = {
 }
 
 /** One card = one base product; sizes, flavours and add-ons are its variants. */
-export type Variant = { name: string; price: number }
+export type Variant = { name: string; detail?: string; price: number }
+
+export type Badge = { id: TagId; label: string; icon: LucideIcon }
 
 export type MenuItem = {
   id: string
@@ -34,9 +37,26 @@ export type MenuItem = {
   description: string
   variants?: Variant[]
   ingredients?: string[]
+  /** included toppings, chosen from the shared pool */
+  toppings?: { count: number; options: string[] }
+  /** paid add-ons */
+  modifiers?: { name: string; price: number }[]
   note?: string
-  tags?: Tag[]
+  tags?: Badge[]
   img: string
   imgBlur: string
   imgBack: string
+}
+
+export type Business = {
+  name: string
+  tagline: string
+  branch: string
+}
+
+export type Menu = {
+  business: Business
+  categories: Category[]
+  /** sorted by category, subcategory, then product order */
+  items: MenuItem[]
 }
