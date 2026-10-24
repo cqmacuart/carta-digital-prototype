@@ -1,17 +1,18 @@
-import { CakeSlice, Coffee, Croissant, Egg, Sandwich, ShoppingBag } from 'lucide-react'
+import { CakeSlice, Coffee, Croissant, EggFried, IceCreamBowl, Sandwich, ShoppingBag } from 'lucide-react'
 import { photo } from '../lib/format'
 import type { Category, MenuItem, Variant } from '../types'
 
-// La Sablée · Calle Real. Source: carta-optimizada.md (prices in COP).
+// La Sablée · Calle Real. Source: carta-optimizada.md (prices in COP); sections follow the printed carta.
 // Hues stay inside the terracotta family (analogous on the colour wheel);
 // each category reads as its food. Sheet ink/accent pairs are ≥4.5:1 (accent ≥3:1 as large text).
+// A category with a single subcategory shows no chips.
 export const CATEGORIES: Category[] = [
   {
     id: 'desayunos',
     name: 'Desayunos',
-    icon: Egg,
+    icon: EggFried,
     subcategories: [
-      { id: 'clasicos', name: 'Clásicos' },
+      { id: 'huevos', name: 'Huevos' },
       { id: 'brunch', name: 'Brunch' },
     ],
     sheet: '#A9472A',
@@ -22,10 +23,7 @@ export const CATEGORIES: Category[] = [
     id: 'sandwiches',
     name: 'Sándwiches',
     icon: Sandwich,
-    subcategories: [
-      { id: 'clasicos', name: 'Clásicos' },
-      { id: 'fazenda', name: 'La Fazenda' },
-    ],
+    subcategories: [{ id: 'todos', name: 'Sándwiches' }],
     sheet: '#6E2A20',
     ink: '#FAEEE6',
     accent: '#F4B597',
@@ -36,19 +34,29 @@ export const CATEGORIES: Category[] = [
     icon: Croissant,
     subcategories: [
       { id: 'croissants', name: 'Croissants' },
-      { id: 'pan', name: 'Pan y hojaldre' },
+      { id: 'dulce-sal', name: 'Dulce y sal' },
     ],
-    sheet: '#D9A462',
+    sheet: '#B9773F',
+    ink: '#2B1B13',
+    accent: '#3E1A08',
+  },
+  {
+    id: 'waffles',
+    name: 'Waffles y bowls',
+    icon: IceCreamBowl,
+    subcategories: [
+      { id: 'waffles', name: 'Waffles' },
+      { id: 'bowls', name: 'Bowls' },
+    ],
+    sheet: '#E0B36A',
     ink: '#2B1B13',
     accent: '#5E2810',
   },
   {
-    id: 'dulce',
-    name: 'Dulce',
+    id: 'postres',
+    name: 'Postres',
     icon: CakeSlice,
     subcategories: [
-      { id: 'waffles', name: 'Waffles' },
-      { id: 'bowls', name: 'Bowls' },
       { id: 'tortas', name: 'Tortas' },
       { id: 'pasteleria', name: 'Pastelería' },
       { id: 'helados', name: 'Helados' },
@@ -62,7 +70,6 @@ export const CATEGORIES: Category[] = [
     name: 'Bebidas',
     icon: Coffee,
     subcategories: [
-      { id: 'cafe', name: 'Café' },
       { id: 'calientes', name: 'Calientes' },
       { id: 'frias', name: 'Frías' },
     ],
@@ -78,9 +85,9 @@ export const CATEGORIES: Category[] = [
       { id: 'tortas', name: 'Tortas enteras' },
       { id: 'panes', name: 'Panes' },
     ],
-    sheet: '#C58B5A',
-    ink: '#2B1B13',
-    accent: '#4E2310',
+    sheet: '#4A3A30',
+    ink: '#FBF1E6',
+    accent: '#E9C29F',
   },
 ]
 
@@ -96,7 +103,7 @@ const group = (category: string, sub: string, items: Raw[]): MenuItem[] =>
 
 export const MENU: MenuItem[] = [
   // ── Desayunos ─────────────────────────────────────────────────────────
-  ...group('desayunos', 'clasicos', [
+  ...group('desayunos', 'huevos', [
     {
       id: 'al-gusto',
       name: 'Al gusto',
@@ -176,37 +183,17 @@ export const MENU: MenuItem[] = [
       ]),
       photo: '1601579112521-5d6badb0bf3c',
     },
-    {
-      id: 'tostada-francesa',
-      name: 'Tostada francesa',
-      price: 22000,
-      tagline: 'Brioche dorado con yogurt griego y fruta fresca.',
-      description: 'Pan brioche, yogurt griego, fresa, kiwi, arándanos y banano.',
-      ingredients: ['Pan brioche', 'Yogurt griego', 'Fresa', 'Kiwi', 'Arándanos', 'Banano'],
-      tags: ['vegetariano'],
-      photo: '1484723091739-30a097e8f929',
-    },
-    {
-      id: 'migaito',
-      name: 'Migaito',
-      price: 18000,
-      tagline: 'Jarra de chocolate para mojar, a la colombiana.',
-      description: 'Jarra de chocolate con waffle, pan brioche, galletas, mozzarella, queso paipa y masmelos.',
-      ingredients: ['Chocolate', 'Waffle', 'Pan brioche', 'Queso paipa', 'Masmelos'],
-      tags: ['compartir'],
-      photo: '1706341842409-39f198ac6e4c',
-    },
   ]),
 
   // ── Sándwiches ────────────────────────────────────────────────────────
-  ...group('sandwiches', 'clasicos', [
+  ...group('sandwiches', 'todos', [
     { id: 'pavo', name: 'Jamón de pavo', price: 20000, tagline: 'El clásico de la casa, ligero y fresco.', description: 'Sándwich de jamón de pavo en pan artesanal.', photo: '1553909489-cd47e0907980' },
     { id: 'vegetariano', name: 'Vegetariano', price: 22000, tagline: 'Vegetales frescos y quesos en pan artesanal.', description: 'Sándwich de vegetales y quesos en pan artesanal.', tags: ['vegetariano'], photo: '1590301155505-471f05cd02db' },
     { id: 'atun', name: 'Atún Van Camps', price: 24000, tagline: 'Ensalada de atún cremosa y crujiente.', description: 'Sándwich de atún Van Camps en pan artesanal.', photo: '1558985250-27a406d64cb3' },
     { id: 'pollo-stroganoff', name: 'Pollo stroganoff', price: 26000, tagline: 'Pollo en salsa stroganoff, cremoso y tibio.', description: 'Sándwich de pollo en salsa stroganoff.', photo: '1670710029403-607db8eeec83' },
     { id: 'morillo', name: 'Carne de morillo', price: 26000, tagline: 'Morrillo desmechado, jugoso y especiado.', description: 'Sándwich de carne de morrillo.', photo: '1667055251919-88fd6ff02e86' },
   ]),
-  ...group('sandwiches', 'fazenda', [
+  ...group('sandwiches', 'todos', [
     { id: 'bondiola', name: 'Bondiola de cerdo', price: 26000, tagline: 'Bondiola La Fazenda, cocida lento.', description: 'Sándwich de bondiola de cerdo La Fazenda.', tags: ['casa'], photo: '1567529855370-57ecd066454c' },
     { id: 'chicharron', name: 'Chicharrón carnudo', price: 26000, tagline: 'Chicharrón La Fazenda, crujiente y carnudo.', description: 'Sándwich de chicharrón carnudo La Fazenda.', tags: ['casa'], photo: '1700937244987-92488ab2ada5' },
   ]),
@@ -239,21 +226,41 @@ export const MENU: MenuItem[] = [
     { id: 'croissant-huevos', name: 'Croissant con huevos', price: 18000, tagline: 'Dos huevos al gusto con tocineta La Fazenda.', description: 'Croissant con 2 huevos al gusto, tocineta La Fazenda y crema de quesos.', photo: '1709208702638-c0cb072a0142' },
     { id: 'croissant-serrano', name: 'Croissant serrano', price: 22000, tagline: 'Jamón serrano, queso pera y aguacate.', description: 'Croissant con 2 huevos, queso pera, jamón serrano, aguacate y crema de quesos.', photo: '1639667852145-466e29aa49fd' },
   ]),
-  ...group('panaderia', 'pan', [
+  ...group('panaderia', 'dulce-sal', [
     { id: 'almojabana', name: 'Almojábana y pan de bono', price: 5000, tagline: 'Almojábana, pan de yuca o pan de bono, recién horneados.', description: 'Elige almojábana, pan de yuca o pan de bono.', tags: ['sin-gluten'], photo: '1559141680-d0bd7bc5af84' },
     { id: 'palito-queso', name: 'Palito de queso', price: 8000, tagline: 'Hojaldre crujiente relleno de queso.', description: 'Palito de hojaldre relleno de queso.', tags: ['vegetariano'], photo: '1778449665117-2c607bbc7415' },
     { id: 'hojaldre', name: 'Hojaldre salado', price: 10000, tagline: 'De pollo stroganoff o de carne de morrillo.', description: 'Hojaldre relleno, a elegir: pollo stroganoff o carne de morrillo.', photo: '1682263167429-0dbcf2c1e127' },
+    {
+      id: 'migaito',
+      name: 'Migaito',
+      price: 18000,
+      tagline: 'Jarra de chocolate para mojar, a la colombiana.',
+      description: 'Jarra de chocolate con waffle, pan brioche, galletas, mozzarella, queso paipa y masmelos.',
+      ingredients: ['Chocolate', 'Waffle', 'Pan brioche', 'Queso paipa', 'Masmelos'],
+      tags: ['compartir'],
+      photo: '1706341842409-39f198ac6e4c',
+    },
+    {
+      id: 'tostada-francesa',
+      name: 'Tostada francesa',
+      price: 22000,
+      tagline: 'Brioche dorado con yogurt griego y fruta fresca.',
+      description: 'Pan brioche, yogurt griego, fresa, kiwi, arándanos y banano.',
+      ingredients: ['Pan brioche', 'Yogurt griego', 'Fresa', 'Kiwi', 'Arándanos', 'Banano'],
+      tags: ['vegetariano'],
+      photo: '1484723091739-30a097e8f929',
+    },
   ]),
 
-  // ── Dulce ─────────────────────────────────────────────────────────────
-  ...group('dulce', 'waffles', [
+  // ── Waffles, bowls y postres ─────────────────────────────────────────────────────────────
+  ...group('waffles', 'waffles', [
     { id: 'waffle-clasico', name: 'Waffle clásico', price: 14000, tagline: 'Tradicional o de pan de yuca, con dos toppings.', description: 'Waffle tradicional o de pan de yuca, con 2 toppings.', note: TOPPINGS, photo: '1773533276932-4ee7ea1d6361' },
     { id: 'waffle-helado', name: 'Waffle con helado', price: 20000, tagline: 'Helado, crema montada y dos toppings.', description: 'Waffle tradicional o de pan de yuca, con helado, crema montada y 2 toppings.', note: TOPPINGS, photo: '1562513872-634b8fae6dbe' },
     { id: 'waffle-frutas', name: 'Waffle con frutas', price: 24000, tagline: 'Helado, crema y fruta fresca de temporada.', description: 'Helado, crema montada, fresa, kiwi, arándanos y banano, con 2 toppings.', note: TOPPINGS, photo: '1653838049829-be00b1f4d59d' },
     { id: 'waffle-huevos', name: 'Waffle con huevos', price: 22000, tagline: 'Tres huevos al gusto, jamón y mozzarella.', description: 'Waffle con 3 huevos al gusto, jamón, mozzarella y 1 topping.', note: TOPPINGS, photo: '1648071588112-10acf7295463' },
     { id: 'waffle-santarrosano', name: 'Waffle santarrosano', price: 22000, tagline: 'Con chorizo santarrosano y dos toppings.', description: 'Waffle con chorizo santarrosano y 2 toppings.', note: TOPPINGS, photo: '1715398068878-ec85eecd44b1' },
   ]),
-  ...group('dulce', 'bowls', [
+  ...group('waffles', 'bowls', [
     { id: 'bowl-frutas', name: 'Bowl de frutas', price: 14000, tagline: 'Fruta fresca, granola y dos toppings.', description: 'Fresa, kiwi, arándanos, banano, granola y 2 toppings.', note: TOPPINGS, tags: ['vegetariano'], photo: '1575023497656-1b8d04dc6f75' },
     {
       id: 'bowl-yogurt',
@@ -269,7 +276,7 @@ export const MENU: MenuItem[] = [
       photo: '1504712598893-24159a89200e',
     },
   ]),
-  ...group('dulce', 'tortas', [
+  ...group('postres', 'tortas', [
     {
       id: 'torta-porcion',
       name: 'Torta por porción',
@@ -285,7 +292,7 @@ export const MENU: MenuItem[] = [
     { id: 'flan', name: 'Flan de caramelo', price: 11000, tagline: 'Suave, casero y bañado en caramelo.', description: 'Flan casero de caramelo.', tags: ['sin-gluten'], photo: '1702728109878-c61a98d80491' },
     { id: 'rol-canela', name: 'Rol de canela', price: 11000, tagline: 'Masa suave, canela y glaseado.', description: 'Rol de canela con glaseado.', photo: '1593872571314-4a735d4b27b0', crop: [0.5, 0.42, 1.4] },
   ]),
-  ...group('dulce', 'pasteleria', [
+  ...group('postres', 'pasteleria', [
     { id: 'tiramisu', name: 'Tiramisú', price: 11000, tagline: 'Café, mascarpone y cacao amargo.', description: 'Tiramisú clásico con café y cacao.', photo: '1568627175730-73d05bd69ca9' },
     { id: 'eclair', name: 'Eclair', price: 13000, tagline: 'Pasta choux rellena de crema.', description: 'Eclair de pasta choux con crema pastelera.', photo: '1616534900667-d1e0ec646975' },
     { id: 'opera', name: 'Ópera de chocolate', price: 13000, tagline: 'Capas de bizcocho, café y ganache.', description: 'Ópera de chocolate y café.', photo: '1577660618074-40c460c56df4' },
@@ -293,7 +300,7 @@ export const MENU: MenuItem[] = [
     { id: 'milhojas', name: 'Milhojas', price: 15000, tagline: 'Hojaldre crujiente y crema pastelera.', description: 'Milhojas de hojaldre y crema.', photo: '1593424731252-a846f98af7e6' },
     { id: 'macarons', name: 'Macarons y profiteroles', price: 8000, tagline: 'Bocados franceses para el café.', description: 'Macarons y profiteroles.', tags: ['casa'], photo: '1569864358642-9d1684040f43' },
   ]),
-  ...group('dulce', 'helados', [
+  ...group('postres', 'helados', [
     {
       id: 'brownie',
       name: 'Brownie',
@@ -321,7 +328,7 @@ export const MENU: MenuItem[] = [
   ]),
 
   // ── Bebidas ───────────────────────────────────────────────────────────
-  ...group('bebidas', 'cafe', [
+  ...group('bebidas', 'calientes', [
     {
       id: 'espresso',
       name: 'Espresso y macchiato',

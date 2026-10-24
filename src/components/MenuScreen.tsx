@@ -5,6 +5,8 @@ import { CATEGORIES, MENU, itemsOf } from '../data/menu'
 import { clamp } from '../lib/format'
 import { CategoryScene, type CarouselApi } from './RadialCarousel'
 import { DishSheet } from './DishSheet'
+import { ScrollCaret } from './ScrollCaret'
+import { useScrollEdges } from '../lib/useScrollEdges'
 
 const HEADER = 64
 /** Category name + subcategory chips */
@@ -12,9 +14,8 @@ const NAV = 76
 /** Category rail on the left; the plate sits to its right */
 const RAIL_X = 10
 const RAIL_W = 52
-/** Chips that scroll out of the panel fade instead of being cut; the start only fades once scrolled. */
-const CHIP_FADE_END = 'linear-gradient(to right, #000 90%, transparent)'
-const CHIP_FADE_BOTH = 'linear-gradient(to right, transparent, #000 6%, #000 90%, transparent)'
+/** Widest the subcategory panel gets; beyond it the chips scroll behind pulsing carets. */
+const PANEL_MAX = 340
 /** Typical collapsed-sheet height, used to lay out the stage so the plate never jumps between dishes. */
 const PEEK = 190
 /** Breathing room under the collapsed sheet's content. */
@@ -50,6 +51,8 @@ export function MenuScreen({ width, height }: Props) {
   const stageH = Math.max(220, height - stageTop - PEEK + 10)
   const size = Math.min(stageH * 0.62, (width - stageLeft) * 0.86, 300)
   const railButton = height < 720 ? 38 : 44
+  // the rail stops above the sheet; any categories beyond scroll behind carets
+  const railMax = Math.max(railButton * 3 + 16, height - PEEK - (stageTop + 6) - 24)
   const radius = width * 0.86
   const openTop = Math.round(height * 0.3)
   const sheetH = height - openTop
@@ -123,17 +126,26 @@ export function MenuScreen({ width, height }: Props) {
     apis.current[catIndex]?.roll(ITEMS[catIndex].findIndex((m) => m.sub === subId))
   }
 
-  // keep the active chip in view (scroll only the chip rail, never the page)
-  const [chipsScrolled, setChipsScrolled] = useState(false)
-  const chipFade = chipsScrolled ? CHIP_FADE_BOTH : CHIP_FADE_END
+  // keep the active chip / rail icon in view (scroll only their own containers, never the page)
+  const hasChips = category.subcategories.length > 1
   const chipRefs = useRef<(HTMLButtonElement | null)[]>([])
   const railRef = useRef<HTMLDivElement>(null)
+  const catRailRef = useRef<HTMLDivElement>(null)
+  const chipEdges = useScrollEdges(railRef, 'x', category.id)
+  const railEdges = useScrollEdges(catRailRef, 'y', railMax)
+  const chipFade = `linear-gradient(to right, ${chipEdges.start ? 'transparent, #000 14%' : '#000'}, ${chipEdges.end ? '#000 86%, transparent' : '#000'})`
   useEffect(() => {
     const chip = chipRefs.current[subIndex]
     const rail = railRef.current
     if (!chip || !rail) return
     rail.scrollTo({ left: chip.offsetLeft - (rail.clientWidth - chip.offsetWidth) / 2, behavior: 'smooth' })
   }, [subIndex, catIndex])
+  useEffect(() => {
+    const rail = catRailRef.current
+    const btn = rail?.children[catIndex] as HTMLElement | undefined
+    if (!rail || !btn) return
+    rail.scrollTo({ top: btn.offsetTop - (rail.clientHeight - btn.offsetHeight) / 2, behavior: 'smooth' })
+  }, [catIndex])
 
   // ---- sheet --------------------------------------------------------------
   const dragControls = useDragControls()
@@ -338,14 +350,17 @@ export function MenuScreen({ width, height }: Props) {
         </p>
       </header>
 
-      {/* category name over its subcategories */}
+      {/* category name over its subcategories: centred, capped width, scrolls with carets when it overflows */}
       <motion.nav
         aria-label={`Subcategorías de ${category.name}`}
         style={{ top: HEADER, height: NAV, opacity: chipsOpacity }}
-        className="absolute inset-x-0 z-30 flex items-center px-3"
+        className="absolute inset-x-0 z-30 flex items-center justify-center px-3"
       >
-        <div className="flex max-w-full flex-col gap-1 rounded-[24px] bg-white/70 p-1 pt-1.5 ring-1 ring-white/80">
-          <div className="relative h-5 overflow-hidden pl-3">
+        <div
+          className="flex min-w-0 flex-col items-center gap-1 rounded-[24px] bg-white/70 p-1 pt-1.5 ring-1 ring-white/80"
+          style={{ maxWidth: Math.min(width - 24, PANEL_MAX) }}
+        >
+          <div className="relative h-5 w-full overflow-hidden px-3">
             <AnimatePresence initial={false} mode="popLayout" custom={nav.direction}>
               <motion.p
                 key={category.id}
@@ -354,82 +369,95 @@ export function MenuScreen({ width, height }: Props) {
                 animate={{ y: 0, opacity: 1 }}
                 exit={{ y: nav.direction * -18, opacity: 0, transition: { duration: 0.15 } }}
                 transition={{ type: 'spring', stiffness: 420, damping: 34 }}
-                className="flex items-baseline gap-2 font-display text-[17px] font-semibold leading-5 text-espresso"
+                className="flex items-baseline justify-center gap-1.5 whitespace-nowrap font-display text-[17px] font-semibold leading-5 text-espresso"
               >
                 {category.name}
-                <span className="font-sans text-[11px] font-bold text-cocoa">{ITEMS[catIndex].length} opciones</span>
+                <span className="font-sans text-[12px] font-bold text-cocoa">({ITEMS[catIndex].length})</span>
               </motion.p>
             </AnimatePresence>
           </div>
-          <div
-            ref={railRef}
-            onScroll={(e) => setChipsScrolled(e.currentTarget.scrollLeft > 2)}
-            className="no-scrollbar relative flex max-w-full gap-0.5 overflow-x-auto rounded-full"
-            style={{ maskImage: chipFade, WebkitMaskImage: chipFade }}
-          >
-            {category.subcategories.map((s, i) => {
-              const isActive = i === subIndex
-              return (
-                <button
-                  key={`${category.id}-${s.id}`}
-                  ref={(el) => {
-                    chipRefs.current[i] = el
-                  }}
-                  type="button"
-                  aria-current={isActive}
-                  onClick={() => !isActive && goToSub(s.id)}
-                  className={`relative min-h-9 shrink-0 rounded-full px-3.5 text-[13px] font-bold transition-colors duration-300 ${
-                    isActive ? '' : 'text-cocoa'
-                  }`}
-                  style={isActive ? { color: category.ink } : undefined}
-                >
-                  {isActive && (
-                    <motion.span
-                      layoutId="sub"
-                      transition={{ type: 'spring', stiffness: 420, damping: 34 }}
-                      className="absolute inset-0 rounded-full"
-                      style={{ backgroundColor: category.sheet }}
-                    />
-                  )}
-                  <span className="relative">{s.name}</span>
-                </button>
-              )
-            })}
-          </div>
+          {hasChips && (
+            <div className="relative max-w-full">
+              <ScrollCaret target={railRef} axis="x" side="start" show={chipEdges.start} label="Ver subcategorías anteriores" className="left-0.5 top-1" />
+              <ScrollCaret target={railRef} axis="x" side="end" show={chipEdges.end} label="Ver más subcategorías" className="right-0.5 top-1" />
+              <div
+                ref={railRef}
+                className="no-scrollbar relative flex max-w-full gap-0.5 overflow-x-auto rounded-full"
+                style={{ maskImage: chipFade, WebkitMaskImage: chipFade }}
+              >
+                {category.subcategories.map((s, i) => {
+                  const isActive = i === subIndex
+                  return (
+                    <button
+                      key={`${category.id}-${s.id}`}
+                      ref={(el) => {
+                        chipRefs.current[i] = el
+                      }}
+                      type="button"
+                      aria-current={isActive}
+                      onClick={() => !isActive && goToSub(s.id)}
+                      className={`relative min-h-9 shrink-0 rounded-full px-3.5 text-[13px] font-bold transition-colors duration-300 ${
+                        isActive ? '' : 'text-cocoa'
+                      }`}
+                      style={isActive ? { color: category.ink } : undefined}
+                    >
+                      {isActive && (
+                        <motion.span
+                          layoutId="sub"
+                          transition={{ type: 'spring', stiffness: 420, damping: 34 }}
+                          className="absolute inset-0 rounded-full"
+                          style={{ backgroundColor: category.sheet }}
+                        />
+                      )}
+                      <span className="relative">{s.name}</span>
+                    </button>
+                  )
+                })}
+              </div>
+            </div>
+          )}
         </div>
       </motion.nav>
 
-      {/* category rail: one icon per category, vertical like the swipe that changes it */}
+      {/* category rail: one icon per category, vertical like the swipe that changes it; scrolls with carets when taller than its room */}
       <motion.nav
         aria-label="Categorías"
         style={{ top: stageTop + 6, left: RAIL_X, width: RAIL_W, opacity: chipsOpacity }}
-        className="absolute z-30 flex flex-col items-center gap-1 rounded-full bg-white/70 p-1 ring-1 ring-white/80"
+        className="absolute z-30 rounded-full bg-white/70 ring-1 ring-white/80"
       >
-        {CATEGORIES.map((c, i) => {
-          const isActive = i === catIndex
-          const Icon = c.icon
-          return (
-            <button
-              key={c.id}
-              type="button"
-              aria-label={c.name}
-              aria-current={isActive}
-              onClick={() => i !== catIndex && switchCategory(i, i > catIndex ? 1 : -1)}
-              className={`relative grid place-items-center rounded-full transition-colors duration-300 ${isActive ? '' : 'text-cocoa'}`}
-              style={{ width: railButton, height: railButton, color: isActive ? c.ink : undefined }}
-            >
-              {isActive && (
-                <motion.span
-                  layoutId="rail"
-                  transition={{ type: 'spring', stiffness: 420, damping: 34 }}
-                  className="absolute inset-0 rounded-full shadow-[0_6px_14px_-6px_rgba(42,26,18,.55)]"
-                  style={{ backgroundColor: c.sheet }}
-                />
-              )}
-              <Icon size={railButton < 44 ? 18 : 20} strokeWidth={2.1} className="relative" aria-hidden />
-            </button>
-          )
-        })}
+        <ScrollCaret target={catRailRef} axis="y" side="start" show={railEdges.start} label="Ver categorías anteriores" className="left-1/2 -top-2 -translate-x-1/2" />
+        <ScrollCaret target={catRailRef} axis="y" side="end" show={railEdges.end} label="Ver más categorías" className="left-1/2 -bottom-2 -translate-x-1/2" />
+        <div
+          ref={catRailRef}
+          className="no-scrollbar flex flex-col items-center gap-1 overflow-y-auto overscroll-contain rounded-full p-1"
+          style={{ maxHeight: railMax }}
+        >
+          {CATEGORIES.map((c, i) => {
+            const isActive = i === catIndex
+            const Icon = c.icon
+            return (
+              <button
+                key={c.id}
+                type="button"
+                aria-label={c.name}
+                aria-current={isActive}
+                onClick={() => i !== catIndex && switchCategory(i, i > catIndex ? 1 : -1)}
+                className={`relative grid shrink-0 place-items-center rounded-full transition-colors duration-300 ${isActive ? '' : 'text-cocoa'}`}
+                style={{ width: railButton, height: railButton, color: isActive ? c.ink : undefined }}
+              >
+                {isActive && (
+                  <motion.span
+                    layoutId="rail"
+                    transition={{ type: 'spring', stiffness: 420, damping: 34 }}
+                    className="absolute inset-0 rounded-full shadow-[0_6px_14px_-6px_rgba(42,26,18,.55)]"
+                    style={{ backgroundColor: c.sheet }}
+                  />
+                )}
+                <Icon size={railButton < 44 ? 18 : 20} strokeWidth={2.1} className="relative" aria-hidden />
+              </button>
+            )
+          })}
+        </div>
       </motion.nav>
 
       {/* dish sheet, wearing the category's colour */}
