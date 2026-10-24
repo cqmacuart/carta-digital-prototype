@@ -46,6 +46,8 @@ export type MenuItem = {
   img: string
   imgBlur: string
   imgBack: string
+  /** small sharp copy for lists (search results) */
+  imgThumb: string
 }
 
 export type Business = {

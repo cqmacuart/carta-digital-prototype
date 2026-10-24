@@ -17,4 +17,5 @@ export const photo = (crop: Crop) => ({
   img: unsplash(crop),
   imgBlur: unsplash(crop, 96, 30),
   imgBack: unsplash(crop, 320, 24),
+  imgThumb: unsplash(crop, 120),
 })

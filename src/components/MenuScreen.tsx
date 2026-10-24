@@ -1,11 +1,12 @@
 import { AnimatePresence, animate, motion, useDragControls, useMotionValue, useTransform } from 'motion/react'
-import { ChevronRight, MapPin } from 'lucide-react'
+import { ChevronRight, MapPin, Search } from 'lucide-react'
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import { clamp } from '../lib/format'
 import type { Menu, MenuItem } from '../types'
 import { CategoryScene, type CarouselApi } from './RadialCarousel'
 import { DishSheet } from './DishSheet'
 import { ScrollStrip } from './ScrollCaret'
+import { SearchOverlay } from './SearchOverlay'
 
 const HEADER = 64
 /** Category name + subcategory chips */
@@ -54,6 +55,8 @@ export function MenuScreen({ width, height, menu }: Props) {
   const stageH = Math.max(220, height - stageTop - PEEK + 10)
   const size = Math.min(stageH * 0.62, (width - stageLeft) * 0.86, 300)
   const railButton = height < 720 ? 38 : 44
+  // narrow phones keep the branch as a pin only, so the header never wraps
+  const compactHeader = width < 360
   const radius = width * 0.86
   const openTop = Math.round(height * 0.3)
   const sheetH = height - openTop
@@ -88,10 +91,11 @@ export function MenuScreen({ width, height, menu }: Props) {
   // categories are stacked vertically; switching is a single translate of the whole track
   const trackY = useMotionValue(0)
   const catRef = useRef(0)
-  const switchCategory = (next: number, dir: 1 | -1, land?: 'start' | 'end') => {
+  /** `land`: which dish of the new category to show (its start, its end, or a given index) instead of the remembered one */
+  const switchCategory = (next: number, dir: 1 | -1, land?: 'start' | 'end' | number) => {
     if (next < 0 || next >= categories.length) return false
-    if (land) {
-      const at = land === 'end' ? itemsByCat[next].length - 1 : 0
+    if (land !== undefined) {
+      const at = land === 'end' ? itemsByCat[next].length - 1 : land === 'start' ? 0 : land
       apis.current[next]?.jump(at)
       dishOf.current[next] = at
     }
@@ -148,13 +152,13 @@ export function MenuScreen({ width, height, menu }: Props) {
     }
     center(railRef.current, chipRefs.current[subIndex])
     center(tagRailRef.current, tagRefs.current[groupIndex])
-  }, [subIndex, groupIndex, catIndex])
+  }, [subIndex, groupIndex, catIndex, width])
   useEffect(() => {
     const rail = catRailRef.current
     const btn = rail?.children[catIndex] as HTMLElement | undefined
     if (!rail || !btn) return
     rail.scrollTo({ top: btn.offsetTop - (rail.clientHeight - btn.offsetHeight) / 2, behavior: 'smooth' })
-  }, [catIndex])
+  }, [catIndex, height])
 
   // ---- sheet --------------------------------------------------------------
   const dragControls = useDragControls()
@@ -184,6 +188,18 @@ export function MenuScreen({ width, height, menu }: Props) {
     openRef.current = toOpen
     setOpen(toOpen)
     animate(sheetY, toOpen ? 0 : collapsedRef.current, { type: 'spring', stiffness: 300, damping: 36 })
+  }
+
+  // ---- search: an overlay that can take the carta to any dish ---------------
+  const [searching, setSearching] = useState(false)
+  const goToItem = (id: string) => {
+    const cat = itemsByCat.findIndex((list) => list.some((m) => m.id === id))
+    if (cat < 0) return
+    const at = itemsByCat[cat].findIndex((m) => m.id === id)
+    if (openRef.current) snap(false)
+    markHintSeen()
+    if (cat === catRef.current) apis.current[cat]?.roll(at)
+    else switchCategory(cat, cat > catRef.current ? 1 : -1, at)
   }
 
   const stageY = useTransform(open, (o) => o * shiftRef.current)
@@ -350,14 +366,45 @@ export function MenuScreen({ width, height, menu }: Props) {
           </span>
           <div className="leading-none">
             <p className="font-display text-[19px] font-semibold tracking-tight">{business.name}</p>
-            <p className="mt-0.5 text-[9px] font-bold uppercase tracking-[0.24em] text-cocoa">{business.tagline}</p>
+            <p className="mt-0.5 whitespace-nowrap text-[9px] font-bold uppercase tracking-[0.24em] text-cocoa">{business.tagline}</p>
           </div>
         </div>
-        <p className="flex items-center gap-1.5 rounded-full bg-white/70 px-3 py-2 text-[12px] font-bold text-espresso ring-1 ring-white/80">
-          <MapPin size={14} strokeWidth={2.4} aria-hidden />
-          {business.branch}
-        </p>
+        <div className="flex items-center gap-2">
+          <p
+            aria-label={`Sede ${business.branch}`}
+            className={`flex min-h-11 items-center gap-1.5 whitespace-nowrap rounded-full bg-white/70 text-[12px] font-bold text-espresso ring-1 ring-white/80 ${
+              compactHeader ? 'w-11 justify-center' : 'px-3'
+            }`}
+          >
+            <MapPin size={14} strokeWidth={2.4} aria-hidden />
+            {!compactHeader && <span aria-hidden>{business.branch}</span>}
+          </p>
+          <motion.button
+            type="button"
+            aria-label="Buscar en la carta"
+            aria-haspopup="dialog"
+            whileTap={{ scale: 0.9 }}
+            onClick={() => setSearching(true)}
+            className="grid size-11 place-items-center rounded-full bg-espresso text-cream shadow-[0_6px_14px_-6px_rgba(42,26,18,.6)]"
+          >
+            <Search size={19} strokeWidth={2.4} aria-hidden />
+          </motion.button>
+        </div>
       </header>
+
+      <AnimatePresence>
+        {searching && (
+          <SearchOverlay
+            key="search"
+            menu={menu}
+            onClose={() => setSearching(false)}
+            onSelect={(picked) => {
+              setSearching(false)
+              goToItem(picked.id)
+            }}
+          />
+        )}
+      </AnimatePresence>
 
       {/* category name over its subcategories: centred, as wide as the screen allows; carets get their own room */}
       <motion.nav
