@@ -29,14 +29,15 @@ for (const slug of demos) {
 
   const menu = JSON.parse(readFileSync(resolve(themesDir, slug, 'menu.json'), 'utf8'))
   const theme = JSON.parse(readFileSync(resolve(themesDir, slug, 'theme.json'), 'utf8'))
-  cards.push({ slug, menu, theme })
+  const business = JSON.parse(readFileSync(resolve(themesDir, slug, 'business.json'), 'utf8'))
+  cards.push({ slug, menu, theme, business })
 }
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
 const sorted = (rows) => [...rows].sort((a, b) => a.sortOrder - b.sortOrder)
 
-const card = ({ slug, menu, theme }) => {
-  const { name, tagline } = menu.business
+const card = ({ slug, menu, theme, business }) => {
+  const { name, tagline } = business
   const c = theme.colors
   const categories = sorted(menu.categories)
   return `

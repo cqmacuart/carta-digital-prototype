@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "tenantId": "660c6360-3b10-4ac6-b56f-f3e5fe8e9a78",
+  "name": "Nami",
+  "tagline": "sushi bar",
+  "kind": "sushi-bar",
+  "legal": {
+    "name": null,
+    "taxId": null,
+    "dataPolicyUrl": null
+  },
+  "contact": {
+    "phone": null,
+    "whatsapp": null,
+    "email": null,
+    "website": null
+  },
+  "social": {
+    "instagram": null,
+    "facebook": null,
+    "tiktok": null
+  },
+  "payments": [
+    "efectivo",
+    "tarjeta",
+    "nequi",
+    "daviplata"
+  ],
+  "locale": "es-CO",
+  "currency": "COP",
+  "timezone": "America/Bogota",
+  "defaultBranchId": "centro",
+  "branches": [
+    {
+      "id": "centro",
+      "name": "Centro",
+      "address": "Calle 1 # 1-01",
+      "city": "Pamplona",
+      "region": "Norte de Santander",
+      "country": "CO",
+      "geo": null,
+      "mapsUrl": null,
+      "phone": null,
+      "whatsapp": null,
+      "services": [
+        "mesa",
+        "para-llevar",
+        "domicilio"
+      ],
+      "hours": [
+        {
+          "day": 2,
+          "open": "12:00",
+          "close": "15:00"
+        },
+        {
+          "day": 3,
+          "open": "12:00",
+          "close": "15:00"
+        },
+        {
+          "day": 4,
+          "open": "12:00",
+          "close": "15:00"
+        },
+        {
+          "day": 5,
+          "open": "12:00",
+          "close": "15:00"
+        },
+        {
+          "day": 6,
+          "open": "12:00",
+          "close": "15:00"
+        },
+        {
+          "day": 0,
+          "open": "12:00",
+          "close": "15:00"
+        },
+        {
+          "day": 2,
+          "open": "18:00",
+          "close": "22:30"
+        },
+        {
+          "day": 3,
+          "open": "18:00",
+          "close": "22:30"
+        },
+        {
+          "day": 4,
+          "open": "18:00",
+          "close": "22:30"
+        },
+        {
+          "day": 5,
+          "open": "18:00",
+          "close": "22:30"
+        },
+        {
+          "day": 6,
+          "open": "18:00",
+          "close": "22:30"
+        },
+        {
+          "day": 0,
+          "open": "18:00",
+          "close": "22:30"
+        }
+      ]
+    }
+  ]
+}

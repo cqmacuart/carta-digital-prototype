@@ -22,10 +22,12 @@ GitHub Pages: https://cqmacuart.github.io/carta-digital-prototype/ (portada) y u
 ## Un build por cliente
 
 El código no tiene datos de ningún negocio: cada carta sale de `themes/<slug>/`. Cómo agregar un negocio: `themes/README.md` (local, fuera de git).
-- `menu.json`: la "base de datos" (esquema en `src/models/db.ts`).
+- `business.json`: el negocio (esquema en `src/models/business.ts`): `tenantId`, nombre, lema, tipo, datos legales (razón social, NIT, política de datos), contacto, redes, medios de pago, sedes con dirección, coordenadas, servicios y horarios. Sale en el encabezado y como JSON-LD de Schema.org en el `<head>`.
+- `menu.json`: la carta (esquema en `src/models/db.ts`, `schemaVersion` 2), sin datos del negocio.
+- **`tenantId`**: UUID inmutable del negocio (no es el slug: el slug es la carpeta y puede cambiar). Va en los tres JSON y el build falla si no coinciden. En V4 es `tenant_id`. Negocio nuevo: `npm run new -- <slug> [--from demo]`, que copia una plantilla con un `tenantId` nuevo; nunca copiar una carpeta a mano.
 - `assets/`: fotos propias del negocio (`image.source: "local"`). El plugin las recorta por punto focal y genera las 4 versiones de `src/lib/media.ts` en `media/` con sharp (caché en `node_modules/.carta-media/`). Cómo usarlas: `themes/<slug>/assets/README.md`.
 - `theme.json`: título, fuentes, tokens de color (pisan los `--color-*` de `@theme` en `src/index.css`) y `proposal`: con texto, el build lleva `noindex` y el aviso "Propuesta de diseño para …"; `null` cuando el cliente paga.
-- `scripts/carta.mjs` elige el cliente (`CARTA_CLIENT`) y el plugin `carta-client` de `vite.config.ts` sirve/emite `data/menu.json` y arma el `<head>`.
+- `scripts/carta.mjs` elige el cliente (`CARTA_CLIENT`) y el plugin `carta-client` de `vite.config.ts` valida los tres JSON, sirve/emite `data/business.json` y `data/menu.json` y arma el `<head>`.
 - `base: './'`: el mismo build funciona en la raíz de un dominio o en una subcarpeta (GitHub Pages, Hostinger).
 - Demos ficticias, versionadas y públicas (`themes/demo*/`, sin direcciones ni teléfonos reales): `demo` = Terra (café), `demo-sushi` = Nami (sushi bar), `demo-rapidas` = Barrio (burgers y perros) y `demo-pizzeria` = Forno (pizzas, panzerottis, pastas). Las demás carpetas de `themes/` quedan fuera de git.
 
@@ -41,7 +43,9 @@ Vite 8 · React 19 · TypeScript · **Motion** (`motion/react`) · Tailwind CSS 
 
 | Ruta | Qué es |
 |---|---|
-| `themes/<slug>/menu.json` | **La "base de datos"** de cada negocio: tablas normalizadas (business + branches con horarios, categories, subcategories, groups, tags, toppings, modifiers, products). Se sirve como `data/menu.json`. |
+| `themes/<slug>/business.json` | El negocio y sus sedes con horarios (`src/models/business.ts`). Se sirve como `data/business.json`. |
+| `themes/<slug>/menu.json` | **La carta** de cada negocio: tablas normalizadas (categories, subcategories, groups, tags, toppings, modifiers, products). Se sirve como `data/menu.json`. |
+| `src/data/repository.ts` | `fetchCarta()` carga los dos y verifica versión y `tenantId`; con API, solo cambia esto. |
 | `vite.config.ts` · `scripts/carta.mjs` | Build por cliente (ver arriba). |
 | `src/models/db.ts` | Interfaces de persistencia (lo que guardaría una BBDD). |
 | `src/data/repository.ts` | `fetchMenu()` — hoy hace `fetch` del JSON; el día que haya API solo cambia esto. |
@@ -100,7 +104,7 @@ Vite 8 · React 19 · TypeScript · **Motion** (`motion/react`) · Tailwind CSS 
 ## Pendiente conocido
 
 - Fotos de referencia de Unsplash: reemplazar por fotos reales del negocio en `themes/<slug>/assets/` (`source: "local"`).
-- Horarios de las sedes son de ejemplo, también en `themes/la-sablee/menu.json`: ponerlos reales.
+- Horarios de las sedes son de ejemplo, también en `themes/la-sablee/business.json`: ponerlos reales.
 - Roadmap (V1 carta → V2 pedido por WhatsApp → V3 manager → V4 multitenant) y pendientes: `BACKLOG.md`.
 - Contenido de demo: nombres y precios vienen de la carta impresa, pero descripciones, ingredientes, detalles de variantes, notas y las adiciones (shot de espresso, huevo, aguacate, helado) fueron redactados para que la carta se vea pareja. Validarlos con el negocio. Todo producto debería tener descripción de 2–3 frases, 4–7 ingredientes y detalle en sus variantes.
 - Swipe y cambio de categoría ~40–48 fps con CPU 4× (las capas de navegación sobre el fondo en movimiento cuestan); candidato a optimizar.

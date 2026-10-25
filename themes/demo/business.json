@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "tenantId": "0343c8b4-5f3e-43c5-8a7b-fb55d6bc1eb3",
+  "name": "Terra",
+  "tagline": "café · cocina",
+  "kind": "cafeteria",
+  "legal": {
+    "name": null,
+    "taxId": null,
+    "dataPolicyUrl": null
+  },
+  "contact": {
+    "phone": null,
+    "whatsapp": null,
+    "email": null,
+    "website": null
+  },
+  "social": {
+    "instagram": null,
+    "facebook": null,
+    "tiktok": null
+  },
+  "payments": [
+    "efectivo",
+    "tarjeta",
+    "nequi",
+    "daviplata"
+  ],
+  "locale": "es-CO",
+  "currency": "COP",
+  "timezone": "America/Bogota",
+  "defaultBranchId": "centro",
+  "branches": [
+    {
+      "id": "centro",
+      "name": "Centro",
+      "address": "Calle 1 # 1-01",
+      "city": "Pamplona",
+      "region": "Norte de Santander",
+      "country": "CO",
+      "geo": null,
+      "mapsUrl": null,
+      "phone": null,
+      "whatsapp": null,
+      "services": [
+        "mesa",
+        "para-llevar",
+        "domicilio"
+      ],
+      "hours": [
+        {
+          "day": 1,
+          "open": "07:00",
+          "close": "21:00"
+        },
+        {
+          "day": 2,
+          "open": "07:00",
+          "close": "21:00"
+        },
+        {
+          "day": 3,
+          "open": "07:00",
+          "close": "21:00"
+        },
+        {
+          "day": 4,
+          "open": "07:00",
+          "close": "21:00"
+        },
+        {
+          "day": 5,
+          "open": "07:00",
+          "close": "21:00"
+        },
+        {
+          "day": 6,
+          "open": "07:00",
+          "close": "21:00"
+        },
+        {
+          "day": 0,
+          "open": "08:00",
+          "close": "19:00"
+        }
+      ]
+    },
+    {
+      "id": "norte",
+      "name": "Norte",
+      "address": "Avenida 2 # 2-02",
+      "city": "Pamplona",
+      "region": "Norte de Santander",
+      "country": "CO",
+      "geo": null,
+      "mapsUrl": null,
+      "phone": null,
+      "whatsapp": null,
+      "services": [
+        "mesa",
+        "para-llevar",
+        "domicilio"
+      ],
+      "hours": [
+        {
+          "day": 1,
+          "open": "06:30",
+          "close": "20:00"
+        },
+        {
+          "day": 2,
+          "open": "06:30",
+          "close": "20:00"
+        },
+        {
+          "day": 3,
+          "open": "06:30",
+          "close": "20:00"
+        },
+        {
+          "day": 4,
+          "open": "06:30",
+          "close": "20:00"
+        },
+        {
+          "day": 5,
+          "open": "06:30",
+          "close": "20:00"
+        },
+        {
+          "day": 6,
+          "open": "06:30",
+          "close": "20:00"
+        },
+        {
+          "day": 0,
+          "open": "07:30",
+          "close": "14:00"
+        }
+      ]
+    }
+  ]
+}

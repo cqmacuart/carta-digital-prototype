@@ -1,5 +1,6 @@
 import { photo } from '../lib/format'
 import { ICONS } from '../lib/icons'
+import type { BusinessProfile } from '../models/business'
 import type { MenuDatabase } from '../models/db'
 import type { Badge, Category, Menu, MenuItem } from '../types'
 
@@ -14,7 +15,7 @@ const luminance = (hex: string) => {
 const bySort =<T extends { sortOrder: number }>(a: T, b: T) => a.sortOrder - b.sortOrder
 
 /** Database rows → what the screens render (sorted, joined, icons resolved, image URLs built). */
-export function toMenu(db: MenuDatabase): Menu {
+export function toMenu(db: MenuDatabase, business: BusinessProfile): Menu {
   const categories: Category[] = [...db.categories].sort(bySort).map((c) => ({
     id: c.id,
     name: c.name,
@@ -66,14 +67,14 @@ export function toMenu(db: MenuDatabase): Menu {
       ...photo(p.image),
     }))
 
-  const branch = db.business.branches.find((b) => b.id === db.business.branchId)
+  const branch = business.branches.find((b) => b.id === business.defaultBranchId)
   return {
     business: {
-      name: db.business.name,
-      tagline: db.business.tagline,
+      name: business.name,
+      tagline: business.tagline,
       branch: branch?.name ?? '',
       hours: branch?.hours ?? [],
-      timezone: branch?.timezone ?? 'America/Bogota',
+      timezone: branch?.timezone ?? business.timezone,
     },
     categories,
     items,

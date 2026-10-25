@@ -1,7 +1,9 @@
+import type { TenantId } from './business.ts'
+
 /**
  * Persistence models: the menu as a database would store it.
  * Normalised like tables (one entity per array, relations by id, explicit sort order),
- * so `public/data/*.json` can later be swapped for an API or a real database.
+ * so themes/<slug>/menu.json can later be swapped for an API or a real database.
  */
 
 export type ID = string
@@ -82,11 +84,13 @@ export type IconKey =
 
 export type TagId = 'casa' | 'nuevo' | 'vegano' | 'vegetariano' | 'sin-gluten' | 'picante' | 'compartir' | 'crudo' | 'tempura'
 
+/** The menu (themes/<slug>/menu.json). Who sells it lives in business.json (models/business.ts). */
 export interface MenuDatabase {
-  schemaVersion: 1
+  schemaVersion: 2
+  /** must match business.json and theme.json; the build checks it */
+  tenantId: TenantId
   /** ISO date of the last export */
   updatedAt: string
-  business: Business
   categories: Category[]
   subcategories: Subcategory[]
   groups: Group[]
@@ -94,40 +98,6 @@ export interface MenuDatabase {
   toppings: Topping[]
   modifiers: Modifier[]
   products: Product[]
-}
-
-export interface Business {
-  id: ID
-  name: string
-  tagline: string
-  currency: 'COP'
-  locale: 'es-CO'
-  /** the branch this menu is served at */
-  branchId: ID
-  branches: Branch[]
-  contact: {
-    deliveryPhone: string | null
-    instagram: string | null
-  }
-}
-
-export interface Branch {
-  id: ID
-  name: string
-  address: string
-  city: string
-  /** IANA zone the hours are written in */
-  timezone: string
-  /** one row per opening span; a day without rows is closed */
-  hours: OpeningHours[]
-}
-
-export interface OpeningHours {
-  /** 0 = domingo … 6 = sábado */
-  day: number
-  /** 24h "HH:MM"; `close` may be after midnight ("01:00") */
-  open: string
-  close: string
 }
 
 /** Level 1 — the rail */

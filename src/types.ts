@@ -1,5 +1,6 @@
 import type { LucideIcon } from 'lucide-react'
-import type { OpeningHours, TagId } from './models/db'
+import type { OpeningHours } from './models/business'
+import type { TagId } from './models/db'
 
 // View models: what the screens render, built from the database by src/data/adapter.ts.
 

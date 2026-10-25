@@ -1,4 +1,4 @@
-import type { OpeningHours } from '../models/db'
+import type { OpeningHours } from '../models/business'
 
 export type OpenStatus = { open: boolean; label: string }
 

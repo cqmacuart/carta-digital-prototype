@@ -1,64 +1,7 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
+  "tenantId": "54a8f830-f974-4fb2-8838-3a0067de3d78",
   "updatedAt": "2026-10-25",
-  "business": {
-    "id": "forno",
-    "name": "Forno",
-    "tagline": "pizzería",
-    "currency": "COP",
-    "locale": "es-CO",
-    "branchId": "centro",
-    "branches": [
-      {
-        "id": "centro",
-        "name": "Centro",
-        "address": "Calle 2 # 2-02",
-        "city": "Pamplona",
-        "timezone": "America/Bogota",
-        "hours": [
-          {
-            "day": 1,
-            "open": "12:00",
-            "close": "22:00"
-          },
-          {
-            "day": 2,
-            "open": "12:00",
-            "close": "22:00"
-          },
-          {
-            "day": 3,
-            "open": "12:00",
-            "close": "22:00"
-          },
-          {
-            "day": 4,
-            "open": "12:00",
-            "close": "22:00"
-          },
-          {
-            "day": 0,
-            "open": "12:00",
-            "close": "22:00"
-          },
-          {
-            "day": 5,
-            "open": "12:00",
-            "close": "23:30"
-          },
-          {
-            "day": 6,
-            "open": "12:00",
-            "close": "23:30"
-          }
-        ]
-      }
-    ],
-    "contact": {
-      "deliveryPhone": null,
-      "instagram": null
-    }
-  },
   "categories": [
     {
       "id": "pizzas",

@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "tenantId": "d296fbdc-fe29-43ea-b894-13cf00d2581b",
+  "name": "Barrio",
+  "tagline": "burgers & perros",
+  "kind": "comidas-rapidas",
+  "legal": {
+    "name": null,
+    "taxId": null,
+    "dataPolicyUrl": null
+  },
+  "contact": {
+    "phone": null,
+    "whatsapp": null,
+    "email": null,
+    "website": null
+  },
+  "social": {
+    "instagram": null,
+    "facebook": null,
+    "tiktok": null
+  },
+  "payments": [
+    "efectivo",
+    "tarjeta",
+    "nequi",
+    "daviplata"
+  ],
+  "locale": "es-CO",
+  "currency": "COP",
+  "timezone": "America/Bogota",
+  "defaultBranchId": "centro",
+  "branches": [
+    {
+      "id": "centro",
+      "name": "Centro",
+      "address": "Carrera 1 # 1-01",
+      "city": "Pamplona",
+      "region": "Norte de Santander",
+      "country": "CO",
+      "geo": null,
+      "mapsUrl": null,
+      "phone": null,
+      "whatsapp": null,
+      "services": [
+        "mesa",
+        "para-llevar",
+        "domicilio"
+      ],
+      "hours": [
+        {
+          "day": 0,
+          "open": "16:00",
+          "close": "23:00"
+        },
+        {
+          "day": 1,
+          "open": "16:00",
+          "close": "23:00"
+        },
+        {
+          "day": 2,
+          "open": "16:00",
+          "close": "23:00"
+        },
+        {
+          "day": 3,
+          "open": "16:00",
+          "close": "23:00"
+        },
+        {
+          "day": 4,
+          "open": "16:00",
+          "close": "23:00"
+        },
+        {
+          "day": 5,
+          "open": "16:00",
+          "close": "01:00"
+        },
+        {
+          "day": 6,
+          "open": "16:00",
+          "close": "01:00"
+        }
+      ]
+    }
+  ]
+}

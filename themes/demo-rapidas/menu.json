@@ -1,64 +1,7 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
+  "tenantId": "d296fbdc-fe29-43ea-b894-13cf00d2581b",
   "updatedAt": "2026-10-25",
-  "business": {
-    "id": "barrio",
-    "name": "Barrio",
-    "tagline": "burgers & perros",
-    "currency": "COP",
-    "locale": "es-CO",
-    "branchId": "centro",
-    "branches": [
-      {
-        "id": "centro",
-        "name": "Centro",
-        "address": "Carrera 1 # 1-01",
-        "city": "Pamplona",
-        "timezone": "America/Bogota",
-        "hours": [
-          {
-            "day": 0,
-            "open": "16:00",
-            "close": "23:00"
-          },
-          {
-            "day": 1,
-            "open": "16:00",
-            "close": "23:00"
-          },
-          {
-            "day": 2,
-            "open": "16:00",
-            "close": "23:00"
-          },
-          {
-            "day": 3,
-            "open": "16:00",
-            "close": "23:00"
-          },
-          {
-            "day": 4,
-            "open": "16:00",
-            "close": "23:00"
-          },
-          {
-            "day": 5,
-            "open": "16:00",
-            "close": "01:00"
-          },
-          {
-            "day": 6,
-            "open": "16:00",
-            "close": "01:00"
-          }
-        ]
-      }
-    ],
-    "contact": {
-      "deliveryPhone": null,
-      "instagram": null
-    }
-  },
   "categories": [
     {
       "id": "hamburguesas",

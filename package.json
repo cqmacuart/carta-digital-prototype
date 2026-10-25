@@ -8,7 +8,8 @@
     "build": "tsc -b && node scripts/carta.mjs build",
     "lint": "oxlint",
     "preview": "node scripts/carta.mjs preview",
-    "pages": "node scripts/pages.mjs"
+    "pages": "node scripts/pages.mjs",
+    "new": "node scripts/carta.mjs new"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",

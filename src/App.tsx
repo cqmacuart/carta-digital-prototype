@@ -2,7 +2,7 @@ import { AnimatePresence, MotionConfig, motion } from 'motion/react'
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { MenuScreen } from './components/MenuScreen'
 import { toMenu } from './data/adapter'
-import { fetchMenu } from './data/repository'
+import { fetchCarta } from './data/repository'
 import type { Menu } from './types'
 
 function useSize<T extends HTMLElement>() {
@@ -19,14 +19,14 @@ function useSize<T extends HTMLElement>() {
 
 type Load = { status: 'loading' } | { status: 'ready'; menu: Menu } | { status: 'error'; message: string }
 
-/** Loads the menu from the data layer (a JSON "database" for now). */
+/** Loads the business and its menu from the data layer (JSON "database" files for now). */
 function useMenu() {
   const [load, setLoad] = useState<Load>({ status: 'loading' })
   const [attempt, setAttempt] = useState(0)
   useEffect(() => {
     const ctrl = new AbortController()
-    fetchMenu('menu', ctrl.signal)
-      .then((db) => setLoad({ status: 'ready', menu: toMenu(db) }))
+    fetchCarta(ctrl.signal)
+      .then(({ menu, business }) => setLoad({ status: 'ready', menu: toMenu(menu, business) }))
       .catch((e: unknown) => {
         if (!ctrl.signal.aborted) setLoad({ status: 'error', message: e instanceof Error ? e.message : String(e) })
       })

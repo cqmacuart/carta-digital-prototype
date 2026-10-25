@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import type { OpeningHours } from '../models/db'
+import type { OpeningHours } from '../models/business'
 import { openStatus } from './hours'
 
 /** Open/closed label for the branch, refreshed at the start of every minute. */
