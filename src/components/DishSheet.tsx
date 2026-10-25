@@ -1,6 +1,6 @@
 import { AnimatePresence, motion, useTransform, type DragControls, type MotionValue, type Variants } from 'motion/react'
 import { ChevronUp, Info } from 'lucide-react'
-import { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react'
 import { money } from '../lib/format'
 import type { TagId } from '../models/db'
 import type { Badge, Category, MenuItem } from '../types'
@@ -17,6 +17,8 @@ type Props = {
   onToggle: () => void
   /** Height of the always-visible part, so the collapsed sheet hugs its content. */
   onPeekHeight: (h: number) => void
+  /** V2: the dish's choices made tappable, replacing the read-only variants, toppings, add-ons and ingredients */
+  order?: ReactNode
 }
 
 type Swap = { dir: number; axis: 'x' | 'y' }
@@ -130,7 +132,7 @@ function TagChip({ tag: { id, label, icon: Icon }, index }: { tag: Badge; index:
 /** Soft chip tinted from the sheet's own text colour, so it works on light and dark sheets alike. */
 const chip = 'rounded-full bg-current/10 ring-1 ring-current/15'
 
-export function DishSheet({ item, category, direction, axis, expanded, open, dragControls, onToggle, onPeekHeight }: Props) {
+export function DishSheet({ item, category, direction, axis, expanded, open, dragControls, onToggle, onPeekHeight, order }: Props) {
   const bodyOpacity = useTransform(open, [0.05, 0.45], [0, 1])
   const caret = useTransform(open, [0, 1], [0, 180])
   // the open sheet already lists the variants under "Elige"
@@ -215,8 +217,8 @@ export function DishSheet({ item, category, direction, axis, expanded, open, dra
 
   return (
     <div className="flex h-full flex-col">
-      {/* how many versions the dish comes in, sitting on the sheet's top edge; tapping it opens the list */}
-      <div className={`absolute right-6 top-0 z-10 -translate-y-1/2 ${expanded ? 'pointer-events-none' : ''}`}>
+      {/* how many versions the dish comes in, inside the sheet on the caret's row; tapping it opens the list */}
+      <div className={`absolute right-5 top-0 z-10 ${expanded ? 'pointer-events-none' : ''}`}>
         <motion.div style={{ opacity: badgeOpacity }}>
           <AnimatePresence initial={false} mode="popLayout">
             {variantCount > 1 && (
@@ -263,8 +265,23 @@ export function DishSheet({ item, category, direction, axis, expanded, open, dra
           aria-label={expanded ? 'Ocultar descripción' : 'Ver descripción'}
           className="mx-auto flex h-11 w-16 items-center justify-center"
         >
-          <motion.span style={{ rotate: caret }} className="grid h-6 w-10 place-items-center rounded-full bg-current/12">
-            <ChevronUp size={18} strokeWidth={2.6} aria-hidden />
+          <motion.span style={{ rotate: caret }} className="relative grid h-6 w-10 place-items-center rounded-full bg-current/12">
+            {/* collapsed, the tab breathes: a soft ring goes out and the chevron nods up, so the sheet reads as pullable */}
+            {!expanded && (
+              <motion.span
+                aria-hidden
+                className="absolute inset-0 rounded-full bg-current/25"
+                animate={{ scale: [1, 1.45], opacity: [0.55, 0] }}
+                transition={{ duration: 1.4, repeat: Infinity, repeatDelay: 1, ease: 'easeOut' }}
+              />
+            )}
+            <motion.span
+              className="relative grid place-items-center"
+              animate={expanded ? { y: 0 } : { y: [0, -3, 0, -1.5, 0] }}
+              transition={expanded ? { duration: 0.2 } : { duration: 0.9, repeat: Infinity, repeatDelay: 1.5, ease: 'easeInOut' }}
+            >
+              <ChevronUp size={18} strokeWidth={2.6} aria-hidden />
+            </motion.span>
           </motion.span>
         </motion.button>
         <div className="relative pb-5">
@@ -317,17 +334,17 @@ export function DishSheet({ item, category, direction, axis, expanded, open, dra
           if (!overflows || e.pointerType === 'mouse') dragControls.start(e)
           else downEvent.current = e.nativeEvent
         }}
-        className={`no-scrollbar min-h-0 flex-1 overflow-y-auto overscroll-contain px-6 pb-[max(24px,env(safe-area-inset-bottom))] ${
+        className={`no-scrollbar min-h-0 flex-1 overflow-y-auto overscroll-contain px-6 ${order ? '' : 'pb-[max(24px,env(safe-area-inset-bottom))]'} ${
           overflows ? 'touch-pan-y' : 'touch-none'
         }`}
       >
-        <motion.div key={item.id} variants={list} initial="hidden" animate={expanded ? 'show' : 'hidden'}>
+        <motion.div key={item.id} variants={list} initial="hidden" animate={expanded ? 'show' : 'hidden'} className={order ? 'flex min-h-full flex-col' : undefined}>
           <motion.div variants={rise} className="h-px bg-current/15" />
           <motion.p variants={rise} className="pt-5 text-[16px] leading-relaxed opacity-90">
             {item.description}
           </motion.p>
 
-          {item.variants && (
+          {!order && item.variants && (
             <motion.section variants={rise} className="mt-6">
               <h2 className="mb-1 font-display text-lg font-semibold">Elige</h2>
               <ul className="divide-y divide-current/10">
@@ -346,22 +363,22 @@ export function DishSheet({ item, category, direction, axis, expanded, open, dra
             </motion.section>
           )}
 
-          {item.toppings && (
+          {!order && item.toppings && (
             <motion.section variants={rise} className="mt-6">
               <h2 className="mb-2.5 font-display text-lg font-semibold">
                 Incluye {item.toppings.count} {item.toppings.count === 1 ? 'topping' : 'toppings'}
               </h2>
               <ul className="flex flex-wrap gap-2">
                 {item.toppings.options.map((t) => (
-                  <li key={t} className={`px-3 py-1.5 text-[13px] font-semibold ${chip}`}>
-                    {t}
+                  <li key={t.id} className={`px-3 py-1.5 text-[13px] font-semibold ${chip}`}>
+                    {t.name}
                   </li>
                 ))}
               </ul>
             </motion.section>
           )}
 
-          {item.modifiers && (
+          {!order && item.modifiers && (
             <motion.section variants={rise} className="mt-6">
               <h2 className="mb-1 font-display text-lg font-semibold">Adiciones</h2>
               <ul className="divide-y divide-current/10">
@@ -377,7 +394,7 @@ export function DishSheet({ item, category, direction, axis, expanded, open, dra
             </motion.section>
           )}
 
-          {item.ingredients && (
+          {!order && item.ingredients && (
             <motion.section variants={rise} className="mt-6">
               <h2 className="mb-2.5 font-display text-lg font-semibold">Ingredientes</h2>
               <ul className="flex flex-wrap gap-2">
@@ -398,6 +415,12 @@ export function DishSheet({ item, category, direction, axis, expanded, open, dra
               <Info size={17} strokeWidth={2.4} aria-hidden className="mt-px shrink-0" style={accent} />
               {item.note}
             </motion.p>
+          )}
+
+          {order && (
+            <motion.div variants={rise} className="flex flex-1 flex-col">
+              {order}
+            </motion.div>
           )}
         </motion.div>
       </motion.div>

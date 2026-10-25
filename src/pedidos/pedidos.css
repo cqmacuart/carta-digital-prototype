@@ -1,0 +1,4 @@
+/* V2 only: its utilities ship with the pedidos chunk, so a carta-only build's CSS stays as it was (src/index.css skips this folder) */
+@reference "../index.css";
+@import "tailwindcss/utilities.css" layer(utilities) source(none);
+@source "./*.tsx";

@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "tenantId": "54a8f830-f974-4fb2-8838-3a0067de3d78",
   "updatedAt": "2026-10-25",
   "categories": [
@@ -253,9 +253,18 @@
         }
       ],
       "ingredients": [
-        "Masa de 48 h",
-        "Salsa de tomate",
-        "Mozzarella",
+        {
+          "name": "Masa de 48 h",
+          "removable": false
+        },
+        {
+          "name": "Salsa de tomate",
+          "removable": false
+        },
+        {
+          "name": "Mozzarella",
+          "removable": false
+        },
         "Albahaca",
         "Aceite de oliva"
       ],
@@ -321,10 +330,16 @@
         }
       ],
       "ingredients": [
-        "Masa de 48 h",
+        {
+          "name": "Masa de 48 h",
+          "removable": false
+        },
         "Salsa de tomate",
         "Mozzarella",
-        "Pepperoni"
+        {
+          "name": "Pepperoni",
+          "removable": false
+        }
       ],
       "includedToppings": 0,
       "modifierIds": [
@@ -386,7 +401,10 @@
         }
       ],
       "ingredients": [
-        "Masa de 48 h",
+        {
+          "name": "Masa de 48 h",
+          "removable": false
+        },
         "Salsa de tomate",
         "Mozzarella",
         "Jamón",
@@ -452,7 +470,10 @@
         }
       ],
       "ingredients": [
-        "Masa de 48 h",
+        {
+          "name": "Masa de 48 h",
+          "removable": false
+        },
         "Salsa de tomate",
         "Mozzarella",
         "Pollo",
@@ -518,7 +539,10 @@
         }
       ],
       "ingredients": [
-        "Masa de 48 h",
+        {
+          "name": "Masa de 48 h",
+          "removable": false
+        },
         "Salsa de tomate",
         "Mozzarella",
         "Pimentón",
@@ -587,8 +611,14 @@
         }
       ],
       "ingredients": [
-        "Masa de 48 h",
-        "Mozzarella",
+        {
+          "name": "Masa de 48 h",
+          "removable": false
+        },
+        {
+          "name": "Mozzarella",
+          "removable": false
+        },
         "Parmesano",
         "Queso azul",
         "Queso costeño",
@@ -651,7 +681,10 @@
         }
       ],
       "ingredients": [
-        "Masa de 48 h",
+        {
+          "name": "Masa de 48 h",
+          "removable": false
+        },
         "Salami",
         "Prosciutto",
         "Burrata",
@@ -715,7 +748,10 @@
         }
       ],
       "ingredients": [
-        "Masa de 48 h",
+        {
+          "name": "Masa de 48 h",
+          "removable": false
+        },
         "Pepperoni",
         "Salami",
         "Carne molida",
@@ -782,8 +818,14 @@
         }
       ],
       "ingredients": [
-        "Masa de 48 h",
-        "Salsa BBQ",
+        {
+          "name": "Masa de 48 h",
+          "removable": false
+        },
+        {
+          "name": "Salsa BBQ",
+          "removable": false
+        },
         "Mozzarella",
         "Pollo",
         "Tocineta",
@@ -849,7 +891,10 @@
         }
       ],
       "ingredients": [
-        "Masa de 48 h",
+        {
+          "name": "Masa de 48 h",
+          "removable": false
+        },
         "Carne molida",
         "Jalapeños",
         "Maíz",
@@ -894,7 +939,10 @@
       "price": 9000,
       "variants": [],
       "ingredients": [
-        "Masa de pizza",
+        {
+          "name": "Masa de pizza",
+          "removable": false
+        },
         "Jamón",
         "Piña",
         "Mozzarella"
@@ -929,7 +977,10 @@
       "price": 9500,
       "variants": [],
       "ingredients": [
-        "Masa de pizza",
+        {
+          "name": "Masa de pizza",
+          "removable": false
+        },
         "Pollo",
         "Champiñones",
         "Mozzarella"
@@ -964,7 +1015,10 @@
       "price": 10500,
       "variants": [],
       "ingredients": [
-        "Masa de pizza",
+        {
+          "name": "Masa de pizza",
+          "removable": false
+        },
         "Pepperoni",
         "Salami",
         "Carne molida",
@@ -1000,8 +1054,14 @@
       "price": 8000,
       "variants": [],
       "ingredients": [
-        "Masa de pizza",
-        "Bocadillo veleño",
+        {
+          "name": "Masa de pizza",
+          "removable": false
+        },
+        {
+          "name": "Bocadillo veleño",
+          "removable": false
+        },
         "Queso costeño",
         "Azúcar"
       ],
@@ -1036,7 +1096,10 @@
       "price": 22000,
       "variants": [],
       "ingredients": [
-        "Masa de pizza",
+        {
+          "name": "Masa de pizza",
+          "removable": false
+        },
         "Jamón",
         "Ricotta",
         "Mozzarella",
@@ -1073,7 +1136,10 @@
       "price": 25000,
       "variants": [],
       "ingredients": [
-        "Masa de pizza",
+        {
+          "name": "Masa de pizza",
+          "removable": false
+        },
         "Pepperoni",
         "Salami",
         "Tocineta",
@@ -1129,8 +1195,14 @@
         }
       ],
       "ingredients": [
-        "Pasta",
-        "Bechamel",
+        {
+          "name": "Pasta",
+          "removable": false
+        },
+        {
+          "name": "Bechamel",
+          "removable": false
+        },
         "Mozzarella",
         "Parmesano"
       ],
@@ -1166,8 +1238,14 @@
       "price": 22000,
       "variants": [],
       "ingredients": [
-        "Spaghetti",
-        "Carne de res",
+        {
+          "name": "Spaghetti",
+          "removable": false
+        },
+        {
+          "name": "Carne de res",
+          "removable": false
+        },
         "Cerdo",
         "Tomate",
         "Parmesano"
@@ -1202,8 +1280,14 @@
       "price": 23000,
       "variants": [],
       "ingredients": [
-        "Fettuccine",
-        "Crema",
+        {
+          "name": "Fettuccine",
+          "removable": false
+        },
+        {
+          "name": "Crema",
+          "removable": false
+        },
         "Parmesano",
         "Pollo",
         "Perejil"
@@ -1239,8 +1323,14 @@
       "price": 23000,
       "variants": [],
       "ingredients": [
-        "Spaghetti",
-        "Huevo",
+        {
+          "name": "Spaghetti",
+          "removable": false
+        },
+        {
+          "name": "Huevo",
+          "removable": false
+        },
         "Tocineta",
         "Pecorino",
         "Pimienta"
@@ -1288,9 +1378,15 @@
         }
       ],
       "ingredients": [
-        "Baguette",
+        {
+          "name": "Baguette",
+          "removable": false
+        },
         "Mantequilla",
-        "Ajo",
+        {
+          "name": "Ajo",
+          "removable": false
+        },
         "Perejil"
       ],
       "includedToppings": 0,
@@ -1323,8 +1419,14 @@
       "price": 14000,
       "variants": [],
       "ingredients": [
-        "Mozzarella",
-        "Apanado",
+        {
+          "name": "Mozzarella",
+          "removable": false
+        },
+        {
+          "name": "Apanado",
+          "removable": false
+        },
         "Salsa de tomate"
       ],
       "includedToppings": 0,
@@ -1370,7 +1472,10 @@
         }
       ],
       "ingredients": [
-        "Alitas de pollo",
+        {
+          "name": "Alitas de pollo",
+          "removable": false
+        },
         "BBQ",
         "Apio",
         "Queso azul"
@@ -1403,8 +1508,14 @@
       "price": 19000,
       "variants": [],
       "ingredients": [
-        "Pizza clásica personal",
-        "Gaseosa personal"
+        {
+          "name": "Pizza clásica personal",
+          "removable": false
+        },
+        {
+          "name": "Gaseosa personal",
+          "removable": false
+        }
       ],
       "includedToppings": 0,
       "modifierIds": [],
@@ -1434,9 +1545,18 @@
       "price": 42000,
       "variants": [],
       "ingredients": [
-        "Pizza clásica mediana",
-        "Pan de ajo",
-        "2 gaseosas"
+        {
+          "name": "Pizza clásica mediana",
+          "removable": false
+        },
+        {
+          "name": "Pan de ajo",
+          "removable": false
+        },
+        {
+          "name": "2 gaseosas",
+          "removable": false
+        }
       ],
       "includedToppings": 0,
       "modifierIds": [],
@@ -1468,9 +1588,18 @@
       "price": 69000,
       "variants": [],
       "ingredients": [
-        "Pizza clásica familiar",
-        "Pan de ajo con queso",
-        "Gaseosa 1,5 L"
+        {
+          "name": "Pizza clásica familiar",
+          "removable": false
+        },
+        {
+          "name": "Pan de ajo con queso",
+          "removable": false
+        },
+        {
+          "name": "Gaseosa 1,5 L",
+          "removable": false
+        }
       ],
       "includedToppings": 0,
       "modifierIds": [],
@@ -1516,7 +1645,10 @@
         }
       ],
       "ingredients": [
-        "Gaseosa"
+        {
+          "name": "Gaseosa",
+          "removable": false
+        }
       ],
       "includedToppings": 0,
       "modifierIds": [],
@@ -1559,7 +1691,10 @@
         }
       ],
       "ingredients": [
-        "Limón",
+        {
+          "name": "Limón",
+          "removable": false
+        },
         "Hielo",
         "Azúcar"
       ],
@@ -1606,7 +1741,10 @@
         }
       ],
       "ingredients": [
-        "Cerveza"
+        {
+          "name": "Cerveza",
+          "removable": false
+        }
       ],
       "includedToppings": 0,
       "modifierIds": [],
@@ -1649,8 +1787,14 @@
         }
       ],
       "ingredients": [
-        "Masa de pizza",
-        "Nutella",
+        {
+          "name": "Masa de pizza",
+          "removable": false
+        },
+        {
+          "name": "Nutella",
+          "removable": false
+        },
         "Fresas",
         "Azúcar glas"
       ],
@@ -1685,10 +1829,22 @@
       "price": 13000,
       "variants": [],
       "ingredients": [
-        "Bizcochos",
-        "Café",
-        "Mascarpone",
-        "Cacao"
+        {
+          "name": "Bizcochos",
+          "removable": false
+        },
+        {
+          "name": "Café",
+          "removable": false
+        },
+        {
+          "name": "Mascarpone",
+          "removable": false
+        },
+        {
+          "name": "Cacao",
+          "removable": false
+        }
       ],
       "includedToppings": 0,
       "modifierIds": [],
@@ -1721,7 +1877,10 @@
       "price": 12000,
       "variants": [],
       "ingredients": [
-        "Brownie",
+        {
+          "name": "Brownie",
+          "removable": false
+        },
         "Helado de vainilla",
         "Salsa de chocolate"
       ],

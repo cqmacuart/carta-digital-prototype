@@ -2,7 +2,7 @@ import { photo } from '../lib/format'
 import { ICONS } from '../lib/icons'
 import type { BusinessProfile } from '../models/business'
 import type { MenuDatabase } from '../models/db'
-import type { Badge, Category, Menu, MenuItem } from '../types'
+import type { Badge, Category, Menu, MenuItem, OrderConfig } from '../types'
 
 /** WCAG relative luminance of a #RRGGBB colour */
 const luminance = (hex: string) => {
@@ -34,7 +34,8 @@ export function toMenu(db: MenuDatabase, business: BusinessProfile): Menu {
   const groupName = new Map(db.groups.map((g) => [g.id, g.name]))
   const tags = new Map(db.tags.map((t) => [t.id, t]))
   const modifiers = new Map(db.modifiers.map((m) => [m.id, m]))
-  const toppingPool = [...db.toppings].sort(bySort).map((t) => t.name)
+  const toppingPool = [...db.toppings].sort(bySort).map(({ id, name }) => ({ id, name }))
+  const optionGroups = new Map((db.optionGroups ?? []).map((g) => [g.id, g]))
 
   const items: MenuItem[] = db.products
     .filter((p) => p.available)
@@ -53,10 +54,12 @@ export function toMenu(db: MenuDatabase, business: BusinessProfile): Menu {
       price: p.price,
       tagline: p.tagline,
       description: p.description,
-      variants: p.variants.length ? p.variants.map((v) => ({ name: v.name, detail: v.detail ?? undefined, price: v.price })) : undefined,
-      ingredients: p.ingredients.length ? p.ingredients : undefined,
+      variants: p.variants.length ? p.variants.map((v) => ({ id: v.id, name: v.name, detail: v.detail ?? undefined, price: v.price })) : undefined,
+      ingredients: p.ingredients.length ? p.ingredients.map((i) => (typeof i === 'string' ? i : i.name)) : undefined,
+      fixedIngredients: __PEDIDOS__ ? p.ingredients.flatMap((i) => (typeof i === 'string' ? [] : [i.name])) : undefined,
       toppings: p.includedToppings ? { count: p.includedToppings, options: toppingPool } : undefined,
-      modifiers: p.modifierIds.length ? p.modifierIds.map((id) => modifiers.get(id)!).map(({ name, price }) => ({ name, price })) : undefined,
+      modifiers: p.modifierIds.length ? p.modifierIds.map((id) => modifiers.get(id)!).map(({ id, name, price }) => ({ id, name, price })) : undefined,
+      optionGroups: p.optionGroupIds?.length ? p.optionGroupIds.map((id) => optionGroups.get(id)!) : undefined,
       note: p.note ?? undefined,
       tags: p.tagIds.length
         ? p.tagIds.map((id): Badge => {
@@ -68,7 +71,22 @@ export function toMenu(db: MenuDatabase, business: BusinessProfile): Menu {
     }))
 
   const branch = business.branches.find((b) => b.id === business.defaultBranchId)
+  const { ordering } = business
+  // the build has already checked these (number, modes, data policy) for a business that takes orders
+  const order: OrderConfig | undefined =
+    __PEDIDOS__ && ordering?.enabled
+      ? {
+          whatsapp: (ordering.whatsapp ?? branch?.whatsapp ?? business.contact.whatsapp ?? '').replace(/\D/g, ''),
+          modes: ordering.modes,
+          minOrder: ordering.minOrder,
+          deliveryFee: ordering.deliveryFee,
+          payments: business.payments,
+          dataPolicyUrl: business.legal.dataPolicyUrl ?? '',
+        }
+      : undefined
   return {
+    tenantId: business.tenantId,
+    order,
     business: {
       name: business.name,
       tagline: business.tagline,
