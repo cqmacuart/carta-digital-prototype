@@ -1,5 +1,5 @@
 {
-  "name": "cafe-menu",
+  "name": "carta-digital",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -7,7 +7,8 @@
     "dev": "node scripts/carta.mjs dev",
     "build": "tsc -b && node scripts/carta.mjs build",
     "lint": "oxlint",
-    "preview": "node scripts/carta.mjs preview"
+    "preview": "node scripts/carta.mjs preview",
+    "pages": "node scripts/pages.mjs"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",

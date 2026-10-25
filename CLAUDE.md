@@ -12,7 +12,12 @@ npx oxlint src             # lint (reglas de React Compiler: nada de setState en
 npm run build -- la-sablee # dist/la-sablee/ estático
 npm run build -- --all     # un dist/<slug>/ por cada cliente con carta
 npm run preview -- la-sablee --port 4173   # para medir rendimiento sobre el build de producción
+npm run pages              # _site/: las demos (themes/demo*/) + portada, lo que publica GitHub Pages
 ```
+
+## Demos públicas
+
+GitHub Pages: https://cqmacuart.github.io/carta-digital-prototype/ (portada) y una subcarpeta por demo (`demo/`, `demo-sushi/`…). `.github/workflows/pages.yml` corre `npm run pages` y publica `_site/` en cada push a `main`. Solo entran carpetas `themes/demo*/`: las cartas de clientes nunca se publican ahí (van a Hostinger, con `noindex` mientras sean propuesta).
 
 ## Un build por cliente
 

@@ -6,7 +6,7 @@
 
 Carta digital **mobile-first** para un café restaurante, hecha como web (no app nativa) para abrirse desde un QR. Funciona como **plantilla**: el negocio de ejemplo es **Terra · café · cocina**; la carta de ejemplo (65 productos, precios en COP) viene de un café real de Pamplona (Colombia) que se usó como caso de estudio.
 
-- Repo: https://github.com/cqmacuart/coffee-menu-prototype — carpeta local `D:\_ebano-estudio\products\carta-digital` (antes `D:\mockupsites\cafe-menu`).
+- Repo: https://github.com/cqmacuart/carta-digital-prototype — carpeta local `D:\_ebano-estudio\products\carta-digital` (antes `D:\mockupsites\cafe-menu`).
 - Rama de trabajo: **`carta-la-sablee`** (la `main` conserva la primera versión, más simple).
 - Probar en el celular: `npm run dev -- <slug> --host` y abrir la IP de la red (p. ej. `http://192.168.1.43:5174`) con el teléfono en el mismo Wi-Fi.
 

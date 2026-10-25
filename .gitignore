@@ -26,3 +26,6 @@ dist-ssr
 # Client cartas are private proposals: only the fictional demo is versioned
 themes/*
 !themes/demo*/
+
+# GitHub Pages site (npm run pages)
+_site

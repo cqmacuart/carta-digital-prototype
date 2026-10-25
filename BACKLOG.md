@@ -16,4 +16,3 @@ Fuera de alcance: POS, pagos en línea, inventario.
 - Combos con varios grupos de elección (acompañamiento **y** bebida): hoy son productos con el detalle en el texto; el carrito de V2 los necesitará modelados.
 - Fotos subidas por el dueño (V3; las locales en `themes/<slug>/assets/` ya funcionan): subida desde el editor a un CDN con recorte y desenfoque por URL (Cloudinary/ImageKit) o a Hostinger con PHP.
 - La Sablée: horarios reales (en su historia destacada de Instagram) y paletas de categoría según su marca (café oscuro + crema); hoy usa las de Terra.
-- Deploy de la demo en GitHub Pages (workflow que haga `npm run build -- demo` y publique `dist/demo`).
