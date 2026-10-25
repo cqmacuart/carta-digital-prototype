@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Client cartas are private proposals: only the fictional demo is versioned
+themes/*
+!themes/demo*/

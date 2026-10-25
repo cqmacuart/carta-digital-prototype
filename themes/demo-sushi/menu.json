@@ -1,0 +1,2476 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-10-25",
+  "business": {
+    "id": "nami",
+    "name": "Nami",
+    "tagline": "sushi bar",
+    "currency": "COP",
+    "locale": "es-CO",
+    "branchId": "centro",
+    "branches": [
+      {
+        "id": "centro",
+        "name": "Centro",
+        "address": "Calle 1 # 1-01",
+        "city": "Pamplona",
+        "timezone": "America/Bogota",
+        "hours": [
+          {
+            "day": 2,
+            "open": "12:00",
+            "close": "15:00"
+          },
+          {
+            "day": 3,
+            "open": "12:00",
+            "close": "15:00"
+          },
+          {
+            "day": 4,
+            "open": "12:00",
+            "close": "15:00"
+          },
+          {
+            "day": 5,
+            "open": "12:00",
+            "close": "15:00"
+          },
+          {
+            "day": 6,
+            "open": "12:00",
+            "close": "15:00"
+          },
+          {
+            "day": 0,
+            "open": "12:00",
+            "close": "15:00"
+          },
+          {
+            "day": 2,
+            "open": "18:00",
+            "close": "22:30"
+          },
+          {
+            "day": 3,
+            "open": "18:00",
+            "close": "22:30"
+          },
+          {
+            "day": 4,
+            "open": "18:00",
+            "close": "22:30"
+          },
+          {
+            "day": 5,
+            "open": "18:00",
+            "close": "22:30"
+          },
+          {
+            "day": 6,
+            "open": "18:00",
+            "close": "22:30"
+          },
+          {
+            "day": 0,
+            "open": "18:00",
+            "close": "22:30"
+          }
+        ]
+      }
+    ],
+    "contact": {
+      "deliveryPhone": null,
+      "instagram": null
+    }
+  },
+  "categories": [
+    {
+      "id": "entradas",
+      "name": "Entradas",
+      "icon": "shrimp",
+      "sortOrder": 1,
+      "palette": {
+        "sheet": "#D9783A",
+        "ink": "#24120A",
+        "accent": "#4A1804"
+      }
+    },
+    {
+      "id": "rolls",
+      "name": "Rolls",
+      "icon": "cylinder",
+      "sortOrder": 2,
+      "palette": {
+        "sheet": "#F2A58C",
+        "ink": "#2B1210",
+        "accent": "#7A1E12"
+      }
+    },
+    {
+      "id": "nigiri-sashimi",
+      "name": "Nigiri y sashimi",
+      "icon": "fish",
+      "sortOrder": 3,
+      "palette": {
+        "sheet": "#A32E3A",
+        "ink": "#FFF3F1",
+        "accent": "#FFD3CF"
+      }
+    },
+    {
+      "id": "bowls",
+      "name": "Bowls",
+      "icon": "salad",
+      "sortOrder": 4,
+      "palette": {
+        "sheet": "#B9C77E",
+        "ink": "#1E2410",
+        "accent": "#38470F"
+      }
+    },
+    {
+      "id": "combos",
+      "name": "Combos",
+      "icon": "users",
+      "sortOrder": 5,
+      "palette": {
+        "sheet": "#22302A",
+        "ink": "#EEF2EA",
+        "accent": "#B9D98C"
+      }
+    },
+    {
+      "id": "bebidas",
+      "name": "Bebidas",
+      "icon": "cup-soda",
+      "sortOrder": 6,
+      "palette": {
+        "sheet": "#DCE6C8",
+        "ink": "#1C2414",
+        "accent": "#3F5A1E"
+      }
+    },
+    {
+      "id": "postres",
+      "name": "Postres",
+      "icon": "ice-cream-cone",
+      "sortOrder": 7,
+      "palette": {
+        "sheet": "#F2C6C2",
+        "ink": "#2E1416",
+        "accent": "#8A2B3A"
+      }
+    }
+  ],
+  "subcategories": [
+    {
+      "id": "entradas-calientes",
+      "categoryId": "entradas",
+      "name": "Calientes",
+      "sortOrder": 1
+    },
+    {
+      "id": "entradas-frias",
+      "categoryId": "entradas",
+      "name": "Frías",
+      "sortOrder": 2
+    },
+    {
+      "id": "rolls-clasicos",
+      "categoryId": "rolls",
+      "name": "Clásicos",
+      "sortOrder": 3
+    },
+    {
+      "id": "rolls-fritos",
+      "categoryId": "rolls",
+      "name": "Fritos",
+      "sortOrder": 4
+    },
+    {
+      "id": "rolls-especiales",
+      "categoryId": "rolls",
+      "name": "Especiales",
+      "sortOrder": 5
+    },
+    {
+      "id": "nigiri-sashimi-nigiri",
+      "categoryId": "nigiri-sashimi",
+      "name": "Nigiri",
+      "sortOrder": 6
+    },
+    {
+      "id": "nigiri-sashimi-sashimi",
+      "categoryId": "nigiri-sashimi",
+      "name": "Sashimi",
+      "sortOrder": 7
+    },
+    {
+      "id": "bowls-poke",
+      "categoryId": "bowls",
+      "name": "Poke",
+      "sortOrder": 8
+    },
+    {
+      "id": "bowls-ramen",
+      "categoryId": "bowls",
+      "name": "Ramen",
+      "sortOrder": 9
+    },
+    {
+      "id": "combos-todos",
+      "categoryId": "combos",
+      "name": "Combos",
+      "sortOrder": 10
+    },
+    {
+      "id": "bebidas-sin-alcohol",
+      "categoryId": "bebidas",
+      "name": "Sin alcohol",
+      "sortOrder": 11
+    },
+    {
+      "id": "bebidas-cerveza-sake",
+      "categoryId": "bebidas",
+      "name": "Cerveza y sake",
+      "sortOrder": 12
+    },
+    {
+      "id": "postres-todos",
+      "categoryId": "postres",
+      "name": "Postres",
+      "sortOrder": 13
+    }
+  ],
+  "groups": [
+    {
+      "id": "rolls-clasicos-salmon",
+      "subcategoryId": "rolls-clasicos",
+      "name": "Salmón",
+      "sortOrder": 1
+    },
+    {
+      "id": "rolls-clasicos-langostino",
+      "subcategoryId": "rolls-clasicos",
+      "name": "Langostino",
+      "sortOrder": 2
+    },
+    {
+      "id": "rolls-clasicos-vegetarianos",
+      "subcategoryId": "rolls-clasicos",
+      "name": "Vegetarianos",
+      "sortOrder": 3
+    }
+  ],
+  "tags": [
+    {
+      "id": "casa",
+      "label": "De la casa",
+      "icon": "star"
+    },
+    {
+      "id": "nuevo",
+      "label": "Nuevo",
+      "icon": "sparkles"
+    },
+    {
+      "id": "crudo",
+      "label": "Crudo",
+      "icon": "fish"
+    },
+    {
+      "id": "tempura",
+      "label": "Tempura",
+      "icon": "shrimp"
+    },
+    {
+      "id": "vegano",
+      "label": "Vegano",
+      "icon": "leaf"
+    },
+    {
+      "id": "vegetariano",
+      "label": "Vegetariano",
+      "icon": "sprout"
+    },
+    {
+      "id": "picante",
+      "label": "Picante",
+      "icon": "flame"
+    },
+    {
+      "id": "compartir",
+      "label": "Para compartir",
+      "icon": "users"
+    }
+  ],
+  "toppings": [
+    {
+      "id": "aguacate",
+      "name": "Aguacate",
+      "sortOrder": 1
+    },
+    {
+      "id": "mango",
+      "name": "Mango",
+      "sortOrder": 2
+    },
+    {
+      "id": "edamame",
+      "name": "Edamame",
+      "sortOrder": 3
+    },
+    {
+      "id": "pepino",
+      "name": "Pepino",
+      "sortOrder": 4
+    },
+    {
+      "id": "maiz",
+      "name": "Maíz",
+      "sortOrder": 5
+    },
+    {
+      "id": "wakame",
+      "name": "Wakame",
+      "sortOrder": 6
+    },
+    {
+      "id": "cebolla-crispy",
+      "name": "Cebolla crispy",
+      "sortOrder": 7
+    },
+    {
+      "id": "masago",
+      "name": "Masago",
+      "sortOrder": 8
+    },
+    {
+      "id": "rabano-encurtido",
+      "name": "Rábano encurtido",
+      "sortOrder": 9
+    }
+  ],
+  "modifiers": [
+    {
+      "id": "queso-crema",
+      "name": "Queso crema extra",
+      "price": 3000
+    },
+    {
+      "id": "salsa-anguila",
+      "name": "Salsa de anguila",
+      "price": 2500
+    },
+    {
+      "id": "salsa-spicy",
+      "name": "Mayonesa spicy",
+      "price": 2000
+    },
+    {
+      "id": "arroz-integral",
+      "name": "Cambiar a arroz integral",
+      "price": 2000
+    },
+    {
+      "id": "extra-proteina",
+      "name": "Porción extra de proteína",
+      "price": 9000
+    },
+    {
+      "id": "huevo-ramen",
+      "name": "Huevo marinado adicional",
+      "price": 3000
+    }
+  ],
+  "products": [
+    {
+      "id": "gyozas",
+      "categoryId": "entradas",
+      "subcategoryId": "entradas-calientes",
+      "groupId": null,
+      "name": "Gyozas",
+      "tagline": "Seis empanaditas japonesas doradas a la plancha.",
+      "description": "Seis gyozas hechas a mano, selladas a la plancha hasta quedar crujientes por debajo y jugosas por dentro. Se sirven con salsa ponzu de la casa y aceite de ajonjolí.",
+      "price": 15000,
+      "variants": [
+        {
+          "id": "cerdo",
+          "name": "Cerdo",
+          "detail": "Cerdo, repollo y jengibre",
+          "price": 16000
+        },
+        {
+          "id": "pollo",
+          "name": "Pollo",
+          "detail": "Pollo, cebollín y shiitake",
+          "price": 16000
+        },
+        {
+          "id": "vegetales",
+          "name": "Vegetales",
+          "detail": "Repollo, zanahoria y tofu",
+          "price": 15000
+        }
+      ],
+      "ingredients": [
+        "Masa de trigo",
+        "Repollo",
+        "Jengibre",
+        "Cebollín",
+        "Ponzu"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "casa"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1738681336104-608b4e7dc3b0",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.2
+        },
+        "alt": "Gyozas"
+      },
+      "available": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "langostinos-tempura",
+      "categoryId": "entradas",
+      "subcategoryId": "entradas-calientes",
+      "groupId": null,
+      "name": "Langostinos tempura",
+      "tagline": "Langostinos en tempura ligera con salsa tentsuyu.",
+      "description": "Cinco langostinos jumbo en una tempura fina y aireada, fritos al momento para que lleguen crujientes. Con salsa tentsuyu tibia y rábano rallado.",
+      "price": 26000,
+      "variants": [],
+      "ingredients": [
+        "Langostinos",
+        "Harina tempura",
+        "Tentsuyu",
+        "Rábano"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "tempura"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1779443942390-1257e05015f5",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.3
+        },
+        "alt": "Langostinos tempura"
+      },
+      "available": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "tempura-mixta",
+      "categoryId": "entradas",
+      "subcategoryId": "entradas-calientes",
+      "groupId": null,
+      "name": "Tempura mixta",
+      "tagline": "Langostino y vegetales de temporada en tempura.",
+      "description": "Una canasta para compartir con langostinos, berenjena, zanahoria, pimentón y hojas de shiso en tempura. Va con tentsuyu y sal de matcha.",
+      "price": 28000,
+      "variants": [],
+      "ingredients": [
+        "Langostinos",
+        "Berenjena",
+        "Zanahoria",
+        "Pimentón",
+        "Shiso"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "tempura",
+        "compartir"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1570078362689-c57c33cca104",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.1
+        },
+        "alt": "Tempura mixta"
+      },
+      "available": true,
+      "sortOrder": 3
+    },
+    {
+      "id": "edamame",
+      "categoryId": "entradas",
+      "subcategoryId": "entradas-calientes",
+      "groupId": null,
+      "name": "Edamame",
+      "tagline": "Vainas de soya al vapor, para picar.",
+      "description": "Edamame tibio recién salido del vapor, para abrir con los dedos mientras llega el resto. Clásico con sal marina o salteado con ajo y chile.",
+      "price": 12000,
+      "variants": [
+        {
+          "id": "clasico",
+          "name": "Clásico",
+          "detail": "Con sal marina",
+          "price": 12000
+        },
+        {
+          "id": "picante",
+          "name": "Ajo y chile",
+          "detail": "Salteado con ajo, chile y soya",
+          "price": 13000
+        }
+      ],
+      "ingredients": [
+        "Edamame",
+        "Sal marina"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "vegano"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1774895210926-e0e6e2e01d70",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.2
+        },
+        "alt": "Edamame"
+      },
+      "available": true,
+      "sortOrder": 4
+    },
+    {
+      "id": "sopa-miso",
+      "categoryId": "entradas",
+      "subcategoryId": "entradas-calientes",
+      "groupId": null,
+      "name": "Sopa miso",
+      "tagline": "Caldo de miso con tofu, wakame y cebollín.",
+      "description": "La sopa con la que empieza cualquier comida japonesa: dashi suave con pasta de miso, cubos de tofu sedoso, alga wakame y cebollín fresco.",
+      "price": 9000,
+      "variants": [],
+      "ingredients": [
+        "Dashi",
+        "Miso",
+        "Tofu",
+        "Wakame",
+        "Cebollín"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1763470260582-894ae15f43bb",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Sopa miso"
+      },
+      "available": true,
+      "sortOrder": 5
+    },
+    {
+      "id": "tartar-salmon",
+      "categoryId": "entradas",
+      "subcategoryId": "entradas-frias",
+      "groupId": null,
+      "name": "Tartar de salmón",
+      "tagline": "Salmón picado a cuchillo con aguacate y ponzu.",
+      "description": "Salmón fresco picado a cuchillo, aliñado con ponzu, ajonjolí y un toque de chile, sobre una base de aguacate. Con chips de wantán para acompañar.",
+      "price": 26000,
+      "variants": [],
+      "ingredients": [
+        "Salmón",
+        "Aguacate",
+        "Ponzu",
+        "Ajonjolí",
+        "Wantán"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "crudo"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1775889184887-9bc308c98aee",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.2
+        },
+        "alt": "Tartar de salmón"
+      },
+      "available": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "tataki-atun",
+      "categoryId": "entradas",
+      "subcategoryId": "entradas-frias",
+      "groupId": null,
+      "name": "Tataki de atún",
+      "tagline": "Atún sellado por fuera, rojo por dentro.",
+      "description": "Lomo de atún sellado unos segundos a fuego alto y cortado en láminas, con salsa de soya y cítricos, jengibre encurtido y cebollín.",
+      "price": 28000,
+      "variants": [],
+      "ingredients": [
+        "Atún",
+        "Soya",
+        "Limón",
+        "Jengibre",
+        "Cebollín"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "crudo",
+        "nuevo"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1559410545-0bdcd187e0a6",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.2
+        },
+        "alt": "Tataki de atún"
+      },
+      "available": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "philadelphia",
+      "categoryId": "rolls",
+      "subcategoryId": "rolls-clasicos",
+      "groupId": "rolls-clasicos-salmon",
+      "name": "Philadelphia",
+      "tagline": "Salmón, queso crema y aguacate.",
+      "description": "El roll más pedido: salmón fresco, queso crema y aguacate envueltos en arroz con ajonjolí. Suave, cremoso y perfecto para empezar.",
+      "price": 17000,
+      "variants": [
+        {
+          "id": "5",
+          "name": "5 piezas",
+          "detail": "Media porción",
+          "price": 17000
+        },
+        {
+          "id": "10",
+          "name": "10 piezas",
+          "detail": "Porción completa",
+          "price": 30000
+        }
+      ],
+      "ingredients": [
+        "Arroz de sushi",
+        "Salmón",
+        "Queso crema",
+        "Aguacate",
+        "Nori"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "queso-crema",
+        "salsa-anguila"
+      ],
+      "tagIds": [
+        "crudo"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1579871494447-9811cf80d66c",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.2
+        },
+        "alt": "Philadelphia"
+      },
+      "available": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "salmon-aguacate",
+      "categoryId": "rolls",
+      "subcategoryId": "rolls-clasicos",
+      "groupId": "rolls-clasicos-salmon",
+      "name": "Salmón aguacate",
+      "tagline": "Salmón por fuera, aguacate por dentro.",
+      "description": "Roll de aguacate y pepino cubierto con láminas de salmón y un hilo de mayonesa japonesa. Fresco, limpio y sin salsas pesadas.",
+      "price": 18000,
+      "variants": [
+        {
+          "id": "5",
+          "name": "5 piezas",
+          "detail": "Media porción",
+          "price": 18000
+        },
+        {
+          "id": "10",
+          "name": "10 piezas",
+          "detail": "Porción completa",
+          "price": 32000
+        }
+      ],
+      "ingredients": [
+        "Arroz de sushi",
+        "Salmón",
+        "Aguacate",
+        "Pepino",
+        "Nori"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "salsa-spicy"
+      ],
+      "tagIds": [
+        "crudo"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1579584425555-c3ce17fd4351",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.3
+        },
+        "alt": "Salmón aguacate"
+      },
+      "available": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "spicy-salmon",
+      "categoryId": "rolls",
+      "subcategoryId": "rolls-clasicos",
+      "groupId": "rolls-clasicos-salmon",
+      "name": "Spicy salmon",
+      "tagline": "Salmón picante con pepino y cebollín.",
+      "description": "Salmón picado con mayonesa sriracha, pepino y cebollín, terminado con hojuelas de chile. Para los que les gusta que pique un poco.",
+      "price": 18000,
+      "variants": [
+        {
+          "id": "5",
+          "name": "5 piezas",
+          "detail": "Media porción",
+          "price": 18000
+        },
+        {
+          "id": "10",
+          "name": "10 piezas",
+          "detail": "Porción completa",
+          "price": 32000
+        }
+      ],
+      "ingredients": [
+        "Arroz de sushi",
+        "Salmón",
+        "Sriracha",
+        "Pepino",
+        "Cebollín"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "queso-crema"
+      ],
+      "tagIds": [
+        "crudo",
+        "picante"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1675870793127-85e11d214303",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.25
+        },
+        "alt": "Spicy salmon"
+      },
+      "available": true,
+      "sortOrder": 3
+    },
+    {
+      "id": "california",
+      "categoryId": "rolls",
+      "subcategoryId": "rolls-clasicos",
+      "groupId": "rolls-clasicos-langostino",
+      "name": "California",
+      "tagline": "Kanikama, aguacate y pepino con masago.",
+      "description": "El clásico de siempre: kanikama, aguacate y pepino, con el arroz por fuera cubierto de masago naranja. Ideal si es tu primera vez con sushi.",
+      "price": 15000,
+      "variants": [
+        {
+          "id": "5",
+          "name": "5 piezas",
+          "detail": "Media porción",
+          "price": 15000
+        },
+        {
+          "id": "10",
+          "name": "10 piezas",
+          "detail": "Porción completa",
+          "price": 27000
+        }
+      ],
+      "ingredients": [
+        "Arroz de sushi",
+        "Kanikama",
+        "Aguacate",
+        "Pepino",
+        "Masago"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "queso-crema"
+      ],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1787589481636-a69533c81edb",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.25
+        },
+        "alt": "California"
+      },
+      "available": true,
+      "sortOrder": 4
+    },
+    {
+      "id": "ebi-roll",
+      "categoryId": "rolls",
+      "subcategoryId": "rolls-clasicos",
+      "groupId": "rolls-clasicos-langostino",
+      "name": "Ebi roll",
+      "tagline": "Langostino cocido, aguacate y queso crema.",
+      "description": "Langostino cocido, aguacate y queso crema, con ajonjolí tostado por fuera. Un roll suave y sin pescado crudo.",
+      "price": 17000,
+      "variants": [
+        {
+          "id": "5",
+          "name": "5 piezas",
+          "detail": "Media porción",
+          "price": 17000
+        },
+        {
+          "id": "10",
+          "name": "10 piezas",
+          "detail": "Porción completa",
+          "price": 30000
+        }
+      ],
+      "ingredients": [
+        "Arroz de sushi",
+        "Langostino",
+        "Aguacate",
+        "Queso crema",
+        "Ajonjolí"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "salsa-anguila"
+      ],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1761314026089-f39a799bb48f",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.3
+        },
+        "alt": "Ebi roll"
+      },
+      "available": true,
+      "sortOrder": 5
+    },
+    {
+      "id": "futomaki-vegetal",
+      "categoryId": "rolls",
+      "subcategoryId": "rolls-clasicos",
+      "groupId": "rolls-clasicos-vegetarianos",
+      "name": "Futomaki vegetal",
+      "tagline": "Roll grueso de vegetales de colores.",
+      "description": "Roll grueso con nori por fuera, relleno de zanahoria, pepino, aguacate, tamago y espárragos. Colorido y lleno.",
+      "price": 14000,
+      "variants": [
+        {
+          "id": "5",
+          "name": "5 piezas",
+          "detail": "Media porción",
+          "price": 14000
+        },
+        {
+          "id": "10",
+          "name": "10 piezas",
+          "detail": "Porción completa",
+          "price": 25000
+        }
+      ],
+      "ingredients": [
+        "Arroz de sushi",
+        "Zanahoria",
+        "Pepino",
+        "Aguacate",
+        "Espárragos",
+        "Nori"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "queso-crema"
+      ],
+      "tagIds": [
+        "vegetariano"
+      ],
+      "note": "Lleva tamago (tortilla japonesa); sin él es vegano.",
+      "image": {
+        "source": "unsplash",
+        "photoId": "1562158074-1602c2f19a08",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.2
+        },
+        "alt": "Futomaki vegetal"
+      },
+      "available": true,
+      "sortOrder": 6
+    },
+    {
+      "id": "avocado-roll",
+      "categoryId": "rolls",
+      "subcategoryId": "rolls-clasicos",
+      "groupId": "rolls-clasicos-vegetarianos",
+      "name": "Avocado roll",
+      "tagline": "Aguacate y pepino, nada más.",
+      "description": "Aguacate maduro y pepino crocante con ajonjolí. Sencillo, fresco y apto para veganos.",
+      "price": 12000,
+      "variants": [
+        {
+          "id": "5",
+          "name": "5 piezas",
+          "detail": "Media porción",
+          "price": 12000
+        },
+        {
+          "id": "10",
+          "name": "10 piezas",
+          "detail": "Porción completa",
+          "price": 21000
+        }
+      ],
+      "ingredients": [
+        "Arroz de sushi",
+        "Aguacate",
+        "Pepino",
+        "Ajonjolí"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "vegano"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1761315413078-1fd73894fe0e",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.2
+        },
+        "alt": "Avocado roll"
+      },
+      "available": true,
+      "sortOrder": 7
+    },
+    {
+      "id": "kappa-maki",
+      "categoryId": "rolls",
+      "subcategoryId": "rolls-clasicos",
+      "groupId": "rolls-clasicos-vegetarianos",
+      "name": "Kappa maki",
+      "tagline": "Rollito delgado de pepino.",
+      "description": "Hosomaki delgado de pepino con nori por fuera. Ligero, ideal para acompañar o para limpiar el paladar entre rolls.",
+      "price": 9000,
+      "variants": [
+        {
+          "id": "6",
+          "name": "6 piezas",
+          "detail": null,
+          "price": 9000
+        },
+        {
+          "id": "12",
+          "name": "12 piezas",
+          "detail": null,
+          "price": 16000
+        }
+      ],
+      "ingredients": [
+        "Arroz de sushi",
+        "Pepino",
+        "Nori"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "vegano"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1583571560096-eb4462cdba30",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Kappa maki"
+      },
+      "available": true,
+      "sortOrder": 8
+    },
+    {
+      "id": "hot-philadelphia",
+      "categoryId": "rolls",
+      "subcategoryId": "rolls-fritos",
+      "groupId": null,
+      "name": "Hot Philadelphia",
+      "tagline": "El Philadelphia, apanado y frito.",
+      "description": "Salmón, queso crema y aguacate, apanado en panko y frito hasta quedar dorado. Se sirve tibio con salsa de anguila y mayonesa spicy.",
+      "price": 19000,
+      "variants": [
+        {
+          "id": "5",
+          "name": "5 piezas",
+          "detail": "Media porción",
+          "price": 19000
+        },
+        {
+          "id": "10",
+          "name": "10 piezas",
+          "detail": "Porción completa",
+          "price": 34000
+        }
+      ],
+      "ingredients": [
+        "Arroz de sushi",
+        "Salmón",
+        "Queso crema",
+        "Panko",
+        "Salsa de anguila"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "salsa-spicy"
+      ],
+      "tagIds": [
+        "tempura",
+        "casa"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1761315413309-2add8b1b0b1e",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.25
+        },
+        "alt": "Hot Philadelphia"
+      },
+      "available": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "ebi-furai",
+      "categoryId": "rolls",
+      "subcategoryId": "rolls-fritos",
+      "groupId": null,
+      "name": "Ebi furai",
+      "tagline": "Langostino tempura con aguacate.",
+      "description": "Langostino en tempura crocante con aguacate y queso crema, cubierto con salsa de anguila y cebolla crispy.",
+      "price": 19000,
+      "variants": [
+        {
+          "id": "5",
+          "name": "5 piezas",
+          "detail": "Media porción",
+          "price": 19000
+        },
+        {
+          "id": "10",
+          "name": "10 piezas",
+          "detail": "Porción completa",
+          "price": 34000
+        }
+      ],
+      "ingredients": [
+        "Arroz de sushi",
+        "Langostino tempura",
+        "Aguacate",
+        "Queso crema",
+        "Cebolla crispy"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "salsa-anguila"
+      ],
+      "tagIds": [
+        "tempura"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1648146298904-d58a8c79e0a7",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.2
+        },
+        "alt": "Ebi furai"
+      },
+      "available": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "maduro-roll",
+      "categoryId": "rolls",
+      "subcategoryId": "rolls-fritos",
+      "groupId": null,
+      "name": "Roll de maduro",
+      "tagline": "Plátano maduro y queso, en tempura.",
+      "description": "Nuestro guiño a la casa: plátano maduro, queso costeño y langostino, frito en tempura y bañado en salsa de anguila. Dulce y salado a la vez.",
+      "price": 18000,
+      "variants": [
+        {
+          "id": "5",
+          "name": "5 piezas",
+          "detail": "Media porción",
+          "price": 18000
+        },
+        {
+          "id": "10",
+          "name": "10 piezas",
+          "detail": "Porción completa",
+          "price": 32000
+        }
+      ],
+      "ingredients": [
+        "Arroz de sushi",
+        "Plátano maduro",
+        "Queso costeño",
+        "Langostino",
+        "Salsa de anguila"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "tempura",
+        "nuevo"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1580822184713-fc5400e7fe10",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.2
+        },
+        "alt": "Roll de maduro"
+      },
+      "available": true,
+      "sortOrder": 3
+    },
+    {
+      "id": "nami-roll",
+      "categoryId": "rolls",
+      "subcategoryId": "rolls-especiales",
+      "groupId": null,
+      "name": "Nami roll",
+      "tagline": "Salmón flameado, langostino y anguila.",
+      "description": "El roll de la casa: langostino tempura y aguacate por dentro, salmón flameado con soplete por fuera, salsa de anguila y masago.",
+      "price": 22000,
+      "variants": [
+        {
+          "id": "5",
+          "name": "5 piezas",
+          "detail": "Media porción",
+          "price": 22000
+        },
+        {
+          "id": "10",
+          "name": "10 piezas",
+          "detail": "Porción completa",
+          "price": 39000
+        }
+      ],
+      "ingredients": [
+        "Arroz de sushi",
+        "Salmón",
+        "Langostino tempura",
+        "Aguacate",
+        "Masago"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "queso-crema"
+      ],
+      "tagIds": [
+        "casa"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1611143669185-af224c5e3252",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.4
+        },
+        "alt": "Nami roll"
+      },
+      "available": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "spicy-tuna",
+      "categoryId": "rolls",
+      "subcategoryId": "rolls-especiales",
+      "groupId": null,
+      "name": "Spicy tuna",
+      "tagline": "Atún picante con pepino y tempura crocante.",
+      "description": "Atún picado con sriracha y aceite de chile, pepino y hojuelas de tempura para dar crocancia. Pica de verdad.",
+      "price": 21000,
+      "variants": [
+        {
+          "id": "5",
+          "name": "5 piezas",
+          "detail": "Media porción",
+          "price": 21000
+        },
+        {
+          "id": "10",
+          "name": "10 piezas",
+          "detail": "Porción completa",
+          "price": 37000
+        }
+      ],
+      "ingredients": [
+        "Arroz de sushi",
+        "Atún",
+        "Sriracha",
+        "Pepino",
+        "Tempura crocante"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "crudo",
+        "picante"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1653122024993-31e02aedb1ac",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.3
+        },
+        "alt": "Spicy tuna"
+      },
+      "available": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "acevichado",
+      "categoryId": "rolls",
+      "subcategoryId": "rolls-especiales",
+      "groupId": null,
+      "name": "Acevichado",
+      "tagline": "Cubierto de atún con salsa acevichada.",
+      "description": "Roll de langostino y aguacate cubierto con atún y salsa acevichada: mayonesa, ají amarillo y limón. Fresco, cítrico y nikkei.",
+      "price": 22000,
+      "variants": [
+        {
+          "id": "5",
+          "name": "5 piezas",
+          "detail": "Media porción",
+          "price": 22000
+        },
+        {
+          "id": "10",
+          "name": "10 piezas",
+          "detail": "Porción completa",
+          "price": 39000
+        }
+      ],
+      "ingredients": [
+        "Arroz de sushi",
+        "Atún",
+        "Langostino",
+        "Aguacate",
+        "Ají amarillo"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "crudo",
+        "nuevo"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1563612116625-3012372fccce",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.25
+        },
+        "alt": "Acevichado"
+      },
+      "available": true,
+      "sortOrder": 3
+    },
+    {
+      "id": "dragon-roll",
+      "categoryId": "rolls",
+      "subcategoryId": "rolls-especiales",
+      "groupId": null,
+      "name": "Dragon roll",
+      "tagline": "Anguila y aguacate en escamas.",
+      "description": "Anguila glaseada y pepino por dentro, láminas de aguacate por fuera como escamas de dragón, y salsa de anguila.",
+      "price": 23000,
+      "variants": [
+        {
+          "id": "5",
+          "name": "5 piezas",
+          "detail": "Media porción",
+          "price": 23000
+        },
+        {
+          "id": "10",
+          "name": "10 piezas",
+          "detail": "Porción completa",
+          "price": 41000
+        }
+      ],
+      "ingredients": [
+        "Arroz de sushi",
+        "Anguila",
+        "Aguacate",
+        "Pepino",
+        "Salsa de anguila"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1709984110217-57d7d18e5299",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Dragon roll"
+      },
+      "available": true,
+      "sortOrder": 4
+    },
+    {
+      "id": "nigiri-salmon",
+      "categoryId": "nigiri-sashimi",
+      "subcategoryId": "nigiri-sashimi-nigiri",
+      "groupId": null,
+      "name": "Nigiri de salmón",
+      "tagline": "Lámina de salmón sobre arroz.",
+      "description": "Salmón fresco cortado a mano sobre un bocado de arroz de sushi, con un punto de wasabi entre los dos.",
+      "price": 9000,
+      "variants": [
+        {
+          "id": "2",
+          "name": "2 piezas",
+          "detail": null,
+          "price": 9000
+        },
+        {
+          "id": "4",
+          "name": "4 piezas",
+          "detail": null,
+          "price": 16000
+        }
+      ],
+      "ingredients": [
+        "Arroz de sushi",
+        "Salmón",
+        "Wasabi"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "crudo"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1637074930269-089fde202b57",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.2
+        },
+        "alt": "Nigiri de salmón"
+      },
+      "available": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "nigiri-atun",
+      "categoryId": "nigiri-sashimi",
+      "subcategoryId": "nigiri-sashimi-nigiri",
+      "groupId": null,
+      "name": "Nigiri de atún",
+      "tagline": "Atún rojo sobre arroz.",
+      "description": "Atún de corte limpio sobre arroz de sushi, con wasabi. Para probar el pescado sin nada que lo tape.",
+      "price": 10000,
+      "variants": [
+        {
+          "id": "2",
+          "name": "2 piezas",
+          "detail": null,
+          "price": 10000
+        },
+        {
+          "id": "4",
+          "name": "4 piezas",
+          "detail": null,
+          "price": 18000
+        }
+      ],
+      "ingredients": [
+        "Arroz de sushi",
+        "Atún",
+        "Wasabi"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "crudo"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1562707786-7d2b807961c4",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.3
+        },
+        "alt": "Nigiri de atún"
+      },
+      "available": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "nigiri-langostino",
+      "categoryId": "nigiri-sashimi",
+      "subcategoryId": "nigiri-sashimi-nigiri",
+      "groupId": null,
+      "name": "Nigiri de langostino",
+      "tagline": "Langostino cocido sobre arroz.",
+      "description": "Langostino cocido y abierto en mariposa sobre arroz de sushi. Una buena opción si no comes pescado crudo.",
+      "price": 9000,
+      "variants": [
+        {
+          "id": "2",
+          "name": "2 piezas",
+          "detail": null,
+          "price": 9000
+        },
+        {
+          "id": "4",
+          "name": "4 piezas",
+          "detail": null,
+          "price": 16000
+        }
+      ],
+      "ingredients": [
+        "Arroz de sushi",
+        "Langostino"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1628676825882-32c387815bdd",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.2
+        },
+        "alt": "Nigiri de langostino"
+      },
+      "available": true,
+      "sortOrder": 3
+    },
+    {
+      "id": "nigiri-aburi",
+      "categoryId": "nigiri-sashimi",
+      "subcategoryId": "nigiri-sashimi-nigiri",
+      "groupId": null,
+      "name": "Nigiri aburi",
+      "tagline": "Salmón flameado con mayonesa japonesa.",
+      "description": "Salmón sobre arroz, flameado con soplete hasta que la grasa se dora, con mayonesa japonesa y cebollín.",
+      "price": 10000,
+      "variants": [
+        {
+          "id": "2",
+          "name": "2 piezas",
+          "detail": null,
+          "price": 10000
+        },
+        {
+          "id": "4",
+          "name": "4 piezas",
+          "detail": null,
+          "price": 18000
+        }
+      ],
+      "ingredients": [
+        "Arroz de sushi",
+        "Salmón",
+        "Mayonesa japonesa",
+        "Cebollín"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "nuevo"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1615750824451-cdf6c3b7e06a",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.2
+        },
+        "alt": "Nigiri aburi"
+      },
+      "available": true,
+      "sortOrder": 4
+    },
+    {
+      "id": "sashimi-salmon",
+      "categoryId": "nigiri-sashimi",
+      "subcategoryId": "nigiri-sashimi-sashimi",
+      "groupId": null,
+      "name": "Sashimi de salmón",
+      "tagline": "Cortes gruesos de salmón, sin arroz.",
+      "description": "Salmón fresco en cortes gruesos sobre hielo y rábano, con wasabi, jengibre encurtido y soya.",
+      "price": 16000,
+      "variants": [
+        {
+          "id": "3",
+          "name": "3 cortes",
+          "detail": null,
+          "price": 16000
+        },
+        {
+          "id": "6",
+          "name": "6 cortes",
+          "detail": null,
+          "price": 29000
+        }
+      ],
+      "ingredients": [
+        "Salmón",
+        "Rábano",
+        "Wasabi",
+        "Jengibre"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "crudo"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1789680161942-437096f9ae86",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.2
+        },
+        "alt": "Sashimi de salmón"
+      },
+      "available": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "sashimi-atun",
+      "categoryId": "nigiri-sashimi",
+      "subcategoryId": "nigiri-sashimi-sashimi",
+      "groupId": null,
+      "name": "Sashimi de atún",
+      "tagline": "Cortes de atún rojo, sin arroz.",
+      "description": "Atún en cortes limpios, servido frío con wasabi, jengibre encurtido y soya.",
+      "price": 18000,
+      "variants": [
+        {
+          "id": "3",
+          "name": "3 cortes",
+          "detail": null,
+          "price": 18000
+        },
+        {
+          "id": "6",
+          "name": "6 cortes",
+          "detail": null,
+          "price": 33000
+        }
+      ],
+      "ingredients": [
+        "Atún",
+        "Rábano",
+        "Wasabi",
+        "Jengibre"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "crudo"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1778327564889-6a6691abee78",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.2
+        },
+        "alt": "Sashimi de atún"
+      },
+      "available": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "sashimi-mixto",
+      "categoryId": "nigiri-sashimi",
+      "subcategoryId": "nigiri-sashimi-sashimi",
+      "groupId": null,
+      "name": "Sashimi mixto",
+      "tagline": "Salmón, atún y langostino.",
+      "description": "Una selección del día: salmón, atún y langostino en cortes para compartir, con todos sus acompañantes.",
+      "price": 34000,
+      "variants": [
+        {
+          "id": "9",
+          "name": "9 cortes",
+          "detail": "3 de cada uno",
+          "price": 34000
+        },
+        {
+          "id": "15",
+          "name": "15 cortes",
+          "detail": "5 de cada uno",
+          "price": 54000
+        }
+      ],
+      "ingredients": [
+        "Salmón",
+        "Atún",
+        "Langostino",
+        "Wasabi",
+        "Jengibre"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "crudo",
+        "compartir"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1758384075930-6e3835d22b1d",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Sashimi mixto"
+      },
+      "available": true,
+      "sortOrder": 3
+    },
+    {
+      "id": "poke-salmon",
+      "categoryId": "bowls",
+      "subcategoryId": "bowls-poke",
+      "groupId": null,
+      "name": "Poke de salmón",
+      "tagline": "Salmón marinado sobre arroz, con 3 toppings.",
+      "description": "Base de arroz de sushi con salmón marinado en soya y ajonjolí. Elige 3 toppings y termínalo con la salsa que quieras.",
+      "price": 32000,
+      "variants": [],
+      "ingredients": [
+        "Arroz de sushi",
+        "Salmón",
+        "Soya",
+        "Ajonjolí"
+      ],
+      "includedToppings": 3,
+      "modifierIds": [
+        "arroz-integral",
+        "extra-proteina"
+      ],
+      "tagIds": [
+        "crudo"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1768326119231-bf064c1b8fdf",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Poke de salmón"
+      },
+      "available": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "poke-atun",
+      "categoryId": "bowls",
+      "subcategoryId": "bowls-poke",
+      "groupId": null,
+      "name": "Poke de atún",
+      "tagline": "Atún marinado sobre arroz, con 3 toppings.",
+      "description": "Atún en cubos marinado con soya, sriracha y cebollín sobre arroz de sushi. Con 3 toppings a elegir.",
+      "price": 34000,
+      "variants": [],
+      "ingredients": [
+        "Arroz de sushi",
+        "Atún",
+        "Soya",
+        "Sriracha",
+        "Cebollín"
+      ],
+      "includedToppings": 3,
+      "modifierIds": [
+        "arroz-integral",
+        "extra-proteina"
+      ],
+      "tagIds": [
+        "crudo",
+        "picante"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1771154141872-e5ad3905a385",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.3
+        },
+        "alt": "Poke de atún"
+      },
+      "available": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "poke-vegetal",
+      "categoryId": "bowls",
+      "subcategoryId": "bowls-poke",
+      "groupId": null,
+      "name": "Poke vegetal",
+      "tagline": "Tofu marinado y vegetales, con 4 toppings.",
+      "description": "Tofu salteado con miso y jengibre sobre arroz integral, con 4 toppings para que quede bien lleno.",
+      "price": 28000,
+      "variants": [],
+      "ingredients": [
+        "Arroz integral",
+        "Tofu",
+        "Miso",
+        "Jengibre"
+      ],
+      "includedToppings": 4,
+      "modifierIds": [],
+      "tagIds": [
+        "vegano"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1546069901-ba9599a7e63c",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.1
+        },
+        "alt": "Poke vegetal"
+      },
+      "available": true,
+      "sortOrder": 3
+    },
+    {
+      "id": "ramen-tonkotsu",
+      "categoryId": "bowls",
+      "subcategoryId": "bowls-ramen",
+      "groupId": null,
+      "name": "Ramen tonkotsu",
+      "tagline": "Caldo de cerdo de 12 horas con chashu.",
+      "description": "Caldo cremoso de hueso de cerdo cocinado 12 horas, fideos frescos, chashu, huevo marinado, cebollín y nori.",
+      "price": 32000,
+      "variants": [],
+      "ingredients": [
+        "Caldo de cerdo",
+        "Fideos",
+        "Chashu",
+        "Huevo marinado",
+        "Nori"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "huevo-ramen"
+      ],
+      "tagIds": [
+        "casa"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1772217261042-0175d0b2fcb0",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Ramen tonkotsu"
+      },
+      "available": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "ramen-picante",
+      "categoryId": "bowls",
+      "subcategoryId": "bowls-ramen",
+      "groupId": null,
+      "name": "Ramen picante",
+      "tagline": "Caldo miso con aceite de chile y cerdo.",
+      "description": "Caldo de miso con aceite de chile tostado, cerdo picado, maíz, brotes de soya, huevo marinado y cebollín.",
+      "price": 32000,
+      "variants": [],
+      "ingredients": [
+        "Caldo miso",
+        "Fideos",
+        "Cerdo",
+        "Aceite de chile",
+        "Huevo marinado"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "huevo-ramen"
+      ],
+      "tagIds": [
+        "picante"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1526318896980-cf78c088247c",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Ramen picante"
+      },
+      "available": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "combo-ejecutivo",
+      "categoryId": "combos",
+      "subcategoryId": "combos-todos",
+      "groupId": null,
+      "name": "Combo ejecutivo",
+      "tagline": "Sopa miso, roll de 5 y 2 nigiri.",
+      "description": "Para el almuerzo: una sopa miso, medio Philadelphia o California y 2 nigiri de salmón. De lunes a viernes hasta las 3 p. m.",
+      "price": 39000,
+      "variants": [],
+      "ingredients": [
+        "Sopa miso",
+        "Roll de 5 piezas",
+        "2 nigiri"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": "Solo entre semana, de 12:00 a 15:00.",
+      "image": {
+        "source": "unsplash",
+        "photoId": "1636425730695-febe95eda12e",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.1
+        },
+        "alt": "Combo ejecutivo"
+      },
+      "available": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "combo-pareja",
+      "categoryId": "combos",
+      "subcategoryId": "combos-todos",
+      "groupId": null,
+      "name": "Combo pareja",
+      "tagline": "2 rolls completos, gyozas y 2 bebidas.",
+      "description": "Dos rolls de 10 piezas a elegir entre los clásicos, una porción de gyozas y dos bebidas sin alcohol.",
+      "price": 89000,
+      "variants": [],
+      "ingredients": [
+        "2 rolls de 10 piezas",
+        "Gyozas",
+        "2 bebidas"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "compartir"
+      ],
+      "note": "Los rolls especiales suman $5.000 cada uno.",
+      "image": {
+        "source": "unsplash",
+        "photoId": "1553621042-f6e147245754",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.1
+        },
+        "alt": "Combo pareja"
+      },
+      "available": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "combo-nami",
+      "categoryId": "combos",
+      "subcategoryId": "combos-todos",
+      "groupId": null,
+      "name": "Combo Nami",
+      "tagline": "40 piezas surtidas para el grupo.",
+      "description": "Una bandeja para 3 o 4 personas: Nami roll, Philadelphia, California, Hot Philadelphia y nigiri surtidos. 40 piezas en total.",
+      "price": 125000,
+      "variants": [],
+      "ingredients": [
+        "4 rolls de 10 piezas",
+        "Nigiri surtidos",
+        "Jengibre y wasabi"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "compartir",
+        "casa"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1763647756796-af9230245bf8",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.1
+        },
+        "alt": "Combo Nami"
+      },
+      "available": true,
+      "sortOrder": 3
+    },
+    {
+      "id": "combo-vegano",
+      "categoryId": "combos",
+      "subcategoryId": "combos-todos",
+      "groupId": null,
+      "name": "Combo vegano",
+      "tagline": "Avocado, kappa, futomaki y edamame.",
+      "description": "Todo sin productos animales: avocado roll, kappa maki, futomaki sin tamago y una porción de edamame.",
+      "price": 45000,
+      "variants": [],
+      "ingredients": [
+        "Avocado roll",
+        "Kappa maki",
+        "Futomaki",
+        "Edamame"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "vegano"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1605737342211-23f3fda24f33",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Combo vegano"
+      },
+      "available": true,
+      "sortOrder": 4
+    },
+    {
+      "id": "te-verde",
+      "categoryId": "bebidas",
+      "subcategoryId": "bebidas-sin-alcohol",
+      "groupId": null,
+      "name": "Té verde",
+      "tagline": "Sencha caliente, se rellena gratis.",
+      "description": "Té verde japonés sencha servido caliente. Pídelo y te volvemos a llenar la taza.",
+      "price": 5000,
+      "variants": [],
+      "ingredients": [
+        "Té sencha"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "vegano"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1627435601361-ec25f5b1d0e5",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.1
+        },
+        "alt": "Té verde"
+      },
+      "available": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "te-helado",
+      "categoryId": "bebidas",
+      "subcategoryId": "bebidas-sin-alcohol",
+      "groupId": null,
+      "name": "Té helado de la casa",
+      "tagline": "Té negro frío, hecho aquí.",
+      "description": "Té negro preparado en frío y endulzado con panela, con el sabor que elijas.",
+      "price": 7000,
+      "variants": [
+        {
+          "id": "limon",
+          "name": "Limón",
+          "detail": null,
+          "price": 7000
+        },
+        {
+          "id": "durazno",
+          "name": "Durazno",
+          "detail": null,
+          "price": 7000
+        },
+        {
+          "id": "maracuya",
+          "name": "Maracuyá",
+          "detail": null,
+          "price": 8000
+        }
+      ],
+      "ingredients": [
+        "Té negro",
+        "Panela",
+        "Fruta"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1556679343-c7306c1976bc",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Té helado de la casa"
+      },
+      "available": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "limonada-jengibre",
+      "categoryId": "bebidas",
+      "subcategoryId": "bebidas-sin-alcohol",
+      "groupId": null,
+      "name": "Limonada de jengibre",
+      "tagline": "Limón, jengibre fresco y hierbabuena.",
+      "description": "Limonada natural con jengibre recién rallado y hierbabuena. Refresca y acompaña muy bien el pescado.",
+      "price": 8000,
+      "variants": [],
+      "ingredients": [
+        "Limón",
+        "Jengibre",
+        "Hierbabuena",
+        "Panela"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "vegano"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1523677011781-c91d1bbe2f9e",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.1
+        },
+        "alt": "Limonada de jengibre"
+      },
+      "available": true,
+      "sortOrder": 3
+    },
+    {
+      "id": "gaseosa",
+      "categoryId": "bebidas",
+      "subcategoryId": "bebidas-sin-alcohol",
+      "groupId": null,
+      "name": "Gaseosa",
+      "tagline": "Botella personal.",
+      "description": "Gaseosa en botella personal de 400 ml, bien fría.",
+      "price": 5000,
+      "variants": [],
+      "ingredients": [
+        "Gaseosa"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1581636625402-29b2a704ef13",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.1
+        },
+        "alt": "Gaseosa"
+      },
+      "available": true,
+      "sortOrder": 4
+    },
+    {
+      "id": "cerveza-japonesa",
+      "categoryId": "bebidas",
+      "subcategoryId": "bebidas-cerveza-sake",
+      "groupId": null,
+      "name": "Cerveza japonesa",
+      "tagline": "Asahi o Kirin, bien fría.",
+      "description": "Cerveza lager japonesa, seca y ligera, la compañera clásica del sushi.",
+      "price": 15000,
+      "variants": [
+        {
+          "id": "asahi",
+          "name": "Asahi",
+          "detail": "330 ml",
+          "price": 15000
+        },
+        {
+          "id": "kirin",
+          "name": "Kirin",
+          "detail": "330 ml",
+          "price": 15000
+        }
+      ],
+      "ingredients": [
+        "Cerveza lager"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": "Solo para mayores de 18 años.",
+      "image": {
+        "source": "unsplash",
+        "photoId": "1684141402204-08bf2e0cbc94",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Cerveza japonesa"
+      },
+      "available": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "cerveza-nacional",
+      "categoryId": "bebidas",
+      "subcategoryId": "bebidas-cerveza-sake",
+      "groupId": null,
+      "name": "Cerveza nacional",
+      "tagline": "Lager o artesanal de la región.",
+      "description": "Cerveza colombiana bien fría: una lager clásica o la artesanal del mes.",
+      "price": 8000,
+      "variants": [
+        {
+          "id": "lager",
+          "name": "Lager",
+          "detail": "330 ml",
+          "price": 8000
+        },
+        {
+          "id": "artesanal",
+          "name": "Artesanal",
+          "detail": "330 ml",
+          "price": 12000
+        }
+      ],
+      "ingredients": [
+        "Cerveza"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": "Solo para mayores de 18 años.",
+      "image": {
+        "source": "unsplash",
+        "photoId": "1768162125675-3eb2045b5b0b",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.1
+        },
+        "alt": "Cerveza nacional"
+      },
+      "available": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "sake",
+      "categoryId": "bebidas",
+      "subcategoryId": "bebidas-cerveza-sake",
+      "groupId": null,
+      "name": "Sake",
+      "tagline": "Caliente o frío, en tokkuri.",
+      "description": "Sake junmai servido caliente en tokkuri o frío en copa, como lo prefieras.",
+      "price": 18000,
+      "variants": [
+        {
+          "id": "copa",
+          "name": "Copa",
+          "detail": "90 ml",
+          "price": 18000
+        },
+        {
+          "id": "botella",
+          "name": "Botella",
+          "detail": "300 ml",
+          "price": 65000
+        }
+      ],
+      "ingredients": [
+        "Sake junmai"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": "Solo para mayores de 18 años.",
+      "image": {
+        "source": "unsplash",
+        "photoId": "1664477407933-dd42ed0c6c62",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.1
+        },
+        "alt": "Sake"
+      },
+      "available": true,
+      "sortOrder": 3
+    },
+    {
+      "id": "mochis",
+      "categoryId": "postres",
+      "subcategoryId": "postres-todos",
+      "groupId": null,
+      "name": "Mochis",
+      "tagline": "Tres mochis rellenos de helado.",
+      "description": "Pasta suave de arroz glutinoso rellena de helado. Tres unidades de un mismo sabor o surtidas.",
+      "price": 13000,
+      "variants": [
+        {
+          "id": "matcha",
+          "name": "Matcha",
+          "detail": null,
+          "price": 13000
+        },
+        {
+          "id": "fresa",
+          "name": "Fresa",
+          "detail": null,
+          "price": 13000
+        },
+        {
+          "id": "surtidos",
+          "name": "Surtidos",
+          "detail": "Matcha, fresa y vainilla",
+          "price": 14000
+        }
+      ],
+      "ingredients": [
+        "Arroz glutinoso",
+        "Helado"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "vegetariano"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1706350091276-ba994c35cd99",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.2
+        },
+        "alt": "Mochis"
+      },
+      "available": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "helado-matcha",
+      "categoryId": "postres",
+      "subcategoryId": "postres-todos",
+      "groupId": null,
+      "name": "Helado de matcha",
+      "tagline": "Dos bolas de helado de té verde.",
+      "description": "Helado cremoso de té verde matcha, con su amargor suave, servido con galleta de ajonjolí negro.",
+      "price": 11000,
+      "variants": [],
+      "ingredients": [
+        "Leche",
+        "Matcha",
+        "Azúcar",
+        "Ajonjolí negro"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "vegetariano"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1583052606401-ba82199fffc9",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Helado de matcha"
+      },
+      "available": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "dango",
+      "categoryId": "postres",
+      "subcategoryId": "postres-todos",
+      "groupId": null,
+      "name": "Dango",
+      "tagline": "Bolitas de arroz a la parrilla con salsa dulce.",
+      "description": "Tres brochetas de bolitas de arroz asadas a la parrilla y glaseadas con salsa mitarashi de soya y azúcar.",
+      "price": 10000,
+      "variants": [],
+      "ingredients": [
+        "Harina de arroz",
+        "Soya",
+        "Azúcar"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "vegano",
+        "nuevo"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1775492477980-abad58a1b52b",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.2
+        },
+        "alt": "Dango"
+      },
+      "available": true,
+      "sortOrder": 3
+    }
+  ]
+}

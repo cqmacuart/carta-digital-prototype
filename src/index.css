@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+/* Defaults (Terra). Each business overrides these from themes/<slug>/theme.json (see vite.config.ts). */
 @theme {
   --font-display: "Fraunces", Georgia, serif;
   --font-sans: "Manrope", system-ui, sans-serif;
@@ -7,12 +8,15 @@
   --color-paper: #fbf7f1;
   --color-cream: #f4ebdf;
   --color-sand: #eadcc9;
+  --color-canvas: #f1e6da;
   --color-clay: #d98a5e;
   --color-terra: #b4502b;
   --color-terra-deep: #8e3b1d;
   --color-espresso: #2a1a12;
   --color-cocoa: #6b5546;
   --color-olive: #6a7148;
+  /* around the phone frame on desktop */
+  --color-night: #1e140e;
 }
 
 html,
@@ -23,7 +27,7 @@ body,
 
 body {
   margin: 0;
-  background: #1e140e;
+  background: var(--color-night);
   font-family: var(--font-sans);
   color: var(--color-espresso);
   -webkit-tap-highlight-color: transparent;
@@ -39,4 +43,39 @@ button {
 }
 .no-scrollbar {
   scrollbar-width: none;
+}
+
+/* "Propuesta de diseño para …" on demos (injected by vite.config.ts) */
+.proposal {
+  position: fixed;
+  left: 50%;
+  bottom: max(10px, env(safe-area-inset-bottom));
+  z-index: 100;
+  translate: -50% 0;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  max-width: calc(100vw - 32px);
+  padding-left: 12px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-espresso) 88%, transparent);
+  color: var(--color-cream);
+  font: 600 11px/1 var(--font-sans);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  box-shadow: 0 6px 18px -8px rgb(0 0 0 / 0.5);
+}
+.proposal span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.proposal button {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  background: none;
+  color: inherit;
+  font-size: 16px;
 }

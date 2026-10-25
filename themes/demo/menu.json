@@ -7,12 +7,12 @@
     "tagline": "café · cocina",
     "currency": "COP",
     "locale": "es-CO",
-    "branchId": "calle-real",
+    "branchId": "centro",
     "branches": [
       {
-        "id": "calle-real",
-        "name": "Calle Real",
-        "address": "Carrera 6 # 8b-30",
+        "id": "centro",
+        "name": "Centro",
+        "address": "Calle 1 # 1-01",
         "city": "Pamplona",
         "timezone": "America/Bogota",
         "hours": [
@@ -54,9 +54,9 @@
         ]
       },
       {
-        "id": "via-nacional",
-        "name": "Vía Nacional",
-        "address": "Calle 5 # 5-29",
+        "id": "norte",
+        "name": "Norte",
+        "address": "Avenida 2 # 2-02",
         "city": "Pamplona",
         "timezone": "America/Bogota",
         "hours": [
@@ -99,7 +99,7 @@
       }
     ],
     "contact": {
-      "deliveryPhone": "313 223 6769",
+      "deliveryPhone": null,
       "instagram": null
     }
   },

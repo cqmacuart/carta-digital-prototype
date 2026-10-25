@@ -1,0 +1,23 @@
+{
+  "title": "Terra · Carta",
+  "themeColor": "#f4ebdf",
+  "proposal": null,
+  "fontsHref": "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=Manrope:wght@400..800&display=swap",
+  "fonts": {
+    "display": "\"Fraunces\", Georgia, serif",
+    "sans": "\"Manrope\", system-ui, sans-serif"
+  },
+  "colors": {
+    "paper": "#fbf7f1",
+    "cream": "#f4ebdf",
+    "sand": "#eadcc9",
+    "canvas": "#f1e6da",
+    "clay": "#d98a5e",
+    "terra": "#b4502b",
+    "terra-deep": "#8e3b1d",
+    "espresso": "#2a1a12",
+    "cocoa": "#6b5546",
+    "olive": "#6a7148",
+    "night": "#1e140e"
+  }
+}

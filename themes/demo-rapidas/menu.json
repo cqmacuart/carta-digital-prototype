@@ -1,0 +1,1808 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-10-25",
+  "business": {
+    "id": "barrio",
+    "name": "Barrio",
+    "tagline": "burgers & perros",
+    "currency": "COP",
+    "locale": "es-CO",
+    "branchId": "centro",
+    "branches": [
+      {
+        "id": "centro",
+        "name": "Centro",
+        "address": "Carrera 1 # 1-01",
+        "city": "Pamplona",
+        "timezone": "America/Bogota",
+        "hours": [
+          {
+            "day": 0,
+            "open": "16:00",
+            "close": "23:00"
+          },
+          {
+            "day": 1,
+            "open": "16:00",
+            "close": "23:00"
+          },
+          {
+            "day": 2,
+            "open": "16:00",
+            "close": "23:00"
+          },
+          {
+            "day": 3,
+            "open": "16:00",
+            "close": "23:00"
+          },
+          {
+            "day": 4,
+            "open": "16:00",
+            "close": "23:00"
+          },
+          {
+            "day": 5,
+            "open": "16:00",
+            "close": "01:00"
+          },
+          {
+            "day": 6,
+            "open": "16:00",
+            "close": "01:00"
+          }
+        ]
+      }
+    ],
+    "contact": {
+      "deliveryPhone": null,
+      "instagram": null
+    }
+  },
+  "categories": [
+    {
+      "id": "hamburguesas",
+      "name": "Hamburguesas",
+      "icon": "hamburger",
+      "sortOrder": 1,
+      "palette": {
+        "sheet": "#E8B03A",
+        "ink": "#2A1A06",
+        "accent": "#6E3A00"
+      }
+    },
+    {
+      "id": "perros",
+      "name": "Perros",
+      "icon": "sandwich",
+      "sortOrder": 2,
+      "palette": {
+        "sheet": "#B5301F",
+        "ink": "#FFF4EC",
+        "accent": "#FFD9C4"
+      }
+    },
+    {
+      "id": "papas",
+      "name": "Papas y salchipapas",
+      "icon": "popcorn",
+      "sortOrder": 3,
+      "palette": {
+        "sheet": "#F2CF7A",
+        "ink": "#2E2005",
+        "accent": "#7A4A00"
+      }
+    },
+    {
+      "id": "alitas",
+      "name": "Alitas y pollo",
+      "icon": "drumstick",
+      "sortOrder": 4,
+      "palette": {
+        "sheet": "#6E2E1A",
+        "ink": "#FCEFE6",
+        "accent": "#F6C08E"
+      }
+    },
+    {
+      "id": "combos",
+      "name": "Combos",
+      "icon": "users",
+      "sortOrder": 5,
+      "palette": {
+        "sheet": "#2A2522",
+        "ink": "#F6EFE6",
+        "accent": "#F2B544"
+      }
+    },
+    {
+      "id": "bebidas",
+      "name": "Bebidas",
+      "icon": "cup-soda",
+      "sortOrder": 6,
+      "palette": {
+        "sheet": "#A9C27A",
+        "ink": "#1C2410",
+        "accent": "#34470F"
+      }
+    },
+    {
+      "id": "postres",
+      "name": "Postres",
+      "icon": "ice-cream-cone",
+      "sortOrder": 7,
+      "palette": {
+        "sheet": "#F4C3C8",
+        "ink": "#2E1418",
+        "accent": "#8E2638"
+      }
+    }
+  ],
+  "subcategories": [
+    {
+      "id": "hamburguesas-clasicas",
+      "categoryId": "hamburguesas",
+      "name": "Clásicas",
+      "sortOrder": 1
+    },
+    {
+      "id": "hamburguesas-casa",
+      "categoryId": "hamburguesas",
+      "name": "De la casa",
+      "sortOrder": 2
+    },
+    {
+      "id": "perros-todos",
+      "categoryId": "perros",
+      "name": "Perros",
+      "sortOrder": 3
+    },
+    {
+      "id": "papas-salchipapas",
+      "categoryId": "papas",
+      "name": "Salchipapas",
+      "sortOrder": 4
+    },
+    {
+      "id": "papas-para-picar",
+      "categoryId": "papas",
+      "name": "Para picar",
+      "sortOrder": 5
+    },
+    {
+      "id": "alitas-todos",
+      "categoryId": "alitas",
+      "name": "Alitas y pollo",
+      "sortOrder": 6
+    },
+    {
+      "id": "combos-todos",
+      "categoryId": "combos",
+      "name": "Combos",
+      "sortOrder": 7
+    },
+    {
+      "id": "bebidas-frias",
+      "categoryId": "bebidas",
+      "name": "Gaseosas y limonadas",
+      "sortOrder": 8
+    },
+    {
+      "id": "bebidas-malteadas",
+      "categoryId": "bebidas",
+      "name": "Malteadas",
+      "sortOrder": 9
+    },
+    {
+      "id": "postres-todos",
+      "categoryId": "postres",
+      "name": "Postres",
+      "sortOrder": 10
+    }
+  ],
+  "groups": [
+    {
+      "id": "hamburguesas-clasicas-res",
+      "subcategoryId": "hamburguesas-clasicas",
+      "name": "Res",
+      "sortOrder": 1
+    },
+    {
+      "id": "hamburguesas-clasicas-pollo",
+      "subcategoryId": "hamburguesas-clasicas",
+      "name": "Pollo",
+      "sortOrder": 2
+    },
+    {
+      "id": "hamburguesas-clasicas-veggie",
+      "subcategoryId": "hamburguesas-clasicas",
+      "name": "Veggie",
+      "sortOrder": 3
+    }
+  ],
+  "tags": [
+    {
+      "id": "casa",
+      "label": "De la casa",
+      "icon": "star"
+    },
+    {
+      "id": "nuevo",
+      "label": "Nuevo",
+      "icon": "sparkles"
+    },
+    {
+      "id": "picante",
+      "label": "Picante",
+      "icon": "flame"
+    },
+    {
+      "id": "vegetariano",
+      "label": "Vegetariano",
+      "icon": "sprout"
+    },
+    {
+      "id": "vegano",
+      "label": "Vegano",
+      "icon": "leaf"
+    },
+    {
+      "id": "compartir",
+      "label": "Para compartir",
+      "icon": "users"
+    }
+  ],
+  "toppings": [],
+  "modifiers": [
+    {
+      "id": "carne-extra",
+      "name": "Carne extra (150 g)",
+      "price": 7000
+    },
+    {
+      "id": "tocineta",
+      "name": "Tocineta",
+      "price": 3000
+    },
+    {
+      "id": "queso-extra",
+      "name": "Cheddar extra",
+      "price": 2500
+    },
+    {
+      "id": "huevo",
+      "name": "Huevo frito",
+      "price": 2000
+    },
+    {
+      "id": "maduro",
+      "name": "Maduro calado",
+      "price": 2500
+    },
+    {
+      "id": "salsa-extra",
+      "name": "Salsa adicional",
+      "price": 1500
+    }
+  ],
+  "products": [
+    {
+      "id": "sencilla",
+      "categoryId": "hamburguesas",
+      "subcategoryId": "hamburguesas-clasicas",
+      "groupId": "hamburguesas-clasicas-res",
+      "name": "La sencilla",
+      "tagline": "Carne a la parrilla, queso y vegetales frescos.",
+      "description": "Carne de res de 150 g a la parrilla en pan brioche, con queso mozzarella, lechuga, tomate, cebolla y salsas de la casa. Va con papas a la francesa.",
+      "price": 18000,
+      "variants": [
+        {
+          "id": "sencilla",
+          "name": "Sencilla",
+          "detail": "1 carne de 150 g",
+          "price": 18000
+        },
+        {
+          "id": "doble",
+          "name": "Doble",
+          "detail": "2 carnes de 150 g",
+          "price": 24000
+        }
+      ],
+      "ingredients": [
+        "Pan brioche",
+        "Carne de res",
+        "Mozzarella",
+        "Lechuga",
+        "Tomate",
+        "Cebolla"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "carne-extra",
+        "tocineta",
+        "queso-extra",
+        "huevo",
+        "maduro"
+      ],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1568901346375-23c9450c58cd",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "La sencilla"
+      },
+      "available": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "cheeseburger",
+      "categoryId": "hamburguesas",
+      "subcategoryId": "hamburguesas-clasicas",
+      "groupId": "hamburguesas-clasicas-res",
+      "name": "Cheeseburger",
+      "tagline": "Doble capa de cheddar fundido.",
+      "description": "Carne de res con dos tajadas de queso cheddar fundido, pepinillos, cebolla y salsa de mostaza y kétchup. Con papas a la francesa.",
+      "price": 20000,
+      "variants": [
+        {
+          "id": "sencilla",
+          "name": "Sencilla",
+          "detail": "1 carne de 150 g",
+          "price": 20000
+        },
+        {
+          "id": "doble",
+          "name": "Doble",
+          "detail": "2 carnes de 150 g",
+          "price": 26000
+        }
+      ],
+      "ingredients": [
+        "Pan brioche",
+        "Carne de res",
+        "Cheddar",
+        "Pepinillos",
+        "Cebolla"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "carne-extra",
+        "tocineta",
+        "queso-extra",
+        "huevo",
+        "maduro"
+      ],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1757834787931-ddd70f3379a5",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Cheeseburger"
+      },
+      "available": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "bacon",
+      "categoryId": "hamburguesas",
+      "subcategoryId": "hamburguesas-clasicas",
+      "groupId": "hamburguesas-clasicas-res",
+      "name": "Bacon burger",
+      "tagline": "Tocineta crocante y salsa BBQ.",
+      "description": "Carne de res, tocineta crocante, cheddar, aros de cebolla y salsa BBQ ahumada. Con papas a la francesa.",
+      "price": 23000,
+      "variants": [
+        {
+          "id": "sencilla",
+          "name": "Sencilla",
+          "detail": "1 carne de 150 g",
+          "price": 23000
+        },
+        {
+          "id": "doble",
+          "name": "Doble",
+          "detail": "2 carnes de 150 g",
+          "price": 29000
+        }
+      ],
+      "ingredients": [
+        "Pan brioche",
+        "Carne de res",
+        "Tocineta",
+        "Cheddar",
+        "Aros de cebolla",
+        "BBQ"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "carne-extra",
+        "tocineta",
+        "queso-extra",
+        "huevo",
+        "maduro"
+      ],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1776260486895-a35357e2505b",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.2
+        },
+        "alt": "Bacon burger"
+      },
+      "available": true,
+      "sortOrder": 3
+    },
+    {
+      "id": "crispy-chicken",
+      "categoryId": "hamburguesas",
+      "subcategoryId": "hamburguesas-clasicas",
+      "groupId": "hamburguesas-clasicas-pollo",
+      "name": "Crispy chicken",
+      "tagline": "Pechuga apanada y crocante.",
+      "description": "Pechuga de pollo apanada y frita, lechuga, tomate y mayonesa de ajo en pan brioche. Con papas a la francesa.",
+      "price": 21000,
+      "variants": [],
+      "ingredients": [
+        "Pan brioche",
+        "Pechuga apanada",
+        "Lechuga",
+        "Tomate",
+        "Mayonesa de ajo"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "tocineta",
+        "queso-extra"
+      ],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1671106571674-a89083d27e60",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Crispy chicken"
+      },
+      "available": true,
+      "sortOrder": 4
+    },
+    {
+      "id": "pollo-plancha",
+      "categoryId": "hamburguesas",
+      "subcategoryId": "hamburguesas-clasicas",
+      "groupId": "hamburguesas-clasicas-pollo",
+      "name": "Pollo a la plancha",
+      "tagline": "Pechuga asada, más liviana.",
+      "description": "Pechuga marinada a la plancha con mozzarella, aguacate, lechuga y tomate. Con papas a la francesa o ensalada.",
+      "price": 20000,
+      "variants": [],
+      "ingredients": [
+        "Pan brioche",
+        "Pechuga asada",
+        "Mozzarella",
+        "Aguacate",
+        "Lechuga"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "tocineta",
+        "queso-extra"
+      ],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1606755962773-d324e0a13086",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Pollo a la plancha"
+      },
+      "available": true,
+      "sortOrder": 5
+    },
+    {
+      "id": "veggie",
+      "categoryId": "hamburguesas",
+      "subcategoryId": "hamburguesas-clasicas",
+      "groupId": "hamburguesas-clasicas-veggie",
+      "name": "Veggie de garbanzo",
+      "tagline": "Medallón de garbanzo y vegetales asados.",
+      "description": "Medallón de garbanzo y especias, vegetales asados, queso mozzarella y salsa de yogur. Con papas a la francesa.",
+      "price": 20000,
+      "variants": [],
+      "ingredients": [
+        "Pan brioche",
+        "Garbanzo",
+        "Vegetales asados",
+        "Mozzarella",
+        "Yogur"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "queso-extra",
+        "huevo"
+      ],
+      "tagIds": [
+        "vegetariano"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1571091718767-18b5b1457add",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Veggie de garbanzo"
+      },
+      "available": true,
+      "sortOrder": 6
+    },
+    {
+      "id": "barrio",
+      "categoryId": "hamburguesas",
+      "subcategoryId": "hamburguesas-casa",
+      "groupId": null,
+      "name": "La Barrio",
+      "tagline": "Doble carne, tocineta, huevo y maduro.",
+      "description": "La de la casa: dos carnes de 150 g, cheddar, tocineta, huevo frito, maduro calado y salsa de la casa. Llega con palillo porque no se sostiene sola.",
+      "price": 32000,
+      "variants": [],
+      "ingredients": [
+        "Pan brioche",
+        "2 carnes de res",
+        "Cheddar",
+        "Tocineta",
+        "Huevo",
+        "Maduro"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "carne-extra",
+        "tocineta"
+      ],
+      "tagIds": [
+        "casa"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1607013251379-e6eecfffe234",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.2
+        },
+        "alt": "La Barrio"
+      },
+      "available": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "smash",
+      "categoryId": "hamburguesas",
+      "subcategoryId": "hamburguesas-casa",
+      "groupId": null,
+      "name": "Smash doble",
+      "tagline": "Dos carnes aplastadas en plancha.",
+      "description": "Dos carnes delgadas aplastadas en plancha muy caliente para que queden con borde crocante, doble cheddar, cebolla caramelizada y pepinillos.",
+      "price": 27000,
+      "variants": [],
+      "ingredients": [
+        "Pan de papa",
+        "2 carnes smash",
+        "Cheddar",
+        "Cebolla caramelizada",
+        "Pepinillos"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "carne-extra",
+        "tocineta"
+      ],
+      "tagIds": [
+        "nuevo"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1667329829058-ac191ba4a905",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Smash doble"
+      },
+      "available": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "pulled-pork",
+      "categoryId": "hamburguesas",
+      "subcategoryId": "hamburguesas-casa",
+      "groupId": null,
+      "name": "Pulled pork BBQ",
+      "tagline": "Cerdo desmechado en salsa BBQ.",
+      "description": "Bondiola de cerdo cocinada 8 horas y desmechada en salsa BBQ, con ensalada de repollo y cebolla crocante.",
+      "price": 28000,
+      "variants": [],
+      "ingredients": [
+        "Pan brioche",
+        "Cerdo desmechado",
+        "BBQ",
+        "Repollo",
+        "Cebolla crocante"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "queso-extra"
+      ],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1760533536289-9e4106eaf62e",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Pulled pork BBQ"
+      },
+      "available": true,
+      "sortOrder": 3
+    },
+    {
+      "id": "jalapena",
+      "categoryId": "hamburguesas",
+      "subcategoryId": "hamburguesas-casa",
+      "groupId": null,
+      "name": "Jalapeña",
+      "tagline": "Jalapeños, pepper jack y salsa picante.",
+      "description": "Carne de res, queso pepper jack, jalapeños encurtidos, guacamole y salsa picante de la casa. Para los que aguantan.",
+      "price": 24000,
+      "variants": [
+        {
+          "id": "sencilla",
+          "name": "Sencilla",
+          "detail": "1 carne de 150 g",
+          "price": 24000
+        },
+        {
+          "id": "doble",
+          "name": "Doble",
+          "detail": "2 carnes de 150 g",
+          "price": 30000
+        }
+      ],
+      "ingredients": [
+        "Pan brioche",
+        "Carne de res",
+        "Pepper jack",
+        "Jalapeños",
+        "Guacamole"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "carne-extra",
+        "tocineta",
+        "queso-extra",
+        "huevo",
+        "maduro"
+      ],
+      "tagIds": [
+        "picante"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1586190848861-99aa4a171e90",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Jalapeña"
+      },
+      "available": true,
+      "sortOrder": 4
+    },
+    {
+      "id": "perro-sencillo",
+      "categoryId": "perros",
+      "subcategoryId": "perros-todos",
+      "groupId": null,
+      "name": "Perro sencillo",
+      "tagline": "Salchicha, papita ripio y salsas.",
+      "description": "Salchicha americana en pan blando con cebolla, papita ripio y las salsas que quieras.",
+      "price": 12000,
+      "variants": [],
+      "ingredients": [
+        "Pan de perro",
+        "Salchicha americana",
+        "Cebolla",
+        "Papita ripio"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "queso-extra",
+        "tocineta"
+      ],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1638368593249-7cadb261e8b3",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.25
+        },
+        "alt": "Perro sencillo"
+      },
+      "available": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "perro-especial",
+      "categoryId": "perros",
+      "subcategoryId": "perros-todos",
+      "groupId": null,
+      "name": "Perro especial",
+      "tagline": "Queso, tocineta y huevo de codorniz.",
+      "description": "El perro de barrio de verdad: salchicha americana, queso gratinado, tocineta, huevos de codorniz, papita ripio y salsas.",
+      "price": 17000,
+      "variants": [],
+      "ingredients": [
+        "Pan de perro",
+        "Salchicha",
+        "Queso",
+        "Tocineta",
+        "Huevos de codorniz",
+        "Papita ripio"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "queso-extra"
+      ],
+      "tagIds": [
+        "casa"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1768250708131-23da8d1cb5ad",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.2
+        },
+        "alt": "Perro especial"
+      },
+      "available": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "perro-suizo",
+      "categoryId": "perros",
+      "subcategoryId": "perros-todos",
+      "groupId": null,
+      "name": "Perro suizo",
+      "tagline": "Salchicha suiza ahumada y cebolla grillé.",
+      "description": "Salchicha suiza ahumada a la parrilla, cebolla grillé, queso mozzarella y mostaza miel.",
+      "price": 16000,
+      "variants": [],
+      "ingredients": [
+        "Pan de perro",
+        "Salchicha suiza",
+        "Cebolla grillé",
+        "Mozzarella",
+        "Mostaza miel"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "tocineta",
+        "queso-extra"
+      ],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1721648373511-fb220d7f043f",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.2
+        },
+        "alt": "Perro suizo"
+      },
+      "available": true,
+      "sortOrder": 3
+    },
+    {
+      "id": "perro-gratinado",
+      "categoryId": "perros",
+      "subcategoryId": "perros-todos",
+      "groupId": null,
+      "name": "Perro gratinado",
+      "tagline": "Bañado en queso y gratinado.",
+      "description": "Salchicha americana, pollo desmechado, maíz tierno y una capa de queso gratinado al horno.",
+      "price": 18000,
+      "variants": [],
+      "ingredients": [
+        "Pan de perro",
+        "Salchicha",
+        "Pollo desmechado",
+        "Maíz",
+        "Queso gratinado"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "tocineta"
+      ],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1627054248949-21f77275a15f",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.2
+        },
+        "alt": "Perro gratinado"
+      },
+      "available": true,
+      "sortOrder": 4
+    },
+    {
+      "id": "salchipapa",
+      "categoryId": "papas",
+      "subcategoryId": "papas-salchipapas",
+      "groupId": null,
+      "name": "Salchipapa",
+      "tagline": "Papas a la francesa con salchicha.",
+      "description": "Papas a la francesa y salchicha en rodajas, con queso costeño rallado y salsas de la casa.",
+      "price": 14000,
+      "variants": [
+        {
+          "id": "personal",
+          "name": "Personal",
+          "detail": null,
+          "price": 14000
+        },
+        {
+          "id": "familiar",
+          "name": "Familiar",
+          "detail": "Para 3 o 4 personas",
+          "price": 26000
+        }
+      ],
+      "ingredients": [
+        "Papa",
+        "Salchicha",
+        "Queso costeño"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "queso-extra",
+        "huevo"
+      ],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1684815495679-f6e6bc0634ec",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Salchipapa"
+      },
+      "available": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "salchipapa-especial",
+      "categoryId": "papas",
+      "subcategoryId": "papas-salchipapas",
+      "groupId": null,
+      "name": "Salchipapa especial",
+      "tagline": "Con pollo, maíz, tocineta y queso.",
+      "description": "Papas, salchicha, pollo desmechado, maíz tierno, tocineta y queso gratinado, con salsas de la casa.",
+      "price": 22000,
+      "variants": [
+        {
+          "id": "personal",
+          "name": "Personal",
+          "detail": null,
+          "price": 22000
+        },
+        {
+          "id": "familiar",
+          "name": "Familiar",
+          "detail": "Para 3 o 4 personas",
+          "price": 38000
+        }
+      ],
+      "ingredients": [
+        "Papa",
+        "Salchicha",
+        "Pollo",
+        "Maíz",
+        "Tocineta",
+        "Queso"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "queso-extra",
+        "huevo"
+      ],
+      "tagIds": [
+        "casa"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1771818708792-d671ae9b4b46",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Salchipapa especial"
+      },
+      "available": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "picada",
+      "categoryId": "papas",
+      "subcategoryId": "papas-salchipapas",
+      "groupId": null,
+      "name": "Picada de la casa",
+      "tagline": "Carne, chorizo, pollo y papas para compartir.",
+      "description": "Para el grupo: carne de res, chorizo, pollo, salchicha, maduro, papas a la francesa y arepitas, con guacamole y salsas.",
+      "price": 45000,
+      "variants": [
+        {
+          "id": "mediana",
+          "name": "Mediana",
+          "detail": "Para 2 o 3 personas",
+          "price": 45000
+        },
+        {
+          "id": "grande",
+          "name": "Grande",
+          "detail": "Para 4 o 5 personas",
+          "price": 75000
+        }
+      ],
+      "ingredients": [
+        "Carne de res",
+        "Chorizo",
+        "Pollo",
+        "Salchicha",
+        "Maduro",
+        "Papas"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "compartir"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1639744210631-209fce3e256c",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.1
+        },
+        "alt": "Picada de la casa"
+      },
+      "available": true,
+      "sortOrder": 3
+    },
+    {
+      "id": "papas-francesa",
+      "categoryId": "papas",
+      "subcategoryId": "papas-para-picar",
+      "groupId": null,
+      "name": "Papas a la francesa",
+      "tagline": "Crocantes, con sal.",
+      "description": "Papas cortadas y fritas al momento, con sal y las salsas que quieras.",
+      "price": 6000,
+      "variants": [
+        {
+          "id": "personal",
+          "name": "Personal",
+          "detail": null,
+          "price": 6000
+        },
+        {
+          "id": "grande",
+          "name": "Grande",
+          "detail": null,
+          "price": 9000
+        }
+      ],
+      "ingredients": [
+        "Papa",
+        "Sal"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "vegetariano"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1768252452214-38f555002147",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Papas a la francesa"
+      },
+      "available": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "papas-queso",
+      "categoryId": "papas",
+      "subcategoryId": "papas-para-picar",
+      "groupId": null,
+      "name": "Papas con queso y tocineta",
+      "tagline": "Bañadas en cheddar fundido.",
+      "description": "Papas a la francesa bañadas en cheddar fundido, con tocineta en trocitos y cebollín.",
+      "price": 15000,
+      "variants": [],
+      "ingredients": [
+        "Papa",
+        "Cheddar",
+        "Tocineta",
+        "Cebollín"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1666304752980-678d5c35c911",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Papas con queso y tocineta"
+      },
+      "available": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "aros-cebolla",
+      "categoryId": "papas",
+      "subcategoryId": "papas-para-picar",
+      "groupId": null,
+      "name": "Aros de cebolla",
+      "tagline": "Apanados en cerveza.",
+      "description": "Aros de cebolla apanados en masa de cerveza, fritos hasta quedar dorados. Con salsa BBQ.",
+      "price": 11000,
+      "variants": [],
+      "ingredients": [
+        "Cebolla",
+        "Masa de cerveza",
+        "BBQ"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "vegetariano"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1639024471283-03518883512d",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Aros de cebolla"
+      },
+      "available": true,
+      "sortOrder": 3
+    },
+    {
+      "id": "nuggets",
+      "categoryId": "papas",
+      "subcategoryId": "papas-para-picar",
+      "groupId": null,
+      "name": "Nuggets de pollo",
+      "tagline": "Pollo apanado en trocitos.",
+      "description": "Trocitos de pechuga apanados, crocantes por fuera y jugosos por dentro. Con papas y salsa de miel mostaza.",
+      "price": 13000,
+      "variants": [
+        {
+          "id": "6",
+          "name": "6 nuggets",
+          "detail": null,
+          "price": 13000
+        },
+        {
+          "id": "12",
+          "name": "12 nuggets",
+          "detail": null,
+          "price": 22000
+        }
+      ],
+      "ingredients": [
+        "Pechuga",
+        "Apanado",
+        "Papas",
+        "Miel mostaza"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1627662168223-7df99068099a",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Nuggets de pollo"
+      },
+      "available": true,
+      "sortOrder": 4
+    },
+    {
+      "id": "alitas-bbq",
+      "categoryId": "alitas",
+      "subcategoryId": "alitas-todos",
+      "groupId": null,
+      "name": "Alitas BBQ",
+      "tagline": "Bañadas en BBQ ahumada.",
+      "description": "Alitas fritas y bañadas en salsa BBQ ahumada, con apio, zanahoria y salsa de queso azul. Cambia de salsa si quieres: Rosada, tártara, piña, BBQ, ajo, mostaza miel o picante de la casa.",
+      "price": 16000,
+      "variants": [
+        {
+          "id": "6",
+          "name": "6 alitas",
+          "detail": "1 salsa",
+          "price": 16000
+        },
+        {
+          "id": "12",
+          "name": "12 alitas",
+          "detail": "2 salsas",
+          "price": 29000
+        },
+        {
+          "id": "24",
+          "name": "24 alitas",
+          "detail": "3 salsas, para compartir",
+          "price": 54000
+        }
+      ],
+      "ingredients": [
+        "Alitas de pollo",
+        "BBQ",
+        "Apio",
+        "Zanahoria",
+        "Queso azul"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "salsa-extra"
+      ],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1567620832903-9fc6debc209f",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Alitas BBQ"
+      },
+      "available": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "alitas-bufalo",
+      "categoryId": "alitas",
+      "subcategoryId": "alitas-todos",
+      "groupId": null,
+      "name": "Alitas búfalo",
+      "tagline": "Picantes, al estilo Buffalo.",
+      "description": "Alitas bañadas en salsa búfalo de mantequilla y ají, con apio y salsa de queso azul para bajar el picante.",
+      "price": 17000,
+      "variants": [
+        {
+          "id": "6",
+          "name": "6 alitas",
+          "detail": "1 salsa",
+          "price": 17000
+        },
+        {
+          "id": "12",
+          "name": "12 alitas",
+          "detail": "2 salsas",
+          "price": 30000
+        },
+        {
+          "id": "24",
+          "name": "24 alitas",
+          "detail": "3 salsas, para compartir",
+          "price": 56000
+        }
+      ],
+      "ingredients": [
+        "Alitas de pollo",
+        "Salsa búfalo",
+        "Apio",
+        "Queso azul"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "salsa-extra"
+      ],
+      "tagIds": [
+        "picante"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1608039755401-742074f0548d",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Alitas búfalo"
+      },
+      "available": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "alitas-miel",
+      "categoryId": "alitas",
+      "subcategoryId": "alitas-todos",
+      "groupId": null,
+      "name": "Alitas miel mostaza",
+      "tagline": "Dulces y glaseadas.",
+      "description": "Alitas glaseadas con miel y mostaza, terminadas con ajonjolí tostado.",
+      "price": 16000,
+      "variants": [
+        {
+          "id": "6",
+          "name": "6 alitas",
+          "detail": "1 salsa",
+          "price": 16000
+        },
+        {
+          "id": "12",
+          "name": "12 alitas",
+          "detail": "2 salsas",
+          "price": 29000
+        },
+        {
+          "id": "24",
+          "name": "24 alitas",
+          "detail": "3 salsas, para compartir",
+          "price": 54000
+        }
+      ],
+      "ingredients": [
+        "Alitas de pollo",
+        "Miel",
+        "Mostaza",
+        "Ajonjolí"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "salsa-extra"
+      ],
+      "tagIds": [
+        "nuevo"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1650939986300-ce9609921fa7",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Alitas miel mostaza"
+      },
+      "available": true,
+      "sortOrder": 3
+    },
+    {
+      "id": "pollo-apanado",
+      "categoryId": "alitas",
+      "subcategoryId": "alitas-todos",
+      "groupId": null,
+      "name": "Pollo apanado",
+      "tagline": "Tres presas crocantes con papas.",
+      "description": "Tres presas de pollo marinadas y apanadas con nuestra mezcla de especias, con papas a la francesa y ensalada de repollo.",
+      "price": 22000,
+      "variants": [],
+      "ingredients": [
+        "Pollo",
+        "Apanado de especias",
+        "Papas",
+        "Repollo"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "salsa-extra"
+      ],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1569058242253-92a9c755a0ec",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Pollo apanado"
+      },
+      "available": true,
+      "sortOrder": 4
+    },
+    {
+      "id": "combo-clasico",
+      "categoryId": "combos",
+      "subcategoryId": "combos-todos",
+      "groupId": null,
+      "name": "Combo clásico",
+      "tagline": "La sencilla, papas y gaseosa.",
+      "description": "La sencilla con papas a la francesa y una gaseosa personal. El de siempre, a mejor precio.",
+      "price": 26000,
+      "variants": [],
+      "ingredients": [
+        "La sencilla",
+        "Papas personales",
+        "Gaseosa personal"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "carne-extra",
+        "tocineta"
+      ],
+      "tagIds": [],
+      "note": "Cambia a cualquier hamburguesa clásica pagando la diferencia.",
+      "image": {
+        "source": "unsplash",
+        "photoId": "1561758033-d89a9ad46330",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.1
+        },
+        "alt": "Combo clásico"
+      },
+      "available": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "combo-perro",
+      "categoryId": "combos",
+      "subcategoryId": "combos-todos",
+      "groupId": null,
+      "name": "Combo perro",
+      "tagline": "Perro especial, papas y gaseosa.",
+      "description": "Un perro especial con papas a la francesa y una gaseosa personal.",
+      "price": 24000,
+      "variants": [],
+      "ingredients": [
+        "Perro especial",
+        "Papas personales",
+        "Gaseosa personal"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1612392062631-94dd858cba88",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.1
+        },
+        "alt": "Combo perro"
+      },
+      "available": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "combo-pareja",
+      "categoryId": "combos",
+      "subcategoryId": "combos-todos",
+      "groupId": null,
+      "name": "Combo pareja",
+      "tagline": "2 hamburguesas, papas grandes y 2 gaseosas.",
+      "description": "Dos hamburguesas clásicas a elegir, papas grandes para compartir y dos gaseosas personales.",
+      "price": 52000,
+      "variants": [],
+      "ingredients": [
+        "2 hamburguesas clásicas",
+        "Papas grandes",
+        "2 gaseosas"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "compartir"
+      ],
+      "note": "Las hamburguesas de la casa suman $5.000 cada una.",
+      "image": {
+        "source": "unsplash",
+        "photoId": "1594212699903-ec8a3eca50f5",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.1
+        },
+        "alt": "Combo pareja"
+      },
+      "available": true,
+      "sortOrder": 3
+    },
+    {
+      "id": "combo-familiar",
+      "categoryId": "combos",
+      "subcategoryId": "combos-todos",
+      "groupId": null,
+      "name": "Combo familiar",
+      "tagline": "4 sencillas, 2 papas grandes y gaseosa de 1,5 L.",
+      "description": "Para la familia: cuatro hamburguesas sencillas, dos papas grandes y una gaseosa de 1,5 litros.",
+      "price": 95000,
+      "variants": [],
+      "ingredients": [
+        "4 hamburguesas sencillas",
+        "2 papas grandes",
+        "Gaseosa 1,5 L"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "compartir",
+        "casa"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1551782450-a2132b4ba21d",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.1
+        },
+        "alt": "Combo familiar"
+      },
+      "available": true,
+      "sortOrder": 4
+    },
+    {
+      "id": "gaseosa",
+      "categoryId": "bebidas",
+      "subcategoryId": "bebidas-frias",
+      "groupId": null,
+      "name": "Gaseosa",
+      "tagline": "Personal o para compartir.",
+      "description": "Gaseosa bien fría, en botella personal o de 1,5 litros.",
+      "price": 4500,
+      "variants": [
+        {
+          "id": "personal",
+          "name": "Personal",
+          "detail": "400 ml",
+          "price": 4500
+        },
+        {
+          "id": "litro",
+          "name": "1,5 litros",
+          "detail": null,
+          "price": 9000
+        }
+      ],
+      "ingredients": [
+        "Gaseosa"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1581636625402-29b2a704ef13",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.1
+        },
+        "alt": "Gaseosa"
+      },
+      "available": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "limonada",
+      "categoryId": "bebidas",
+      "subcategoryId": "bebidas-frias",
+      "groupId": null,
+      "name": "Limonada",
+      "tagline": "Natural, cerezada o de coco.",
+      "description": "Limonada preparada al momento con limón fresco.",
+      "price": 7000,
+      "variants": [
+        {
+          "id": "natural",
+          "name": "Natural",
+          "detail": null,
+          "price": 7000
+        },
+        {
+          "id": "cerezada",
+          "name": "Cerezada",
+          "detail": null,
+          "price": 8000
+        },
+        {
+          "id": "coco",
+          "name": "De coco",
+          "detail": null,
+          "price": 9000
+        }
+      ],
+      "ingredients": [
+        "Limón",
+        "Hielo",
+        "Azúcar"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "vegano"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1623084921164-4a8c5c37a912",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.1
+        },
+        "alt": "Limonada"
+      },
+      "available": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "malteada",
+      "categoryId": "bebidas",
+      "subcategoryId": "bebidas-malteadas",
+      "groupId": null,
+      "name": "Malteada",
+      "tagline": "Helado batido con leche.",
+      "description": "Malteada espesa de helado batido con leche entera, crema chantilly y galleta.",
+      "price": 13000,
+      "variants": [
+        {
+          "id": "vainilla",
+          "name": "Vainilla",
+          "detail": null,
+          "price": 13000
+        },
+        {
+          "id": "chocolate",
+          "name": "Chocolate",
+          "detail": null,
+          "price": 13000
+        },
+        {
+          "id": "fresa",
+          "name": "Fresa",
+          "detail": null,
+          "price": 13000
+        },
+        {
+          "id": "oreo",
+          "name": "Oreo",
+          "detail": null,
+          "price": 15000
+        }
+      ],
+      "ingredients": [
+        "Helado",
+        "Leche",
+        "Crema chantilly"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "vegetariano"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1572490122747-3968b75cc699",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Malteada"
+      },
+      "available": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "malteada-arequipe",
+      "categoryId": "bebidas",
+      "subcategoryId": "bebidas-malteadas",
+      "groupId": null,
+      "name": "Malteada de arequipe",
+      "tagline": "La de la casa, con brownie.",
+      "description": "Helado de vainilla batido con arequipe, trocitos de brownie y chantilly. Es un postre en vaso.",
+      "price": 15000,
+      "variants": [],
+      "ingredients": [
+        "Helado de vainilla",
+        "Arequipe",
+        "Brownie",
+        "Chantilly"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "casa",
+        "vegetariano"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1577805947697-89e18249d767",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Malteada de arequipe"
+      },
+      "available": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "brownie",
+      "categoryId": "postres",
+      "subcategoryId": "postres-todos",
+      "groupId": null,
+      "name": "Brownie con helado",
+      "tagline": "Tibio, con una bola de vainilla.",
+      "description": "Brownie de chocolate tibio con una bola de helado de vainilla y salsa de chocolate.",
+      "price": 12000,
+      "variants": [],
+      "ingredients": [
+        "Brownie",
+        "Helado de vainilla",
+        "Salsa de chocolate"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "vegetariano"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1780148686706-4af0349a6003",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Brownie con helado"
+      },
+      "available": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "sundae",
+      "categoryId": "postres",
+      "subcategoryId": "postres-todos",
+      "groupId": null,
+      "name": "Sundae",
+      "tagline": "Helado con salsa y crema.",
+      "description": "Helado de vainilla con salsa a elegir, crema chantilly y una cereza.",
+      "price": 10000,
+      "variants": [
+        {
+          "id": "fresa",
+          "name": "Fresa",
+          "detail": null,
+          "price": 10000
+        },
+        {
+          "id": "chocolate",
+          "name": "Chocolate",
+          "detail": null,
+          "price": 10000
+        },
+        {
+          "id": "arequipe",
+          "name": "Arequipe",
+          "detail": null,
+          "price": 10000
+        }
+      ],
+      "ingredients": [
+        "Helado",
+        "Salsa",
+        "Chantilly"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "vegetariano"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1704006158609-2fe604e3e76f",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Sundae"
+      },
+      "available": true,
+      "sortOrder": 2
+    }
+  ]
+}

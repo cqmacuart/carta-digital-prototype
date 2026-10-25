@@ -13,7 +13,7 @@ Plantilla de carta con el negocio de ejemplo **Terra · café · cocina**: 65 pr
 
 ### Datos (simulación de base de datos)
 
-La carta vive en **`public/data/terra.json`**, normalizada como tablas de una base de datos. Los modelos están en **`src/models/db.ts`**:
+La carta de cada negocio vive en **`themes/<slug>/menu.json`** (más su `theme.json`), normalizada como tablas de una base de datos. Los modelos están en **`src/models/db.ts`**:
 
 | Tabla | Qué guarda |
 |---|---|
@@ -53,12 +53,13 @@ Carta descriptiva, mobile-first, para un café restaurante. Inspirada en el "Foo
 - **Color**: cada categoría tiene su paleta dentro de la familia terracota (armonía análoga del círculo cromático): café = moka, panadería = corteza dorada, brunch = terracota, platos = ladrillo, postres = rosa arcilla. La hoja cambia de color con capas que se funden (solo `opacity`), y los pares texto/fondo cumplen 4.5:1.
 - **Rendimiento**: solo se animan `transform` y `opacity`. El desenfoque es un fundido entre la foto nítida y la copia ya desenfocada (nunca se anima `filter: blur()`), no hay `backdrop-filter` sobre contenido en movimiento y las fotos se pre-decodifican al cargar.
 
-El menú se edita en `src/data/menu.ts`.
+El menú de cada negocio se edita en su `themes/<slug>/menu.json`.
 
 ## Scripts
 
 ```bash
 npm install
-npm run dev      # http://localhost:5173 (agrega --host para probar en tu celular)
-npm run build    # genera dist/ para Vercel, Netlify, etc.
+npm run dev -- la-sablee    # carta de un cliente en http://localhost:5173 (sin slug: demo; agrega --host para el celular)
+npm run build -- la-sablee  # genera dist/la-sablee/, estático, para cualquier hosting
+npm run build -- --all      # un dist/<slug>/ por cliente
 ```

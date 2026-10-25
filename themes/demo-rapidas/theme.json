@@ -1,0 +1,23 @@
+{
+  "title": "Barrio · Burgers & perros",
+  "themeColor": "#fbf2e2",
+  "proposal": null,
+  "fontsHref": "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Manrope:wght@400..800&display=swap",
+  "fonts": {
+    "display": "\"Bricolage Grotesque\", system-ui, sans-serif",
+    "sans": "\"Manrope\", system-ui, sans-serif"
+  },
+  "colors": {
+    "paper": "#fffaf1",
+    "cream": "#fbf2e2",
+    "sand": "#f1e2c6",
+    "canvas": "#f6ead5",
+    "clay": "#e9a35b",
+    "terra": "#b8361a",
+    "terra-deep": "#93290f",
+    "espresso": "#1c1714",
+    "cocoa": "#6a5a4e",
+    "olive": "#6a7148",
+    "night": "#17120f"
+  }
+}

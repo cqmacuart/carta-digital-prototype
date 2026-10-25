@@ -6,12 +6,23 @@ Carta digital **mobile-first** para un café restaurante, pensada como **plantil
 
 ```bash
 npm install
-npm run dev -- --host      # http://localhost:5173 (o 5174) y la IP de la red para probar en el celular
+npm run dev -- la-sablee --host   # carta de un cliente (sin slug: demo) + IP de la red para el celular
 npx tsc -b                 # tipos
 npx oxlint src             # lint (reglas de React Compiler: nada de setState en effects, refs en render, etc.)
-npm run build              # dist/ estático
-npx vite preview --port 4173   # para medir rendimiento sobre el build de producción
+npm run build -- la-sablee # dist/la-sablee/ estático
+npm run build -- --all     # un dist/<slug>/ por cada cliente con carta
+npm run preview -- la-sablee --port 4173   # para medir rendimiento sobre el build de producción
 ```
+
+## Un build por cliente
+
+El código no tiene datos de ningún negocio: cada carta sale de `themes/<slug>/`. Cómo agregar un negocio: `themes/README.md` (local, fuera de git).
+- `menu.json`: la "base de datos" (esquema en `src/models/db.ts`).
+- `assets/`: fotos propias del negocio (`image.source: "local"`). El plugin las recorta por punto focal y genera las 4 versiones de `src/lib/media.ts` en `media/` con sharp (caché en `node_modules/.carta-media/`). Cómo usarlas: `themes/<slug>/assets/README.md`.
+- `theme.json`: título, fuentes, tokens de color (pisan los `--color-*` de `@theme` en `src/index.css`) y `proposal`: con texto, el build lleva `noindex` y el aviso "Propuesta de diseño para …"; `null` cuando el cliente paga.
+- `scripts/carta.mjs` elige el cliente (`CARTA_CLIENT`) y el plugin `carta-client` de `vite.config.ts` sirve/emite `data/menu.json` y arma el `<head>`.
+- `base: './'`: el mismo build funciona en la raíz de un dominio o en una subcarpeta (GitHub Pages, Hostinger).
+- Demos ficticias, versionadas y públicas (`themes/demo*/`, sin direcciones ni teléfonos reales): `demo` = Terra (café), `demo-sushi` = Nami (sushi bar), `demo-rapidas` = Barrio (burgers y perros) y `demo-pizzeria` = Forno (pizzas, panzerottis, pastas). Las demás carpetas de `themes/` quedan fuera de git.
 
 ## Stack
 
@@ -19,14 +30,14 @@ Vite 8 · React 19 · TypeScript · **Motion** (`motion/react`) · Tailwind CSS 
 
 ## Ramas
 
-- `main`: carta Terra original (una sola rueda por categoría, sin subcategorías).
-- `carta-la-sablee`: la versión actual de trabajo: 3 niveles de navegación, datos en JSON, buscador. El nombre de la rama es histórico; el negocio ya se llama Terra.
+- `main`: única rama de trabajo: 3 niveles de navegación, buscador y build por cliente desde `themes/<slug>/` (`carta-la-sablee` ya está fusionada).
 
 ## Estructura
 
 | Ruta | Qué es |
 |---|---|
-| `public/data/terra.json` | **La "base de datos"**: tablas normalizadas (business + branches con horarios, categories, subcategories, groups, tags, toppings, modifiers, products). Única fuente de datos. |
+| `themes/<slug>/menu.json` | **La "base de datos"** de cada negocio: tablas normalizadas (business + branches con horarios, categories, subcategories, groups, tags, toppings, modifiers, products). Se sirve como `data/menu.json`. |
+| `vite.config.ts` · `scripts/carta.mjs` | Build por cliente (ver arriba). |
 | `src/models/db.ts` | Interfaces de persistencia (lo que guardaría una BBDD). |
 | `src/data/repository.ts` | `fetchMenu()` — hoy hace `fetch` del JSON; el día que haya API solo cambia esto. |
 | `src/data/adapter.ts` | `toMenu()` — une tablas, ordena, resuelve íconos, arma URLs de fotos y el color `strong` por categoría. |
@@ -38,7 +49,8 @@ Vite 8 · React 19 · TypeScript · **Motion** (`motion/react`) · Tailwind CSS 
 | `src/components/ScrollCaret.tsx` | `ScrollStrip`: contenedor desplazable con carets que tienen su propio espacio (nunca encima de los ítems). |
 | `src/lib/search.ts` | Índice y motor de búsqueda (sin tildes, AND de palabras, pesos por campo, motivo de coincidencia). |
 | `src/lib/hours.ts` · `useOpenStatus.ts` | "Abierto · hasta 21:00" / "Cerrado · abre …" según horario y zona de la sede. |
-| `src/lib/format.ts` | `money()` en COP, `photo()` (URLs de Unsplash recortadas + copias desenfocadas), `clamp`. |
+| `src/lib/format.ts` | `money()` en COP, `photo()` (URLs de las 4 versiones de cada foto: Unsplash o `media/` local), `clamp`. |
+| `src/lib/media.ts` | Las 4 versiones de cada foto (tamaño, desenfoque, nombre de archivo); la usan la app y el build. |
 
 ## Navegación (no romper)
 
@@ -64,11 +76,11 @@ Vite 8 · React 19 · TypeScript · **Motion** (`motion/react`) · Tailwind CSS 
 
 ## Diseño
 
-- Cada categoría tiene paleta propia (`palette.sheet/ink/accent`) repartida en el arco **cálido** del círculo cromático, de 349° a 41° (miel, terracota, caramelo, mantequilla, baya, espresso, kraft), alternando hojas claras y oscuras entre vecinas del riel. **Sin verdes ni azules**: no son colores de café restaurante. **Texto y acento ≥ 4.5:1** sobre la hoja: verifícalo al cambiar colores.
+- Cada categoría tiene paleta propia (`palette.sheet/ink/accent`) acorde con el negocio, alternando hojas claras y oscuras entre vecinas del riel. Terra (café) usa el arco **cálido** de 349° a 41°, sin verdes ni azules; Nami (sushi) usa salmón, atún, wasabi, nori y jengibre; Barrio (comidas rápidas), mostaza, kétchup, papa, BBQ y carbón; Forno (pizzería), tomate, masa dorada, albahaca, mozzarella y vino. **Texto y acento ≥ 4.5:1** sobre la hoja: verifícalo al cambiar colores.
 - Etiquetas (3er nivel) con fondo blanco y borde fino (sin él no se leían sobre la foto); la activa lleva un anillo del color `strong`. El número de platos va en un círculo.
 - Insignias de producto (`TagChip` en `DishSheet.tsx`): misma forma, color propio por insignia (`TAG_COLORS`: relleno claro opaco + texto del mismo tono ≥5:1 y aro fino, para destacar en hojas claras y oscuras). Entran con rebote escalonado. Solo dos tienen efecto: **Nuevo** (barrido de luz + destellos cada ~4 s) y **Picante** (llama que parpadea con resplandor). El verde de Vegano/Vegetariano es semántico, como el de "Abierto".
 - Microinteracciones con springs con rebote (`TAP`, `PILL` en `MenuScreen.tsx`). Respeta `prefers-reduced-motion` (`MotionConfig reducedMotion="user"`).
-- Botones ≥ 44 px; íconos SVG (lucide), no emojis.
+- Botones ≥ 44 px; íconos SVG (lucide), no emojis. El catálogo de íconos (`src/lib/icons.ts`, ~70, agrupados por uso: platos, panadería, frutas, bebidas, insignias, regalos y catálogo, servicio) cubre los nichos en los que estamos; `IconKey` en `db.ts` lista las mismas claves. Ícono nuevo = agregarlo en los dos y en `themes/README.md`.
 
 ## Cómo trabaja el usuario
 
@@ -82,8 +94,9 @@ Vite 8 · React 19 · TypeScript · **Motion** (`motion/react`) · Tailwind CSS 
 
 ## Pendiente conocido
 
-- Fotos de referencia de Unsplash: reemplazar por fotos reales del negocio (`image.photoId` + `focal`).
-- Horarios y direcciones de las sedes son de ejemplo: ponerlos reales en `terra.json`.
+- Fotos de referencia de Unsplash: reemplazar por fotos reales del negocio en `themes/<slug>/assets/` (`source: "local"`).
+- Horarios de las sedes son de ejemplo, también en `themes/la-sablee/menu.json`: ponerlos reales.
+- Roadmap (V1 carta → V2 pedido por WhatsApp → V3 manager → V4 multitenant) y pendientes: `BACKLOG.md`.
 - Contenido de demo: nombres y precios vienen de la carta impresa, pero descripciones, ingredientes, detalles de variantes, notas y las adiciones (shot de espresso, huevo, aguacate, helado) fueron redactados para que la carta se vea pareja. Validarlos con el negocio. Todo producto debería tener descripción de 2–3 frases, 4–7 ingredientes y detalle en sus variantes.
 - Swipe y cambio de categoría ~40–48 fps con CPU 4× (las capas de navegación sobre el fondo en movimiento cuestan); candidato a optimizar.
 - Próximo: más información en la hoja inferior (requisitos por definir).

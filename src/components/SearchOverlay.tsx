@@ -82,7 +82,7 @@ export function SearchOverlay({ menu, index, onClose, onSelect, onOpened }: Prop
       onKeyDown={(e) => e.key === 'Escape' && onClose()}
       // the blind reaches above the screen, so its overshoot never uncovers a gap at the top
       style={{ top: -BLIND_OVERSHOOT, paddingTop: BLIND_OVERSHOOT, height: `calc(100% + ${BLIND_OVERSHOOT}px)`, willChange: 'transform', visibility: 'visible' }}
-      className="absolute inset-x-0 z-50 flex flex-col rounded-b-[28px] bg-[#F1E6DA] shadow-[0_18px_36px_-14px_rgba(42,26,18,.55)]"
+      className="absolute inset-x-0 z-50 flex flex-col rounded-b-[28px] bg-canvas shadow-[0_18px_36px_-14px_rgba(42,26,18,.55)]"
     >
       {/* the blind's bottom bar */}
       <span aria-hidden className="absolute inset-x-0 bottom-2 mx-auto h-1.5 w-12 rounded-full bg-espresso/20" />

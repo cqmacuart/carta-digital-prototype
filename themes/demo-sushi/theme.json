@@ -1,0 +1,23 @@
+{
+  "title": "Nami · Sushi bar",
+  "themeColor": "#f4f0e8",
+  "proposal": null,
+  "fontsHref": "https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Manrope:wght@400..800&display=swap",
+  "fonts": {
+    "display": "\"Shippori Mincho\", Georgia, serif",
+    "sans": "\"Manrope\", system-ui, sans-serif"
+  },
+  "colors": {
+    "paper": "#fbf9f4",
+    "cream": "#f4f0e8",
+    "sand": "#e7e0d2",
+    "canvas": "#efe9de",
+    "clay": "#d9a48f",
+    "terra": "#b3302a",
+    "terra-deep": "#8c231d",
+    "espresso": "#1f1b1a",
+    "cocoa": "#5f5853",
+    "olive": "#6a7148",
+    "night": "#141211"
+  }
+}

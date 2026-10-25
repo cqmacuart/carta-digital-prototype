@@ -9,21 +9,78 @@ export type ID = string
 /** Icons are stored as keys; the UI maps them to components. */
 export type IconKey =
   | 'egg-fried'
+  | 'egg'
   | 'sandwich'
+  | 'hamburger'
+  | 'pizza'
+  | 'beef'
+  | 'ham'
+  | 'drumstick'
+  | 'fish'
+  | 'shrimp'
+  | 'cylinder'
+  | 'salad'
+  | 'leafy-green'
+  | 'soup'
+  | 'cooking-pot'
+  | 'popcorn'
+  | 'utensils'
+  | 'utensils-crossed'
+  | 'chef-hat'
+  | 'hand-platter'
   | 'croissant'
-  | 'ice-cream-bowl'
+  | 'wheat'
+  | 'cookie'
+  | 'donut'
+  | 'cake'
   | 'cake-slice'
+  | 'dessert'
+  | 'candy'
+  | 'ice-cream-bowl'
+  | 'ice-cream-cone'
+  | 'popsicle'
+  | 'apple'
+  | 'banana'
+  | 'cherry'
+  | 'grape'
+  | 'citrus'
+  | 'carrot'
+  | 'nut'
+  | 'bean'
   | 'coffee'
-  | 'shopping-bag'
-  | 'star'
-  | 'sparkles'
+  | 'cup-soda'
+  | 'glass-water'
+  | 'milk'
+  | 'beer'
+  | 'wine'
+  | 'martini'
   | 'leaf'
+  | 'vegan'
   | 'sprout'
   | 'wheat-off'
+  | 'milk-off'
   | 'flame'
+  | 'snowflake'
+  | 'star'
+  | 'sparkles'
+  | 'crown'
+  | 'award'
   | 'users'
+  | 'gift'
+  | 'heart'
+  | 'flower'
+  | 'flower-2'
+  | 'party-popper'
+  | 'baby'
+  | 'gem'
+  | 'spray-can'
+  | 'shopping-bag'
+  | 'package'
+  | 'truck'
+  | 'store'
+  | 'clock'
 
-export type TagId = 'casa' | 'nuevo' | 'vegano' | 'vegetariano' | 'sin-gluten' | 'picante' | 'compartir'
+export type TagId = 'casa' | 'nuevo' | 'vegano' | 'vegetariano' | 'sin-gluten' | 'picante' | 'compartir' | 'crudo' | 'tempura'
 
 export interface MenuDatabase {
   schemaVersion: 1
@@ -151,10 +208,30 @@ export interface Variant {
   price: number
 }
 
-export interface ProductImage {
+/** focal-point crop so the dish fills its circle: centre (0–1) and zoom (1 = whole short side) */
+export interface Focal {
+  x: number
+  y: number
+  zoom: number
+}
+
+export type ProductImage = UnsplashImage | LocalImage
+
+/** Reference photo from Unsplash, cropped and blurred by its CDN */
+export interface UnsplashImage {
   source: 'unsplash'
   photoId: string
-  /** focal-point crop so the dish fills its circle */
-  focal: { x: number; y: number; zoom: number }
+  focal: Focal
   alt: string
+}
+
+/** The business's own photo in themes/<slug>/assets/; the build renders its sizes into media/ */
+export interface LocalImage {
+  source: 'local'
+  /** file name inside themes/<slug>/assets/ */
+  file: string
+  focal: Focal
+  alt: string
+  /** set by the build (hash of the file and its crop); part of the rendered file names */
+  version?: string
 }

@@ -4,10 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
+    "dev": "node scripts/carta.mjs dev",
+    "build": "tsc -b && node scripts/carta.mjs build",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "node scripts/carta.mjs preview"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",
@@ -23,6 +23,7 @@
     "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^6.1.2",
     "oxlint": "^1.88.0",
+    "sharp": "^0.35.5",
     "typescript": "~6.0.3",
     "vite": "^8.3.4"
   }

@@ -133,7 +133,10 @@ export function MenuScreen({ width, height, menu }: Props) {
   const size = Math.min(stageH * 0.62, (width - stageLeft) * 0.86, 300)
   const railButton = height < 720 ? 38 : 44
   // narrow phones keep the branch as a pin only, so the header never wraps
-  const compactHeader = width < 360
+  // each business has its own name and tagline, so estimate the brand chip (≈10 px per name char, ≈7.7 px per
+  // tagline char) and drop the branch line when chip + full status pill + search don't fit
+  const brandW = 64 + Math.max(business.name.length * 10, business.tagline.length * 7.7)
+  const compactHeader = brandW + 187 > width - 32
   const radius = width * 0.86
   const openTop = Math.round(height * 0.3)
   const sheetH = height - openTop
@@ -334,7 +337,7 @@ export function MenuScreen({ width, height, menu }: Props) {
   return (
     // clip, not hidden: the rolling plates reach past the edges, and a hidden overflow is still scrollable by focus or
     // scrollIntoView, which could leave the whole carta shifted sideways
-    <div className="absolute inset-0 overflow-clip bg-[#F1E6DA]" style={covered ? { visibility: 'hidden' } : undefined}>
+    <div className="absolute inset-0 overflow-clip bg-canvas" style={covered ? { visibility: 'hidden' } : undefined}>
       {/* category track */}
       <motion.div
         className="absolute inset-x-0 top-0"
@@ -430,16 +433,16 @@ export function MenuScreen({ width, height, menu }: Props) {
 
       {/* header */}
       <header className="absolute inset-x-0 top-0 z-30 flex items-center justify-between px-4" style={{ height: HEADER }}>
-        <div className="flex items-center gap-2 rounded-full bg-white/70 py-1 pl-1 pr-4 ring-1 ring-white/80">
-          <span className="grid size-9 place-items-center rounded-full bg-espresso font-display text-[17px] font-semibold italic text-cream" aria-hidden>
+        <div className="flex min-w-0 items-center gap-2 rounded-full bg-white/70 py-1 pl-1 pr-4 ring-1 ring-white/80">
+          <span className="grid size-9 shrink-0 place-items-center rounded-full bg-espresso font-display text-[17px] font-semibold italic text-cream" aria-hidden>
             {business.name.charAt(0).toLowerCase()}
           </span>
-          <div className="leading-none">
-            <p className="font-display text-[19px] font-semibold tracking-tight">{business.name}</p>
-            <p className="mt-0.5 whitespace-nowrap text-[9px] font-bold uppercase tracking-[0.24em] text-cocoa">{business.tagline}</p>
+          <div className="min-w-0 leading-none">
+            <p className="whitespace-nowrap font-display text-[19px] font-semibold tracking-tight">{business.name}</p>
+            <p className="mt-0.5 truncate text-[9px] font-bold uppercase tracking-[0.24em] text-cocoa">{business.tagline}</p>
           </div>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex shrink-0 items-center gap-2">
           {/* branch, and below it whether it is open right now; narrow phones keep only the status */}
           <p
             aria-label={`Sede ${business.branch}. ${status.label}`}

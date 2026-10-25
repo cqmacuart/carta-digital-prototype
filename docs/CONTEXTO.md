@@ -6,9 +6,9 @@
 
 Carta digital **mobile-first** para un café restaurante, hecha como web (no app nativa) para abrirse desde un QR. Funciona como **plantilla**: el negocio de ejemplo es **Terra · café · cocina**; la carta de ejemplo (65 productos, precios en COP) viene de un café real de Pamplona (Colombia) que se usó como caso de estudio.
 
-- Repo: https://github.com/cqmacuart/coffee-menu-prototype — carpeta local `D:\mockupsites\cafe-menu`.
+- Repo: https://github.com/cqmacuart/coffee-menu-prototype — carpeta local `D:\_ebano-estudio\products\carta-digital` (antes `D:\mockupsites\cafe-menu`).
 - Rama de trabajo: **`carta-la-sablee`** (la `main` conserva la primera versión, más simple).
-- Probar en el celular: `npm run dev -- --host` y abrir la IP de la red (p. ej. `http://192.168.1.43:5174`) con el teléfono en el mismo Wi-Fi.
+- Probar en el celular: `npm run dev -- <slug> --host` y abrir la IP de la red (p. ej. `http://192.168.1.43:5174`) con el teléfono en el mismo Wi-Fi.
 
 ## Cómo se ve y se usa
 
@@ -39,7 +39,7 @@ Carta digital **mobile-first** para un café restaurante, hecha como web (no app
 - **Web + Vite/React/Motion** en lugar de app nativa: más fácil de implementar y compartir por QR.
 - **Menú descriptivo, sin carrito ni pago**: el usuario lo pidió así.
 - **Categorías como pista vertical** (un solo `translateY`) tras detectar jitter al encadenar ruedas.
-- **Datos normalizados en JSON** (`public/data/terra.json` + `src/models/db.ts`) para simular una base de datos; `repository.ts` es el único punto a cambiar por una API.
+- **Datos normalizados en JSON** (`themes/<slug>/menu.json` + `src/models/db.ts`; un build por cliente) para simular una base de datos; `repository.ts` es el único punto a cambiar por una API.
 - **Paletas por categoría** repartidas en el círculo cromático (antes eran todas terracota y se veía monótono), con contraste ≥4.5:1.
 - **Los toppings no cuentan en la búsqueda**: todos los waffles comparten el pool y "chocolate" devolvía todo.
 - **Buscador sin `backdrop-filter`**: era la causa del jitter (37→55 fps al abrir).

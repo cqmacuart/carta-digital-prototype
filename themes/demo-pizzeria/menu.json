@@ -1,0 +1,1805 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-10-25",
+  "business": {
+    "id": "forno",
+    "name": "Forno",
+    "tagline": "pizzería",
+    "currency": "COP",
+    "locale": "es-CO",
+    "branchId": "centro",
+    "branches": [
+      {
+        "id": "centro",
+        "name": "Centro",
+        "address": "Calle 2 # 2-02",
+        "city": "Pamplona",
+        "timezone": "America/Bogota",
+        "hours": [
+          {
+            "day": 1,
+            "open": "12:00",
+            "close": "22:00"
+          },
+          {
+            "day": 2,
+            "open": "12:00",
+            "close": "22:00"
+          },
+          {
+            "day": 3,
+            "open": "12:00",
+            "close": "22:00"
+          },
+          {
+            "day": 4,
+            "open": "12:00",
+            "close": "22:00"
+          },
+          {
+            "day": 0,
+            "open": "12:00",
+            "close": "22:00"
+          },
+          {
+            "day": 5,
+            "open": "12:00",
+            "close": "23:30"
+          },
+          {
+            "day": 6,
+            "open": "12:00",
+            "close": "23:30"
+          }
+        ]
+      }
+    ],
+    "contact": {
+      "deliveryPhone": null,
+      "instagram": null
+    }
+  },
+  "categories": [
+    {
+      "id": "pizzas",
+      "name": "Pizzas",
+      "icon": "pizza",
+      "sortOrder": 1,
+      "palette": {
+        "sheet": "#A8301F",
+        "ink": "#FFF5EE",
+        "accent": "#FFE6DA"
+      }
+    },
+    {
+      "id": "panzerottis",
+      "name": "Panzerottis y calzones",
+      "icon": "croissant",
+      "sortOrder": 2,
+      "palette": {
+        "sheet": "#E3A95A",
+        "ink": "#2A1806",
+        "accent": "#5E2F00"
+      }
+    },
+    {
+      "id": "pastas",
+      "name": "Pastas",
+      "icon": "cooking-pot",
+      "sortOrder": 3,
+      "palette": {
+        "sheet": "#48622B",
+        "ink": "#F7F8EE",
+        "accent": "#E6F0CA"
+      }
+    },
+    {
+      "id": "entradas",
+      "name": "Entradas",
+      "icon": "wheat",
+      "sortOrder": 4,
+      "palette": {
+        "sheet": "#F1E6CF",
+        "ink": "#2A2216",
+        "accent": "#7A4B12"
+      }
+    },
+    {
+      "id": "combos",
+      "name": "Combos",
+      "icon": "users",
+      "sortOrder": 5,
+      "palette": {
+        "sheet": "#2B2623",
+        "ink": "#F7EFE6",
+        "accent": "#F0B45A"
+      }
+    },
+    {
+      "id": "bebidas",
+      "name": "Bebidas",
+      "icon": "cup-soda",
+      "sortOrder": 6,
+      "palette": {
+        "sheet": "#C9D3A1",
+        "ink": "#1F2610",
+        "accent": "#3F4E14"
+      }
+    },
+    {
+      "id": "postres",
+      "name": "Postres",
+      "icon": "cake-slice",
+      "sortOrder": 7,
+      "palette": {
+        "sheet": "#7A2E3A",
+        "ink": "#FFF1F2",
+        "accent": "#FFD0D8"
+      }
+    }
+  ],
+  "subcategories": [
+    {
+      "id": "pizzas-clasicas",
+      "categoryId": "pizzas",
+      "name": "Clásicas",
+      "sortOrder": 1
+    },
+    {
+      "id": "pizzas-especiales",
+      "categoryId": "pizzas",
+      "name": "Especiales",
+      "sortOrder": 2
+    },
+    {
+      "id": "panzerottis-panzerottis",
+      "categoryId": "panzerottis",
+      "name": "Panzerottis",
+      "sortOrder": 3
+    },
+    {
+      "id": "panzerottis-calzones",
+      "categoryId": "panzerottis",
+      "name": "Calzones",
+      "sortOrder": 4
+    },
+    {
+      "id": "pastas-todas",
+      "categoryId": "pastas",
+      "name": "Pastas",
+      "sortOrder": 5
+    },
+    {
+      "id": "entradas-todas",
+      "categoryId": "entradas",
+      "name": "Entradas",
+      "sortOrder": 6
+    },
+    {
+      "id": "combos-todos",
+      "categoryId": "combos",
+      "name": "Combos",
+      "sortOrder": 7
+    },
+    {
+      "id": "bebidas-todas",
+      "categoryId": "bebidas",
+      "name": "Bebidas",
+      "sortOrder": 8
+    },
+    {
+      "id": "postres-todos",
+      "categoryId": "postres",
+      "name": "Postres",
+      "sortOrder": 9
+    }
+  ],
+  "groups": [
+    {
+      "id": "pizzas-clasicas-tradicionales",
+      "subcategoryId": "pizzas-clasicas",
+      "name": "Tradicionales",
+      "sortOrder": 1
+    },
+    {
+      "id": "pizzas-clasicas-vegetarianas",
+      "subcategoryId": "pizzas-clasicas",
+      "name": "Vegetarianas",
+      "sortOrder": 2
+    }
+  ],
+  "tags": [
+    {
+      "id": "casa",
+      "label": "De la casa",
+      "icon": "star"
+    },
+    {
+      "id": "nuevo",
+      "label": "Nuevo",
+      "icon": "sparkles"
+    },
+    {
+      "id": "picante",
+      "label": "Picante",
+      "icon": "flame"
+    },
+    {
+      "id": "vegetariano",
+      "label": "Vegetariano",
+      "icon": "sprout"
+    },
+    {
+      "id": "vegano",
+      "label": "Vegano",
+      "icon": "leaf"
+    },
+    {
+      "id": "compartir",
+      "label": "Para compartir",
+      "icon": "users"
+    }
+  ],
+  "toppings": [],
+  "modifiers": [
+    {
+      "id": "borde-queso",
+      "name": "Borde relleno de queso",
+      "price": 6000
+    },
+    {
+      "id": "queso-extra",
+      "name": "Mozzarella extra",
+      "price": 4000
+    },
+    {
+      "id": "pepperoni-extra",
+      "name": "Pepperoni extra",
+      "price": 4000
+    },
+    {
+      "id": "champinones",
+      "name": "Champiñones",
+      "price": 3000
+    },
+    {
+      "id": "tocineta",
+      "name": "Tocineta",
+      "price": 3500
+    },
+    {
+      "id": "jalapenos",
+      "name": "Jalapeños",
+      "price": 2500
+    }
+  ],
+  "products": [
+    {
+      "id": "margarita",
+      "categoryId": "pizzas",
+      "subcategoryId": "pizzas-clasicas",
+      "groupId": "pizzas-clasicas-tradicionales",
+      "name": "Margarita",
+      "tagline": "Tomate, mozzarella y albahaca.",
+      "description": "La base de todo: salsa de tomate de la casa, mozzarella fundida, albahaca fresca y un hilo de aceite de oliva. Masa de 48 horas de fermentación.",
+      "price": 15000,
+      "variants": [
+        {
+          "id": "personal",
+          "name": "Personal",
+          "detail": "4 porciones · 22 cm",
+          "price": 15000
+        },
+        {
+          "id": "mediana",
+          "name": "Mediana",
+          "detail": "6 porciones · 30 cm",
+          "price": 28000
+        },
+        {
+          "id": "grande",
+          "name": "Grande",
+          "detail": "8 porciones · 36 cm",
+          "price": 37000
+        },
+        {
+          "id": "familiar",
+          "name": "Familiar",
+          "detail": "12 porciones · 42 cm",
+          "price": 50000
+        }
+      ],
+      "ingredients": [
+        "Masa de 48 h",
+        "Salsa de tomate",
+        "Mozzarella",
+        "Albahaca",
+        "Aceite de oliva"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "borde-queso",
+        "queso-extra",
+        "pepperoni-extra",
+        "champinones",
+        "tocineta",
+        "jalapenos"
+      ],
+      "tagIds": [
+        "vegetariano"
+      ],
+      "note": "Grande y familiar se pueden pedir mitad y mitad: se cobra la mitad más cara.",
+      "image": {
+        "source": "unsplash",
+        "photoId": "1574071318508-1cdbab80d002",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.1
+        },
+        "alt": "Margarita"
+      },
+      "available": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "pepperoni",
+      "categoryId": "pizzas",
+      "subcategoryId": "pizzas-clasicas",
+      "groupId": "pizzas-clasicas-tradicionales",
+      "name": "Pepperoni",
+      "tagline": "Doble pepperoni que se dora en el horno.",
+      "description": "Mozzarella y doble capa de pepperoni que se riza y dora en el horno. La más pedida de la casa.",
+      "price": 17000,
+      "variants": [
+        {
+          "id": "personal",
+          "name": "Personal",
+          "detail": "4 porciones · 22 cm",
+          "price": 17000
+        },
+        {
+          "id": "mediana",
+          "name": "Mediana",
+          "detail": "6 porciones · 30 cm",
+          "price": 31000
+        },
+        {
+          "id": "grande",
+          "name": "Grande",
+          "detail": "8 porciones · 36 cm",
+          "price": 41000
+        },
+        {
+          "id": "familiar",
+          "name": "Familiar",
+          "detail": "12 porciones · 42 cm",
+          "price": 55000
+        }
+      ],
+      "ingredients": [
+        "Masa de 48 h",
+        "Salsa de tomate",
+        "Mozzarella",
+        "Pepperoni"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "borde-queso",
+        "queso-extra",
+        "pepperoni-extra",
+        "champinones",
+        "tocineta",
+        "jalapenos"
+      ],
+      "tagIds": [],
+      "note": "Grande y familiar se pueden pedir mitad y mitad: se cobra la mitad más cara.",
+      "image": {
+        "source": "unsplash",
+        "photoId": "1628840042765-356cda07504e",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.1
+        },
+        "alt": "Pepperoni"
+      },
+      "available": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "hawaiana",
+      "categoryId": "pizzas",
+      "subcategoryId": "pizzas-clasicas",
+      "groupId": "pizzas-clasicas-tradicionales",
+      "name": "Hawaiana",
+      "tagline": "Jamón y piña, sin discusión.",
+      "description": "Jamón ahumado y piña en almíbar sobre mozzarella. Te guste o no, es la que más se vende en Colombia.",
+      "price": 16000,
+      "variants": [
+        {
+          "id": "personal",
+          "name": "Personal",
+          "detail": "4 porciones · 22 cm",
+          "price": 16000
+        },
+        {
+          "id": "mediana",
+          "name": "Mediana",
+          "detail": "6 porciones · 30 cm",
+          "price": 30000
+        },
+        {
+          "id": "grande",
+          "name": "Grande",
+          "detail": "8 porciones · 36 cm",
+          "price": 40000
+        },
+        {
+          "id": "familiar",
+          "name": "Familiar",
+          "detail": "12 porciones · 42 cm",
+          "price": 53000
+        }
+      ],
+      "ingredients": [
+        "Masa de 48 h",
+        "Salsa de tomate",
+        "Mozzarella",
+        "Jamón",
+        "Piña"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "borde-queso",
+        "queso-extra",
+        "pepperoni-extra",
+        "champinones",
+        "tocineta",
+        "jalapenos"
+      ],
+      "tagIds": [],
+      "note": "Grande y familiar se pueden pedir mitad y mitad: se cobra la mitad más cara.",
+      "image": {
+        "source": "unsplash",
+        "photoId": "1597715469889-dd75fe4a1765",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.1
+        },
+        "alt": "Hawaiana"
+      },
+      "available": true,
+      "sortOrder": 3
+    },
+    {
+      "id": "pollo-champinones",
+      "categoryId": "pizzas",
+      "subcategoryId": "pizzas-clasicas",
+      "groupId": "pizzas-clasicas-tradicionales",
+      "name": "Pollo y champiñones",
+      "tagline": "Pollo desmechado y champiñones salteados.",
+      "description": "Pollo desmechado, champiñones salteados en mantequilla con ajo y mozzarella. Suave y cremosa.",
+      "price": 17000,
+      "variants": [
+        {
+          "id": "personal",
+          "name": "Personal",
+          "detail": "4 porciones · 22 cm",
+          "price": 17000
+        },
+        {
+          "id": "mediana",
+          "name": "Mediana",
+          "detail": "6 porciones · 30 cm",
+          "price": 31000
+        },
+        {
+          "id": "grande",
+          "name": "Grande",
+          "detail": "8 porciones · 36 cm",
+          "price": 41000
+        },
+        {
+          "id": "familiar",
+          "name": "Familiar",
+          "detail": "12 porciones · 42 cm",
+          "price": 55000
+        }
+      ],
+      "ingredients": [
+        "Masa de 48 h",
+        "Salsa de tomate",
+        "Mozzarella",
+        "Pollo",
+        "Champiñones"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "borde-queso",
+        "queso-extra",
+        "pepperoni-extra",
+        "champinones",
+        "tocineta",
+        "jalapenos"
+      ],
+      "tagIds": [],
+      "note": "Grande y familiar se pueden pedir mitad y mitad: se cobra la mitad más cara.",
+      "image": {
+        "source": "unsplash",
+        "photoId": "1552539618-7eec9b4d1796",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Pollo y champiñones"
+      },
+      "available": true,
+      "sortOrder": 4
+    },
+    {
+      "id": "vegetariana",
+      "categoryId": "pizzas",
+      "subcategoryId": "pizzas-clasicas",
+      "groupId": "pizzas-clasicas-vegetarianas",
+      "name": "Vegetariana",
+      "tagline": "Pimentón, cebolla, aceitunas y rúgula.",
+      "description": "Pimentón asado, cebolla morada, champiñones, aceitunas negras y rúgula fresca al salir del horno.",
+      "price": 16000,
+      "variants": [
+        {
+          "id": "personal",
+          "name": "Personal",
+          "detail": "4 porciones · 22 cm",
+          "price": 16000
+        },
+        {
+          "id": "mediana",
+          "name": "Mediana",
+          "detail": "6 porciones · 30 cm",
+          "price": 30000
+        },
+        {
+          "id": "grande",
+          "name": "Grande",
+          "detail": "8 porciones · 36 cm",
+          "price": 40000
+        },
+        {
+          "id": "familiar",
+          "name": "Familiar",
+          "detail": "12 porciones · 42 cm",
+          "price": 53000
+        }
+      ],
+      "ingredients": [
+        "Masa de 48 h",
+        "Salsa de tomate",
+        "Mozzarella",
+        "Pimentón",
+        "Aceitunas",
+        "Rúgula"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "borde-queso",
+        "queso-extra",
+        "pepperoni-extra",
+        "champinones",
+        "tocineta",
+        "jalapenos"
+      ],
+      "tagIds": [
+        "vegetariano"
+      ],
+      "note": "Grande y familiar se pueden pedir mitad y mitad: se cobra la mitad más cara.",
+      "image": {
+        "source": "unsplash",
+        "photoId": "1573821663912-569905455b1c",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.1
+        },
+        "alt": "Vegetariana"
+      },
+      "available": true,
+      "sortOrder": 5
+    },
+    {
+      "id": "cuatro-quesos",
+      "categoryId": "pizzas",
+      "subcategoryId": "pizzas-clasicas",
+      "groupId": "pizzas-clasicas-vegetarianas",
+      "name": "Cuatro quesos",
+      "tagline": "Mozzarella, parmesano, azul y costeño.",
+      "description": "Sin salsa de tomate: mozzarella, parmesano, queso azul y queso costeño, con un toque de miel y orégano.",
+      "price": 18000,
+      "variants": [
+        {
+          "id": "personal",
+          "name": "Personal",
+          "detail": "4 porciones · 22 cm",
+          "price": 18000
+        },
+        {
+          "id": "mediana",
+          "name": "Mediana",
+          "detail": "6 porciones · 30 cm",
+          "price": 33000
+        },
+        {
+          "id": "grande",
+          "name": "Grande",
+          "detail": "8 porciones · 36 cm",
+          "price": 44000
+        },
+        {
+          "id": "familiar",
+          "name": "Familiar",
+          "detail": "12 porciones · 42 cm",
+          "price": 58000
+        }
+      ],
+      "ingredients": [
+        "Masa de 48 h",
+        "Mozzarella",
+        "Parmesano",
+        "Queso azul",
+        "Queso costeño",
+        "Miel"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "borde-queso"
+      ],
+      "tagIds": [
+        "vegetariano"
+      ],
+      "note": "Grande y familiar se pueden pedir mitad y mitad: se cobra la mitad más cara.",
+      "image": {
+        "source": "unsplash",
+        "photoId": "1620374645310-f9d97e733268",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.1
+        },
+        "alt": "Cuatro quesos"
+      },
+      "available": true,
+      "sortOrder": 6
+    },
+    {
+      "id": "forno",
+      "categoryId": "pizzas",
+      "subcategoryId": "pizzas-especiales",
+      "groupId": null,
+      "name": "La Forno",
+      "tagline": "Salami, prosciutto, burrata y rúgula.",
+      "description": "La de la casa: salami y prosciutto, burrata entera en el centro al servir, rúgula y reducción de balsámico.",
+      "price": 22000,
+      "variants": [
+        {
+          "id": "personal",
+          "name": "Personal",
+          "detail": "4 porciones · 22 cm",
+          "price": 22000
+        },
+        {
+          "id": "mediana",
+          "name": "Mediana",
+          "detail": "6 porciones · 30 cm",
+          "price": 39000
+        },
+        {
+          "id": "grande",
+          "name": "Grande",
+          "detail": "8 porciones · 36 cm",
+          "price": 52000
+        },
+        {
+          "id": "familiar",
+          "name": "Familiar",
+          "detail": "12 porciones · 42 cm",
+          "price": 69000
+        }
+      ],
+      "ingredients": [
+        "Masa de 48 h",
+        "Salami",
+        "Prosciutto",
+        "Burrata",
+        "Rúgula",
+        "Balsámico"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "borde-queso"
+      ],
+      "tagIds": [
+        "casa"
+      ],
+      "note": "Grande y familiar se pueden pedir mitad y mitad: se cobra la mitad más cara.",
+      "image": {
+        "source": "unsplash",
+        "photoId": "1662805525084-79fd48e09e0b",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.1
+        },
+        "alt": "La Forno"
+      },
+      "available": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "carnes",
+      "categoryId": "pizzas",
+      "subcategoryId": "pizzas-especiales",
+      "groupId": null,
+      "name": "Carnes",
+      "tagline": "Pepperoni, salami, carne molida y tocineta.",
+      "description": "Para los carnívoros: pepperoni, salami, carne molida en salsa, tocineta y chorizo sobre mozzarella.",
+      "price": 20000,
+      "variants": [
+        {
+          "id": "personal",
+          "name": "Personal",
+          "detail": "4 porciones · 22 cm",
+          "price": 20000
+        },
+        {
+          "id": "mediana",
+          "name": "Mediana",
+          "detail": "6 porciones · 30 cm",
+          "price": 36000
+        },
+        {
+          "id": "grande",
+          "name": "Grande",
+          "detail": "8 porciones · 36 cm",
+          "price": 48000
+        },
+        {
+          "id": "familiar",
+          "name": "Familiar",
+          "detail": "12 porciones · 42 cm",
+          "price": 64000
+        }
+      ],
+      "ingredients": [
+        "Masa de 48 h",
+        "Pepperoni",
+        "Salami",
+        "Carne molida",
+        "Tocineta",
+        "Chorizo"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "borde-queso",
+        "queso-extra",
+        "pepperoni-extra",
+        "champinones",
+        "tocineta",
+        "jalapenos"
+      ],
+      "tagIds": [],
+      "note": "Grande y familiar se pueden pedir mitad y mitad: se cobra la mitad más cara.",
+      "image": {
+        "source": "unsplash",
+        "photoId": "1705286324371-d6a6d9519dc2",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.1
+        },
+        "alt": "Carnes"
+      },
+      "available": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "bbq",
+      "categoryId": "pizzas",
+      "subcategoryId": "pizzas-especiales",
+      "groupId": null,
+      "name": "Pollo BBQ",
+      "tagline": "Pollo, tocineta, cebolla morada y BBQ.",
+      "description": "Base de salsa BBQ ahumada en lugar de tomate, pollo, tocineta, cebolla morada y cilantro.",
+      "price": 19000,
+      "variants": [
+        {
+          "id": "personal",
+          "name": "Personal",
+          "detail": "4 porciones · 22 cm",
+          "price": 19000
+        },
+        {
+          "id": "mediana",
+          "name": "Mediana",
+          "detail": "6 porciones · 30 cm",
+          "price": 35000
+        },
+        {
+          "id": "grande",
+          "name": "Grande",
+          "detail": "8 porciones · 36 cm",
+          "price": 46000
+        },
+        {
+          "id": "familiar",
+          "name": "Familiar",
+          "detail": "12 porciones · 42 cm",
+          "price": 61000
+        }
+      ],
+      "ingredients": [
+        "Masa de 48 h",
+        "Salsa BBQ",
+        "Mozzarella",
+        "Pollo",
+        "Tocineta",
+        "Cebolla morada"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "borde-queso",
+        "queso-extra",
+        "pepperoni-extra",
+        "champinones",
+        "tocineta",
+        "jalapenos"
+      ],
+      "tagIds": [],
+      "note": "Grande y familiar se pueden pedir mitad y mitad: se cobra la mitad más cara.",
+      "image": {
+        "source": "unsplash",
+        "photoId": "1734769484424-36b99dd84818",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.1
+        },
+        "alt": "Pollo BBQ"
+      },
+      "available": true,
+      "sortOrder": 3
+    },
+    {
+      "id": "mexicana",
+      "categoryId": "pizzas",
+      "subcategoryId": "pizzas-especiales",
+      "groupId": null,
+      "name": "Mexicana",
+      "tagline": "Carne, jalapeños, maíz y guacamole.",
+      "description": "Carne molida especiada, jalapeños, maíz tierno, frijol, cheddar y guacamole al salir del horno.",
+      "price": 19000,
+      "variants": [
+        {
+          "id": "personal",
+          "name": "Personal",
+          "detail": "4 porciones · 22 cm",
+          "price": 19000
+        },
+        {
+          "id": "mediana",
+          "name": "Mediana",
+          "detail": "6 porciones · 30 cm",
+          "price": 35000
+        },
+        {
+          "id": "grande",
+          "name": "Grande",
+          "detail": "8 porciones · 36 cm",
+          "price": 46000
+        },
+        {
+          "id": "familiar",
+          "name": "Familiar",
+          "detail": "12 porciones · 42 cm",
+          "price": 61000
+        }
+      ],
+      "ingredients": [
+        "Masa de 48 h",
+        "Carne molida",
+        "Jalapeños",
+        "Maíz",
+        "Cheddar",
+        "Guacamole"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "borde-queso",
+        "queso-extra",
+        "pepperoni-extra",
+        "champinones",
+        "tocineta",
+        "jalapenos"
+      ],
+      "tagIds": [
+        "picante",
+        "nuevo"
+      ],
+      "note": "Grande y familiar se pueden pedir mitad y mitad: se cobra la mitad más cara.",
+      "image": {
+        "source": "unsplash",
+        "photoId": "1513104890138-7c749659a591",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.1
+        },
+        "alt": "Mexicana"
+      },
+      "available": true,
+      "sortOrder": 4
+    },
+    {
+      "id": "panzerotti-hawaiano",
+      "categoryId": "panzerottis",
+      "subcategoryId": "panzerottis-panzerottis",
+      "groupId": null,
+      "name": "Panzerotti hawaiano",
+      "tagline": "Jamón, piña y queso, frito y dorado.",
+      "description": "Masa de pizza cerrada en media luna, rellena de jamón, piña y mozzarella, y frita hasta quedar dorada y crocante.",
+      "price": 9000,
+      "variants": [],
+      "ingredients": [
+        "Masa de pizza",
+        "Jamón",
+        "Piña",
+        "Mozzarella"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "queso-extra"
+      ],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1769254870299-338bfd99aabd",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.2
+        },
+        "alt": "Panzerotti hawaiano"
+      },
+      "available": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "panzerotti-pollo",
+      "categoryId": "panzerottis",
+      "subcategoryId": "panzerottis-panzerottis",
+      "groupId": null,
+      "name": "Panzerotti de pollo",
+      "tagline": "Pollo, champiñones y queso.",
+      "description": "Relleno de pollo desmechado, champiñones salteados y mozzarella, frito al momento.",
+      "price": 9500,
+      "variants": [],
+      "ingredients": [
+        "Masa de pizza",
+        "Pollo",
+        "Champiñones",
+        "Mozzarella"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "queso-extra"
+      ],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1608039783021-6116a558f0c5",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.2
+        },
+        "alt": "Panzerotti de pollo"
+      },
+      "available": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "panzerotti-carnes",
+      "categoryId": "panzerottis",
+      "subcategoryId": "panzerottis-panzerottis",
+      "groupId": null,
+      "name": "Panzerotti de carnes",
+      "tagline": "Pepperoni, salami y carne molida.",
+      "description": "Relleno de pepperoni, salami, carne molida en salsa y mozzarella. Contundente.",
+      "price": 10500,
+      "variants": [],
+      "ingredients": [
+        "Masa de pizza",
+        "Pepperoni",
+        "Salami",
+        "Carne molida",
+        "Mozzarella"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "queso-extra"
+      ],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1536964549204-cce9eab227bd",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.2
+        },
+        "alt": "Panzerotti de carnes"
+      },
+      "available": true,
+      "sortOrder": 3
+    },
+    {
+      "id": "panzerotti-bocadillo",
+      "categoryId": "panzerottis",
+      "subcategoryId": "panzerottis-panzerottis",
+      "groupId": null,
+      "name": "Panzerotti de bocadillo",
+      "tagline": "Bocadillo veleño con queso, dulce.",
+      "description": "El dulce de la casa: bocadillo veleño y queso costeño, frito y espolvoreado con azúcar. Bocadillo con queso, en versión pizzería.",
+      "price": 8000,
+      "variants": [],
+      "ingredients": [
+        "Masa de pizza",
+        "Bocadillo veleño",
+        "Queso costeño",
+        "Azúcar"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "casa",
+        "vegetariano"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1727018427695-35a6048c91e7",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.2
+        },
+        "alt": "Panzerotti de bocadillo"
+      },
+      "available": true,
+      "sortOrder": 4
+    },
+    {
+      "id": "calzone-clasico",
+      "categoryId": "panzerottis",
+      "subcategoryId": "panzerottis-calzones",
+      "groupId": null,
+      "name": "Calzone clásico",
+      "tagline": "Pizza cerrada al horno, jamón y ricotta.",
+      "description": "Masa de pizza doblada y horneada, rellena de jamón, ricotta, mozzarella y salsa de tomate. Para una persona con hambre.",
+      "price": 22000,
+      "variants": [],
+      "ingredients": [
+        "Masa de pizza",
+        "Jamón",
+        "Ricotta",
+        "Mozzarella",
+        "Salsa de tomate"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "queso-extra",
+        "champinones"
+      ],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1753656681797-3234c89d6d4d",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Calzone clásico"
+      },
+      "available": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "calzone-carnes",
+      "categoryId": "panzerottis",
+      "subcategoryId": "panzerottis-calzones",
+      "groupId": null,
+      "name": "Calzone de carnes",
+      "tagline": "Pepperoni, salami, tocineta y queso.",
+      "description": "Calzone horneado con pepperoni, salami, tocineta, mozzarella y salsa de tomate, con salsa extra para mojar.",
+      "price": 25000,
+      "variants": [],
+      "ingredients": [
+        "Masa de pizza",
+        "Pepperoni",
+        "Salami",
+        "Tocineta",
+        "Mozzarella"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "queso-extra",
+        "jalapenos"
+      ],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1628824851008-ec3ab4b45527",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Calzone de carnes"
+      },
+      "available": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "lasana",
+      "categoryId": "pastas",
+      "subcategoryId": "pastas-todas",
+      "groupId": null,
+      "name": "Lasaña",
+      "tagline": "Capas de pasta, ragú y bechamel gratinada.",
+      "description": "Lasaña horneada en capas con bechamel y mozzarella gratinada. Se sirve con pan de ajo.",
+      "price": 24000,
+      "variants": [
+        {
+          "id": "carne",
+          "name": "De carne",
+          "detail": "Ragú de res",
+          "price": 24000
+        },
+        {
+          "id": "pollo",
+          "name": "De pollo",
+          "detail": "Pollo y champiñones",
+          "price": 24000
+        },
+        {
+          "id": "mixta",
+          "name": "Mixta",
+          "detail": "Carne y pollo",
+          "price": 26000
+        }
+      ],
+      "ingredients": [
+        "Pasta",
+        "Bechamel",
+        "Mozzarella",
+        "Parmesano"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "queso-extra"
+      ],
+      "tagIds": [
+        "casa"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1709429790175-b02bb1b19207",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Lasaña"
+      },
+      "available": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "bolognesa",
+      "categoryId": "pastas",
+      "subcategoryId": "pastas-todas",
+      "groupId": null,
+      "name": "Spaghetti a la bolognesa",
+      "tagline": "Ragú de carne cocinado a fuego lento.",
+      "description": "Spaghetti con ragú de res y cerdo cocinado tres horas en tomate y vino tinto, con parmesano rallado.",
+      "price": 22000,
+      "variants": [],
+      "ingredients": [
+        "Spaghetti",
+        "Carne de res",
+        "Cerdo",
+        "Tomate",
+        "Parmesano"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "queso-extra"
+      ],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1574894709920-11b28e7367e3",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Spaghetti a la bolognesa"
+      },
+      "available": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "alfredo",
+      "categoryId": "pastas",
+      "subcategoryId": "pastas-todas",
+      "groupId": null,
+      "name": "Fettuccine Alfredo",
+      "tagline": "Salsa de crema y parmesano, con pollo.",
+      "description": "Fettuccine en salsa de crema, mantequilla y parmesano, con pollo a la plancha y perejil.",
+      "price": 23000,
+      "variants": [],
+      "ingredients": [
+        "Fettuccine",
+        "Crema",
+        "Parmesano",
+        "Pollo",
+        "Perejil"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "champinones",
+        "tocineta"
+      ],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1645112411341-6c4fd023714a",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Fettuccine Alfredo"
+      },
+      "available": true,
+      "sortOrder": 3
+    },
+    {
+      "id": "carbonara",
+      "categoryId": "pastas",
+      "subcategoryId": "pastas-todas",
+      "groupId": null,
+      "name": "Carbonara",
+      "tagline": "Huevo, tocineta y pecorino, sin crema.",
+      "description": "A la italiana: yema de huevo, tocineta crocante, pecorino y pimienta negra recién molida. Sin crema.",
+      "price": 23000,
+      "variants": [],
+      "ingredients": [
+        "Spaghetti",
+        "Huevo",
+        "Tocineta",
+        "Pecorino",
+        "Pimienta"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "nuevo"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1628079251261-624e723b7326",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Carbonara"
+      },
+      "available": true,
+      "sortOrder": 4
+    },
+    {
+      "id": "pan-ajo",
+      "categoryId": "entradas",
+      "subcategoryId": "entradas-todas",
+      "groupId": null,
+      "name": "Pan de ajo",
+      "tagline": "Baguette con mantequilla de ajo y perejil.",
+      "description": "Baguette horneada con mantequilla de ajo y perejil, crocante por fuera. Con o sin queso gratinado.",
+      "price": 8000,
+      "variants": [
+        {
+          "id": "sencillo",
+          "name": "Sencillo",
+          "detail": null,
+          "price": 8000
+        },
+        {
+          "id": "queso",
+          "name": "Con queso",
+          "detail": "Mozzarella gratinada",
+          "price": 11000
+        }
+      ],
+      "ingredients": [
+        "Baguette",
+        "Mantequilla",
+        "Ajo",
+        "Perejil"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "vegetariano"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1573140401552-3fab0b24306f",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Pan de ajo"
+      },
+      "available": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "palitos-queso",
+      "categoryId": "entradas",
+      "subcategoryId": "entradas-todas",
+      "groupId": null,
+      "name": "Palitos de mozzarella",
+      "tagline": "Apanados, con salsa de tomate.",
+      "description": "Seis palitos de mozzarella apanados y fritos, con salsa de tomate de la casa para mojar.",
+      "price": 14000,
+      "variants": [],
+      "ingredients": [
+        "Mozzarella",
+        "Apanado",
+        "Salsa de tomate"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "vegetariano"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1734774924912-dcbb467f8599",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Palitos de mozzarella"
+      },
+      "available": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "alitas",
+      "categoryId": "entradas",
+      "subcategoryId": "entradas-todas",
+      "groupId": null,
+      "name": "Alitas al horno",
+      "tagline": "Glaseadas en BBQ, con salsa de queso azul.",
+      "description": "Alitas horneadas en el horno de pizza y glaseadas con BBQ, con apio y salsa de queso azul.",
+      "price": 18000,
+      "variants": [
+        {
+          "id": "8",
+          "name": "8 alitas",
+          "detail": null,
+          "price": 18000
+        },
+        {
+          "id": "16",
+          "name": "16 alitas",
+          "detail": "Para compartir",
+          "price": 33000
+        }
+      ],
+      "ingredients": [
+        "Alitas de pollo",
+        "BBQ",
+        "Apio",
+        "Queso azul"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1567620832903-9fc6debc209f",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Alitas al horno"
+      },
+      "available": true,
+      "sortOrder": 3
+    },
+    {
+      "id": "combo-personal",
+      "categoryId": "combos",
+      "subcategoryId": "combos-todos",
+      "groupId": null,
+      "name": "Combo personal",
+      "tagline": "Pizza personal y gaseosa.",
+      "description": "Cualquier pizza clásica en tamaño personal con una gaseosa de 400 ml.",
+      "price": 19000,
+      "variants": [],
+      "ingredients": [
+        "Pizza clásica personal",
+        "Gaseosa personal"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": "Las especiales suman $4.000.",
+      "image": {
+        "source": "unsplash",
+        "photoId": "1604382354936-07c5d9983bd3",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.1
+        },
+        "alt": "Combo personal"
+      },
+      "available": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "combo-pareja",
+      "categoryId": "combos",
+      "subcategoryId": "combos-todos",
+      "groupId": null,
+      "name": "Combo pareja",
+      "tagline": "Pizza mediana, pan de ajo y 2 gaseosas.",
+      "description": "Una pizza clásica mediana (o mitad y mitad), pan de ajo sencillo y dos gaseosas personales.",
+      "price": 42000,
+      "variants": [],
+      "ingredients": [
+        "Pizza clásica mediana",
+        "Pan de ajo",
+        "2 gaseosas"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "compartir"
+      ],
+      "note": "Las especiales suman $6.000.",
+      "image": {
+        "source": "unsplash",
+        "photoId": "1565299624946-b28f40a0ae38",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.1
+        },
+        "alt": "Combo pareja"
+      },
+      "available": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "combo-familiar",
+      "categoryId": "combos",
+      "subcategoryId": "combos-todos",
+      "groupId": null,
+      "name": "Combo familiar",
+      "tagline": "Pizza familiar, pan de ajo y gaseosa de 1,5 L.",
+      "description": "Una pizza clásica familiar de 12 porciones (o mitad y mitad), pan de ajo con queso y una gaseosa de 1,5 litros.",
+      "price": 69000,
+      "variants": [],
+      "ingredients": [
+        "Pizza clásica familiar",
+        "Pan de ajo con queso",
+        "Gaseosa 1,5 L"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "compartir",
+        "casa"
+      ],
+      "note": "Las especiales suman $10.000.",
+      "image": {
+        "source": "unsplash",
+        "photoId": "1662805524260-e357ebe326b5",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.1
+        },
+        "alt": "Combo familiar"
+      },
+      "available": true,
+      "sortOrder": 3
+    },
+    {
+      "id": "gaseosa",
+      "categoryId": "bebidas",
+      "subcategoryId": "bebidas-todas",
+      "groupId": null,
+      "name": "Gaseosa",
+      "tagline": "Personal o para compartir.",
+      "description": "Gaseosa bien fría, en botella personal o de 1,5 litros.",
+      "price": 4500,
+      "variants": [
+        {
+          "id": "personal",
+          "name": "Personal",
+          "detail": "400 ml",
+          "price": 4500
+        },
+        {
+          "id": "litro",
+          "name": "1,5 litros",
+          "detail": null,
+          "price": 9000
+        }
+      ],
+      "ingredients": [
+        "Gaseosa"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1581636625402-29b2a704ef13",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.1
+        },
+        "alt": "Gaseosa"
+      },
+      "available": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "limonada",
+      "categoryId": "bebidas",
+      "subcategoryId": "bebidas-todas",
+      "groupId": null,
+      "name": "Limonada",
+      "tagline": "Natural o de hierbabuena.",
+      "description": "Limonada preparada al momento con limón fresco.",
+      "price": 7000,
+      "variants": [
+        {
+          "id": "natural",
+          "name": "Natural",
+          "detail": null,
+          "price": 7000
+        },
+        {
+          "id": "hierbabuena",
+          "name": "Hierbabuena",
+          "detail": null,
+          "price": 8000
+        }
+      ],
+      "ingredients": [
+        "Limón",
+        "Hielo",
+        "Azúcar"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "vegano"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1623084921164-4a8c5c37a912",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.1
+        },
+        "alt": "Limonada"
+      },
+      "available": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "cerveza",
+      "categoryId": "bebidas",
+      "subcategoryId": "bebidas-todas",
+      "groupId": null,
+      "name": "Cerveza",
+      "tagline": "Nacional o artesanal.",
+      "description": "Cerveza bien fría para acompañar la pizza.",
+      "price": 7000,
+      "variants": [
+        {
+          "id": "nacional",
+          "name": "Nacional",
+          "detail": "330 ml",
+          "price": 7000
+        },
+        {
+          "id": "artesanal",
+          "name": "Artesanal",
+          "detail": "330 ml",
+          "price": 12000
+        }
+      ],
+      "ingredients": [
+        "Cerveza"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [],
+      "note": "Solo para mayores de 18 años.",
+      "image": {
+        "source": "unsplash",
+        "photoId": "1608270586620-248524c67de9",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.1
+        },
+        "alt": "Cerveza"
+      },
+      "available": true,
+      "sortOrder": 3
+    },
+    {
+      "id": "pizza-nutella",
+      "categoryId": "postres",
+      "subcategoryId": "postres-todos",
+      "groupId": null,
+      "name": "Pizza de Nutella",
+      "tagline": "Nutella, fresas y azúcar glas.",
+      "description": "Masa de pizza horneada y cubierta con Nutella, fresas frescas y azúcar glas. Para compartir de postre.",
+      "price": 16000,
+      "variants": [
+        {
+          "id": "personal",
+          "name": "Personal",
+          "detail": null,
+          "price": 16000
+        },
+        {
+          "id": "mediana",
+          "name": "Mediana",
+          "detail": null,
+          "price": 28000
+        }
+      ],
+      "ingredients": [
+        "Masa de pizza",
+        "Nutella",
+        "Fresas",
+        "Azúcar glas"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "vegetariano",
+        "compartir"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1716237387665-85caef84051c",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.1
+        },
+        "alt": "Pizza de Nutella"
+      },
+      "available": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "tiramisu",
+      "categoryId": "postres",
+      "subcategoryId": "postres-todos",
+      "groupId": null,
+      "name": "Tiramisú",
+      "tagline": "Café, mascarpone y cacao.",
+      "description": "Bizcochos bañados en café espresso, crema de mascarpone y cacao amargo. Hecho en casa cada día.",
+      "price": 13000,
+      "variants": [],
+      "ingredients": [
+        "Bizcochos",
+        "Café",
+        "Mascarpone",
+        "Cacao"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "vegetariano",
+        "casa"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1571877227200-a0d98ea607e9",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Tiramisú"
+      },
+      "available": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "brownie",
+      "categoryId": "postres",
+      "subcategoryId": "postres-todos",
+      "groupId": null,
+      "name": "Brownie con helado",
+      "tagline": "Tibio, con una bola de vainilla.",
+      "description": "Brownie de chocolate tibio con helado de vainilla y salsa de chocolate.",
+      "price": 12000,
+      "variants": [],
+      "ingredients": [
+        "Brownie",
+        "Helado de vainilla",
+        "Salsa de chocolate"
+      ],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "vegetariano"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1780148686706-4af0349a6003",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.15
+        },
+        "alt": "Brownie con helado"
+      },
+      "available": true,
+      "sortOrder": 3
+    }
+  ]
+}

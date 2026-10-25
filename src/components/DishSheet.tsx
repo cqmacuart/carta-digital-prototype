@@ -49,6 +49,8 @@ const TAG_COLORS: Record<TagId, { bg: string; fg: string }> = {
   'sin-gluten': { bg: '#FBE8CC', fg: '#874610' },
   picante: { bg: '#FFE0CF', fg: '#B3261E' },
   compartir: { bg: '#ECE5F7', fg: '#5A3889' },
+  crudo: { bg: '#DDF0F4', fg: '#1F5F70' },
+  tempura: { bg: '#FFF1D2', fg: '#7E4E00' },
 }
 
 /** Twinkles around the "Nuevo" sparkles icon: [left, top, size, delay]. */

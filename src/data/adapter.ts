@@ -63,7 +63,7 @@ export function toMenu(db: MenuDatabase): Menu {
             return { id, label: t.label, icon: ICONS[t.icon] }
           })
         : undefined,
-      ...photo([p.image.photoId, p.image.focal.x, p.image.focal.y, p.image.focal.zoom]),
+      ...photo(p.image),
     }))
 
   const branch = db.business.branches.find((b) => b.id === db.business.branchId)

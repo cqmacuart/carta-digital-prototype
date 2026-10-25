@@ -1,0 +1,23 @@
+{
+  "title": "Forno · Pizzería",
+  "themeColor": "#f8f1e5",
+  "proposal": null,
+  "fontsHref": "https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500..800&family=Manrope:wght@400..800&display=swap",
+  "fonts": {
+    "display": "\"Playfair Display\", Georgia, serif",
+    "sans": "\"Manrope\", system-ui, sans-serif"
+  },
+  "colors": {
+    "paper": "#fffaf2",
+    "cream": "#f8f1e5",
+    "sand": "#efe2cb",
+    "canvas": "#f3e8d6",
+    "clay": "#dd9a6b",
+    "terra": "#b42d22",
+    "terra-deep": "#8c2017",
+    "espresso": "#221e1a",
+    "cocoa": "#665a4f",
+    "olive": "#6a7148",
+    "night": "#1a1613"
+  }
+}
