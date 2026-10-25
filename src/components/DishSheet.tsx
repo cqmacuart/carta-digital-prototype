@@ -1,17 +1,9 @@
 import { AnimatePresence, motion, useTransform, type DragControls, type MotionValue, type Variants } from 'motion/react'
-import { ChevronUp, Info, Leaf, Flame, Sparkles, Sprout, Star, WheatOff, type LucideIcon } from 'lucide-react'
+import { ChevronUp, Info } from 'lucide-react'
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { money } from '../lib/format'
-import type { Category, MenuItem, Tag } from '../types'
-
-const TAGS: Record<Tag, { label: string; icon: LucideIcon }> = {
-  casa: { label: 'De la casa', icon: Star },
-  nuevo: { label: 'Nuevo', icon: Sparkles },
-  vegano: { label: 'Vegano', icon: Leaf },
-  vegetariano: { label: 'Vegetariano', icon: Sprout },
-  'sin-gluten': { label: 'Sin gluten', icon: WheatOff },
-  picante: { label: 'Picante', icon: Flame },
-}
+import type { TagId } from '../models/db'
+import type { Badge, Category, MenuItem } from '../types'
 
 type Props = {
   item: MenuItem
@@ -45,13 +37,106 @@ const rise: Variants = {
   show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 320, damping: 28 } },
 }
 
+/**
+ * Badge colours: an opaque light fill so they stand out on any sheet, and text in the same hue (≥5:1 on its fill).
+ * The ring in the text colour keeps them apart from the light sheets (butter, honey, kraft).
+ */
+const TAG_COLORS: Record<TagId, { bg: string; fg: string }> = {
+  casa: { bg: '#FFF0C2', fg: '#7A4700' },
+  nuevo: { bg: '#FFE3EE', fg: '#A1184A' },
+  vegano: { bg: '#DFF3D6', fg: '#2C6620' },
+  vegetariano: { bg: '#EAF4D3', fg: '#4A6416' },
+  'sin-gluten': { bg: '#FBE8CC', fg: '#874610' },
+  picante: { bg: '#FFE0CF', fg: '#B3261E' },
+  compartir: { bg: '#ECE5F7', fg: '#5A3889' },
+}
+
+/** Twinkles around the "Nuevo" sparkles icon: [left, top, size, delay]. */
+const TWINKLES = [
+  [-3, -4, 5, 0],
+  [13, -5, 4, 0.25],
+  [12, 11, 3, 0.5],
+] as const
+
+/** One badge. "Nuevo" catches the light and twinkles; "Picante" flickers like a flame. Transform and opacity only. */
+function TagChip({ tag: { id, label, icon: Icon }, index }: { tag: Badge; index: number }) {
+  const { bg, fg } = TAG_COLORS[id]
+  return (
+    <motion.span
+      initial={{ opacity: 0, scale: 0.7, y: 6 }}
+      animate={{ opacity: 1, scale: 1, y: 0 }}
+      transition={{ type: 'spring', stiffness: 520, damping: 16, delay: 0.12 + index * 0.06 }}
+      className="relative flex items-center gap-1 rounded-full py-1 pl-2 pr-2.5 text-[12px] font-extrabold"
+      style={{ backgroundColor: bg, color: fg, boxShadow: `inset 0 0 0 1px ${fg}33, 0 3px 8px -3px rgba(30,15,8,.45)` }}
+    >
+      {id === 'nuevo' && (
+        // a band of light sweeping across, now and then (clipped to the pill; the twinkles may spill out)
+        <span aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden rounded-full">
+          <motion.span
+            className="absolute inset-y-0 left-0 w-8 -skew-x-12 bg-gradient-to-r from-transparent via-white/90 to-transparent"
+            initial={{ x: '-150%' }}
+            animate={{ x: ['-150%', '600%'] }}
+            transition={{ duration: 0.9, ease: 'easeInOut', delay: 0.5, repeat: Infinity, repeatDelay: 3.2 }}
+          />
+        </span>
+      )}
+      <span className="relative grid size-[15px] place-items-center" aria-hidden>
+        {id === 'picante' && (
+          // warm glow breathing behind the flame
+          <motion.span
+            className="absolute -inset-1.5 rounded-full"
+            style={{ background: 'radial-gradient(circle, rgba(255,140,40,.75) 0%, rgba(255,90,30,0) 70%)' }}
+            animate={{ opacity: [0.35, 0.95, 0.5, 0.85, 0.35], scale: [0.9, 1.15, 1, 1.1, 0.9] }}
+            transition={{ duration: 1.1, repeat: Infinity, ease: 'easeInOut' }}
+          />
+        )}
+        {id === 'nuevo' &&
+          TWINKLES.map(([left, top, size, delay]) => (
+            <motion.span
+              key={`${left}${top}`}
+              className="absolute rounded-full bg-white shadow-[0_0_4px_1px_rgba(255,255,255,.9)]"
+              style={{ left, top, width: size, height: size }}
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: [0, 1, 0], opacity: [0, 1, 0] }}
+              transition={{ duration: 0.7, delay: 0.6 + delay, repeat: Infinity, repeatDelay: 3.4 }}
+            />
+          ))}
+        <motion.span
+          className="relative grid place-items-center"
+          style={{ originY: id === 'picante' ? 1 : 0.5 }}
+          animate={
+            id === 'picante'
+              ? { scaleY: [1, 1.18, 0.94, 1.12, 1], rotate: [-4, 4, -2, 3, -4] }
+              : id === 'nuevo'
+                ? { rotate: [0, 18, -12, 0], scale: [1, 1.3, 1.1, 1] }
+                : undefined
+          }
+          transition={
+            id === 'picante'
+              ? { duration: 0.9, repeat: Infinity, ease: 'easeInOut' }
+              : { duration: 0.8, delay: 0.5, repeat: Infinity, repeatDelay: 3.3 }
+          }
+        >
+          <Icon size={14} strokeWidth={2.5} />
+        </motion.span>
+      </span>
+      <span className="relative">{label}</span>
+    </motion.span>
+  )
+}
+
 /** Soft chip tinted from the sheet's own text colour, so it works on light and dark sheets alike. */
 const chip = 'rounded-full bg-current/10 ring-1 ring-current/15'
 
 export function DishSheet({ item, category, direction, axis, expanded, open, dragControls, onToggle, onPeekHeight }: Props) {
   const bodyOpacity = useTransform(open, [0.05, 0.45], [0, 1])
   const caret = useTransform(open, [0, 1], [0, 180])
+  // the open sheet already lists the variants under "Elige"
+  const badgeOpacity = useTransform(open, [0, 0.3], [1, 0])
+  const variantCount = item.variants?.length ?? 0
   const accent = { color: category.accent }
+  // a lone subcategory would just repeat the category name
+  const subName = category.subcategories.length > 1 ? category.subcategories.find((s) => s.id === item.sub)?.name : undefined
   const custom: Swap = { dir: direction, axis }
 
   const peekRef = useRef<HTMLDivElement>(null)
@@ -128,14 +213,49 @@ export function DishSheet({ item, category, direction, axis, expanded, open, dra
 
   return (
     <div className="flex h-full flex-col">
+      {/* how many versions the dish comes in, sitting on the sheet's top edge; tapping it opens the list */}
+      <div className={`absolute right-6 top-0 z-10 -translate-y-1/2 ${expanded ? 'pointer-events-none' : ''}`}>
+        <motion.div style={{ opacity: badgeOpacity }}>
+          <AnimatePresence initial={false} mode="popLayout">
+            {variantCount > 1 && (
+              <motion.button
+                key={variantCount}
+                type="button"
+                onClick={() => !expanded && onToggle()}
+                aria-label={`${variantCount} variantes: ver cuáles`}
+                initial={{ scale: 0.5, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.5, opacity: 0, transition: { duration: 0.12 } }}
+                transition={{ type: 'spring', stiffness: 520, damping: 18 }}
+                whileTap={{ scale: 0.9 }}
+                className="flex min-h-11 items-center"
+              >
+                <span className="flex items-center gap-1.5 rounded-full bg-white py-1 pl-1 pr-3 text-[12px] font-bold text-espresso shadow-[0_4px_12px_-4px_rgba(42,26,18,.5)] ring-1 ring-espresso/10">
+                  <span
+                    className="grid size-[22px] place-items-center rounded-full text-[11px] tabular-nums text-white"
+                    style={{ backgroundColor: category.strong }}
+                    aria-hidden
+                  >
+                    {variantCount}
+                  </span>
+                  <span aria-hidden>variantes</span>
+                </span>
+              </motion.button>
+            )}
+          </AnimatePresence>
+        </motion.div>
+      </div>
+
       {/* drag zone: caret tab + title */}
       <div
         ref={peekRef}
         className="shrink-0 touch-none px-6 pb-[env(safe-area-inset-bottom)]"
         onPointerDown={(e) => dragControls.start(e)}
       >
-        <button
+        <motion.button
           type="button"
+          whileTap={{ scale: 0.85 }}
+          transition={{ type: 'spring', stiffness: 520, damping: 15 }}
           onClick={onToggle}
           aria-expanded={expanded}
           aria-label={expanded ? 'Ocultar descripción' : 'Ver descripción'}
@@ -144,7 +264,7 @@ export function DishSheet({ item, category, direction, axis, expanded, open, dra
           <motion.span style={{ rotate: caret }} className="grid h-6 w-10 place-items-center rounded-full bg-current/12">
             <ChevronUp size={18} strokeWidth={2.6} aria-hidden />
           </motion.span>
-        </button>
+        </motion.button>
         <div className="relative pb-5">
           <AnimatePresence mode="popLayout" initial={false} custom={custom}>
             <motion.div
@@ -158,11 +278,17 @@ export function DishSheet({ item, category, direction, axis, expanded, open, dra
               className="w-full"
               style={{ color: category.ink }}
             >
-              <p className="text-[11px] font-bold uppercase tracking-[0.22em] opacity-75">{category.name}</p>
+              {/* category · subcategory · group on one line; the narrowest phones get tighter tracking so it fits */}
+              <p className="text-[11px] font-bold uppercase tracking-[0.12em] opacity-75 min-[360px]:tracking-[0.22em]">
+                {category.name}
+                {subName && <span className="opacity-70"> · {subName}</span>}
+                {item.group && <span className="opacity-70"> · {item.group}</span>}
+              </p>
               <div className="mt-1 flex items-start justify-between gap-4">
                 <h1 className="text-balance font-display text-[29px] font-semibold leading-[1.06] tracking-tight">{item.name}</h1>
-                <p className="shrink-0 pt-1 font-display text-[24px] font-semibold tabular-nums" style={accent}>
-                  {money(item.price)}
+                <p className="flex shrink-0 flex-col items-end pt-1 text-right" style={accent}>
+                  {item.variants && <span className="text-[10px] font-bold uppercase tracking-[0.16em] opacity-80">desde</span>}
+                  <span className="font-display text-[24px] font-semibold leading-none tabular-nums">{money(item.price)}</span>
                 </p>
               </div>
               <p ref={taglineRef} className="mt-2 line-clamp-2 text-[15px] leading-snug opacity-80">
@@ -170,15 +296,9 @@ export function DishSheet({ item, category, direction, axis, expanded, open, dra
               </p>
               {item.tags && (
                 <div className="mt-3 flex flex-wrap items-center gap-1.5">
-                  {item.tags.map((t) => {
-                    const { label, icon: Icon } = TAGS[t]
-                    return (
-                      <span key={t} className={`flex items-center gap-1 px-2.5 py-1 text-[12px] font-bold ${chip}`}>
-                        <Icon size={13} strokeWidth={2.4} aria-hidden style={accent} />
-                        {label}
-                      </span>
-                    )
-                  })}
+                  {item.tags.map((tag, i) => (
+                    <TagChip key={tag.id} tag={tag} index={i} />
+                  ))}
                 </div>
               )}
             </motion.div>
@@ -204,6 +324,56 @@ export function DishSheet({ item, category, direction, axis, expanded, open, dra
           <motion.p variants={rise} className="pt-5 text-[16px] leading-relaxed opacity-90">
             {item.description}
           </motion.p>
+
+          {item.variants && (
+            <motion.section variants={rise} className="mt-6">
+              <h2 className="mb-1 font-display text-lg font-semibold">Elige</h2>
+              <ul className="divide-y divide-current/10">
+                {item.variants.map((v) => (
+                  <li key={v.name} className="flex items-baseline justify-between gap-4 py-2.5">
+                    <span className="text-[15px] leading-snug">
+                      <span className="font-semibold">{v.name}</span>
+                      {v.detail && <span className="block text-[13px] opacity-75">{v.detail}</span>}
+                    </span>
+                    <span className="shrink-0 font-display text-[17px] font-semibold tabular-nums" style={accent}>
+                      {money(v.price)}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </motion.section>
+          )}
+
+          {item.toppings && (
+            <motion.section variants={rise} className="mt-6">
+              <h2 className="mb-2.5 font-display text-lg font-semibold">
+                Incluye {item.toppings.count} {item.toppings.count === 1 ? 'topping' : 'toppings'}
+              </h2>
+              <ul className="flex flex-wrap gap-2">
+                {item.toppings.options.map((t) => (
+                  <li key={t} className={`px-3 py-1.5 text-[13px] font-semibold ${chip}`}>
+                    {t}
+                  </li>
+                ))}
+              </ul>
+            </motion.section>
+          )}
+
+          {item.modifiers && (
+            <motion.section variants={rise} className="mt-6">
+              <h2 className="mb-1 font-display text-lg font-semibold">Adiciones</h2>
+              <ul className="divide-y divide-current/10">
+                {item.modifiers.map((m) => (
+                  <li key={m.name} className="flex items-baseline justify-between gap-4 py-2.5 text-[15px]">
+                    <span className="font-semibold">{m.name}</span>
+                    <span className="shrink-0 font-display text-[17px] font-semibold tabular-nums" style={accent}>
+                      +{money(m.price)}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </motion.section>
+          )}
 
           {item.ingredients && (
             <motion.section variants={rise} className="mt-6">

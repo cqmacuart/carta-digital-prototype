@@ -1,4 +1,34 @@
-# Terra · Carta digital
+# Carta digital · rama `carta-la-sablee`
+
+Plantilla de carta con el negocio de ejemplo **Terra · café · cocina**: 65 productos en tres niveles de navegación (categoría, subcategoría y etiqueta), datos en JSON y buscador, sobre la base de la carta de `main`. Contexto completo para retomar el proyecto: [`CLAUDE.md`](CLAUDE.md) y [`docs/CONTEXTO.md`](docs/CONTEXTO.md).
+
+- **Riel lateral de íconos = categorías**, siguiendo las secciones de la carta impresa (Desayunos, Sándwiches, Panadería, Waffles y bowls, Postres, Bebidas, Para llevar). Es vertical, como el gesto que las cambia: deslizar ↑ ↓.
+- **Chips = subcategorías**, con su conteo ("Frías (8)"), en un panel centrado bajo el nombre de la categoría. Deslizar ← → recorre los productos y cruza de subcategoría en subcategoría; el chip activo se actualiza solo y tocar uno salta ahí con un rodado corto. Una categoría con una sola subcategoría no muestra chips.
+- **Etiquetas = tercer nivel** (por ejemplo Aves · Res · Cerdo, o Jugos y limonadas · Sodas · Alcohol), en chips claros bajo el panel. Siguen al plato y tocar una salta al primero de su grupo. Los productos de un grupo van juntos (`group` en `src/data/menu.ts`).
+- **Buscador** (🔍 en el encabezado): overlay que busca en nombre, categoría, subcategoría, grupo, etiquetas, ingredientes, variantes y descripción, sin importar tildes; todas las palabras deben coincidir y el nombre pesa más. Los resultados se agrupan por categoría con el motivo resaltado, y elegir uno lleva la carta a ese plato. Motor en `src/lib/search.ts`, interfaz en `src/components/SearchOverlay.tsx`.
+- Si chips, etiquetas o riel no caben, se desplazan entre carets pulsantes que tienen su propio espacio (`ScrollStrip` en `src/components/ScrollCaret.tsx`); nunca se montan sobre los ítems.
+- El plato se corre a la derecha para dejar sitio al riel; el fondo desenfocado sigue centrado.
+- **Una tarjeta = un producto base**: tamaños, sabores y adiciones son variantes, con precio "desde" y la lista en la hoja. Precios en COP.
+- Las fotos son de Unsplash como referencia; hay que reemplazarlas por fotos reales del negocio.
+
+### Datos (simulación de base de datos)
+
+La carta vive en **`public/data/terra.json`**, normalizada como tablas de una base de datos. Los modelos están en **`src/models/db.ts`**:
+
+| Tabla | Qué guarda |
+|---|---|
+| `business` | nombre, lema, moneda, sucursales (`branches`) y contacto |
+| `categories` | nivel 1 (riel): nombre, ícono, orden, paleta |
+| `subcategories` | nivel 2 (chips), con `categoryId` |
+| `groups` | nivel 3 (etiquetas), con `subcategoryId` |
+| `tags` | insignias: De la casa, Vegano, Sin gluten… |
+| `toppings` | el pool de toppings de la carta |
+| `modifiers` | adiciones pagas (leche de almendras +$3.000) |
+| `products` | nombre, frase, descripción, precio base, `variants`, ingredientes, `includedToppings`, `modifierIds`, `tagIds`, nota, imagen (id + recorte), `available`, orden |
+
+Flujo: `src/data/repository.ts` hace `fetch` del JSON (el día que haya backend, solo cambia esta función) → `src/data/adapter.ts` une las tablas y arma lo que pintan las pantallas (`src/types.ts`). Un producto con `available: false` no aparece. Las direcciones y el teléfono vienen de la carta impresa: verificarlos con el negocio.
+
+---
 
 Carta descriptiva, mobile-first, para un café restaurante. Inspirada en el "Food App Challenge" de Flutter, pero hecha como web.
 

@@ -1,4 +1,5 @@
-export const money = (v: number) => `$${v.toFixed(2)}`
+/** Colombian pesos: $17.000 */
+export const money = (v: number) => `$${Math.round(v).toLocaleString('es-CO')}`
 
 export const clamp = (v: number, min: number, max: number) => Math.min(max, Math.max(min, v))
 
@@ -16,4 +17,5 @@ export const photo = (crop: Crop) => ({
   img: unsplash(crop),
   imgBlur: unsplash(crop, 96, 30),
   imgBack: unsplash(crop, 320, 24),
+  imgThumb: unsplash(crop, 120),
 })
