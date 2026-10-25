@@ -66,6 +66,7 @@ Vite 8 · React 19 · TypeScript · **Motion** (`motion/react`) · Tailwind CSS 
 
 - Cada categoría tiene paleta propia (`palette.sheet/ink/accent`) repartida en el arco **cálido** del círculo cromático, de 349° a 41° (miel, terracota, caramelo, mantequilla, baya, espresso, kraft), alternando hojas claras y oscuras entre vecinas del riel. **Sin verdes ni azules**: no son colores de café restaurante. **Texto y acento ≥ 4.5:1** sobre la hoja: verifícalo al cambiar colores.
 - Etiquetas (3er nivel) con fondo blanco y borde fino (sin él no se leían sobre la foto); la activa lleva un anillo del color `strong`. El número de platos va en un círculo.
+- Insignias de producto (`TagChip` en `DishSheet.tsx`): misma forma, color propio por insignia (`TAG_COLORS`: relleno claro opaco + texto del mismo tono ≥5:1 y aro fino, para destacar en hojas claras y oscuras). Entran con rebote escalonado. Solo dos tienen efecto: **Nuevo** (barrido de luz + destellos cada ~4 s) y **Picante** (llama que parpadea con resplandor). El verde de Vegano/Vegetariano es semántico, como el de "Abierto".
 - Microinteracciones con springs con rebote (`TAP`, `PILL` en `MenuScreen.tsx`). Respeta `prefers-reduced-motion` (`MotionConfig reducedMotion="user"`).
 - Botones ≥ 44 px; íconos SVG (lucide), no emojis.
 

@@ -991,7 +991,7 @@
       "groupId": "sandwiches-todos-cerdo",
       "name": "Chicharrón carnudo",
       "tagline": "Chicharrón La Fazenda, crujiente y carnudo.",
-      "description": "Chicharrón carnudo La Fazenda, crujiente por fuera y jugoso por dentro, con guacamole, pico de gallo y un toque de limón en pan artesanal. Un clásico colombiano en formato sándwich.",
+      "description": "Chicharrón carnudo La Fazenda, crujiente por fuera y jugoso por dentro, con guacamole, pico de gallo y ají casero de ají dulce y chile, en pan artesanal. Un clásico colombiano con su punto de picante.",
       "price": 26000,
       "variants": [],
       "ingredients": [
@@ -999,14 +999,16 @@
         "Chicharrón La Fazenda",
         "Guacamole",
         "Pico de gallo",
+        "Ají casero",
         "Limón"
       ],
       "includedToppings": 0,
       "modifierIds": [],
       "tagIds": [
-        "casa"
+        "casa",
+        "picante"
       ],
-      "note": "Todos los sándwiches llegan con papas criollas fritas o ensalada verde.",
+      "note": "Pídelo con el ají aparte si prefieres menos picante. Llega con papas criollas o ensalada verde.",
       "image": {
         "source": "unsplash",
         "photoId": "1700937244987-92488ab2ada5",

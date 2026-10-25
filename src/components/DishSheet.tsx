@@ -2,7 +2,8 @@ import { AnimatePresence, motion, useTransform, type DragControls, type MotionVa
 import { ChevronUp, Info } from 'lucide-react'
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { money } from '../lib/format'
-import type { Category, MenuItem } from '../types'
+import type { TagId } from '../models/db'
+import type { Badge, Category, MenuItem } from '../types'
 
 type Props = {
   item: MenuItem
@@ -34,6 +35,94 @@ const list: Variants = {
 const rise: Variants = {
   hidden: { opacity: 0, y: 14 },
   show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 320, damping: 28 } },
+}
+
+/**
+ * Badge colours: an opaque light fill so they stand out on any sheet, and text in the same hue (≥5:1 on its fill).
+ * The ring in the text colour keeps them apart from the light sheets (butter, honey, kraft).
+ */
+const TAG_COLORS: Record<TagId, { bg: string; fg: string }> = {
+  casa: { bg: '#FFF0C2', fg: '#7A4700' },
+  nuevo: { bg: '#FFE3EE', fg: '#A1184A' },
+  vegano: { bg: '#DFF3D6', fg: '#2C6620' },
+  vegetariano: { bg: '#EAF4D3', fg: '#4A6416' },
+  'sin-gluten': { bg: '#FBE8CC', fg: '#874610' },
+  picante: { bg: '#FFE0CF', fg: '#B3261E' },
+  compartir: { bg: '#ECE5F7', fg: '#5A3889' },
+}
+
+/** Twinkles around the "Nuevo" sparkles icon: [left, top, size, delay]. */
+const TWINKLES = [
+  [-3, -4, 5, 0],
+  [13, -5, 4, 0.25],
+  [12, 11, 3, 0.5],
+] as const
+
+/** One badge. "Nuevo" catches the light and twinkles; "Picante" flickers like a flame. Transform and opacity only. */
+function TagChip({ tag: { id, label, icon: Icon }, index }: { tag: Badge; index: number }) {
+  const { bg, fg } = TAG_COLORS[id]
+  return (
+    <motion.span
+      initial={{ opacity: 0, scale: 0.7, y: 6 }}
+      animate={{ opacity: 1, scale: 1, y: 0 }}
+      transition={{ type: 'spring', stiffness: 520, damping: 16, delay: 0.12 + index * 0.06 }}
+      className="relative flex items-center gap-1 rounded-full py-1 pl-2 pr-2.5 text-[12px] font-extrabold"
+      style={{ backgroundColor: bg, color: fg, boxShadow: `inset 0 0 0 1px ${fg}33, 0 3px 8px -3px rgba(30,15,8,.45)` }}
+    >
+      {id === 'nuevo' && (
+        // a band of light sweeping across, now and then (clipped to the pill; the twinkles may spill out)
+        <span aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden rounded-full">
+          <motion.span
+            className="absolute inset-y-0 left-0 w-8 -skew-x-12 bg-gradient-to-r from-transparent via-white/90 to-transparent"
+            initial={{ x: '-150%' }}
+            animate={{ x: ['-150%', '600%'] }}
+            transition={{ duration: 0.9, ease: 'easeInOut', delay: 0.5, repeat: Infinity, repeatDelay: 3.2 }}
+          />
+        </span>
+      )}
+      <span className="relative grid size-[15px] place-items-center" aria-hidden>
+        {id === 'picante' && (
+          // warm glow breathing behind the flame
+          <motion.span
+            className="absolute -inset-1.5 rounded-full"
+            style={{ background: 'radial-gradient(circle, rgba(255,140,40,.75) 0%, rgba(255,90,30,0) 70%)' }}
+            animate={{ opacity: [0.35, 0.95, 0.5, 0.85, 0.35], scale: [0.9, 1.15, 1, 1.1, 0.9] }}
+            transition={{ duration: 1.1, repeat: Infinity, ease: 'easeInOut' }}
+          />
+        )}
+        {id === 'nuevo' &&
+          TWINKLES.map(([left, top, size, delay]) => (
+            <motion.span
+              key={`${left}${top}`}
+              className="absolute rounded-full bg-white shadow-[0_0_4px_1px_rgba(255,255,255,.9)]"
+              style={{ left, top, width: size, height: size }}
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: [0, 1, 0], opacity: [0, 1, 0] }}
+              transition={{ duration: 0.7, delay: 0.6 + delay, repeat: Infinity, repeatDelay: 3.4 }}
+            />
+          ))}
+        <motion.span
+          className="relative grid place-items-center"
+          style={{ originY: id === 'picante' ? 1 : 0.5 }}
+          animate={
+            id === 'picante'
+              ? { scaleY: [1, 1.18, 0.94, 1.12, 1], rotate: [-4, 4, -2, 3, -4] }
+              : id === 'nuevo'
+                ? { rotate: [0, 18, -12, 0], scale: [1, 1.3, 1.1, 1] }
+                : undefined
+          }
+          transition={
+            id === 'picante'
+              ? { duration: 0.9, repeat: Infinity, ease: 'easeInOut' }
+              : { duration: 0.8, delay: 0.5, repeat: Infinity, repeatDelay: 3.3 }
+          }
+        >
+          <Icon size={14} strokeWidth={2.5} />
+        </motion.span>
+      </span>
+      <span className="relative">{label}</span>
+    </motion.span>
+  )
 }
 
 /** Soft chip tinted from the sheet's own text colour, so it works on light and dark sheets alike. */
@@ -207,11 +296,8 @@ export function DishSheet({ item, category, direction, axis, expanded, open, dra
               </p>
               {item.tags && (
                 <div className="mt-3 flex flex-wrap items-center gap-1.5">
-                  {item.tags.map(({ id, label, icon: Icon }) => (
-                    <span key={id} className={`flex items-center gap-1 px-2.5 py-1 text-[12px] font-bold ${chip}`}>
-                      <Icon size={13} strokeWidth={2.4} aria-hidden style={accent} />
-                      {label}
-                    </span>
+                  {item.tags.map((tag, i) => (
+                    <TagChip key={tag.id} tag={tag} index={i} />
                   ))}
                 </div>
               )}
