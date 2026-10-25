@@ -1,4 +1,4 @@
-# Carta digital · rama `carta-la-sablee`
+# Carta digital
 
 Plantilla de carta con el negocio de ejemplo **Terra · café · cocina**: 65 productos en tres niveles de navegación (categoría, subcategoría y etiqueta), datos en JSON y buscador, sobre la base de la carta de `main`. Contexto completo para retomar el proyecto: [`CLAUDE.md`](CLAUDE.md) y [`docs/CONTEXTO.md`](docs/CONTEXTO.md).
 
