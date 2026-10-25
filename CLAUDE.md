@@ -47,6 +47,8 @@ Vite 8 · React 19 · TypeScript · **Motion** (`motion/react`) · Tailwind CSS 
 - El plato y el fondo tienen **posición fija** sin importar la altura de la hoja (`open` se mide contra `MAX_PEEK`, no contra la altura actual).
 - La hoja se arrastra desde cualquier parte; si su cuerpo hace scroll, al jalar hacia abajo estando arriba del todo se cierra.
 - Dentro de una subcategoría, los productos de un mismo grupo deben ir **contiguos** (ordenar por `sortOrder`).
+- Las escenas de categoría están a una pantalla completa de distancia (`pitch = height`): si la siguiente espera más arriba, su fondo asoma por las esquinas redondeadas de la hoja.
+- `useScrollEdges` mide el contenido con la caja de layout de los hijos, **no** con `scrollWidth`: los `transform` (la píldora `layoutId` que viaja o rebota) inflan `scrollWidth` y dejaban carets pegados.
 
 ## Rendimiento (aprendido a golpes)
 
@@ -60,7 +62,7 @@ Vite 8 · React 19 · TypeScript · **Motion** (`motion/react`) · Tailwind CSS 
 ## Diseño
 
 - Cada categoría tiene paleta propia (`palette.sheet/ink/accent`) repartida en el círculo cromático (miel, oliva, caramelo, mantequilla, baya, espresso, kraft). **Texto y acento ≥ 4.5:1** sobre la hoja: verifícalo al cambiar colores.
-- Etiquetas (3er nivel) con borde, sin relleno; el número de platos va en un círculo.
+- Etiquetas (3er nivel) con fondo blanco y borde fino (sin él no se leían sobre la foto); la activa lleva un anillo del color `strong`. El número de platos va en un círculo.
 - Microinteracciones con springs con rebote (`TAP`, `PILL` en `MenuScreen.tsx`). Respeta `prefers-reduced-motion` (`MotionConfig reducedMotion="user"`).
 - Botones ≥ 44 px; íconos SVG (lucide), no emojis.
 

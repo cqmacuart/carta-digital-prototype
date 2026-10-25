@@ -49,7 +49,7 @@ function Count({ n, active, fill, text, small = false }: { n: number; active: bo
       initial={active ? { scale: 0.6 } : false}
       animate={{ scale: 1 }}
       transition={{ type: 'spring', stiffness: 600, damping: 14 }}
-      className={`grid shrink-0 place-items-center rounded-full font-bold tabular-nums ${small ? 'size-[18px] text-[10px]' : 'size-5 text-[11px]'} ${
+      className={`relative grid shrink-0 place-items-center rounded-full font-bold tabular-nums ${small ? 'size-[18px] text-[10px]' : 'size-5 text-[11px]'} ${
         active ? '' : 'bg-espresso/10 text-espresso/70'
       }`}
       style={active ? { backgroundColor: fill, color: text } : undefined}
@@ -95,8 +95,9 @@ export function MenuScreen({ width, height, menu }: Props) {
   const collapsedY = sheetH - peek - PEEK_PAD
   const plateCenter = stageTop + stageH / 2
   const shift = (HEADER + openTop) / 2 + 6 - plateCenter
-  // vertical distance between category scenes: the next one waits just behind the sheet
-  const pitch = height - PEEK + 40
+  // vertical distance between category scenes: a full screen, so the next one waits below it. Parked just behind
+  // the sheet, its backdrop's top edge showed past the sheet's rounded corners whenever a short dish lowered the sheet.
+  const pitch = height
 
   // ---- category + dish ----------------------------------------------------
   const [catIndex, setCatIndex] = useState(0)
@@ -554,8 +555,8 @@ export function MenuScreen({ width, height, menu }: Props) {
                 scrollRef={tagRailRef}
                 watch={`${category.id}-${item.sub}`}
                 labels={['Ver etiquetas anteriores', 'Ver más etiquetas']}
-                className="max-w-full rounded-full bg-white/35 px-0.5 ring-1 ring-white/50"
-                scrollerClassName="gap-1 p-1"
+                className="max-w-full"
+                scrollerClassName="gap-1.5 p-1"
               >
                 {groups.map((g, i) => {
                   const isActive = g === item.group
@@ -572,12 +573,15 @@ export function MenuScreen({ width, height, menu }: Props) {
                       transition={TAP}
                       onClick={() => !isActive && rollTo((m) => m.sub === item.sub && m.group === g)}
                       className={`relative flex min-h-7 shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full py-0.5 pl-3 pr-1 text-[12px] transition-colors duration-300 ${
-                        isActive ? 'font-extrabold' : 'font-bold text-espresso/75'
+                        isActive ? 'font-extrabold' : 'font-bold text-espresso'
                       }`}
                       style={isActive ? { color: category.strong } : undefined}
                     >
-                      {/* outline only: a resting hairline, and a coloured ring that slides to the active tag */}
-                      <span className="absolute inset-0 rounded-full border border-espresso/20" aria-hidden />
+                      {/* white so it reads over any photo: a resting hairline, and a coloured ring that slides to the active tag */}
+                      <span
+                        className="absolute inset-0 rounded-full border border-espresso/12 bg-white/90 shadow-[0_3px_8px_-4px_rgba(42,26,18,.45)]"
+                        aria-hidden
+                      />
                       {isActive && (
                         <motion.span
                           layoutId="tag"
