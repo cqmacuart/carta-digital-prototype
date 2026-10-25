@@ -121,9 +121,9 @@
       "icon": "sandwich",
       "sortOrder": 2,
       "palette": {
-        "sheet": "#525D34",
-        "ink": "#F7F2E2",
-        "accent": "#ECE2B2"
+        "sheet": "#A3442A",
+        "ink": "#FFF6EF",
+        "accent": "#FFE1C2"
       }
     },
     {
@@ -520,6 +520,26 @@
       "id": "leche-almendras",
       "name": "Leche de almendras",
       "price": 3000
+    },
+    {
+      "id": "shot-espresso",
+      "name": "Shot extra de espresso",
+      "price": 2000
+    },
+    {
+      "id": "huevo-adicional",
+      "name": "Huevo adicional",
+      "price": 2500
+    },
+    {
+      "id": "aguacate",
+      "name": "Porción de aguacate",
+      "price": 3000
+    },
+    {
+      "id": "bola-helado",
+      "name": "Bola de helado adicional",
+      "price": 4000
     }
   ],
   "products": [
@@ -530,17 +550,21 @@
       "groupId": null,
       "name": "Al gusto",
       "tagline": "Tres huevos como los prefieras, con jamón y mozzarella.",
-      "description": "3 huevos pochados, revueltos, pericos o fritos, con jamón, queso mozzarella, pan francés y 1 topping.",
+      "description": "Tres huevos de gallina campesina como más te gusten: pochados, revueltos, pericos con tomate y cebolla, o fritos. Los acompañan jamón, mozzarella fundida y pan francés recién horneado, con 1 topping a elegir.",
       "price": 17000,
       "variants": [],
       "ingredients": [
-        "Huevos",
+        "Huevos campesinos",
         "Jamón",
         "Mozzarella",
-        "Pan francés"
+        "Pan francés",
+        "Mantequilla"
       ],
       "includedToppings": 1,
-      "modifierIds": [],
+      "modifierIds": [
+        "huevo-adicional",
+        "aguacate"
+      ],
       "tagIds": [],
       "note": null,
       "image": {
@@ -563,18 +587,22 @@
       "groupId": null,
       "name": "Rancheros",
       "tagline": "Huevos revueltos con chorizo santarrosano y hogao.",
-      "description": "3 huevos revueltos con chorizo santarrosano, jamón, mozzarella y hogao, con pan francés y 1 topping.",
+      "description": "Huevos revueltos en sartén con chorizo santarrosano dorado, jamón y mozzarella, terminados con hogao casero de tomate y cebolla larga. Llegan con pan francés tibio y 1 topping: el desayuno santandereano más pedido de la casa.",
       "price": 20000,
       "variants": [],
       "ingredients": [
-        "Huevos",
+        "Huevos campesinos",
         "Chorizo santarrosano",
         "Jamón",
         "Mozzarella",
-        "Hogao"
+        "Hogao",
+        "Pan francés"
       ],
       "includedToppings": 1,
-      "modifierIds": [],
+      "modifierIds": [
+        "huevo-adicional",
+        "aguacate"
+      ],
       "tagIds": [
         "casa"
       ],
@@ -599,25 +627,33 @@
       "groupId": null,
       "name": "Omelettes",
       "tagline": "Americano o santarrosano, con pan francés y un topping.",
-      "description": "Elige tu omelette. Siempre con pan francés y 1 topping.",
+      "description": "Omelette de tres huevos, dorado por fuera y jugoso por dentro, doblado sobre su relleno y bañado con crema de quesos. Elige el americano, más suave, o el santarrosano, con el sabor de la región. Siempre con pan francés y 1 topping.",
       "price": 22000,
       "variants": [
         {
           "id": "americano",
           "name": "Americano",
-          "detail": "jamón, mozzarella, tocineta, maicitos, crema de quesos",
+          "detail": "Jamón, tocineta, maicitos, mozzarella y crema de quesos",
           "price": 22000
         },
         {
           "id": "santarrosano",
           "name": "Santarrosano",
-          "detail": "hogao, chorizo, crema de quesos, mozzarella",
+          "detail": "Chorizo santarrosano, hogao, mozzarella y crema de quesos",
           "price": 22000
         }
       ],
-      "ingredients": [],
+      "ingredients": [
+        "Huevos campesinos",
+        "Crema de quesos",
+        "Mozzarella",
+        "Pan francés"
+      ],
       "includedToppings": 1,
-      "modifierIds": [],
+      "modifierIds": [
+        "huevo-adicional",
+        "aguacate"
+      ],
       "tagIds": [],
       "note": null,
       "image": {
@@ -640,7 +676,7 @@
       "groupId": null,
       "name": "Tortilla española",
       "tagline": "Papa, chorizo santarrosano y cebolla caramelizada.",
-      "description": "Huevos, chorizo santarrosano, papas, cebolla caramelizada y crema de quesos, con pan francés y 1 topping.",
+      "description": "Nuestra versión de la tortilla española: papa en láminas confitada, huevo, chorizo santarrosano y cebolla caramelizada a fuego lento, cuajada a punto y servida con crema de quesos. Con pan francés y 1 topping.",
       "price": 24000,
       "variants": [],
       "ingredients": [
@@ -648,12 +684,13 @@
         "Papa",
         "Chorizo santarrosano",
         "Cebolla caramelizada",
-        "Crema de quesos"
+        "Crema de quesos",
+        "Pan francés"
       ],
       "includedToppings": 1,
       "modifierIds": [],
       "tagIds": [],
-      "note": null,
+      "note": "Se prepara al momento: tarda unos 15 minutos.",
       "image": {
         "source": "unsplash",
         "photoId": "1788462613199-779ba2bf4b70",
@@ -674,31 +711,39 @@
       "groupId": "desayunos-brunch-pannecook",
       "name": "Pannecook de huevos",
       "tagline": "Dos pochados en pan horneado, en tres versiones.",
-      "description": "2 huevos pochados servidos en pannecook, con crema de quesos y 1 topping.",
+      "description": "Pan de masa crujiente horneado en cazuela, como una canasta, con dos huevos pochados de yema líquida y crema de quesos. Elige entre tres combinaciones; todas llevan 1 topping. El brunch insignia de la casa.",
       "price": 22000,
       "variants": [
         {
           "id": "benedictinos",
           "name": "Benedictinos",
-          "detail": "holandesa, jamón, tocineta",
+          "detail": "Salsa holandesa, jamón y tocineta",
           "price": 22000
         },
         {
           "id": "champinones",
           "name": "Champiñones",
-          "detail": "guacamole, tomates secos",
+          "detail": "Champiñones salteados, guacamole y tomates secos",
           "price": 22000
         },
         {
           "id": "tocineta",
           "name": "Tocineta",
-          "detail": "parmesano, champiñones, tomates secos",
+          "detail": "Tocineta, parmesano, champiñones y tomates secos",
           "price": 22000
         }
       ],
-      "ingredients": [],
+      "ingredients": [
+        "Pan horneado en cazuela",
+        "Huevos pochados",
+        "Crema de quesos",
+        "Cebollín"
+      ],
       "includedToppings": 1,
-      "modifierIds": [],
+      "modifierIds": [
+        "huevo-adicional",
+        "aguacate"
+      ],
       "tagIds": [
         "casa"
       ],
@@ -723,19 +768,21 @@
       "groupId": "desayunos-brunch-pannecook",
       "name": "Pannecook de pollo",
       "tagline": "Pollo y champiñones gratinados con parmesano.",
-      "description": "Pannecook relleno de pollo y champiñones, gratinado con parmesano y mozzarella.",
+      "description": "Pannecook relleno de pechuga de pollo desmechada y champiñones en salsa cremosa, gratinado en horno con parmesano y mozzarella hasta que burbujea. Contundente, para un brunch largo.",
       "price": 26000,
       "variants": [],
       "ingredients": [
-        "Pollo",
+        "Pollo desmechado",
         "Champiñones",
+        "Salsa cremosa",
         "Parmesano",
-        "Mozzarella"
+        "Mozzarella",
+        "Pan horneado en cazuela"
       ],
       "includedToppings": 0,
       "modifierIds": [],
       "tagIds": [],
-      "note": null,
+      "note": "Sale del horno muy caliente: espera un par de minutos.",
       "image": {
         "source": "unsplash",
         "photoId": "1683987143812-952dc1e75afa",
@@ -756,27 +803,34 @@
       "groupId": "desayunos-brunch-cacerolas",
       "name": "Cacerolas",
       "tagline": "Papas criollas en cazuela, de morrillo o de chicharrón.",
-      "description": "Servidas en cazuela caliente con papas criollas.",
+      "description": "Cazuela de barro que llega humeante a la mesa, con papas criollas doradas en la base y una proteína generosa encima. Elige morrillo desmechado con queso asado y huevo frito, o chicharrón carnudo La Fazenda con guacamole y pico de gallo.",
       "price": 28000,
       "variants": [
         {
           "id": "de-morrillo",
           "name": "De morrillo",
-          "detail": "queso asado y huevo frito",
+          "detail": "Morrillo desmechado, queso asado y huevo frito",
           "price": 28000
         },
         {
           "id": "de-chicharron-la-fazenda",
           "name": "De chicharrón La Fazenda",
-          "detail": "guacamole y pico de gallo",
+          "detail": "Chicharrón La Fazenda, guacamole y pico de gallo",
           "price": 28000
         }
       ],
-      "ingredients": [],
+      "ingredients": [
+        "Papa criolla",
+        "Cebolla",
+        "Cilantro",
+        "Queso campesino"
+      ],
       "includedToppings": 0,
       "modifierIds": [],
-      "tagIds": [],
-      "note": null,
+      "tagIds": [
+        "compartir"
+      ],
+      "note": "La cazuela sale muy caliente: no la toques directamente.",
       "image": {
         "source": "unsplash",
         "photoId": "1601579112521-5d6badb0bf3c",
@@ -797,14 +851,21 @@
       "groupId": "sandwiches-todos-aves",
       "name": "Jamón de pavo",
       "tagline": "El clásico de la casa, ligero y fresco.",
-      "description": "Sándwich de jamón de pavo en pan artesanal.",
+      "description": "Pan artesanal de corteza dorada con jamón de pavo en lonjas finas, queso mozzarella, lechuga crespa, tomate y una mayonesa de la casa con mostaza y miel. Ligero, fresco y bien armado.",
       "price": 20000,
       "variants": [],
-      "ingredients": [],
+      "ingredients": [
+        "Pan artesanal",
+        "Jamón de pavo",
+        "Mozzarella",
+        "Lechuga",
+        "Tomate",
+        "Mayonesa de mostaza y miel"
+      ],
       "includedToppings": 0,
       "modifierIds": [],
       "tagIds": [],
-      "note": null,
+      "note": "Todos los sándwiches llegan con papas criollas fritas o ensalada verde.",
       "image": {
         "source": "unsplash",
         "photoId": "1553909489-cd47e0907980",
@@ -825,14 +886,21 @@
       "groupId": "sandwiches-todos-aves",
       "name": "Pollo stroganoff",
       "tagline": "Pollo en salsa stroganoff, cremoso y tibio.",
-      "description": "Sándwich de pollo en salsa stroganoff.",
+      "description": "Pollo salteado con champiñones y cebolla en una salsa stroganoff cremosa con un toque de paprika, servido tibio en pan artesanal con mozzarella fundida y hojas de espinaca.",
       "price": 26000,
       "variants": [],
-      "ingredients": [],
+      "ingredients": [
+        "Pan artesanal",
+        "Pollo",
+        "Champiñones",
+        "Salsa stroganoff",
+        "Mozzarella",
+        "Espinaca"
+      ],
       "includedToppings": 0,
       "modifierIds": [],
       "tagIds": [],
-      "note": null,
+      "note": "Todos los sándwiches llegan con papas criollas fritas o ensalada verde.",
       "image": {
         "source": "unsplash",
         "photoId": "1670710029403-607db8eeec83",
@@ -853,14 +921,20 @@
       "groupId": "sandwiches-todos-res",
       "name": "Carne de morillo",
       "tagline": "Morrillo desmechado, jugoso y especiado.",
-      "description": "Sándwich de carne de morrillo.",
+      "description": "Morrillo de res cocido por horas con especias hasta deshacerse, desmechado y jugoso, con cebolla encurtida, queso costeño y salsa de la casa en pan artesanal tostado.",
       "price": 26000,
       "variants": [],
-      "ingredients": [],
+      "ingredients": [
+        "Pan artesanal",
+        "Morrillo de res",
+        "Cebolla encurtida",
+        "Queso costeño",
+        "Salsa de la casa"
+      ],
       "includedToppings": 0,
       "modifierIds": [],
       "tagIds": [],
-      "note": null,
+      "note": "Todos los sándwiches llegan con papas criollas fritas o ensalada verde.",
       "image": {
         "source": "unsplash",
         "photoId": "1667055251919-88fd6ff02e86",
@@ -881,16 +955,22 @@
       "groupId": "sandwiches-todos-cerdo",
       "name": "Bondiola de cerdo",
       "tagline": "Bondiola La Fazenda, cocida lento.",
-      "description": "Sándwich de bondiola de cerdo La Fazenda.",
+      "description": "Bondiola de cerdo La Fazenda cocinada a baja temperatura, cortada en lonjas y glaseada con una reducción de panela y cerveza. La acompañan repollo morado crocante y alioli en pan artesanal.",
       "price": 26000,
       "variants": [],
-      "ingredients": [],
+      "ingredients": [
+        "Pan artesanal",
+        "Bondiola de cerdo La Fazenda",
+        "Glaseado de panela",
+        "Repollo morado",
+        "Alioli"
+      ],
       "includedToppings": 0,
       "modifierIds": [],
       "tagIds": [
         "casa"
       ],
-      "note": null,
+      "note": "Todos los sándwiches llegan con papas criollas fritas o ensalada verde.",
       "image": {
         "source": "unsplash",
         "photoId": "1567529855370-57ecd066454c",
@@ -911,16 +991,22 @@
       "groupId": "sandwiches-todos-cerdo",
       "name": "Chicharrón carnudo",
       "tagline": "Chicharrón La Fazenda, crujiente y carnudo.",
-      "description": "Sándwich de chicharrón carnudo La Fazenda.",
+      "description": "Chicharrón carnudo La Fazenda, crujiente por fuera y jugoso por dentro, con guacamole, pico de gallo y un toque de limón en pan artesanal. Un clásico colombiano en formato sándwich.",
       "price": 26000,
       "variants": [],
-      "ingredients": [],
+      "ingredients": [
+        "Pan artesanal",
+        "Chicharrón La Fazenda",
+        "Guacamole",
+        "Pico de gallo",
+        "Limón"
+      ],
       "includedToppings": 0,
       "modifierIds": [],
       "tagIds": [
         "casa"
       ],
-      "note": null,
+      "note": "Todos los sándwiches llegan con papas criollas fritas o ensalada verde.",
       "image": {
         "source": "unsplash",
         "photoId": "1700937244987-92488ab2ada5",
@@ -941,14 +1027,21 @@
       "groupId": "sandwiches-todos-atun",
       "name": "Atún Van Camps",
       "tagline": "Ensalada de atún cremosa y crujiente.",
-      "description": "Sándwich de atún Van Camps en pan artesanal.",
+      "description": "Ensalada de atún Van Camps con mayonesa, apio, cebolla morada y maíz dulce, sobre lechuga y tomate en pan artesanal tostado. Cremosa, con un crocante fresco en cada mordida.",
       "price": 24000,
       "variants": [],
-      "ingredients": [],
+      "ingredients": [
+        "Pan artesanal",
+        "Atún Van Camps",
+        "Apio",
+        "Cebolla morada",
+        "Maíz dulce",
+        "Lechuga"
+      ],
       "includedToppings": 0,
       "modifierIds": [],
       "tagIds": [],
-      "note": null,
+      "note": "Todos los sándwiches llegan con papas criollas fritas o ensalada verde.",
       "image": {
         "source": "unsplash",
         "photoId": "1558985250-27a406d64cb3",
@@ -969,16 +1062,24 @@
       "groupId": "sandwiches-todos-vegetariano",
       "name": "Vegetariano",
       "tagline": "Vegetales frescos y quesos en pan artesanal.",
-      "description": "Sándwich de vegetales y quesos en pan artesanal.",
+      "description": "Berenjena, calabacín y pimentón asados a la plancha, con champiñones, mozzarella, queso crema de finas hierbas y rúgula en pan artesanal. Colorido y sustancioso, sin nada de carne.",
       "price": 22000,
       "variants": [],
-      "ingredients": [],
+      "ingredients": [
+        "Pan artesanal",
+        "Berenjena",
+        "Calabacín",
+        "Pimentón asado",
+        "Champiñones",
+        "Mozzarella",
+        "Rúgula"
+      ],
       "includedToppings": 0,
       "modifierIds": [],
       "tagIds": [
         "vegetariano"
       ],
-      "note": null,
+      "note": "Todos los sándwiches llegan con papas criollas fritas o ensalada verde.",
       "image": {
         "source": "unsplash",
         "photoId": "1590301155505-471f05cd02db",
@@ -999,35 +1100,41 @@
       "groupId": "panaderia-croissants-clasico",
       "name": "Croissant clásico",
       "tagline": "Hojaldre de mantequilla, solo o relleno.",
-      "description": "Nuestro croissant de mantequilla, horneado cada mañana.",
+      "description": "Croissant de mantequilla laminado a mano en 27 capas y horneado cada mañana: crujiente por fuera, alveolado y tierno por dentro. Solo, con queso fundido o con jamón y queso.",
       "price": 7000,
       "variants": [
         {
           "id": "solo",
           "name": "Solo",
-          "detail": null,
+          "detail": "Recién horneado",
           "price": 7000
         },
         {
           "id": "de-queso",
           "name": "De queso",
-          "detail": null,
+          "detail": "Relleno de queso mozzarella fundido",
           "price": 10000
         },
         {
           "id": "de-jamon-y-queso",
           "name": "De jamón y queso",
-          "detail": null,
+          "detail": "Jamón y mozzarella, gratinado",
           "price": 12000
         }
       ],
-      "ingredients": [],
+      "ingredients": [
+        "Harina de trigo",
+        "Mantequilla",
+        "Levadura",
+        "Leche",
+        "Huevo"
+      ],
       "includedToppings": 0,
       "modifierIds": [],
       "tagIds": [
         "casa"
       ],
-      "note": null,
+      "note": "Salen del horno a las 7:00 y a las 11:00.",
       "image": {
         "source": "unsplash",
         "photoId": "1695055424321-a090931a97f1",
@@ -1048,16 +1155,45 @@
       "groupId": "panaderia-croissants-dulce",
       "name": "Croissants dulces",
       "tagline": "Red velvet, Nutella, almendras o pistacho.",
-      "description": "Croissant relleno, a elegir: red velvet, Nutella, almendras o muselina de pistachos.",
+      "description": "Nuestro croissant de mantequilla abierto y relleno con generosidad. Elige red velvet con crema de queso, Nutella, crema de almendras tostadas o muselina de pistachos con pistacho picado.",
       "price": 14000,
-      "variants": [],
-      "ingredients": [],
+      "variants": [
+        {
+          "id": "red-velvet",
+          "name": "Red velvet",
+          "detail": "Bizcocho red velvet y crema de queso",
+          "price": 14000
+        },
+        {
+          "id": "nutella",
+          "name": "Nutella",
+          "detail": "Relleno y cubierto de Nutella",
+          "price": 14000
+        },
+        {
+          "id": "almendras",
+          "name": "Almendras",
+          "detail": "Frangipane de almendras tostadas",
+          "price": 14000
+        },
+        {
+          "id": "pistacho",
+          "name": "Muselina de pistachos",
+          "detail": "Con pistacho picado",
+          "price": 14000
+        }
+      ],
+      "ingredients": [
+        "Croissant de mantequilla",
+        "Azúcar glas"
+      ],
       "includedToppings": 0,
       "modifierIds": [],
       "tagIds": [
-        "vegetariano"
+        "vegetariano",
+        "nuevo"
       ],
-      "note": null,
+      "note": "Los de almendras y pistacho contienen frutos secos.",
       "image": {
         "source": "unsplash",
         "photoId": "1648141294401-ede697a33c02",
@@ -1078,12 +1214,20 @@
       "groupId": "panaderia-croissants-con-huevo",
       "name": "Croissant con huevos",
       "tagline": "Dos huevos al gusto con tocineta La Fazenda.",
-      "description": "Croissant con 2 huevos al gusto, tocineta La Fazenda y crema de quesos.",
+      "description": "Croissant tibio abierto con dos huevos al gusto, tocineta La Fazenda bien crocante y crema de quesos. Un desayuno completo que se come con la mano.",
       "price": 18000,
       "variants": [],
-      "ingredients": [],
+      "ingredients": [
+        "Croissant de mantequilla",
+        "Huevos",
+        "Tocineta La Fazenda",
+        "Crema de quesos"
+      ],
       "includedToppings": 0,
-      "modifierIds": [],
+      "modifierIds": [
+        "huevo-adicional",
+        "aguacate"
+      ],
       "tagIds": [],
       "note": null,
       "image": {
@@ -1106,12 +1250,21 @@
       "groupId": "panaderia-croissants-con-huevo",
       "name": "Croissant serrano",
       "tagline": "Jamón serrano, queso pera y aguacate.",
-      "description": "Croissant con 2 huevos, queso pera, jamón serrano, aguacate y crema de quesos.",
+      "description": "Croissant con dos huevos, jamón serrano curado, queso pera derretido, láminas de aguacate y crema de quesos. Salado, mantecoso y fresco a la vez.",
       "price": 22000,
       "variants": [],
-      "ingredients": [],
+      "ingredients": [
+        "Croissant de mantequilla",
+        "Huevos",
+        "Jamón serrano",
+        "Queso pera",
+        "Aguacate",
+        "Crema de quesos"
+      ],
       "includedToppings": 0,
-      "modifierIds": [],
+      "modifierIds": [
+        "huevo-adicional"
+      ],
       "tagIds": [],
       "note": null,
       "image": {
@@ -1134,10 +1287,35 @@
       "groupId": "panaderia-dulce-sal-panes",
       "name": "Almojábana y pan de bono",
       "tagline": "Almojábana, pan de yuca o pan de bono, recién horneados.",
-      "description": "Elige almojábana, pan de yuca o pan de bono.",
+      "description": "Panes de la tradición colombiana, horneados en tandas pequeñas durante el día para servirlos tibios: almojábana de cuajada, pan de yuca esponjoso o pan de bono con queso costeño. Perfectos con un tinto.",
       "price": 5000,
-      "variants": [],
-      "ingredients": [],
+      "variants": [
+        {
+          "id": "almojabana",
+          "name": "Almojábana",
+          "detail": "De cuajada, suave y esponjosa",
+          "price": 5000
+        },
+        {
+          "id": "pan-de-yuca",
+          "name": "Pan de yuca",
+          "detail": "Crujiente por fuera, elástico por dentro",
+          "price": 5000
+        },
+        {
+          "id": "pan-de-bono",
+          "name": "Pan de bono",
+          "detail": "Con queso costeño, dorado",
+          "price": 5000
+        }
+      ],
+      "ingredients": [
+        "Almidón de yuca",
+        "Cuajada",
+        "Queso costeño",
+        "Huevo",
+        "Mantequilla"
+      ],
       "includedToppings": 0,
       "modifierIds": [],
       "tagIds": [
@@ -1164,10 +1342,14 @@
       "groupId": "panaderia-dulce-sal-hojaldres",
       "name": "Palito de queso",
       "tagline": "Hojaldre crujiente relleno de queso.",
-      "description": "Palito de hojaldre relleno de queso.",
+      "description": "Tira de hojaldre de mantequilla enrollada sobre queso blanco y horneada hasta dorar: hojaldre que cruje y queso que se estira. Ideal para acompañar un café o una aguapanela.",
       "price": 8000,
       "variants": [],
-      "ingredients": [],
+      "ingredients": [
+        "Hojaldre de mantequilla",
+        "Queso blanco",
+        "Huevo para barnizar"
+      ],
       "includedToppings": 0,
       "modifierIds": [],
       "tagIds": [
@@ -1194,10 +1376,26 @@
       "groupId": "panaderia-dulce-sal-hojaldres",
       "name": "Hojaldre salado",
       "tagline": "De pollo stroganoff o de carne de morrillo.",
-      "description": "Hojaldre relleno, a elegir: pollo stroganoff o carne de morrillo.",
+      "description": "Hojaldre dorado relleno en casa, para un antojo salado de media mañana. Elige pollo stroganoff con champiñones o morrillo desmechado en su jugo.",
       "price": 10000,
-      "variants": [],
-      "ingredients": [],
+      "variants": [
+        {
+          "id": "pollo-stroganoff",
+          "name": "Pollo stroganoff",
+          "detail": "Pollo y champiñones en salsa cremosa",
+          "price": 10000
+        },
+        {
+          "id": "carne-de-morrillo",
+          "name": "Carne de morrillo",
+          "detail": "Morrillo desmechado y especiado",
+          "price": 10000
+        }
+      ],
+      "ingredients": [
+        "Hojaldre de mantequilla",
+        "Huevo para barnizar"
+      ],
       "includedToppings": 0,
       "modifierIds": [],
       "tagIds": [],
@@ -1222,13 +1420,15 @@
       "groupId": "panaderia-dulce-sal-para-mojar",
       "name": "Migaito",
       "tagline": "Jarra de chocolate para mojar, a la colombiana.",
-      "description": "Jarra de chocolate con waffle, pan brioche, galletas, mozzarella, queso paipa y masmelos.",
+      "description": "El ritual santandereano de \"migar\": una jarra de chocolate caliente espumado con molinillo y una tabla para mojar con trozos de waffle, pan brioche, galletas, mozzarella, queso paipa y masmelos. Para dos, o para uno con mucha hambre.",
       "price": 18000,
       "variants": [],
       "ingredients": [
-        "Chocolate",
+        "Chocolate de mesa",
         "Waffle",
         "Pan brioche",
+        "Galletas",
+        "Mozzarella",
         "Queso paipa",
         "Masmelos"
       ],
@@ -1237,7 +1437,7 @@
       "tagIds": [
         "compartir"
       ],
-      "note": null,
+      "note": "Pide más chocolate para la jarra por $4.000.",
       "image": {
         "source": "unsplash",
         "photoId": "1706341842409-39f198ac6e4c",
@@ -1258,16 +1458,17 @@
       "groupId": "panaderia-dulce-sal-para-mojar",
       "name": "Tostada francesa",
       "tagline": "Brioche dorado con yogurt griego y fruta fresca.",
-      "description": "Pan brioche, yogurt griego, fresa, kiwi, arándanos y banano.",
+      "description": "Rodajas gruesas de pan brioche bañadas en huevo, leche y canela, doradas en mantequilla y servidas con yogurt griego, fresa, kiwi, arándanos y banano. Un toque de miel por encima.",
       "price": 22000,
       "variants": [],
       "ingredients": [
         "Pan brioche",
+        "Huevo",
+        "Canela",
         "Yogurt griego",
         "Fresa",
         "Kiwi",
-        "Arándanos",
-        "Banano"
+        "Arándanos"
       ],
       "includedToppings": 0,
       "modifierIds": [],
@@ -1295,14 +1496,22 @@
       "groupId": "waffles-waffles-dulces",
       "name": "Waffle clásico",
       "tagline": "Tradicional o de pan de yuca, con dos toppings.",
-      "description": "Waffle tradicional o de pan de yuca, con 2 toppings.",
+      "description": "Waffle recién hecho, dorado y crujiente por fuera, tierno por dentro. Elige masa tradicional o de pan de yuca y complétalo con 2 toppings de nuestra barra.",
       "price": 14000,
       "variants": [],
-      "ingredients": [],
+      "ingredients": [
+        "Harina de trigo",
+        "Huevo",
+        "Leche",
+        "Mantequilla",
+        "Vainilla"
+      ],
       "includedToppings": 2,
       "modifierIds": [],
-      "tagIds": [],
-      "note": null,
+      "tagIds": [
+        "vegetariano"
+      ],
+      "note": "La versión de pan de yuca es sin gluten.",
       "image": {
         "source": "unsplash",
         "photoId": "1773533276932-4ee7ea1d6361",
@@ -1323,13 +1532,21 @@
       "groupId": "waffles-waffles-dulces",
       "name": "Waffle con helado",
       "tagline": "Helado, crema montada y dos toppings.",
-      "description": "Waffle tradicional o de pan de yuca, con helado, crema montada y 2 toppings.",
+      "description": "Waffle tibio, tradicional o de pan de yuca, con una bola de helado de vainilla que se derrite encima, crema montada y 2 toppings a elegir. El contraste frío y caliente de siempre.",
       "price": 20000,
       "variants": [],
-      "ingredients": [],
+      "ingredients": [
+        "Waffle",
+        "Helado de vainilla",
+        "Crema montada"
+      ],
       "includedToppings": 2,
-      "modifierIds": [],
-      "tagIds": [],
+      "modifierIds": [
+        "bola-helado"
+      ],
+      "tagIds": [
+        "vegetariano"
+      ],
       "note": null,
       "image": {
         "source": "unsplash",
@@ -1351,13 +1568,25 @@
       "groupId": "waffles-waffles-dulces",
       "name": "Waffle con frutas",
       "tagline": "Helado, crema y fruta fresca de temporada.",
-      "description": "Helado, crema montada, fresa, kiwi, arándanos y banano, con 2 toppings.",
+      "description": "Waffle cubierto de fruta fresca cortada al momento (fresa, kiwi, arándanos y banano), con helado, crema montada y 2 toppings. El más colorido de la carta.",
       "price": 24000,
       "variants": [],
-      "ingredients": [],
+      "ingredients": [
+        "Waffle",
+        "Fresa",
+        "Kiwi",
+        "Arándanos",
+        "Banano",
+        "Helado de vainilla",
+        "Crema montada"
+      ],
       "includedToppings": 2,
-      "modifierIds": [],
-      "tagIds": [],
+      "modifierIds": [
+        "bola-helado"
+      ],
+      "tagIds": [
+        "vegetariano"
+      ],
       "note": null,
       "image": {
         "source": "unsplash",
@@ -1379,12 +1608,20 @@
       "groupId": "waffles-waffles-salados",
       "name": "Waffle con huevos",
       "tagline": "Tres huevos al gusto, jamón y mozzarella.",
-      "description": "Waffle con 3 huevos al gusto, jamón, mozzarella y 1 topping.",
+      "description": "La cara salada del waffle: base dorada con tres huevos al gusto, jamón y mozzarella fundida, más 1 topping. Pídelo con masa de pan de yuca para un toque más criollo.",
       "price": 22000,
       "variants": [],
-      "ingredients": [],
+      "ingredients": [
+        "Waffle",
+        "Huevos",
+        "Jamón",
+        "Mozzarella"
+      ],
       "includedToppings": 1,
-      "modifierIds": [],
+      "modifierIds": [
+        "huevo-adicional",
+        "aguacate"
+      ],
       "tagIds": [],
       "note": null,
       "image": {
@@ -1407,12 +1644,19 @@
       "groupId": "waffles-waffles-salados",
       "name": "Waffle santarrosano",
       "tagline": "Con chorizo santarrosano y dos toppings.",
-      "description": "Waffle con chorizo santarrosano y 2 toppings.",
+      "description": "Waffle de pan de yuca con chorizo santarrosano asado y en rodajas, hogao casero y queso campesino, más 2 toppings. Sabor de Santa Rosa de Cabal sobre una base crujiente.",
       "price": 22000,
       "variants": [],
-      "ingredients": [],
+      "ingredients": [
+        "Waffle de pan de yuca",
+        "Chorizo santarrosano",
+        "Hogao",
+        "Queso campesino"
+      ],
       "includedToppings": 2,
-      "modifierIds": [],
+      "modifierIds": [
+        "huevo-adicional"
+      ],
       "tagIds": [],
       "note": null,
       "image": {
@@ -1435,16 +1679,22 @@
       "groupId": null,
       "name": "Bowl de frutas",
       "tagline": "Fruta fresca, granola y dos toppings.",
-      "description": "Fresa, kiwi, arándanos, banano, granola y 2 toppings.",
+      "description": "Fresa, kiwi, arándanos y banano cortados al momento, con granola natural horneada en casa y 2 toppings a elegir. Fresco, ligero y con buen crocante.",
       "price": 14000,
       "variants": [],
-      "ingredients": [],
+      "ingredients": [
+        "Fresa",
+        "Kiwi",
+        "Arándanos",
+        "Banano",
+        "Granola natural"
+      ],
       "includedToppings": 2,
       "modifierIds": [],
       "tagIds": [
         "vegetariano"
       ],
-      "note": null,
+      "note": "La granola contiene avena y puede tener trazas de frutos secos.",
       "image": {
         "source": "unsplash",
         "photoId": "1575023497656-1b8d04dc6f75",
@@ -1465,29 +1715,36 @@
       "groupId": null,
       "name": "Bowl de yogurt",
       "tagline": "Yogurt, fruta fresca y granola crocante.",
-      "description": "Fresa, kiwi, arándanos, banano, granola y 1 topping.",
+      "description": "Una base generosa de yogurt frío con fresa, kiwi, arándanos, banano y granola natural crocante, más 1 topping. Elige yogurt Alpina, más suave, o griego, más espeso y ácido.",
       "price": 20000,
       "variants": [
         {
           "id": "con-yogurt-alpina",
           "name": "Con yogurt Alpina",
-          "detail": null,
+          "detail": "Yogurt natural, suave y ligero",
           "price": 20000
         },
         {
           "id": "con-yogurt-griego",
           "name": "Con yogurt griego",
-          "detail": null,
+          "detail": "Más espeso, cremoso y con más proteína",
           "price": 22000
         }
       ],
-      "ingredients": [],
+      "ingredients": [
+        "Yogurt",
+        "Fresa",
+        "Kiwi",
+        "Arándanos",
+        "Banano",
+        "Granola natural"
+      ],
       "includedToppings": 1,
       "modifierIds": [],
       "tagIds": [
         "vegetariano"
       ],
-      "note": null,
+      "note": "La granola contiene avena y puede tener trazas de frutos secos.",
       "image": {
         "source": "unsplash",
         "photoId": "1504712598893-24159a89200e",
@@ -1508,26 +1765,86 @@
       "groupId": null,
       "name": "Torta por porción",
       "tagline": "Once sabores en vitrina, de almendras a red velvet.",
-      "description": "Pregunta por los sabores del día.",
+      "description": "Una porción generosa de nuestras tortas caseras, horneadas a diario en la cocina. En vitrina hay once sabores, de los clásicos a los de temporada; pregunta cuáles quedan hoy.",
       "price": 10000,
-      "variants": [],
+      "variants": [
+        {
+          "id": "almendras",
+          "name": "Dietética de almendras",
+          "detail": "Sin azúcar añadida",
+          "price": 10000
+        },
+        {
+          "id": "red-velvet",
+          "name": "Red velvet",
+          "detail": "Con frosting de queso crema",
+          "price": 10000
+        },
+        {
+          "id": "chocolate",
+          "name": "Chocolate",
+          "detail": "Húmeda, con ganache",
+          "price": 10000
+        },
+        {
+          "id": "zanahoria",
+          "name": "Zanahoria",
+          "detail": "Con nueces y canela",
+          "price": 10000
+        },
+        {
+          "id": "coco",
+          "name": "Coco",
+          "detail": "Con coco rallado tostado",
+          "price": 10000
+        },
+        {
+          "id": "guanabana",
+          "name": "Guanábana",
+          "detail": "Bizcocho con crema de guanábana",
+          "price": 10000
+        },
+        {
+          "id": "yogurt-griego",
+          "name": "Yogurt griego",
+          "detail": "Ligera y húmeda",
+          "price": 10000
+        },
+        {
+          "id": "vasca",
+          "name": "Vasca de queso",
+          "detail": "Cremosa, con la superficie tostada",
+          "price": 10000
+        },
+        {
+          "id": "ahuyama",
+          "name": "Ahuyama",
+          "detail": "Especiada, de temporada",
+          "price": 10000
+        },
+        {
+          "id": "amapola",
+          "name": "Semillas de amapola",
+          "detail": "Con limón",
+          "price": 10000
+        },
+        {
+          "id": "genovesa",
+          "name": "Genovesa",
+          "detail": "Bizcocho clásico con crema y fruta",
+          "price": 10000
+        }
+      ],
       "ingredients": [
-        "Almendras",
-        "Red velvet",
-        "Chocolate",
-        "Zanahoria",
-        "Coco",
-        "Guanábana",
-        "Yogurt griego",
-        "Vasca de queso",
-        "Ahuyama",
-        "Amapola",
-        "Genovesa"
+        "Harina de trigo",
+        "Huevos",
+        "Mantequilla",
+        "Azúcar"
       ],
       "includedToppings": 0,
       "modifierIds": [],
       "tagIds": [],
-      "note": null,
+      "note": "Los sabores pueden agotarse durante el día.",
       "image": {
         "source": "unsplash",
         "photoId": "1761637604809-735817ea2bd2",
@@ -1548,10 +1865,29 @@
       "groupId": null,
       "name": "Cheesecake",
       "tagline": "De frutos rojos o de Oreo.",
-      "description": "Cheesecake cremoso, a elegir: frutos rojos u Oreo.",
+      "description": "Cheesecake horneado al estilo Nueva York, denso y cremoso, sobre una base de galleta con mantequilla. Elige cobertura de frutos rojos en almíbar o de galleta Oreo triturada.",
       "price": 11000,
-      "variants": [],
-      "ingredients": [],
+      "variants": [
+        {
+          "id": "frutos-rojos",
+          "name": "Frutos rojos",
+          "detail": "Fresa, mora y arándanos en almíbar",
+          "price": 11000
+        },
+        {
+          "id": "oreo",
+          "name": "Oreo",
+          "detail": "Galleta Oreo triturada y en la base",
+          "price": 11000
+        }
+      ],
+      "ingredients": [
+        "Queso crema",
+        "Huevos",
+        "Base de galleta",
+        "Mantequilla",
+        "Azúcar"
+      ],
       "includedToppings": 0,
       "modifierIds": [],
       "tagIds": [],
@@ -1576,10 +1912,28 @@
       "groupId": null,
       "name": "Pie de limón o maracuyá",
       "tagline": "Base crocante y crema ácida de fruta.",
-      "description": "Pie de limón o de maracuyá.",
+      "description": "Base de galleta crocante, crema ácida de fruta cuajada en frío y merengue italiano flameado. Elige limón, clásico y refrescante, o maracuyá, más tropical y perfumado.",
       "price": 11000,
-      "variants": [],
-      "ingredients": [],
+      "variants": [
+        {
+          "id": "limon",
+          "name": "Limón",
+          "detail": "Crema de limón y ralladura",
+          "price": 11000
+        },
+        {
+          "id": "maracuya",
+          "name": "Maracuyá",
+          "detail": "Crema de maracuyá con sus semillas",
+          "price": 11000
+        }
+      ],
+      "ingredients": [
+        "Base de galleta",
+        "Leche condensada",
+        "Merengue italiano",
+        "Mantequilla"
+      ],
       "includedToppings": 0,
       "modifierIds": [],
       "tagIds": [],
@@ -1604,10 +1958,16 @@
       "groupId": null,
       "name": "Philadelphia de moras",
       "tagline": "Crema de queso con mermelada de moras.",
-      "description": "Postre de queso philadelphia con moras.",
+      "description": "Postre frío de capas: galleta triturada, crema de queso Philadelphia batida y mermelada de moras de Castilla hecha en casa. Cremoso, con la acidez justa de la mora.",
       "price": 11000,
       "variants": [],
-      "ingredients": [],
+      "ingredients": [
+        "Queso Philadelphia",
+        "Moras de Castilla",
+        "Galleta",
+        "Crema de leche",
+        "Azúcar"
+      ],
       "includedToppings": 0,
       "modifierIds": [],
       "tagIds": [],
@@ -1632,10 +1992,16 @@
       "groupId": null,
       "name": "Flan de caramelo",
       "tagline": "Suave, casero y bañado en caramelo.",
-      "description": "Flan casero de caramelo.",
+      "description": "Flan casero horneado a baño maría, de textura sedosa, desmoldado sobre un caramelo oscuro que se vuelve salsa. Receta de abuela, sin atajos.",
       "price": 11000,
       "variants": [],
-      "ingredients": [],
+      "ingredients": [
+        "Huevos",
+        "Leche",
+        "Leche condensada",
+        "Caramelo",
+        "Vainilla"
+      ],
       "includedToppings": 0,
       "modifierIds": [],
       "tagIds": [
@@ -1662,14 +2028,22 @@
       "groupId": null,
       "name": "Rol de canela",
       "tagline": "Masa suave, canela y glaseado.",
-      "description": "Rol de canela con glaseado.",
+      "description": "Masa brioche enrollada con mantequilla, azúcar morena y canela, horneada hasta caramelizar y cubierta con glaseado de queso crema. Pídelo tibio.",
       "price": 11000,
       "variants": [],
-      "ingredients": [],
+      "ingredients": [
+        "Masa brioche",
+        "Canela",
+        "Azúcar morena",
+        "Mantequilla",
+        "Glaseado de queso crema"
+      ],
       "includedToppings": 0,
       "modifierIds": [],
-      "tagIds": [],
-      "note": null,
+      "tagIds": [
+        "vegetariano"
+      ],
+      "note": "Te lo calentamos sin costo.",
       "image": {
         "source": "unsplash",
         "photoId": "1593872571314-4a735d4b27b0",
@@ -1690,14 +2064,20 @@
       "groupId": "postres-pasteleria-cremosos",
       "name": "Tiramisú",
       "tagline": "Café, mascarpone y cacao amargo.",
-      "description": "Tiramisú clásico con café y cacao.",
+      "description": "Bizcochos de soletilla empapados en espresso de la casa, entre capas de crema de mascarpone, y terminado con cacao amargo tamizado. Fiel a la receta italiana.",
       "price": 11000,
       "variants": [],
-      "ingredients": [],
+      "ingredients": [
+        "Mascarpone",
+        "Espresso",
+        "Bizcochos de soletilla",
+        "Huevos",
+        "Cacao amargo"
+      ],
       "includedToppings": 0,
       "modifierIds": [],
       "tagIds": [],
-      "note": null,
+      "note": "Contiene café y un toque de licor.",
       "image": {
         "source": "unsplash",
         "photoId": "1568627175730-73d05bd69ca9",
@@ -1718,13 +2098,21 @@
       "groupId": "postres-pasteleria-cremosos",
       "name": "Mousse",
       "tagline": "Ligero, aireado y muy chocolatoso.",
-      "description": "Mousse de la casa.",
+      "description": "Mousse de chocolate semiamargo al 60 %, aireado con claras batidas y crema, con virutas de chocolate y un toque de sal marina. Ligero en textura, intenso en sabor.",
       "price": 15000,
       "variants": [],
-      "ingredients": [],
+      "ingredients": [
+        "Chocolate semiamargo",
+        "Crema de leche",
+        "Claras de huevo",
+        "Azúcar",
+        "Sal marina"
+      ],
       "includedToppings": 0,
       "modifierIds": [],
-      "tagIds": [],
+      "tagIds": [
+        "sin-gluten"
+      ],
       "note": null,
       "image": {
         "source": "unsplash",
@@ -1746,10 +2134,15 @@
       "groupId": "postres-pasteleria-francesa",
       "name": "Eclair",
       "tagline": "Pasta choux rellena de crema.",
-      "description": "Eclair de pasta choux con crema pastelera.",
+      "description": "Pasta choux horneada hasta quedar hueca y crujiente, rellena de crema pastelera de vainilla y cubierta con glaseado brillante de chocolate.",
       "price": 13000,
       "variants": [],
-      "ingredients": [],
+      "ingredients": [
+        "Pasta choux",
+        "Crema pastelera",
+        "Vainilla",
+        "Glaseado de chocolate"
+      ],
       "includedToppings": 0,
       "modifierIds": [],
       "tagIds": [],
@@ -1774,14 +2167,19 @@
       "groupId": "postres-pasteleria-francesa",
       "name": "Ópera de chocolate",
       "tagline": "Capas de bizcocho, café y ganache.",
-      "description": "Ópera de chocolate y café.",
+      "description": "Pastel francés de capas finas: bizcocho joconde de almendra empapado en café, crema de mantequilla al café y ganache de chocolate, terminado con un espejo de chocolate.",
       "price": 13000,
       "variants": [],
-      "ingredients": [],
+      "ingredients": [
+        "Bizcocho de almendra",
+        "Café",
+        "Crema de mantequilla",
+        "Ganache de chocolate"
+      ],
       "includedToppings": 0,
       "modifierIds": [],
       "tagIds": [],
-      "note": null,
+      "note": "Contiene frutos secos (almendra).",
       "image": {
         "source": "unsplash",
         "photoId": "1577660618074-40c460c56df4",
@@ -1802,10 +2200,16 @@
       "groupId": "postres-pasteleria-francesa",
       "name": "Milhojas",
       "tagline": "Hojaldre crujiente y crema pastelera.",
-      "description": "Milhojas de hojaldre y crema.",
+      "description": "Láminas de hojaldre caramelizado intercaladas con crema pastelera de vainilla, cubiertas con fondant y el clásico veteado de chocolate. Cruje al primer corte.",
       "price": 15000,
       "variants": [],
-      "ingredients": [],
+      "ingredients": [
+        "Hojaldre",
+        "Crema pastelera",
+        "Vainilla",
+        "Fondant",
+        "Chocolate"
+      ],
       "includedToppings": 0,
       "modifierIds": [],
       "tagIds": [],
@@ -1830,16 +2234,35 @@
       "groupId": "postres-pasteleria-francesa",
       "name": "Macarons y profiteroles",
       "tagline": "Bocados franceses para el café.",
-      "description": "Macarons y profiteroles.",
+      "description": "Bocados de pastelería francesa para acompañar el café. Macarons de almendra con rellenos de temporada o profiteroles de pasta choux rellenos de crema y bañados en chocolate.",
       "price": 8000,
-      "variants": [],
-      "ingredients": [],
+      "variants": [
+        {
+          "id": "macarons",
+          "name": "Macarons",
+          "detail": "3 unidades, sabores del día",
+          "price": 8000
+        },
+        {
+          "id": "profiteroles",
+          "name": "Profiteroles",
+          "detail": "4 unidades con salsa de chocolate",
+          "price": 8000
+        }
+      ],
+      "ingredients": [
+        "Harina de almendra",
+        "Claras de huevo",
+        "Pasta choux",
+        "Crema pastelera",
+        "Chocolate"
+      ],
       "includedToppings": 0,
       "modifierIds": [],
       "tagIds": [
         "casa"
       ],
-      "note": null,
+      "note": "Los macarons contienen almendra.",
       "image": {
         "source": "unsplash",
         "photoId": "1569864358642-9d1684040f43",
@@ -1860,27 +2283,35 @@
       "groupId": null,
       "name": "Brownie",
       "tagline": "Denso y tibio, solo o con helado.",
-      "description": "Brownie de chocolate.",
+      "description": "Brownie de chocolate semiamargo con nueces, crujiente en la superficie y húmedo en el centro, servido tibio. Con helado de vainilla y salsa de chocolate, es otro postre.",
       "price": 9000,
       "variants": [
         {
           "id": "solo",
           "name": "Solo",
-          "detail": null,
+          "detail": "Tibio, con salsa de chocolate",
           "price": 9000
         },
         {
           "id": "con-helado",
           "name": "Con helado",
-          "detail": null,
+          "detail": "Con helado de vainilla y salsa de chocolate",
           "price": 16000
         }
       ],
-      "ingredients": [],
+      "ingredients": [
+        "Chocolate semiamargo",
+        "Mantequilla",
+        "Huevos",
+        "Nueces",
+        "Azúcar morena"
+      ],
       "includedToppings": 0,
-      "modifierIds": [],
+      "modifierIds": [
+        "bola-helado"
+      ],
       "tagIds": [],
-      "note": null,
+      "note": "Contiene nueces.",
       "image": {
         "source": "unsplash",
         "photoId": "1624353365286-3f8d62daad51",
@@ -1901,26 +2332,32 @@
       "groupId": null,
       "name": "Canasta de helado",
       "tagline": "Con crema montada y un topping.",
-      "description": "Canasta de helado con crema montada y 1 topping.",
+      "description": "Canasta de galleta crocante con helado artesanal, crema montada y 1 topping a elegir. Sencilla con una bola o doble con dos, en el sabor que prefieras de la vitrina.",
       "price": 10000,
       "variants": [
         {
           "id": "sencilla",
           "name": "Sencilla",
-          "detail": null,
+          "detail": "1 bola de helado",
           "price": 10000
         },
         {
           "id": "doble",
           "name": "Doble",
-          "detail": null,
+          "detail": "2 bolas de helado",
           "price": 16000
         }
       ],
-      "ingredients": [],
+      "ingredients": [
+        "Canasta de galleta",
+        "Helado artesanal",
+        "Crema montada"
+      ],
       "includedToppings": 1,
       "modifierIds": [],
-      "tagIds": [],
+      "tagIds": [
+        "vegetariano"
+      ],
       "note": null,
       "image": {
         "source": "unsplash",
@@ -1942,25 +2379,30 @@
       "groupId": "bebidas-calientes-cafe",
       "name": "Espresso y macchiato",
       "tagline": "Espresso doble de origen, corto e intenso.",
-      "description": "Café de origen colombiano.",
+      "description": "Café de origen colombiano tostado medio, con notas de panela, cacao y frutos rojos. El espresso doble va corto e intenso; el macchiato lo suaviza con una mancha de espuma de leche.",
       "price": 5000,
       "variants": [
         {
           "id": "espresso-doble-4-oz",
           "name": "Espresso doble 4 oz",
-          "detail": null,
+          "detail": "Doble carga, 4 oz",
           "price": 5000
         },
         {
           "id": "macchiato",
           "name": "Macchiato",
-          "detail": null,
+          "detail": "Espresso doble con espuma de leche",
           "price": 7000
         }
       ],
-      "ingredients": [],
+      "ingredients": [
+        "Café de origen",
+        "Agua filtrada"
+      ],
       "includedToppings": 0,
-      "modifierIds": [],
+      "modifierIds": [
+        "shot-espresso"
+      ],
       "tagIds": [],
       "note": null,
       "image": {
@@ -1983,39 +2425,44 @@
       "groupId": "bebidas-calientes-cafe",
       "name": "Americano",
       "tagline": "Del clásico al campesino con panela y limón.",
-      "description": "Café americano de origen.",
+      "description": "Espresso alargado con agua caliente: limpio y aromático, para tomar despacio. Prueba el campesino, con panela y un toque de limón, o el carajillo con licor para la tarde.",
       "price": 5000,
       "variants": [
         {
           "id": "7-oz",
           "name": "7 oz",
-          "detail": null,
+          "detail": "Taza pequeña",
           "price": 5000
         },
         {
           "id": "9-oz",
           "name": "9 oz",
-          "detail": null,
+          "detail": "Taza grande",
           "price": 6000
         },
         {
           "id": "campesino",
           "name": "Campesino",
-          "detail": "panela y limón",
+          "detail": "Con panela y limón",
           "price": 7000
         },
         {
           "id": "carajillo",
           "name": "Carajillo",
-          "detail": "aguardiente o whisky",
+          "detail": "Con aguardiente o whisky",
           "price": 10000
         }
       ],
-      "ingredients": [],
+      "ingredients": [
+        "Café de origen",
+        "Agua filtrada"
+      ],
       "includedToppings": 0,
-      "modifierIds": [],
+      "modifierIds": [
+        "shot-espresso"
+      ],
       "tagIds": [],
-      "note": null,
+      "note": "El carajillo es solo para mayores de edad.",
       "image": {
         "source": "unsplash",
         "photoId": "1601282354526-5907ac4dfef2",
@@ -2036,44 +2483,49 @@
       "groupId": "bebidas-calientes-cafe",
       "name": "Capuccino o latte",
       "tagline": "Espresso y leche sedosa, a tu manera.",
-      "description": "Capuccino o latte con leche texturizada.",
+      "description": "Espresso doble con leche entera texturizada a vapor: más espuma en el capuccino, más sedoso en el latte. Lo puedes pedir con vainilla, con crema montada o con un chorrito de Baileys o whisky.",
       "price": 7000,
       "variants": [
         {
           "id": "7-oz",
           "name": "7 oz",
-          "detail": null,
+          "detail": "Capuccino o latte pequeño",
           "price": 7000
         },
         {
           "id": "9-oz",
           "name": "9 oz",
-          "detail": null,
+          "detail": "Capuccino o latte grande",
           "price": 8000
         },
         {
           "id": "vainilla",
           "name": "Vainilla",
-          "detail": null,
+          "detail": "Latte con jarabe de vainilla, 9 oz",
           "price": 9000
         },
         {
           "id": "con-crema-montada",
           "name": "Con crema montada",
-          "detail": null,
+          "detail": "Coronado con crema montada y canela",
           "price": 10000
         },
         {
           "id": "con-baileys-o-whisky",
           "name": "Con Baileys o whisky",
-          "detail": null,
+          "detail": "Con licor, 9 oz",
           "price": 12000
         }
       ],
-      "ingredients": [],
+      "ingredients": [
+        "Espresso",
+        "Leche entera",
+        "Espuma de leche"
+      ],
       "includedToppings": 0,
       "modifierIds": [
-        "leche-almendras"
+        "leche-almendras",
+        "shot-espresso"
       ],
       "tagIds": [
         "casa"
@@ -2099,26 +2551,32 @@
       "groupId": "bebidas-calientes-cafe",
       "name": "Moka",
       "tagline": "Café, chocolate y leche, sola o con crema.",
-      "description": "Moka de café y chocolate.",
+      "description": "Espresso, chocolate amargo derretido y leche texturizada, espolvoreado con cacao. Pídela sola o coronada con crema montada para una taza más golosa.",
       "price": 8000,
       "variants": [
         {
           "id": "sola",
           "name": "Sola",
-          "detail": null,
+          "detail": "7 oz, con cacao espolvoreado",
           "price": 8000
         },
         {
           "id": "con-crema-montada",
           "name": "Con crema montada",
-          "detail": null,
+          "detail": "9 oz, coronada con crema montada",
           "price": 11000
         }
       ],
-      "ingredients": [],
+      "ingredients": [
+        "Espresso",
+        "Chocolate amargo",
+        "Leche entera",
+        "Cacao en polvo"
+      ],
       "includedToppings": 0,
       "modifierIds": [
-        "leche-almendras"
+        "leche-almendras",
+        "shot-espresso"
       ],
       "tagIds": [],
       "note": null,
@@ -2142,13 +2600,20 @@
       "groupId": "bebidas-calientes-cafe",
       "name": "Affogato",
       "tagline": "Espresso doble sobre helado de vainilla.",
-      "description": "Espresso doble servido sobre helado.",
+      "description": "Una bola de helado artesanal de vainilla \"ahogada\" en un espresso doble recién extraído. Se toma con cuchara mientras el helado se funde en el café.",
       "price": 11000,
       "variants": [],
-      "ingredients": [],
+      "ingredients": [
+        "Helado de vainilla",
+        "Espresso doble"
+      ],
       "includedToppings": 0,
-      "modifierIds": [],
-      "tagIds": [],
+      "modifierIds": [
+        "bola-helado"
+      ],
+      "tagIds": [
+        "sin-gluten"
+      ],
       "note": null,
       "image": {
         "source": "unsplash",
@@ -2170,23 +2635,27 @@
       "groupId": "bebidas-calientes-chocolate",
       "name": "Chocolate y Milo",
       "tagline": "Chocolate espeso de taza o Milo caliente.",
-      "description": "Chocolate de taza o Milo.",
+      "description": "Chocolate de mesa santandereano batido con molinillo hasta hacer espuma, espeso y aromático, o un Milo bien caliente para los nostálgicos. Pídelo con un queso para derretir adentro.",
       "price": 7000,
       "variants": [
         {
           "id": "chocolate-9-oz",
           "name": "Chocolate 9 oz",
-          "detail": null,
+          "detail": "Chocolate de mesa en leche, con espuma",
           "price": 7000
         },
         {
           "id": "milo",
           "name": "Milo",
-          "detail": null,
+          "detail": "Milo caliente en leche",
           "price": 8000
         }
       ],
-      "ingredients": [],
+      "ingredients": [
+        "Chocolate de mesa",
+        "Leche entera",
+        "Canela"
+      ],
       "includedToppings": 0,
       "modifierIds": [
         "leche-almendras"
@@ -2213,35 +2682,39 @@
       "groupId": "bebidas-calientes-infusiones",
       "name": "Aguapanela",
       "tagline": "Sola, con leche o con queso, como en casa.",
-      "description": "Aguapanela caliente.",
+      "description": "Panela de trapiche disuelta en agua caliente con un toque de limón. Sola es la más tradicional; con leche queda más suave, y con queso es para dejarlo derretir y comerlo con cuchara.",
       "price": 4000,
       "variants": [
         {
           "id": "sola",
           "name": "Sola",
-          "detail": null,
+          "detail": "Con limón",
           "price": 4000
         },
         {
           "id": "con-leche",
           "name": "Con leche",
-          "detail": null,
+          "detail": "Mitad agua, mitad leche",
           "price": 5000
         },
         {
           "id": "con-queso",
           "name": "Con queso",
-          "detail": null,
+          "detail": "Con queso campesino para derretir",
           "price": 8000
         }
       ],
-      "ingredients": [],
+      "ingredients": [
+        "Panela de trapiche",
+        "Agua",
+        "Limón"
+      ],
       "includedToppings": 0,
       "modifierIds": [],
       "tagIds": [
         "vegano"
       ],
-      "note": null,
+      "note": "Solo la versión sola es vegana.",
       "image": {
         "source": "unsplash",
         "photoId": "1792426429975-feb157a0f07c",
@@ -2262,37 +2735,44 @@
       "groupId": "bebidas-calientes-infusiones",
       "name": "Tés y aromáticas",
       "tagline": "Infusiones, chai y aromática con frutas.",
-      "description": "Tés e infusiones.",
+      "description": "Tés en hoja suelta e infusiones de hierbas, desde un té negro con leche hasta un chai especiado con canela, jengibre y cardamomo. La aromática con frutas lleva fresa, manzana y piña picadas.",
       "price": 5000,
       "variants": [
         {
           "id": "infusion",
           "name": "Infusión",
-          "detail": null,
+          "detail": "Manzanilla, frutos rojos, hierbabuena o jengibre-limón",
           "price": 5000
         },
         {
           "id": "te-con-leche",
           "name": "Té con leche",
-          "detail": null,
+          "detail": "Té negro con leche texturizada",
           "price": 7000
         },
         {
           "id": "chai-original",
           "name": "Chai original",
-          "detail": null,
+          "detail": "Té especiado con canela, jengibre y cardamomo",
           "price": 8000
         },
         {
           "id": "aromatica-con-frutas",
           "name": "Aromática con frutas",
-          "detail": null,
+          "detail": "Infusión con fresa, manzana y piña picadas",
           "price": 10000
         }
       ],
-      "ingredients": [],
+      "ingredients": [
+        "Té en hoja",
+        "Hierbas aromáticas",
+        "Frutas frescas",
+        "Especias"
+      ],
       "includedToppings": 0,
-      "modifierIds": [],
+      "modifierIds": [
+        "leche-almendras"
+      ],
       "tagIds": [],
       "note": null,
       "image": {
@@ -2315,27 +2795,34 @@
       "groupId": "bebidas-calientes-con-licor",
       "name": "Calientes con licor",
       "tagline": "Canelazo o vino caliente para la tarde.",
-      "description": "Bebidas calientes con licor.",
+      "description": "Para las tardes frías de Pamplona: canelazo de aguapanela, canela y aguardiente, o vino tinto caliente con naranja, clavo y canela. Se sirven humeantes.",
       "price": 10000,
       "variants": [
         {
           "id": "canelazo",
           "name": "Canelazo",
-          "detail": null,
+          "detail": "Aguapanela, canela y aguardiente",
           "price": 10000
         },
         {
           "id": "vino-caliente",
           "name": "Vino caliente",
-          "detail": null,
+          "detail": "Vino tinto con naranja y especias",
           "price": 18000
         }
       ],
-      "ingredients": [],
+      "ingredients": [
+        "Aguapanela",
+        "Canela",
+        "Aguardiente",
+        "Vino tinto",
+        "Naranja",
+        "Clavos de olor"
+      ],
       "includedToppings": 0,
       "modifierIds": [],
       "tagIds": [],
-      "note": null,
+      "note": "Solo para mayores de edad.",
       "image": {
         "source": "unsplash",
         "photoId": "1512589848202-673dfdab1972",
@@ -2356,33 +2843,41 @@
       "groupId": "bebidas-frias-cafe-frio",
       "name": "Frappé de café",
       "tagline": "Café helado y cremoso, con o sin licor.",
-      "description": "Frappé de café.",
+      "description": "Espresso de la casa licuado con hielo, leche y un toque de azúcar hasta quedar cremoso, coronado con crema montada. En versión clásica, con vainilla o con Baileys o whisky para la tarde.",
       "price": 15000,
       "variants": [
         {
           "id": "clasico",
           "name": "Clásico",
-          "detail": null,
+          "detail": "16 oz, con crema montada",
           "price": 15000
         },
         {
           "id": "vainilla",
           "name": "Vainilla",
-          "detail": null,
+          "detail": "16 oz, con jarabe de vainilla",
           "price": 17000
         },
         {
           "id": "baileys-o-whisky",
           "name": "Baileys o whisky",
-          "detail": null,
+          "detail": "16 oz, con licor y crema montada",
           "price": 20000
         }
       ],
-      "ingredients": [],
+      "ingredients": [
+        "Espresso",
+        "Leche",
+        "Hielo",
+        "Crema montada"
+      ],
       "includedToppings": 0,
-      "modifierIds": [],
+      "modifierIds": [
+        "leche-almendras",
+        "shot-espresso"
+      ],
       "tagIds": [],
-      "note": null,
+      "note": "La versión con licor es solo para mayores de edad.",
       "image": {
         "source": "unsplash",
         "photoId": "1589396575653-c09c794ff6a6",
@@ -2403,13 +2898,23 @@
       "groupId": "bebidas-frias-cafe-frio",
       "name": "Latte frío de vainilla",
       "tagline": "Espresso, leche fría y vainilla.",
-      "description": "Latte frío de vainilla sobre hielo.",
+      "description": "Espresso doble vertido sobre leche fría, hielo y jarabe de vainilla natural. Refrescante y suave, para quien quiere café sin calor.",
       "price": 12000,
       "variants": [],
-      "ingredients": [],
+      "ingredients": [
+        "Espresso doble",
+        "Leche fría",
+        "Hielo",
+        "Jarabe de vainilla"
+      ],
       "includedToppings": 0,
-      "modifierIds": [],
-      "tagIds": [],
+      "modifierIds": [
+        "leche-almendras",
+        "shot-espresso"
+      ],
+      "tagIds": [
+        "nuevo"
+      ],
       "note": null,
       "image": {
         "source": "unsplash",
@@ -2431,12 +2936,31 @@
       "groupId": "bebidas-frias-frappes-y-malteadas",
       "name": "Frappé de Milo o chai",
       "tagline": "Para los que prefieren sin café.",
-      "description": "Frappé de Milo o de chai.",
+      "description": "Para los que prefieren sin café: Milo o chai especiado licuados con leche y hielo, cremosos y bien fríos, terminados con crema montada.",
       "price": 13000,
-      "variants": [],
-      "ingredients": [],
+      "variants": [
+        {
+          "id": "milo",
+          "name": "Milo",
+          "detail": "16 oz, con Milo espolvoreado",
+          "price": 13000
+        },
+        {
+          "id": "chai",
+          "name": "Chai",
+          "detail": "16 oz, con canela",
+          "price": 13000
+        }
+      ],
+      "ingredients": [
+        "Leche",
+        "Hielo",
+        "Crema montada"
+      ],
       "includedToppings": 0,
-      "modifierIds": [],
+      "modifierIds": [
+        "leche-almendras"
+      ],
       "tagIds": [],
       "note": null,
       "image": {
@@ -2459,22 +2983,69 @@
       "groupId": "bebidas-frias-frappes-y-malteadas",
       "name": "Malteada",
       "tagline": "Ocho sabores, de Oreo a red velvet.",
-      "description": "Malteada cremosa.",
+      "description": "Malteada espesa de 16 oz con helado artesanal y leche, coronada con crema montada y una galleta. Elige entre ocho sabores, de los clásicos a los más golosos.",
       "price": 20000,
-      "variants": [],
+      "variants": [
+        {
+          "id": "chocolate",
+          "name": "Chocolate",
+          "detail": null,
+          "price": 20000
+        },
+        {
+          "id": "cafe",
+          "name": "Café",
+          "detail": "Con espresso de la casa",
+          "price": 20000
+        },
+        {
+          "id": "milo",
+          "name": "Milo",
+          "detail": null,
+          "price": 20000
+        },
+        {
+          "id": "brownie",
+          "name": "Brownie",
+          "detail": "Con trozos de brownie",
+          "price": 20000
+        },
+        {
+          "id": "red-velvet",
+          "name": "Red velvet",
+          "detail": "Con bizcocho red velvet",
+          "price": 20000
+        },
+        {
+          "id": "moka",
+          "name": "Moka",
+          "detail": "Café y chocolate",
+          "price": 20000
+        },
+        {
+          "id": "oreo",
+          "name": "Oreo",
+          "detail": "Con galleta Oreo triturada",
+          "price": 20000
+        },
+        {
+          "id": "arequipe",
+          "name": "Arequipe",
+          "detail": null,
+          "price": 20000
+        }
+      ],
       "ingredients": [
-        "Chocolate",
-        "Café",
-        "Milo",
-        "Brownie",
-        "Red velvet",
-        "Moka",
-        "Oreo",
-        "Arequipe"
+        "Helado artesanal",
+        "Leche",
+        "Crema montada",
+        "Galleta"
       ],
       "includedToppings": 0,
       "modifierIds": [],
-      "tagIds": [],
+      "tagIds": [
+        "vegetariano"
+      ],
       "note": null,
       "image": {
         "source": "unsplash",
@@ -2496,27 +3067,31 @@
       "groupId": "bebidas-frias-jugos-y-limonadas",
       "name": "Jugo natural",
       "tagline": "Fruta fresca en agua o en leche.",
-      "description": "Jugo de fruta natural.",
+      "description": "Fruta fresca del día licuada al momento: mora, fresa, maracuyá, mango, lulo o guanábana, según la cosecha. En agua es más ligero; en leche, más cremoso.",
       "price": 9000,
       "variants": [
         {
           "id": "en-agua",
           "name": "En agua",
-          "detail": null,
+          "detail": "16 oz, refrescante",
           "price": 9000
         },
         {
           "id": "en-leche",
           "name": "En leche",
-          "detail": null,
+          "detail": "16 oz, cremoso",
           "price": 12000
         }
       ],
-      "ingredients": [],
+      "ingredients": [
+        "Fruta fresca de temporada",
+        "Azúcar o panela",
+        "Hielo"
+      ],
       "includedToppings": 0,
       "modifierIds": [],
       "tagIds": [],
-      "note": null,
+      "note": "Pídelo sin azúcar o endulzado con panela.",
       "image": {
         "source": "unsplash",
         "photoId": "1766391237554-6d7042d7fbc8",
@@ -2537,23 +3112,29 @@
       "groupId": "bebidas-frias-jugos-y-limonadas",
       "name": "Limonadas",
       "tagline": "De panela, café, yerbabuena, cereza o coco.",
-      "description": "Limonadas de la casa.",
+      "description": "Limones exprimidos al momento con hielo frappé. Elige limonada de panela, de café o de yerbabuena, o las más cremosas: cerezada o de coco.",
       "price": 9000,
       "variants": [
         {
           "id": "panela-cafe-o-yerbabuena",
           "name": "Panela, café o yerbabuena",
-          "detail": null,
+          "detail": "16 oz, a elegir",
           "price": 9000
         },
         {
           "id": "cerezada-o-de-coco",
           "name": "Cerezada o de coco",
-          "detail": null,
+          "detail": "16 oz, cremosas",
           "price": 13000
         }
       ],
-      "ingredients": [],
+      "ingredients": [
+        "Limón",
+        "Hielo",
+        "Panela",
+        "Yerbabuena",
+        "Leche de coco"
+      ],
       "includedToppings": 0,
       "modifierIds": [],
       "tagIds": [],
@@ -2578,29 +3159,34 @@
       "groupId": "bebidas-frias-sodas",
       "name": "Sodas",
       "tagline": "Botella, michelada o refrescante de frutos.",
-      "description": "Sodas y refrescos.",
+      "description": "Para refrescar: soda en botella bien fría, michelada con limón y sal en el borde, o nuestra refrescante de la casa con frutos rojos o amarillos macerados, soda y hielo.",
       "price": 6000,
       "variants": [
         {
           "id": "botella",
           "name": "Botella",
-          "detail": null,
+          "detail": "Soda en botella",
           "price": 6000
         },
         {
           "id": "michelada",
           "name": "Michelada",
-          "detail": null,
+          "detail": "Con limón, sal y hielo",
           "price": 8000
         },
         {
           "id": "refrescante-de-frutos-rojos-o-amarillos",
           "name": "Refrescante de frutos rojos o amarillos",
-          "detail": null,
+          "detail": "16 oz, frutos macerados con soda",
           "price": 12000
         }
       ],
-      "ingredients": [],
+      "ingredients": [
+        "Soda",
+        "Limón",
+        "Frutos rojos o amarillos",
+        "Hielo"
+      ],
       "includedToppings": 0,
       "modifierIds": [],
       "tagIds": [],
@@ -2625,27 +3211,31 @@
       "groupId": "bebidas-frias-alcohol",
       "name": "Cerveza",
       "tagline": "Corona fría, sola o michelada.",
-      "description": "Cerveza Corona.",
+      "description": "Cerveza Corona servida bien fría con limón. Pídela michelada, con borde de sal y limón exprimido, para acompañar un sándwich.",
       "price": 12000,
       "variants": [
         {
           "id": "corona",
           "name": "Corona",
-          "detail": null,
+          "detail": "Botella de 355 ml con limón",
           "price": 12000
         },
         {
           "id": "michelada",
           "name": "Michelada",
-          "detail": null,
+          "detail": "Con limón, sal y hielo",
           "price": 14000
         }
       ],
-      "ingredients": [],
+      "ingredients": [
+        "Cerveza Corona",
+        "Limón",
+        "Sal"
+      ],
       "includedToppings": 0,
       "modifierIds": [],
       "tagIds": [],
-      "note": null,
+      "note": "Solo para mayores de edad.",
       "image": {
         "source": "unsplash",
         "photoId": "1457382713369-161d1d986f54",
@@ -2666,17 +3256,17 @@
       "groupId": null,
       "name": "Tortas y postres enteros",
       "tagline": "Para celebrar en casa, de 6 a 16 porciones.",
-      "description": "Encarga tu torta o postre entero.",
+      "description": "Cualquiera de nuestras tortas, cheesecakes o postres de vitrina en tamaño entero para celebrar en casa. Las preparamos sobre pedido y te las entregamos en caja.",
       "price": 45000,
       "variants": [
         {
-          "id": "torta-lb",
+          "id": "torta-cuarto-lb",
           "name": "Torta ¼ lb",
           "detail": "6 a 8 porciones",
           "price": 45000
         },
         {
-          "id": "torta-lb",
+          "id": "torta-media-lb",
           "name": "Torta ½ lb",
           "detail": "12 a 16 porciones",
           "price": 80000
@@ -2694,13 +3284,16 @@
           "price": 88000
         }
       ],
-      "ingredients": [],
+      "ingredients": [
+        "Tortas de la casa",
+        "Caja para llevar"
+      ],
       "includedToppings": 0,
       "modifierIds": [],
       "tagIds": [
         "compartir"
       ],
-      "note": null,
+      "note": "Encárgala con 24 horas de anticipación.",
       "image": {
         "source": "unsplash",
         "photoId": "1588195538326-c5b1e9f80a1b",
@@ -2721,27 +3314,34 @@
       "groupId": null,
       "name": "Pan de masa madre",
       "tagline": "Fermentación lenta, corteza crujiente.",
-      "description": "Pan de masa madre artesanal.",
+      "description": "Pan de masa madre con fermentación lenta de 24 horas, corteza crujiente y miga húmeda con alvéolos grandes. Solo, o relleno de queso y aceitunas o de frutos secos.",
       "price": 12000,
       "variants": [
         {
           "id": "solo",
           "name": "Solo",
-          "detail": null,
+          "detail": "Hogaza de 600 g",
           "price": 12000
         },
         {
           "id": "relleno",
           "name": "Relleno",
-          "detail": null,
+          "detail": "Con queso y aceitunas, o con frutos secos",
           "price": 16000
         }
       ],
-      "ingredients": [],
+      "ingredients": [
+        "Harina de trigo",
+        "Masa madre",
+        "Agua",
+        "Sal marina"
+      ],
       "includedToppings": 0,
       "modifierIds": [],
-      "tagIds": [],
-      "note": null,
+      "tagIds": [
+        "vegano"
+      ],
+      "note": "La versión rellena no es vegana.",
       "image": {
         "source": "unsplash",
         "photoId": "1767065888377-e5ffb4e39645",
@@ -2762,29 +3362,35 @@
       "groupId": null,
       "name": "Pan brioche",
       "tagline": "De molde, relleno o para hamburguesa.",
-      "description": "Pan brioche de mantequilla.",
+      "description": "Pan brioche de mantequilla y huevo, suave y apenas dulce, horneado cada mañana. Llévalo para hamburguesa, de molde para tostadas o relleno de crema y fruta.",
       "price": 3000,
       "variants": [
         {
           "id": "hamburguesa",
           "name": "Hamburguesa",
-          "detail": null,
+          "detail": "Por unidad, con ajonjolí",
           "price": 3000
         },
         {
           "id": "molde",
           "name": "Molde",
-          "detail": null,
+          "detail": "Pan de molde, 12 tajadas",
           "price": 12000
         },
         {
           "id": "relleno",
           "name": "Relleno",
-          "detail": null,
+          "detail": "Relleno de crema pastelera y fruta",
           "price": 16000
         }
       ],
-      "ingredients": [],
+      "ingredients": [
+        "Harina de trigo",
+        "Mantequilla",
+        "Huevos",
+        "Leche",
+        "Azúcar"
+      ],
       "includedToppings": 0,
       "modifierIds": [],
       "tagIds": [],
@@ -2809,26 +3415,34 @@
       "groupId": null,
       "name": "Galletas, hojaldres y merengues",
       "tagline": "Para acompañar el café en casa.",
-      "description": "Galletas, hojaldres y merengues por paquete.",
+      "description": "Para acompañar el café en casa: galletas de mantequilla y de avena con chips de chocolate, merengues crujientes o hojaldres azucarados, empacados por paquete.",
       "price": 7000,
       "variants": [
         {
           "id": "galletas-o-merengues",
           "name": "Galletas o merengues",
-          "detail": null,
+          "detail": "Paquete de 6 galletas o 8 merengues",
           "price": 7000
         },
         {
           "id": "hojaldres",
           "name": "Hojaldres",
-          "detail": null,
+          "detail": "Paquete de 4 hojaldres",
           "price": 8000
         }
       ],
-      "ingredients": [],
+      "ingredients": [
+        "Mantequilla",
+        "Harina de trigo",
+        "Azúcar",
+        "Claras de huevo",
+        "Chips de chocolate"
+      ],
       "includedToppings": 0,
       "modifierIds": [],
-      "tagIds": [],
+      "tagIds": [
+        "vegetariano"
+      ],
       "note": null,
       "image": {
         "source": "unsplash",

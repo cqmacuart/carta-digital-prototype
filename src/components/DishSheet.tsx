@@ -42,6 +42,9 @@ const chip = 'rounded-full bg-current/10 ring-1 ring-current/15'
 export function DishSheet({ item, category, direction, axis, expanded, open, dragControls, onToggle, onPeekHeight }: Props) {
   const bodyOpacity = useTransform(open, [0.05, 0.45], [0, 1])
   const caret = useTransform(open, [0, 1], [0, 180])
+  // the open sheet already lists the variants under "Elige"
+  const badgeOpacity = useTransform(open, [0, 0.3], [1, 0])
+  const variantCount = item.variants?.length ?? 0
   const accent = { color: category.accent }
   // a lone subcategory would just repeat the category name
   const subName = category.subcategories.length > 1 ? category.subcategories.find((s) => s.id === item.sub)?.name : undefined
@@ -121,6 +124,39 @@ export function DishSheet({ item, category, direction, axis, expanded, open, dra
 
   return (
     <div className="flex h-full flex-col">
+      {/* how many versions the dish comes in, sitting on the sheet's top edge; tapping it opens the list */}
+      <div className={`absolute right-6 top-0 z-10 -translate-y-1/2 ${expanded ? 'pointer-events-none' : ''}`}>
+        <motion.div style={{ opacity: badgeOpacity }}>
+          <AnimatePresence initial={false} mode="popLayout">
+            {variantCount > 1 && (
+              <motion.button
+                key={variantCount}
+                type="button"
+                onClick={() => !expanded && onToggle()}
+                aria-label={`${variantCount} variantes: ver cuáles`}
+                initial={{ scale: 0.5, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.5, opacity: 0, transition: { duration: 0.12 } }}
+                transition={{ type: 'spring', stiffness: 520, damping: 18 }}
+                whileTap={{ scale: 0.9 }}
+                className="flex min-h-11 items-center"
+              >
+                <span className="flex items-center gap-1.5 rounded-full bg-white py-1 pl-1 pr-3 text-[12px] font-bold text-espresso shadow-[0_4px_12px_-4px_rgba(42,26,18,.5)] ring-1 ring-espresso/10">
+                  <span
+                    className="grid size-[22px] place-items-center rounded-full text-[11px] tabular-nums text-white"
+                    style={{ backgroundColor: category.strong }}
+                    aria-hidden
+                  >
+                    {variantCount}
+                  </span>
+                  <span aria-hidden>variantes</span>
+                </span>
+              </motion.button>
+            )}
+          </AnimatePresence>
+        </motion.div>
+      </div>
+
       {/* drag zone: caret tab + title */}
       <div
         ref={peekRef}
@@ -153,9 +189,11 @@ export function DishSheet({ item, category, direction, axis, expanded, open, dra
               className="w-full"
               style={{ color: category.ink }}
             >
-              <p className="text-[11px] font-bold uppercase tracking-[0.22em] opacity-75">
+              {/* category · subcategory · group on one line; the narrowest phones get tighter tracking so it fits */}
+              <p className="text-[11px] font-bold uppercase tracking-[0.12em] opacity-75 min-[360px]:tracking-[0.22em]">
                 {category.name}
                 {subName && <span className="opacity-70"> · {subName}</span>}
+                {item.group && <span className="opacity-70"> · {item.group}</span>}
               </p>
               <div className="mt-1 flex items-start justify-between gap-4">
                 <h1 className="text-balance font-display text-[29px] font-semibold leading-[1.06] tracking-tight">{item.name}</h1>

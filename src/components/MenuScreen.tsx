@@ -1,5 +1,5 @@
 import { AnimatePresence, animate, motion, useDragControls, useMotionValue, useTransform } from 'motion/react'
-import { ChevronRight, MapPin, Search } from 'lucide-react'
+import { ChevronLeft, ChevronRight, MapPin, Search } from 'lucide-react'
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import { clamp } from '../lib/format'
 import type { Menu, MenuItem } from '../types'
@@ -57,6 +57,56 @@ function Count({ n, active, fill, text, small = false }: { n: number; active: bo
     >
       {n}
     </motion.span>
+  )
+}
+
+/**
+ * Three chevrons pointing where the wheel can still roll, pulsing in a cascade; "desliza" shows under them until the
+ * first move of the visit. Tapping steps one dish, like a swipe (past a category's end it enters the next one).
+ */
+function SwipeHint({ side, left, word, onStep }: { side: 'prev' | 'next'; left?: number; word: boolean; onStep: () => void }) {
+  const Icon = side === 'next' ? ChevronRight : ChevronLeft
+  // the cascade runs in the direction of travel
+  const order = side === 'next' ? [0, 1, 2] : [2, 1, 0]
+  return (
+    <motion.button
+      type="button"
+      aria-label={side === 'next' ? 'Plato siguiente' : 'Plato anterior'}
+      onClick={onStep}
+      whileTap={{ scale: 0.85, x: side === 'next' ? 4 : -4 }}
+      initial={{ opacity: 0, x: side === 'next' ? -6 : 6 }}
+      animate={{ opacity: 1, x: 0, transition: { delay: 0.6, duration: 0.5 } }}
+      exit={{ opacity: 0, transition: { duration: 0.2 } }}
+      // 44px tap target around the small chevrons
+      className={`pointer-events-auto absolute -top-3 flex min-h-11 min-w-11 items-center justify-center px-1 text-espresso ${
+        side === 'next' ? 'right-2' : ''
+      }`}
+      style={side === 'prev' ? { left } : undefined}
+    >
+      <span className="flex -space-x-2" aria-hidden>
+        {order.map((d, i) => (
+          <motion.span
+            key={i}
+            animate={{ opacity: [0.15, 0.9, 0.15] }}
+            transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut', delay: 1 + d * 0.18 }}
+          >
+            <Icon size={16} strokeWidth={2.6} />
+          </motion.span>
+        ))}
+      </span>
+      <AnimatePresence initial={false}>
+        {word && (
+          <motion.span
+            exit={{ opacity: 0, transition: { duration: 0.25 } }}
+            // out of the flow, so the chevrons stay put when the word leaves
+            className="absolute left-1/2 top-[calc(50%+8px)] -translate-x-1/2 whitespace-nowrap text-[9px] font-bold uppercase tracking-[0.14em] opacity-60"
+            aria-hidden
+          >
+            desliza
+          </motion.span>
+        )}
+      </AnimatePresence>
+    </motion.button>
   )
 }
 
@@ -255,7 +305,9 @@ export function MenuScreen({ width, height, menu }: Props) {
     if (index !== 0) markHintSeen()
   }, [])
 
-  const showHint = !hintSeen && catIndex === 0 && nav.index === 0 && !isOpen
+  // swipe hints sit on whichever side still has dishes (past a category's last dish the next category follows)
+  const canPrev = catIndex > 0 || nav.index > 0
+  const canNext = catIndex < categories.length - 1 || nav.index < itemsByCat[catIndex].length - 1
   useEffect(() => {
     if (hintSeen || matchMedia('(prefers-reduced-motion: reduce)').matches) return
     const t = setTimeout(() => apis.current[0]?.nudge(), 1500)
@@ -280,7 +332,9 @@ export function MenuScreen({ width, height, menu }: Props) {
   }
 
   return (
-    <div className="absolute inset-0 overflow-hidden bg-[#F1E6DA]" style={covered ? { visibility: 'hidden' } : undefined}>
+    // clip, not hidden: the rolling plates reach past the edges, and a hidden overflow is still scrollable by focus or
+    // scrollIntoView, which could leave the whole carta shifted sideways
+    <div className="absolute inset-0 overflow-clip bg-[#F1E6DA]" style={covered ? { visibility: 'hidden' } : undefined}>
       {/* category track */}
       <motion.div
         className="absolute inset-x-0 top-0"
@@ -346,36 +400,17 @@ export function MenuScreen({ width, height, menu }: Props) {
 
       <div aria-hidden className="pointer-events-none absolute inset-0 opacity-[0.22]" style={{ backgroundImage: GRAIN }} />
 
-      {/* swipe hint: three chevrons pulsing in a cascade by the right edge, where the plate's curve leaves room */}
-      <AnimatePresence>
-        {showHint && (
-          <motion.div
-            key="hint"
-            role="note"
-            aria-label="Desliza para ver más"
-            initial={{ opacity: 0, x: -6 }}
-            animate={{ opacity: 1, x: 0, transition: { delay: 0.8, duration: 0.5 } }}
-            exit={{ opacity: 0, transition: { duration: 0.2 } }}
-            className="pointer-events-none absolute right-3 z-10 flex flex-col items-center gap-0.5 text-espresso"
-            style={{ top: plateCenter + size * 0.4 }}
-          >
-            <span className="flex -space-x-2" aria-hidden>
-              {[0, 1, 2].map((i) => (
-                <motion.span
-                  key={i}
-                  animate={{ opacity: [0.15, 0.9, 0.15] }}
-                  transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut', delay: 1 + i * 0.18 }}
-                >
-                  <ChevronRight size={16} strokeWidth={2.6} />
-                </motion.span>
-              ))}
-            </span>
-            <span className="text-[9px] font-bold uppercase tracking-[0.14em] opacity-60" aria-hidden>
-              desliza
-            </span>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* swipe hints by the plate's lower curve: right while there is more ahead, left (beside the rail) once there is
+          something behind. Always pulsing; "desliza" only until the first move of the visit. Tapping one steps a dish. */}
+      <motion.div
+        className={`pointer-events-none absolute inset-x-0 z-10 ${isOpen ? '[&_button]:pointer-events-none' : ''}`}
+        style={{ top: plateCenter + size * 0.4, opacity: chipsOpacity }}
+      >
+        <AnimatePresence>
+          {canPrev && <SwipeHint key="prev" side="prev" left={stageLeft + 4} word={!hintSeen} onStep={() => active()?.step(-1)} />}
+          {canNext && <SwipeHint key="next" side="next" word={!hintSeen} onStep={() => active()?.step(1)} />}
+        </AnimatePresence>
+      </motion.div>
 
       {/* keyboard: ← → dishes, ↑ ↓ categories */}
       <div

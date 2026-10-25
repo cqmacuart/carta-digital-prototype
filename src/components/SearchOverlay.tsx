@@ -99,8 +99,9 @@ export function SearchOverlay({ menu, index, onClose, onSelect, onOpened }: Prop
             placeholder="Platos, ingredientes, etiquetas…"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
+            // Enter (or the phone's "search" key) only puts the keyboard away, leaving the results to browse
             onKeyDown={(e) => {
-              if (e.key === 'Enter' && hits[0]) onSelect(hits[0].item)
+              if (e.key === 'Enter') e.currentTarget.blur()
             }}
             className="min-w-0 flex-1 bg-transparent text-[16px] font-semibold text-espresso outline-none placeholder:font-medium placeholder:text-cocoa/70 [&::-webkit-search-cancel-button]:hidden"
           />

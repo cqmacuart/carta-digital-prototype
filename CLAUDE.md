@@ -33,7 +33,7 @@ Vite 8 · React 19 · TypeScript · **Motion** (`motion/react`) · Tailwind CSS 
 | `src/types.ts` | Modelos de vista (lo que pintan las pantallas). |
 | `src/components/MenuScreen.tsx` | Pantalla principal: pista vertical de categorías, gestos, encabezado, panel de subcategorías, etiquetas, riel, hoja. |
 | `src/components/RadialCarousel.tsx` | `CategoryScene`: rueda de platos de una categoría + fondo desenfocado. Expone una API imperativa (`step`, `roll`, `jump`, `pan*`, `nudge`). |
-| `src/components/DishSheet.tsx` | Hoja inferior: frase, precio ("desde"), etiquetas, descripción, variantes, toppings incluidos, adiciones, ingredientes, nota. |
+| `src/components/DishSheet.tsx` | Hoja inferior: ruta "categoría · subcategoría · etiqueta" en una línea, badge "N variantes" montado en su borde superior (abre la hoja), frase, precio ("desde"), insignias, descripción, variantes ("Elige"), toppings incluidos, adiciones, ingredientes, nota. |
 | `src/components/SearchOverlay.tsx` | Buscador en overlay tipo persiana. |
 | `src/components/ScrollCaret.tsx` | `ScrollStrip`: contenedor desplazable con carets que tienen su propio espacio (nunca encima de los ítems). |
 | `src/lib/search.ts` | Índice y motor de búsqueda (sin tildes, AND de palabras, pesos por campo, motivo de coincidencia). |
@@ -45,6 +45,8 @@ Vite 8 · React 19 · TypeScript · **Motion** (`motion/react`) · Tailwind CSS 
 - **Riel de íconos (izq.) = categoría** → deslizar ↑↓ sobre el plato. **Chips = subcategoría** y **etiquetas = grupo** (3er nivel) → deslizar ←→ recorre platos y cruza subcategorías; chips y etiquetas siguen al plato y tocarlos salta con `roll()`.
 - El eje del gesto se fija a los 10 px y los empates van a platos (`AXIS_LOCK_PX`). Cambiar de categoría pide 110 px o un flick claramente vertical.
 - El plato y el fondo tienen **posición fija** sin importar la altura de la hoja (`open` se mide contra `MAX_PEEK`, no contra la altura actual).
+- Indicadores de deslizar (`SwipeHint`): flechas a la derecha mientras haya platos adelante y a la izquierda (junto al riel) cuando haya atrás. Siempre laten; la palabra "desliza" solo hasta el primer gesto de la visita. Son botones: tocarlas avanza o retrocede un plato con `step()` y cruzan de categoría en los extremos. En pruebas con usuarios nadie descubría el deslizar lateral sin ellas.
+- En el buscador, Enter / la tecla "buscar" del teléfono solo quita el foco (cierra el teclado) y deja los resultados; el overlay se cierra con "Cerrar", Escape o eligiendo un resultado.
 - La hoja se arrastra desde cualquier parte; si su cuerpo hace scroll, al jalar hacia abajo estando arriba del todo se cierra.
 - Dentro de una subcategoría, los productos de un mismo grupo deben ir **contiguos** (ordenar por `sortOrder`).
 - Las escenas de categoría están a una pantalla completa de distancia (`pitch = height`): si la siguiente espera más arriba, su fondo asoma por las esquinas redondeadas de la hoja.
@@ -54,6 +56,7 @@ Vite 8 · React 19 · TypeScript · **Motion** (`motion/react`) · Tailwind CSS 
 
 - Anima solo `transform` y `opacity`. **Nunca** `filter: blur()` animado (se usa fundido entre foto nítida y copia ya desenfocada del CDN) ni `backdrop-filter` sobre contenido en movimiento (fue la causa del jitter del buscador).
 - Cambiar de categoría = un solo `translateY` de la pista; las escenas están memoizadas y cada rueda monta solo el plato enfocado y sus 2 vecinos.
+- La raíz de la carta y el marco usan `overflow: clip`, no `hidden`: los platos vecinos sobresalen y un `hidden` se puede desplazar por foco o `scrollIntoView`, dejando toda la carta corrida de lado.
 - Con un overlay a pantalla completa, oculta lo de abajo (`visibility: hidden` en la raíz; el overlay se pone `visible`).
 - Al saltar una MotionValue usa `.jump()`, no `.set()`: `set` deja velocidad y el spring se pasa de largo.
 - No crees objetos caros en render (p. ej. `Intl.DateTimeFormat`): cachéalos o `useMemo`.
@@ -61,7 +64,7 @@ Vite 8 · React 19 · TypeScript · **Motion** (`motion/react`) · Tailwind CSS 
 
 ## Diseño
 
-- Cada categoría tiene paleta propia (`palette.sheet/ink/accent`) repartida en el círculo cromático (miel, oliva, caramelo, mantequilla, baya, espresso, kraft). **Texto y acento ≥ 4.5:1** sobre la hoja: verifícalo al cambiar colores.
+- Cada categoría tiene paleta propia (`palette.sheet/ink/accent`) repartida en el arco **cálido** del círculo cromático, de 349° a 41° (miel, terracota, caramelo, mantequilla, baya, espresso, kraft), alternando hojas claras y oscuras entre vecinas del riel. **Sin verdes ni azules**: no son colores de café restaurante. **Texto y acento ≥ 4.5:1** sobre la hoja: verifícalo al cambiar colores.
 - Etiquetas (3er nivel) con fondo blanco y borde fino (sin él no se leían sobre la foto); la activa lleva un anillo del color `strong`. El número de platos va en un círculo.
 - Microinteracciones con springs con rebote (`TAP`, `PILL` en `MenuScreen.tsx`). Respeta `prefers-reduced-motion` (`MotionConfig reducedMotion="user"`).
 - Botones ≥ 44 px; íconos SVG (lucide), no emojis.
@@ -80,5 +83,6 @@ Vite 8 · React 19 · TypeScript · **Motion** (`motion/react`) · Tailwind CSS 
 
 - Fotos de referencia de Unsplash: reemplazar por fotos reales del negocio (`image.photoId` + `focal`).
 - Horarios y direcciones de las sedes son de ejemplo: ponerlos reales en `terra.json`.
+- Contenido de demo: nombres y precios vienen de la carta impresa, pero descripciones, ingredientes, detalles de variantes, notas y las adiciones (shot de espresso, huevo, aguacate, helado) fueron redactados para que la carta se vea pareja. Validarlos con el negocio. Todo producto debería tener descripción de 2–3 frases, 4–7 ingredientes y detalle en sus variantes.
 - Swipe y cambio de categoría ~40–48 fps con CPU 4× (las capas de navegación sobre el fondo en movimiento cuestan); candidato a optimizar.
 - Próximo: más información en la hoja inferior (requisitos por definir).

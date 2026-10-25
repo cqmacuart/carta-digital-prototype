@@ -48,7 +48,7 @@ export default function App() {
       <div className="flex min-h-dvh w-full items-center justify-center md:p-6">
         <div
           ref={frameRef}
-          className="relative h-dvh w-full max-w-[430px] overflow-hidden bg-cream md:h-[880px] md:max-h-[calc(100dvh-48px)] md:rounded-[44px] md:shadow-[0_40px_80px_-30px_rgba(0,0,0,.8)]"
+          className="relative h-dvh w-full max-w-[430px] overflow-clip bg-cream md:h-[880px] md:max-h-[calc(100dvh-48px)] md:rounded-[44px] md:shadow-[0_40px_80px_-30px_rgba(0,0,0,.8)]"
         >
           {load.status === 'ready' && <MenuScreen width={width} height={height} menu={load.menu} />}
           <AnimatePresence>
