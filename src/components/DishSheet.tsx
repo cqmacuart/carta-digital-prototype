@@ -2,6 +2,7 @@ import { AnimatePresence, motion, useTransform, type DragControls, type MotionVa
 import { ChevronUp, Info } from 'lucide-react'
 import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react'
 import { money } from '../lib/format'
+import { cap, count, L } from '../lib/labels'
 import type { TagId } from '../models/db'
 import type { Badge, Category, MenuItem } from '../types'
 
@@ -226,7 +227,7 @@ export function DishSheet({ item, category, direction, axis, expanded, open, dra
                 key={variantCount}
                 type="button"
                 onClick={() => !expanded && onToggle()}
-                aria-label={`${variantCount} variantes: ver cuáles`}
+                aria-label={`${count(variantCount, L.variant)}: ver cuáles`}
                 initial={{ scale: 0.5, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.5, opacity: 0, transition: { duration: 0.12 } }}
@@ -242,7 +243,7 @@ export function DishSheet({ item, category, direction, axis, expanded, open, dra
                   >
                     {variantCount}
                   </span>
-                  <span aria-hidden>variantes</span>
+                  <span aria-hidden>{L.variant[1]}</span>
                 </span>
               </motion.button>
             )}
@@ -346,7 +347,7 @@ export function DishSheet({ item, category, direction, axis, expanded, open, dra
 
           {!order && item.variants && (
             <motion.section variants={rise} className="mt-6">
-              <h2 className="mb-1 font-display text-lg font-semibold">Elige</h2>
+              <h2 className="mb-1 font-display text-lg font-semibold">{L.choose}</h2>
               <ul className="divide-y divide-current/10">
                 {item.variants.map((v) => (
                   <li key={v.name} className="flex items-baseline justify-between gap-4 py-2.5">
@@ -366,7 +367,7 @@ export function DishSheet({ item, category, direction, axis, expanded, open, dra
           {!order && item.toppings && (
             <motion.section variants={rise} className="mt-6">
               <h2 className="mb-2.5 font-display text-lg font-semibold">
-                Incluye {item.toppings.count} {item.toppings.count === 1 ? 'topping' : 'toppings'}
+                Incluye {count(item.toppings.count, L.topping)}
               </h2>
               <ul className="flex flex-wrap gap-2">
                 {item.toppings.options.map((t) => (
@@ -380,7 +381,7 @@ export function DishSheet({ item, category, direction, axis, expanded, open, dra
 
           {!order && item.modifiers && (
             <motion.section variants={rise} className="mt-6">
-              <h2 className="mb-1 font-display text-lg font-semibold">Adiciones</h2>
+              <h2 className="mb-1 font-display text-lg font-semibold">{cap(L.modifier[1])}</h2>
               <ul className="divide-y divide-current/10">
                 {item.modifiers.map((m) => (
                   <li key={m.name} className="flex items-baseline justify-between gap-4 py-2.5 text-[15px]">
@@ -396,7 +397,7 @@ export function DishSheet({ item, category, direction, axis, expanded, open, dra
 
           {!order && item.ingredients && (
             <motion.section variants={rise} className="mt-6">
-              <h2 className="mb-2.5 font-display text-lg font-semibold">Ingredientes</h2>
+              <h2 className="mb-2.5 font-display text-lg font-semibold">{cap(L.ingredient[1])}</h2>
               <ul className="flex flex-wrap gap-2">
                 {item.ingredients.map((ing) => (
                   <li key={ing} className={`px-3.5 py-2 text-[14px] font-semibold ${chip}`}>

@@ -1,0 +1,49 @@
+{
+  "tenantId": "f24765d5-3ca4-4cd3-9536-871a0995a226",
+  "title": "Nácar · Perfumería",
+  "themeColor": "#f6efe9",
+  "proposal": null,
+  "fontsHref": "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500..700&family=Manrope:wght@400..800&display=swap",
+  "fonts": {
+    "display": "\"Cormorant Garamond\", Georgia, serif",
+    "sans": "\"Manrope\", system-ui, sans-serif"
+  },
+  "colors": {
+    "paper": "#fcf8f4",
+    "cream": "#f6efe9",
+    "sand": "#ecdfd5",
+    "canvas": "#f2e8e1",
+    "clay": "#c99a84",
+    "terra": "#8a3d55",
+    "terra-deep": "#6a2c40",
+    "espresso": "#24181d",
+    "cocoa": "#6b5960",
+    "olive": "#5f6b45",
+    "night": "#1b1317"
+  },
+  "labels": {
+    "item": [
+      "producto",
+      "productos"
+    ],
+    "menu": "el catálogo",
+    "choose": "Presentación",
+    "variant": [
+      "presentación",
+      "presentaciones"
+    ],
+    "ingredient": [
+      "nota olfativa",
+      "notas olfativas"
+    ],
+    "modifier": [
+      "extra",
+      "extras"
+    ],
+    "topping": [
+      "decant",
+      "decants"
+    ],
+    "notePlaceholder": "Ej.: es para regalo, sin precio…"
+  }
+}

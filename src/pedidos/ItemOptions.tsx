@@ -2,6 +2,8 @@ import { motion, useAnimationControls } from 'motion/react'
 import { Check, Lock, Minus, Plus, Pointer, Undo2, X } from 'lucide-react'
 import { useRef, useState, type ReactNode } from 'react'
 import { money } from '../lib/format'
+import { cap, count, L } from '../lib/labels'
+import { DEFAULT_LABELS } from '../lib/vocabulary'
 import type { OptionGroup } from '../models/db'
 import type { Category, MenuItem } from '../types'
 import { defaultChoice, missing, unitPrice, type Choice } from './cart'
@@ -129,7 +131,8 @@ export function ItemOptions({ item, category, initial, verb, onSubmit }: Props) 
   return (
     <div className="flex min-h-full flex-col">
       {item.variants && item.variants.length > 1 && (
-        <Section title="Elige" hint={hintFor('variant', 'una')} sectionRef={register('variant')}>
+        // "Elige · una"; a noun heading ("Presentación") needs the verb in its hint
+        <Section title={L.choose} hint={hintFor('variant', L.choose === DEFAULT_LABELS.choose ? 'una' : 'elige una')} sectionRef={register('variant')}>
           <div role="radiogroup" aria-label="Variantes" className="divide-y divide-current/10">
             {item.variants.map((v) => {
               const on = v.id === choice.variantId
@@ -188,7 +191,7 @@ export function ItemOptions({ item, category, initial, verb, onSubmit }: Props) 
       })}
 
       {item.toppings && (
-        <Section title={`Incluye ${item.toppings.count} ${item.toppings.count === 1 ? 'topping' : 'toppings'}`} hint={hintFor('toppings', `hasta ${item.toppings.count}`)}>
+        <Section title={`Incluye ${count(item.toppings.count, L.topping)}`} hint={hintFor('toppings', `hasta ${item.toppings.count}`)}>
           <div className="flex flex-wrap gap-2">
             {item.toppings.options.map((t) => {
               const on = choice.toppingIds.includes(t.id)
@@ -215,7 +218,7 @@ export function ItemOptions({ item, category, initial, verb, onSubmit }: Props) 
       )}
 
       {item.modifiers && (
-        <Section title="Adiciones">
+        <Section title={cap(L.modifier[1])}>
           <div className="flex flex-wrap gap-2">
             {item.modifiers.map((m) => {
               const on = choice.modifierIds.includes(m.id)
@@ -231,8 +234,21 @@ export function ItemOptions({ item, category, initial, verb, onSubmit }: Props) 
         </Section>
       )}
 
-      {item.ingredients && (
-        <Section title="Ingredientes">
+      {item.ingredients && item.ingredients.every((ing) => item.fixedIngredients?.includes(ing)) && (
+        // nothing to take out (a perfume's notes, a croissant): they read like the carta's, with no locks to tap
+        <Section title={cap(L.ingredient[1])}>
+          <ul className="flex flex-wrap gap-2">
+            {item.ingredients.map((ing) => (
+              <li key={ing} className="rounded-full bg-current/10 px-3.5 py-2 text-[14px] font-semibold ring-1 ring-current/15">
+                {ing}
+              </li>
+            ))}
+          </ul>
+        </Section>
+      )}
+
+      {item.ingredients && !item.ingredients.every((ing) => item.fixedIngredients?.includes(ing)) && (
+        <Section title={cap(L.ingredient[1])}>
           {/* most people only read the heading: the instruction gets its own line, in the accent, with a tapping finger */}
           {item.ingredients.some((ing) => !item.fixedIngredients?.includes(ing)) && (
             <p className="-mt-1 mb-3 flex items-center gap-2 text-[15px] font-bold" style={accent}>
@@ -258,7 +274,7 @@ export function ItemOptions({ item, category, initial, verb, onSubmit }: Props) 
                     key={locked?.name === ing ? `${ing}-${locked.n}` : ing}
                     type="button"
                     aria-disabled
-                    aria-label={`${ing}: va siempre en este plato`}
+                    aria-label={`${ing}: va siempre en este ${L.item[0]}`}
                     initial={false}
                     animate={locked?.name === ing ? { x: [0, -5, 5, -3, 3, 0] } : undefined}
                     transition={{ duration: 0.35 }}
@@ -304,7 +320,7 @@ export function ItemOptions({ item, category, initial, verb, onSubmit }: Props) 
               role="status"
             >
               <Lock size={14} strokeWidth={2.6} aria-hidden />
-              {locked.name} va siempre en este plato
+              {locked.name} va siempre en este {L.item[0]}
             </motion.p>
           )}
         </Section>
@@ -316,8 +332,8 @@ export function ItemOptions({ item, category, initial, verb, onSubmit }: Props) 
           onChange={(e) => setChoice({ ...choice, note: e.target.value.slice(0, 140) })}
           onPointerDown={(e) => e.stopPropagation()}
           rows={2}
-          placeholder="Ej.: bien asado, sin hielo…"
-          aria-label="Nota para este plato"
+          placeholder={L.notePlaceholder}
+          aria-label={`Nota para este ${L.item[0]}`}
           className="w-full resize-none rounded-2xl bg-current/8 px-4 py-3 text-[16px] font-medium leading-snug outline-none ring-1 ring-current/15 placeholder:opacity-60 focus:ring-2 focus:ring-current/40"
         />
       </Section>

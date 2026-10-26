@@ -7,6 +7,7 @@ import { fileURLToPath } from 'node:url'
 import sharp from 'sharp'
 import { defineConfig, type Plugin } from 'vite'
 import { mediaName, RENDITIONS, type Rendition } from './src/lib/media.ts'
+import { DEFAULT_LABELS, type Labels } from './src/lib/vocabulary.ts'
 import type { BusinessKind, BusinessProfile, TenantId } from './src/models/business.ts'
 import type { LocalImage, MenuDatabase } from './src/models/db.ts'
 
@@ -34,6 +35,8 @@ interface Theme {
   fonts: { display: string; sans: string }
   /** overrides the `--color-*` tokens of the `@theme` block in src/index.css */
   colors: Record<string, string>
+  /** the business's words ("productos", "el catálogo", "notas olfativas"); left out = the carta's (src/lib/vocabulary.ts) */
+  labels?: Partial<Labels>
 }
 
 const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
@@ -60,6 +63,7 @@ function readCarta() {
     throw new Error(`themes/${client}/business.json: defaultBranchId "${business.defaultBranchId}" no es una sede`)
   }
   checkOrdering(business, db)
+  checkLabels(theme)
 
   // stamp each local photo with a version and list the files the app will ask for under media/
   const photos = new Map<string, { image: LocalImage; rendition: Rendition }>()
@@ -100,6 +104,20 @@ function checkOrdering(business: BusinessProfile, db: MenuDatabase) {
   if (!whatsapp || !/^\+\d{8,15}$/.test(whatsapp)) fail('business.json', 'ordering pide un WhatsApp en formato +57… (ordering.whatsapp, la sede o contact.whatsapp)')
   if (!o.modes.length) fail('business.json', 'ordering.modes está vacío')
   for (const m of o.modes) if (!branch.services.includes(m)) fail('business.json', `ordering.modes: la sede "${branch.id}" no ofrece "${m}"`)
+}
+
+/** A typo in theme.json → labels would silently keep the default word: unknown keys and bad shapes stop the build */
+function checkLabels(theme: Theme) {
+  for (const [key, value] of Object.entries(theme.labels ?? {})) {
+    const fallback = DEFAULT_LABELS[key as keyof Labels]
+    const fail = (msg: string) => {
+      throw new Error(`themes/${client}/theme.json: labels.${key} ${msg}`)
+    }
+    if (fallback === undefined) fail(`no existe (claves: ${Object.keys(DEFAULT_LABELS).join(', ')})`)
+    if (Array.isArray(fallback) && !(Array.isArray(value) && value.length === 2 && value.every((v) => typeof v === 'string' && v)))
+      fail('va como ["singular", "plural"]')
+    if (typeof fallback === 'string' && (typeof value !== 'string' || !value)) fail('va como texto')
+  }
 }
 
 /** Files under themes/<slug>/public/, relative paths with forward slashes. */
@@ -281,6 +299,8 @@ export default defineConfig({
     'import.meta.env.VITE_CARTA_NAME': JSON.stringify(readCarta().business.name),
     // V2 on or off for this business: off, the ordering code is dead and never reaches the bundle
     __PEDIDOS__: JSON.stringify(Boolean(readCarta().business.ordering?.enabled)),
+    // the business's own words; an empty object keeps every default
+    __LABELS__: JSON.stringify(readCarta().theme.labels ?? {}),
   },
   build: {
     outDir: `dist/${client}`,

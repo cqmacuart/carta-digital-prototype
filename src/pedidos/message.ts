@@ -1,4 +1,5 @@
 import { money } from '../lib/format'
+import { cap, L } from '../lib/labels'
 import type { PaymentMethod, Service } from '../models/business'
 import type { Menu } from '../types'
 import { cashAmount, describe, totals, unitPrice, type Form, type Line } from './cart'
@@ -35,7 +36,7 @@ export function orderMessage(menu: Menu, lines: Line[], form: Form) {
     if (i) out.push('')
     out.push(`*${l.qty}× ${item.name}${d.variant ? ` (${d.variant})` : ''}* — ${money(unitPrice(item, l) * l.qty)}`)
     for (const g of d.groups) out.push(`   ${g.name}: ${g.values.join(', ')}`)
-    if (d.toppings.length) out.push(`   Toppings: ${d.toppings.join(', ')}`)
+    if (d.toppings.length) out.push(`   ${cap(L.topping[1])}: ${d.toppings.join(', ')}`)
     for (const e of d.extras) out.push(`   + ${e.name}`)
     for (const w of d.without) out.push(`   Sin ${w.toLowerCase()}`)
     if (d.note) out.push(`   Nota: ${d.note}`)

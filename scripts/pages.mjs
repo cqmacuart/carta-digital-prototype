@@ -40,6 +40,8 @@ const card = ({ slug, menu, theme, business }) => {
   const { name, tagline } = business
   const c = theme.colors
   const categories = sorted(menu.categories)
+  // "Ver carta", or the business's own word for it ("Ver catálogo"); theme.json → labels.menu carries its article
+  const what = (theme.labels?.menu ?? 'la carta').replace(/^(la|el|los|las) /, '')
   return `
       <a class="card" href="./${slug}/" style="--bg:${c.cream};--ink:${c.espresso};--soft:${c.cocoa};--accent:${c.terra};--font:${esc(theme.fonts.display)}">
         <div class="swatches" aria-hidden="true">${categories.map((k) => `<span style="background:${k.palette.sheet}"></span>`).join('')}</div>
@@ -49,7 +51,7 @@ const card = ({ slug, menu, theme, business }) => {
           <p class="cats">${categories.map((k) => esc(k.name)).join(' · ')}</p>
           <p class="meta">${menu.products.length} productos</p>
         </div>
-        <span class="go">Ver carta <span aria-hidden="true">→</span></span>
+        <span class="go">Ver ${esc(what)} <span aria-hidden="true">→</span></span>
       </a>`
 }
 
@@ -59,7 +61,7 @@ const html = `<!doctype html>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Carta digital · Demos</title>
-    <meta name="description" content="Demos de carta digital para cafés, sushi bars, comidas rápidas y pizzerías. Ábrelas en el celular." />
+    <meta name="description" content="Demos de carta digital para cafés, sushi bars, comidas rápidas, pizzerías y perfumerías. Ábrelas en el celular." />
     <meta name="theme-color" content="#f4ede3" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

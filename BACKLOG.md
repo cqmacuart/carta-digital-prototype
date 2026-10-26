@@ -11,7 +11,12 @@
 Fuera de alcance: POS, pagos en línea, inventario.
 
 ## Pendiente
-- Vocabulario por negocio en `theme.json`: hoy la hoja dice "Ingredientes", "Incluye N toppings", "Adiciones". En Barrio las salsas de las alitas van en la descripción porque "toppings" no encaja; desayunos sorpresa o arreglos dirían "Incluye".
+- Barrio: ya existe `theme.json` → `labels` (rama `demo-perfumeria`); evaluar `topping: ["salsa", "salsas"]` para las alitas en vez de dejarlas en la descripción.
+- Catálogo (perfumería, desayunos sorpresa, floristerías), pendiente de un cliente real que lo pida:
+  - Agotado **por presentación** (hoy `available` es por producto): `Variant.available`, tachada en la hoja y no elegible al pedir.
+  - Negocio **sin sede** ni horario (vende por Instagram): el encabezado no mostraría "Abierto · hasta…".
+  - Pedidos con **envío nacional por transportadora** (tarifa por ciudad + una para el resto del país, o "a convenir") y **pago anticipado** (Nequi/transferencia con los datos de la cuenta en el carrito y "envío comprobante" en el mensaje). Datos del cliente sin cédula. Ya acordado con Cesar.
+  - Campos propios (marca, género, familia, concentración, pirámide salida/corazón/fondo) como facetas genéricas en `menu.json`, si los filtros llegan a hacer falta. Hoy Nácar lo resuelve con categorías = familia, subcategorías = género, notas en ingredientes y la pirámide en la descripción.
 - Vista de lista o cuadrícula por categoría (`layout` en `theme.json`) para cartas grandes: en Nami (48 productos, 8 rolls clásicos) evaluar si pasar de uno en uno cansa.
 - V2 · combos y alitas de Barrio y mitad y mitad de Forno: ya se pueden modelar con `optionGroups` (acompañamiento **y** bebida, "elige 2 salsas"); falta pasarlos a sus `menu.json` y activar `ordering` en esas demos (hoy son productos con el detalle en el texto).
 - V2 · mitad y mitad que cobra la mitad más cara: hoy cada opción suma un precio fijo; si un negocio lo pide, agregar una regla de precio por grupo (`pricing: "max"`).

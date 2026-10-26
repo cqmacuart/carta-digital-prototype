@@ -2,6 +2,7 @@ import { motion, type Variants } from 'motion/react'
 import { Search, X } from 'lucide-react'
 import { useDeferredValue, useMemo, useState } from 'react'
 import { money } from '../lib/format'
+import { cap, L } from '../lib/labels'
 import { highlight, search, type SearchIndex } from '../lib/search'
 import type { Menu, MenuItem } from '../types'
 
@@ -71,7 +72,7 @@ export function SearchOverlay({ menu, index, onClose, onSelect, onOpened }: Prop
     <motion.div
       role="dialog"
       aria-modal="true"
-      aria-label="Buscar en la carta"
+      aria-label={`Buscar en ${L.menu}`}
       // a roller blind: drops from the top and overshoots a little (boing); on close it dips, then rolls up.
       // Opaque and transform-only: a backdrop blur here was re-rendered every frame over the animated carta.
       initial={{ y: '-102%' }}
@@ -95,8 +96,8 @@ export function SearchOverlay({ menu, index, onClose, onSelect, onOpened }: Prop
             type="search"
             inputMode="search"
             enterKeyHint="search"
-            aria-label="Buscar platos, ingredientes o etiquetas"
-            placeholder="Platos, ingredientes, etiquetas…"
+            aria-label={`Buscar ${L.item[1]}, ${L.ingredient[1]} o etiquetas`}
+            placeholder={`${cap(L.item[1])}, ${L.ingredient[1]}, etiquetas…`}
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             // Enter (or the phone's "search" key) only puts the keyboard away, leaving the results to browse
