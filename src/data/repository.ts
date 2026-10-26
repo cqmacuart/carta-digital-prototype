@@ -22,7 +22,7 @@ export async function fetchCarta(signal?: AbortSignal): Promise<Carta> {
     load<MenuDatabase>('menu', 'la carta', signal),
   ])
   if (business.schemaVersion !== 1) throw new Error(`Versión de negocio no soportada: ${business.schemaVersion}`)
-  if (menu.schemaVersion !== 2) throw new Error(`Versión de carta no soportada: ${menu.schemaVersion}`)
+  if (menu.schemaVersion !== 2 && menu.schemaVersion !== 3) throw new Error(`Versión de carta no soportada: ${menu.schemaVersion}`)
   if (menu.tenantId !== business.tenantId) throw new Error('La carta no corresponde a este negocio')
   return { business, menu }
 }

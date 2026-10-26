@@ -86,7 +86,8 @@ export type TagId = 'casa' | 'nuevo' | 'vegano' | 'vegetariano' | 'sin-gluten' |
 
 /** The menu (themes/<slug>/menu.json). Who sells it lives in business.json (models/business.ts). */
 export interface MenuDatabase {
-  schemaVersion: 2
+  /** 3 adds the optional `optionGroups` and fixed ingredients (V2); a 2 file is still valid */
+  schemaVersion: 2 | 3
   /** must match business.json and theme.json; the build checks it */
   tenantId: TenantId
   /** ISO date of the last export */
@@ -97,6 +98,8 @@ export interface MenuDatabase {
   tags: Tag[]
   toppings: Topping[]
   modifiers: Modifier[]
+  /** V2: choices with a minimum and maximum (half-and-half, "pick 2 sauces", the combo's drink); V1 ignores them */
+  optionGroups?: OptionGroup[]
   products: Product[]
 }
 
@@ -147,6 +150,22 @@ export interface Modifier {
   price: number
 }
 
+/** A choice made when ordering: `min` 0 = optional, `max` 1 = pick one. */
+export interface OptionGroup {
+  id: ID
+  name: string
+  min: number
+  max: number
+  options: OptionChoice[]
+}
+
+export interface OptionChoice {
+  id: ID
+  name: string
+  /** added to the product's price (0 = included) */
+  price: number
+}
+
 export interface Product {
   id: ID
   categoryId: ID
@@ -159,16 +178,22 @@ export interface Product {
   /** base price; with variants, the lowest one ("desde") */
   price: number
   variants: Variant[]
-  ingredients: string[]
+  /** a plain name can be left out when ordering; `{ name, removable: false }` always goes (the eggs of scrambled eggs) */
+  ingredients: Ingredient[]
   /** how many toppings from the shared pool come included */
   includedToppings: number
   modifierIds: ID[]
+  /** V2: option groups the customer fills in when ordering, in this order */
+  optionGroupIds?: ID[]
   tagIds: TagId[]
   note: string | null
   image: ProductImage
   available: boolean
   sortOrder: number
 }
+
+/** Schema 3: an object marks an ingredient the customer can't take out. */
+export type Ingredient = string | { name: string; removable: false }
 
 /** One card = one base product; sizes, flavours and versions are variants. */
 export interface Variant {

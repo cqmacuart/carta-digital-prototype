@@ -18,6 +18,8 @@ const client = process.env.CARTA_CLIENT || 'demo'
 const cartaDir = resolve(themesDir, client)
 /** the business's own photos (`image.source: "local"`) */
 const assetsDir = resolve(cartaDir, 'assets')
+/** extra static files served next to the carta as they are (e.g. politica-datos.html) */
+const publicDir = resolve(cartaDir, 'public')
 /** rendered photos persist between runs; names carry the version, so a new file or crop renders again */
 const cacheDir = resolve(root, 'node_modules/.carta-media', client)
 
@@ -57,6 +59,7 @@ function readCarta() {
   if (!business.branches.some((b) => b.id === business.defaultBranchId)) {
     throw new Error(`themes/${client}/business.json: defaultBranchId "${business.defaultBranchId}" no es una sede`)
   }
+  checkOrdering(business, db)
 
   // stamp each local photo with a version and list the files the app will ask for under media/
   const photos = new Map<string, { image: LocalImage; rendition: Rendition }>()
@@ -71,6 +74,40 @@ function readCarta() {
     for (const r of Object.keys(RENDITIONS) as Rendition[]) photos.set(mediaName(image.file, image.version, r), { image, rendition: r })
   }
   return { menu: JSON.stringify(db), business, theme, photos }
+}
+
+/** V2 (orders by WhatsApp) can't be switched on half-configured: the build stops instead of shipping a cart that fails */
+function checkOrdering(business: BusinessProfile, db: MenuDatabase) {
+  const fail = (file: string, msg: string) => {
+    throw new Error(`themes/${client}/${file}: ${msg}`)
+  }
+  const groups = new Map((db.optionGroups ?? []).map((g) => [g.id, g]))
+  if (groups.size && db.schemaVersion !== 3) fail('menu.json', 'optionGroups pide schemaVersion 3')
+  for (const g of groups.values()) {
+    if (g.min < 0 || g.max < 1 || g.min > g.max || g.max > g.options.length) fail('menu.json', `grupo "${g.id}": min/max no cuadran con sus ${g.options.length} opciones`)
+  }
+  for (const p of db.products) {
+    for (const id of p.optionGroupIds ?? []) if (!groups.has(id)) fail('menu.json', `"${p.id}" usa el grupo "${id}", que no existe`)
+    if (db.schemaVersion !== 3 && p.ingredients.some((i) => typeof i !== 'string')) fail('menu.json', `"${p.id}": ingredientes fijos piden schemaVersion 3`)
+  }
+
+  const o = business.ordering
+  if (!o?.enabled) return
+  // Ley 1581: the order carries the customer's name, phone and address, so the policy must be one tap away
+  if (!business.legal.dataPolicyUrl) fail('business.json', 'ordering.enabled pide legal.dataPolicyUrl (Ley 1581)')
+  const branch = business.branches.find((b) => b.id === business.defaultBranchId)!
+  const whatsapp = o.whatsapp ?? branch.whatsapp ?? business.contact.whatsapp
+  if (!whatsapp || !/^\+\d{8,15}$/.test(whatsapp)) fail('business.json', 'ordering pide un WhatsApp en formato +57… (ordering.whatsapp, la sede o contact.whatsapp)')
+  if (!o.modes.length) fail('business.json', 'ordering.modes está vacío')
+  for (const m of o.modes) if (!branch.services.includes(m)) fail('business.json', `ordering.modes: la sede "${branch.id}" no ofrece "${m}"`)
+}
+
+/** Files under themes/<slug>/public/, relative paths with forward slashes. */
+function publicFiles(dir = publicDir, prefix = ''): string[] {
+  if (!existsSync(dir)) return []
+  return readdirSync(dir, { withFileTypes: true }).flatMap((e) =>
+    e.isDirectory() ? publicFiles(resolve(dir, e.name), `${prefix}${e.name}/`) : [`${prefix}${e.name}`],
+  )
 }
 
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
@@ -201,6 +238,12 @@ function cartaClient(): Plugin {
         res.setHeader('Content-Type', 'application/json')
         res.end(JSON.stringify(readCarta().business))
       })
+      server.middlewares.use((req, res, next) => {
+        const file = decodeURIComponent((req.url ?? '').slice(1).split('?')[0])
+        if (!file || !publicFiles().includes(file)) return next()
+        if (file.endsWith('.html')) res.setHeader('Content-Type', 'text/html; charset=utf-8')
+        res.end(readFileSync(resolve(publicDir, file)))
+      })
       server.middlewares.use('/media', (req, res, next) => {
         const hit = readCarta().photos.get(decodeURIComponent((req.url ?? '').slice(1).split('?')[0]))
         if (!hit) return next()
@@ -224,6 +267,7 @@ function cartaClient(): Plugin {
       this.emitFile({ type: 'asset', fileName: 'data/business.json', source: JSON.stringify(business) })
       const rendered = await Promise.all([...photos].map(async ([name, { image, rendition }]) => [name, await renderPhoto(image, rendition)] as const))
       for (const [name, source] of rendered) this.emitFile({ type: 'asset', fileName: `media/${name}`, source })
+      for (const file of publicFiles()) this.emitFile({ type: 'asset', fileName: file, source: readFileSync(resolve(publicDir, file)) })
     },
   }
 }
@@ -235,6 +279,8 @@ export default defineConfig({
   plugins: [react(), tailwindcss(), cartaClient()],
   define: {
     'import.meta.env.VITE_CARTA_NAME': JSON.stringify(readCarta().business.name),
+    // V2 on or off for this business: off, the ordering code is dead and never reaches the bundle
+    __PEDIDOS__: JSON.stringify(Boolean(readCarta().business.ordering?.enabled)),
   },
   build: {
     outDir: `dist/${client}`,

@@ -9,6 +9,7 @@ import { ScrollStrip } from './ScrollCaret'
 import { SearchOverlay } from './SearchOverlay'
 import { buildIndex } from '../lib/search'
 import { useOpenStatus } from '../lib/useOpenStatus'
+import { usePedidos } from '../lib/pedidos'
 
 const HEADER = 64
 /** Category name + subcategory chips */
@@ -122,6 +123,9 @@ function SceneSlot({ index, pitch, height, children }: { index: number; pitch: n
 export function MenuScreen({ width, height, menu }: Props) {
   const { business, categories } = menu
   const status = useOpenStatus(business.hours, business.timezone)
+  // V2 (orders by WhatsApp): null for a carta-only business, whose build doesn't even contain the module
+  const pedidos = usePedidos()
+  const ordering = __PEDIDOS__ && pedidos && menu.order ? pedidos : null
   // dishes of each category, in menu order
   const itemsByCat = useMemo(() => categories.map((c) => menu.items.filter((m) => m.category === c.id)), [categories, menu.items])
 
@@ -498,6 +502,8 @@ export function MenuScreen({ width, height, menu }: Props) {
         )}
       </AnimatePresence>
 
+      {ordering && <ordering.CartOverlay menu={menu} onOpened={() => setCovered(true)} onClosed={() => setCovered(false)} />}
+
       {/* category name over its subcategories: centred, as wide as the screen allows; carets get their own room */}
       <motion.nav
         aria-label={`Subcategorías de ${category.name}`}
@@ -721,9 +727,27 @@ export function MenuScreen({ width, height, menu }: Props) {
             dragControls={dragControls}
             onToggle={() => snap(!openRef.current)}
             onPeekHeight={setPeek}
+            order={
+              ordering && (
+                <ordering.ItemOptions
+                  key={item.id}
+                  item={item}
+                  category={category}
+                  verb="Agregar"
+                  onSubmit={(choice, qty, from) => {
+                    // the sheet stays open: the next dish (or the same one, another way) is one tap away
+                    ordering.addLine(item.id, choice, qty)
+                    ordering.flyToCart(from, item.imgThumb)
+                  }}
+                />
+              )
+            }
           />
         </div>
       </motion.section>
+
+      {/* the bag floats on the right, level with the rail; with the sheet open it shrinks and rises above it */}
+      {ordering && <ordering.CartButton menu={menu} open={open} top={stageTop + 6} openTop={Math.min(stageTop + 6, openTop - 52)} />}
     </div>
   )
 }

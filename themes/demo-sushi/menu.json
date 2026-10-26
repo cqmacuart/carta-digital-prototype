@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "tenantId": "660c6360-3b10-4ac6-b56f-f3e5fe8e9a78",
   "updatedAt": "2026-10-25",
   "categories": [
@@ -333,8 +333,14 @@
         }
       ],
       "ingredients": [
-        "Masa de trigo",
-        "Repollo",
+        {
+          "name": "Masa de trigo",
+          "removable": false
+        },
+        {
+          "name": "Repollo",
+          "removable": false
+        },
         "Jengibre",
         "Cebollín",
         "Ponzu"
@@ -369,8 +375,14 @@
       "price": 26000,
       "variants": [],
       "ingredients": [
-        "Langostinos",
-        "Harina tempura",
+        {
+          "name": "Langostinos",
+          "removable": false
+        },
+        {
+          "name": "Harina tempura",
+          "removable": false
+        },
         "Tentsuyu",
         "Rábano"
       ],
@@ -404,7 +416,10 @@
       "price": 28000,
       "variants": [],
       "ingredients": [
-        "Langostinos",
+        {
+          "name": "Langostinos",
+          "removable": false
+        },
         "Berenjena",
         "Zanahoria",
         "Pimentón",
@@ -454,7 +469,10 @@
         }
       ],
       "ingredients": [
-        "Edamame",
+        {
+          "name": "Edamame",
+          "removable": false
+        },
         "Sal marina"
       ],
       "includedToppings": 0,
@@ -487,8 +505,14 @@
       "price": 9000,
       "variants": [],
       "ingredients": [
-        "Dashi",
-        "Miso",
+        {
+          "name": "Dashi",
+          "removable": false
+        },
+        {
+          "name": "Miso",
+          "removable": false
+        },
         "Tofu",
         "Wakame",
         "Cebollín"
@@ -521,7 +545,10 @@
       "price": 26000,
       "variants": [],
       "ingredients": [
-        "Salmón",
+        {
+          "name": "Salmón",
+          "removable": false
+        },
         "Aguacate",
         "Ponzu",
         "Ajonjolí",
@@ -557,7 +584,10 @@
       "price": 28000,
       "variants": [],
       "ingredients": [
-        "Atún",
+        {
+          "name": "Atún",
+          "removable": false
+        },
         "Soya",
         "Limón",
         "Jengibre",
@@ -607,11 +637,20 @@
         }
       ],
       "ingredients": [
-        "Arroz de sushi",
-        "Salmón",
+        {
+          "name": "Arroz de sushi",
+          "removable": false
+        },
+        {
+          "name": "Salmón",
+          "removable": false
+        },
         "Queso crema",
         "Aguacate",
-        "Nori"
+        {
+          "name": "Nori",
+          "removable": false
+        }
       ],
       "includedToppings": 0,
       "modifierIds": [
@@ -659,11 +698,20 @@
         }
       ],
       "ingredients": [
-        "Arroz de sushi",
-        "Salmón",
+        {
+          "name": "Arroz de sushi",
+          "removable": false
+        },
+        {
+          "name": "Salmón",
+          "removable": false
+        },
         "Aguacate",
         "Pepino",
-        "Nori"
+        {
+          "name": "Nori",
+          "removable": false
+        }
       ],
       "includedToppings": 0,
       "modifierIds": [
@@ -710,8 +758,14 @@
         }
       ],
       "ingredients": [
-        "Arroz de sushi",
-        "Salmón",
+        {
+          "name": "Arroz de sushi",
+          "removable": false
+        },
+        {
+          "name": "Salmón",
+          "removable": false
+        },
         "Sriracha",
         "Pepino",
         "Cebollín"
@@ -762,8 +816,14 @@
         }
       ],
       "ingredients": [
-        "Arroz de sushi",
-        "Kanikama",
+        {
+          "name": "Arroz de sushi",
+          "removable": false
+        },
+        {
+          "name": "Kanikama",
+          "removable": false
+        },
         "Aguacate",
         "Pepino",
         "Masago"
@@ -811,8 +871,14 @@
         }
       ],
       "ingredients": [
-        "Arroz de sushi",
-        "Langostino",
+        {
+          "name": "Arroz de sushi",
+          "removable": false
+        },
+        {
+          "name": "Langostino",
+          "removable": false
+        },
         "Aguacate",
         "Queso crema",
         "Ajonjolí"
@@ -860,12 +926,18 @@
         }
       ],
       "ingredients": [
-        "Arroz de sushi",
+        {
+          "name": "Arroz de sushi",
+          "removable": false
+        },
         "Zanahoria",
         "Pepino",
         "Aguacate",
         "Espárragos",
-        "Nori"
+        {
+          "name": "Nori",
+          "removable": false
+        }
       ],
       "includedToppings": 0,
       "modifierIds": [
@@ -912,8 +984,14 @@
         }
       ],
       "ingredients": [
-        "Arroz de sushi",
-        "Aguacate",
+        {
+          "name": "Arroz de sushi",
+          "removable": false
+        },
+        {
+          "name": "Aguacate",
+          "removable": false
+        },
         "Pepino",
         "Ajonjolí"
       ],
@@ -960,9 +1038,18 @@
         }
       ],
       "ingredients": [
-        "Arroz de sushi",
-        "Pepino",
-        "Nori"
+        {
+          "name": "Arroz de sushi",
+          "removable": false
+        },
+        {
+          "name": "Pepino",
+          "removable": false
+        },
+        {
+          "name": "Nori",
+          "removable": false
+        }
       ],
       "includedToppings": 0,
       "modifierIds": [],
@@ -1007,10 +1094,22 @@
         }
       ],
       "ingredients": [
-        "Arroz de sushi",
-        "Salmón",
-        "Queso crema",
-        "Panko",
+        {
+          "name": "Arroz de sushi",
+          "removable": false
+        },
+        {
+          "name": "Salmón",
+          "removable": false
+        },
+        {
+          "name": "Queso crema",
+          "removable": false
+        },
+        {
+          "name": "Panko",
+          "removable": false
+        },
         "Salsa de anguila"
       ],
       "includedToppings": 0,
@@ -1059,8 +1158,14 @@
         }
       ],
       "ingredients": [
-        "Arroz de sushi",
-        "Langostino tempura",
+        {
+          "name": "Arroz de sushi",
+          "removable": false
+        },
+        {
+          "name": "Langostino tempura",
+          "removable": false
+        },
         "Aguacate",
         "Queso crema",
         "Cebolla crispy"
@@ -1110,8 +1215,14 @@
         }
       ],
       "ingredients": [
-        "Arroz de sushi",
-        "Plátano maduro",
+        {
+          "name": "Arroz de sushi",
+          "removable": false
+        },
+        {
+          "name": "Plátano maduro",
+          "removable": false
+        },
         "Queso costeño",
         "Langostino",
         "Salsa de anguila"
@@ -1160,8 +1271,14 @@
         }
       ],
       "ingredients": [
-        "Arroz de sushi",
-        "Salmón",
+        {
+          "name": "Arroz de sushi",
+          "removable": false
+        },
+        {
+          "name": "Salmón",
+          "removable": false
+        },
         "Langostino tempura",
         "Aguacate",
         "Masago"
@@ -1211,8 +1328,14 @@
         }
       ],
       "ingredients": [
-        "Arroz de sushi",
-        "Atún",
+        {
+          "name": "Arroz de sushi",
+          "removable": false
+        },
+        {
+          "name": "Atún",
+          "removable": false
+        },
         "Sriracha",
         "Pepino",
         "Tempura crocante"
@@ -1261,8 +1384,14 @@
         }
       ],
       "ingredients": [
-        "Arroz de sushi",
-        "Atún",
+        {
+          "name": "Arroz de sushi",
+          "removable": false
+        },
+        {
+          "name": "Atún",
+          "removable": false
+        },
         "Langostino",
         "Aguacate",
         "Ají amarillo"
@@ -1311,8 +1440,14 @@
         }
       ],
       "ingredients": [
-        "Arroz de sushi",
-        "Anguila",
+        {
+          "name": "Arroz de sushi",
+          "removable": false
+        },
+        {
+          "name": "Anguila",
+          "removable": false
+        },
         "Aguacate",
         "Pepino",
         "Salsa de anguila"
@@ -1358,8 +1493,14 @@
         }
       ],
       "ingredients": [
-        "Arroz de sushi",
-        "Salmón",
+        {
+          "name": "Arroz de sushi",
+          "removable": false
+        },
+        {
+          "name": "Salmón",
+          "removable": false
+        },
         "Wasabi"
       ],
       "includedToppings": 0,
@@ -1405,8 +1546,14 @@
         }
       ],
       "ingredients": [
-        "Arroz de sushi",
-        "Atún",
+        {
+          "name": "Arroz de sushi",
+          "removable": false
+        },
+        {
+          "name": "Atún",
+          "removable": false
+        },
         "Wasabi"
       ],
       "includedToppings": 0,
@@ -1452,8 +1599,14 @@
         }
       ],
       "ingredients": [
-        "Arroz de sushi",
-        "Langostino"
+        {
+          "name": "Arroz de sushi",
+          "removable": false
+        },
+        {
+          "name": "Langostino",
+          "removable": false
+        }
       ],
       "includedToppings": 0,
       "modifierIds": [],
@@ -1496,8 +1649,14 @@
         }
       ],
       "ingredients": [
-        "Arroz de sushi",
-        "Salmón",
+        {
+          "name": "Arroz de sushi",
+          "removable": false
+        },
+        {
+          "name": "Salmón",
+          "removable": false
+        },
         "Mayonesa japonesa",
         "Cebollín"
       ],
@@ -1544,7 +1703,10 @@
         }
       ],
       "ingredients": [
-        "Salmón",
+        {
+          "name": "Salmón",
+          "removable": false
+        },
         "Rábano",
         "Wasabi",
         "Jengibre"
@@ -1592,7 +1754,10 @@
         }
       ],
       "ingredients": [
-        "Atún",
+        {
+          "name": "Atún",
+          "removable": false
+        },
         "Rábano",
         "Wasabi",
         "Jengibre"
@@ -1640,9 +1805,18 @@
         }
       ],
       "ingredients": [
-        "Salmón",
-        "Atún",
-        "Langostino",
+        {
+          "name": "Salmón",
+          "removable": false
+        },
+        {
+          "name": "Atún",
+          "removable": false
+        },
+        {
+          "name": "Langostino",
+          "removable": false
+        },
         "Wasabi",
         "Jengibre"
       ],
@@ -1677,8 +1851,14 @@
       "price": 32000,
       "variants": [],
       "ingredients": [
-        "Arroz de sushi",
-        "Salmón",
+        {
+          "name": "Arroz de sushi",
+          "removable": false
+        },
+        {
+          "name": "Salmón",
+          "removable": false
+        },
         "Soya",
         "Ajonjolí"
       ],
@@ -1715,8 +1895,14 @@
       "price": 34000,
       "variants": [],
       "ingredients": [
-        "Arroz de sushi",
-        "Atún",
+        {
+          "name": "Arroz de sushi",
+          "removable": false
+        },
+        {
+          "name": "Atún",
+          "removable": false
+        },
         "Soya",
         "Sriracha",
         "Cebollín"
@@ -1755,8 +1941,14 @@
       "price": 28000,
       "variants": [],
       "ingredients": [
-        "Arroz integral",
-        "Tofu",
+        {
+          "name": "Arroz integral",
+          "removable": false
+        },
+        {
+          "name": "Tofu",
+          "removable": false
+        },
         "Miso",
         "Jengibre"
       ],
@@ -1790,8 +1982,14 @@
       "price": 32000,
       "variants": [],
       "ingredients": [
-        "Caldo de cerdo",
-        "Fideos",
+        {
+          "name": "Caldo de cerdo",
+          "removable": false
+        },
+        {
+          "name": "Fideos",
+          "removable": false
+        },
         "Chashu",
         "Huevo marinado",
         "Nori"
@@ -1828,8 +2026,14 @@
       "price": 32000,
       "variants": [],
       "ingredients": [
-        "Caldo miso",
-        "Fideos",
+        {
+          "name": "Caldo miso",
+          "removable": false
+        },
+        {
+          "name": "Fideos",
+          "removable": false
+        },
         "Cerdo",
         "Aceite de chile",
         "Huevo marinado"
@@ -1866,9 +2070,18 @@
       "price": 39000,
       "variants": [],
       "ingredients": [
-        "Sopa miso",
-        "Roll de 5 piezas",
-        "2 nigiri"
+        {
+          "name": "Sopa miso",
+          "removable": false
+        },
+        {
+          "name": "Roll de 5 piezas",
+          "removable": false
+        },
+        {
+          "name": "2 nigiri",
+          "removable": false
+        }
       ],
       "includedToppings": 0,
       "modifierIds": [],
@@ -1898,9 +2111,18 @@
       "price": 89000,
       "variants": [],
       "ingredients": [
-        "2 rolls de 10 piezas",
-        "Gyozas",
-        "2 bebidas"
+        {
+          "name": "2 rolls de 10 piezas",
+          "removable": false
+        },
+        {
+          "name": "Gyozas",
+          "removable": false
+        },
+        {
+          "name": "2 bebidas",
+          "removable": false
+        }
       ],
       "includedToppings": 0,
       "modifierIds": [],
@@ -1932,9 +2154,18 @@
       "price": 125000,
       "variants": [],
       "ingredients": [
-        "4 rolls de 10 piezas",
-        "Nigiri surtidos",
-        "Jengibre y wasabi"
+        {
+          "name": "4 rolls de 10 piezas",
+          "removable": false
+        },
+        {
+          "name": "Nigiri surtidos",
+          "removable": false
+        },
+        {
+          "name": "Jengibre y wasabi",
+          "removable": false
+        }
       ],
       "includedToppings": 0,
       "modifierIds": [],
@@ -1967,10 +2198,22 @@
       "price": 45000,
       "variants": [],
       "ingredients": [
-        "Avocado roll",
-        "Kappa maki",
-        "Futomaki",
-        "Edamame"
+        {
+          "name": "Avocado roll",
+          "removable": false
+        },
+        {
+          "name": "Kappa maki",
+          "removable": false
+        },
+        {
+          "name": "Futomaki",
+          "removable": false
+        },
+        {
+          "name": "Edamame",
+          "removable": false
+        }
       ],
       "includedToppings": 0,
       "modifierIds": [],
@@ -2002,7 +2245,10 @@
       "price": 5000,
       "variants": [],
       "ingredients": [
-        "Té sencha"
+        {
+          "name": "Té sencha",
+          "removable": false
+        }
       ],
       "includedToppings": 0,
       "modifierIds": [],
@@ -2053,7 +2299,10 @@
         }
       ],
       "ingredients": [
-        "Té negro",
+        {
+          "name": "Té negro",
+          "removable": false
+        },
         "Panela",
         "Fruta"
       ],
@@ -2085,7 +2334,10 @@
       "price": 8000,
       "variants": [],
       "ingredients": [
-        "Limón",
+        {
+          "name": "Limón",
+          "removable": false
+        },
         "Jengibre",
         "Hierbabuena",
         "Panela"
@@ -2120,7 +2372,10 @@
       "price": 5000,
       "variants": [],
       "ingredients": [
-        "Gaseosa"
+        {
+          "name": "Gaseosa",
+          "removable": false
+        }
       ],
       "includedToppings": 0,
       "modifierIds": [],
@@ -2163,7 +2418,10 @@
         }
       ],
       "ingredients": [
-        "Cerveza lager"
+        {
+          "name": "Cerveza lager",
+          "removable": false
+        }
       ],
       "includedToppings": 0,
       "modifierIds": [],
@@ -2206,7 +2464,10 @@
         }
       ],
       "ingredients": [
-        "Cerveza"
+        {
+          "name": "Cerveza",
+          "removable": false
+        }
       ],
       "includedToppings": 0,
       "modifierIds": [],
@@ -2249,7 +2510,10 @@
         }
       ],
       "ingredients": [
-        "Sake junmai"
+        {
+          "name": "Sake junmai",
+          "removable": false
+        }
       ],
       "includedToppings": 0,
       "modifierIds": [],
@@ -2298,8 +2562,14 @@
         }
       ],
       "ingredients": [
-        "Arroz glutinoso",
-        "Helado"
+        {
+          "name": "Arroz glutinoso",
+          "removable": false
+        },
+        {
+          "name": "Helado",
+          "removable": false
+        }
       ],
       "includedToppings": 0,
       "modifierIds": [],
@@ -2331,9 +2601,18 @@
       "price": 11000,
       "variants": [],
       "ingredients": [
-        "Leche",
-        "Matcha",
-        "Azúcar",
+        {
+          "name": "Leche",
+          "removable": false
+        },
+        {
+          "name": "Matcha",
+          "removable": false
+        },
+        {
+          "name": "Azúcar",
+          "removable": false
+        },
         "Ajonjolí negro"
       ],
       "includedToppings": 0,
@@ -2366,9 +2645,18 @@
       "price": 10000,
       "variants": [],
       "ingredients": [
-        "Harina de arroz",
-        "Soya",
-        "Azúcar"
+        {
+          "name": "Harina de arroz",
+          "removable": false
+        },
+        {
+          "name": "Soya",
+          "removable": false
+        },
+        {
+          "name": "Azúcar",
+          "removable": false
+        }
       ],
       "includedToppings": 0,
       "modifierIds": [],

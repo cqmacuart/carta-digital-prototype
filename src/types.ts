@@ -1,6 +1,6 @@
 import type { LucideIcon } from 'lucide-react'
-import type { OpeningHours } from './models/business'
-import type { TagId } from './models/db'
+import type { OpeningHours, PaymentMethod, Service } from './models/business'
+import type { OptionGroup, TagId } from './models/db'
 
 // View models: what the screens render, built from the database by src/data/adapter.ts.
 
@@ -23,7 +23,7 @@ export type Category = {
 }
 
 /** One card = one base product; sizes, flavours and add-ons are its variants. */
-export type Variant = { name: string; detail?: string; price: number }
+export type Variant = { id: string; name: string; detail?: string; price: number }
 
 export type Badge = { id: TagId; label: string; icon: LucideIcon }
 
@@ -40,10 +40,14 @@ export type MenuItem = {
   description: string
   variants?: Variant[]
   ingredients?: string[]
+  /** V2: the ones that can't be taken out when ordering */
+  fixedIngredients?: string[]
   /** included toppings, chosen from the shared pool */
-  toppings?: { count: number; options: string[] }
+  toppings?: { count: number; options: { id: string; name: string }[] }
   /** paid add-ons */
-  modifiers?: { name: string; price: number }[]
+  modifiers?: { id: string; name: string; price: number }[]
+  /** V2: choices made when ordering (min/max) */
+  optionGroups?: OptionGroup[]
   note?: string
   tags?: Badge[]
   img: string
@@ -62,8 +66,22 @@ export type Business = {
   timezone: string
 }
 
+/** V2: what the cart needs to take an order; only present when the business takes orders */
+export type OrderConfig = {
+  /** E.164 without the "+", as wa.me wants it */
+  whatsapp: string
+  modes: Service[]
+  minOrder: number | null
+  deliveryFee: number | null
+  payments: PaymentMethod[]
+  dataPolicyUrl: string
+}
+
 export type Menu = {
+  /** the cart is stored per business */
+  tenantId: string
   business: Business
+  order?: OrderConfig
   categories: Category[]
   /** sorted by category, subcategory, then product order */
   items: MenuItem[]

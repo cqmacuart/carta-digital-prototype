@@ -61,6 +61,21 @@ export interface BusinessProfile {
   /** the branch this carta shows */
   defaultBranchId: string
   branches: Branch[]
+  /** V2: orders sent by WhatsApp. Absent or disabled = carta only (V1), and the build carries no ordering code */
+  ordering?: Ordering | null
+}
+
+/** V2 settings: the customer builds an order and sends it by WhatsApp (no payments, no POS). */
+export interface Ordering {
+  enabled: boolean
+  /** E.164 number that receives the orders; null = the branch's WhatsApp, then contact.whatsapp */
+  whatsapp: string | null
+  /** how the order can be served, in the order the customer sees them; must be services of the branch */
+  modes: Service[]
+  /** smallest subtotal accepted (COP); null = no minimum */
+  minOrder: number | null
+  /** delivery fee for "domicilio"; null = the business confirms it by WhatsApp */
+  deliveryFee: number | null
 }
 
 export interface Branch {

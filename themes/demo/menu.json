@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "tenantId": "0343c8b4-5f3e-43c5-8a7b-fb55d6bc1eb3",
   "updatedAt": "2026-10-24",
   "categories": [
@@ -441,6 +441,74 @@
       "price": 4000
     }
   ],
+  "optionGroups": [
+    {
+      "id": "huevos-estilo",
+      "name": "Huevos",
+      "min": 1,
+      "max": 1,
+      "options": [
+        {
+          "id": "revueltos",
+          "name": "Revueltos",
+          "price": 0
+        },
+        {
+          "id": "fritos",
+          "name": "Fritos",
+          "price": 0
+        },
+        {
+          "id": "pericos",
+          "name": "Pericos",
+          "price": 0
+        },
+        {
+          "id": "tibios",
+          "name": "Tibios",
+          "price": 0
+        }
+      ]
+    },
+    {
+      "id": "fruta-jugo",
+      "name": "Fruta",
+      "min": 1,
+      "max": 1,
+      "options": [
+        {
+          "id": "mango",
+          "name": "Mango",
+          "price": 0
+        },
+        {
+          "id": "mora",
+          "name": "Mora",
+          "price": 0
+        },
+        {
+          "id": "lulo",
+          "name": "Lulo",
+          "price": 0
+        },
+        {
+          "id": "fresa",
+          "name": "Fresa",
+          "price": 0
+        },
+        {
+          "id": "maracuya",
+          "name": "Maracuyá",
+          "price": 0
+        },
+        {
+          "id": "guanabana",
+          "name": "Guanábana",
+          "price": 1000
+        }
+      ]
+    }
+  ],
   "products": [
     {
       "id": "al-gusto",
@@ -453,7 +521,10 @@
       "price": 17000,
       "variants": [],
       "ingredients": [
-        "Huevos campesinos",
+        {
+          "name": "Huevos campesinos",
+          "removable": false
+        },
         "Jamón",
         "Mozzarella",
         "Pan francés",
@@ -477,7 +548,10 @@
         "alt": "Al gusto"
       },
       "available": true,
-      "sortOrder": 1
+      "sortOrder": 1,
+      "optionGroupIds": [
+        "huevos-estilo"
+      ]
     },
     {
       "id": "rancheros",
@@ -490,7 +564,10 @@
       "price": 20000,
       "variants": [],
       "ingredients": [
-        "Huevos campesinos",
+        {
+          "name": "Huevos campesinos",
+          "removable": false
+        },
         "Chorizo santarrosano",
         "Jamón",
         "Mozzarella",
@@ -543,7 +620,10 @@
         }
       ],
       "ingredients": [
-        "Huevos campesinos",
+        {
+          "name": "Huevos campesinos",
+          "removable": false
+        },
         "Crema de quesos",
         "Mozzarella",
         "Pan francés"
@@ -579,8 +659,14 @@
       "price": 24000,
       "variants": [],
       "ingredients": [
-        "Huevos",
-        "Papa",
+        {
+          "name": "Huevos",
+          "removable": false
+        },
+        {
+          "name": "Papa",
+          "removable": false
+        },
         "Chorizo santarrosano",
         "Cebolla caramelizada",
         "Crema de quesos",
@@ -633,8 +719,14 @@
         }
       ],
       "ingredients": [
-        "Pan horneado en cazuela",
-        "Huevos pochados",
+        {
+          "name": "Pan horneado en cazuela",
+          "removable": false
+        },
+        {
+          "name": "Huevos pochados",
+          "removable": false
+        },
         "Crema de quesos",
         "Cebollín"
       ],
@@ -671,12 +763,18 @@
       "price": 26000,
       "variants": [],
       "ingredients": [
-        "Pollo desmechado",
+        {
+          "name": "Pollo desmechado",
+          "removable": false
+        },
         "Champiñones",
         "Salsa cremosa",
         "Parmesano",
         "Mozzarella",
-        "Pan horneado en cazuela"
+        {
+          "name": "Pan horneado en cazuela",
+          "removable": false
+        }
       ],
       "includedToppings": 0,
       "modifierIds": [],
@@ -719,7 +817,10 @@
         }
       ],
       "ingredients": [
-        "Papa criolla",
+        {
+          "name": "Papa criolla",
+          "removable": false
+        },
         "Cebolla",
         "Cilantro",
         "Queso campesino"
@@ -754,8 +855,14 @@
       "price": 20000,
       "variants": [],
       "ingredients": [
-        "Pan artesanal",
-        "Jamón de pavo",
+        {
+          "name": "Pan artesanal",
+          "removable": false
+        },
+        {
+          "name": "Jamón de pavo",
+          "removable": false
+        },
         "Mozzarella",
         "Lechuga",
         "Tomate",
@@ -789,10 +896,19 @@
       "price": 26000,
       "variants": [],
       "ingredients": [
-        "Pan artesanal",
-        "Pollo",
+        {
+          "name": "Pan artesanal",
+          "removable": false
+        },
+        {
+          "name": "Pollo",
+          "removable": false
+        },
         "Champiñones",
-        "Salsa stroganoff",
+        {
+          "name": "Salsa stroganoff",
+          "removable": false
+        },
         "Mozzarella",
         "Espinaca"
       ],
@@ -824,8 +940,14 @@
       "price": 26000,
       "variants": [],
       "ingredients": [
-        "Pan artesanal",
-        "Morrillo de res",
+        {
+          "name": "Pan artesanal",
+          "removable": false
+        },
+        {
+          "name": "Morrillo de res",
+          "removable": false
+        },
         "Cebolla encurtida",
         "Queso costeño",
         "Salsa de la casa"
@@ -858,8 +980,14 @@
       "price": 26000,
       "variants": [],
       "ingredients": [
-        "Pan artesanal",
-        "Bondiola de cerdo La Fazenda",
+        {
+          "name": "Pan artesanal",
+          "removable": false
+        },
+        {
+          "name": "Bondiola de cerdo La Fazenda",
+          "removable": false
+        },
         "Glaseado de panela",
         "Repollo morado",
         "Alioli"
@@ -894,8 +1022,14 @@
       "price": 26000,
       "variants": [],
       "ingredients": [
-        "Pan artesanal",
-        "Chicharrón La Fazenda",
+        {
+          "name": "Pan artesanal",
+          "removable": false
+        },
+        {
+          "name": "Chicharrón La Fazenda",
+          "removable": false
+        },
         "Guacamole",
         "Pico de gallo",
         "Ají casero",
@@ -932,8 +1066,14 @@
       "price": 24000,
       "variants": [],
       "ingredients": [
-        "Pan artesanal",
-        "Atún Van Camps",
+        {
+          "name": "Pan artesanal",
+          "removable": false
+        },
+        {
+          "name": "Atún Van Camps",
+          "removable": false
+        },
         "Apio",
         "Cebolla morada",
         "Maíz dulce",
@@ -967,7 +1107,10 @@
       "price": 22000,
       "variants": [],
       "ingredients": [
-        "Pan artesanal",
+        {
+          "name": "Pan artesanal",
+          "removable": false
+        },
         "Berenjena",
         "Calabacín",
         "Pimentón asado",
@@ -1024,11 +1167,26 @@
         }
       ],
       "ingredients": [
-        "Harina de trigo",
-        "Mantequilla",
-        "Levadura",
-        "Leche",
-        "Huevo"
+        {
+          "name": "Harina de trigo",
+          "removable": false
+        },
+        {
+          "name": "Mantequilla",
+          "removable": false
+        },
+        {
+          "name": "Levadura",
+          "removable": false
+        },
+        {
+          "name": "Leche",
+          "removable": false
+        },
+        {
+          "name": "Huevo",
+          "removable": false
+        }
       ],
       "includedToppings": 0,
       "modifierIds": [],
@@ -1085,7 +1243,10 @@
         }
       ],
       "ingredients": [
-        "Croissant de mantequilla",
+        {
+          "name": "Croissant de mantequilla",
+          "removable": false
+        },
         "Azúcar glas"
       ],
       "includedToppings": 0,
@@ -1119,8 +1280,14 @@
       "price": 18000,
       "variants": [],
       "ingredients": [
-        "Croissant de mantequilla",
-        "Huevos",
+        {
+          "name": "Croissant de mantequilla",
+          "removable": false
+        },
+        {
+          "name": "Huevos",
+          "removable": false
+        },
         "Tocineta La Fazenda",
         "Crema de quesos"
       ],
@@ -1155,9 +1322,15 @@
       "price": 22000,
       "variants": [],
       "ingredients": [
-        "Croissant de mantequilla",
+        {
+          "name": "Croissant de mantequilla",
+          "removable": false
+        },
         "Huevos",
-        "Jamón serrano",
+        {
+          "name": "Jamón serrano",
+          "removable": false
+        },
         "Queso pera",
         "Aguacate",
         "Crema de quesos"
@@ -1211,11 +1384,26 @@
         }
       ],
       "ingredients": [
-        "Almidón de yuca",
-        "Cuajada",
-        "Queso costeño",
-        "Huevo",
-        "Mantequilla"
+        {
+          "name": "Almidón de yuca",
+          "removable": false
+        },
+        {
+          "name": "Cuajada",
+          "removable": false
+        },
+        {
+          "name": "Queso costeño",
+          "removable": false
+        },
+        {
+          "name": "Huevo",
+          "removable": false
+        },
+        {
+          "name": "Mantequilla",
+          "removable": false
+        }
       ],
       "includedToppings": 0,
       "modifierIds": [],
@@ -1247,9 +1435,18 @@
       "price": 8000,
       "variants": [],
       "ingredients": [
-        "Hojaldre de mantequilla",
-        "Queso blanco",
-        "Huevo para barnizar"
+        {
+          "name": "Hojaldre de mantequilla",
+          "removable": false
+        },
+        {
+          "name": "Queso blanco",
+          "removable": false
+        },
+        {
+          "name": "Huevo para barnizar",
+          "removable": false
+        }
       ],
       "includedToppings": 0,
       "modifierIds": [],
@@ -1294,8 +1491,14 @@
         }
       ],
       "ingredients": [
-        "Hojaldre de mantequilla",
-        "Huevo para barnizar"
+        {
+          "name": "Hojaldre de mantequilla",
+          "removable": false
+        },
+        {
+          "name": "Huevo para barnizar",
+          "removable": false
+        }
       ],
       "includedToppings": 0,
       "modifierIds": [],
@@ -1325,7 +1528,10 @@
       "price": 18000,
       "variants": [],
       "ingredients": [
-        "Chocolate de mesa",
+        {
+          "name": "Chocolate de mesa",
+          "removable": false
+        },
         "Waffle",
         "Pan brioche",
         "Galletas",
@@ -1363,8 +1569,14 @@
       "price": 22000,
       "variants": [],
       "ingredients": [
-        "Pan brioche",
-        "Huevo",
+        {
+          "name": "Pan brioche",
+          "removable": false
+        },
+        {
+          "name": "Huevo",
+          "removable": false
+        },
         "Canela",
         "Yogurt griego",
         "Fresa",
@@ -1401,11 +1613,26 @@
       "price": 14000,
       "variants": [],
       "ingredients": [
-        "Harina de trigo",
-        "Huevo",
-        "Leche",
-        "Mantequilla",
-        "Vainilla"
+        {
+          "name": "Harina de trigo",
+          "removable": false
+        },
+        {
+          "name": "Huevo",
+          "removable": false
+        },
+        {
+          "name": "Leche",
+          "removable": false
+        },
+        {
+          "name": "Mantequilla",
+          "removable": false
+        },
+        {
+          "name": "Vainilla",
+          "removable": false
+        }
       ],
       "includedToppings": 2,
       "modifierIds": [],
@@ -1437,8 +1664,14 @@
       "price": 20000,
       "variants": [],
       "ingredients": [
-        "Waffle",
-        "Helado de vainilla",
+        {
+          "name": "Waffle",
+          "removable": false
+        },
+        {
+          "name": "Helado de vainilla",
+          "removable": false
+        },
         "Crema montada"
       ],
       "includedToppings": 2,
@@ -1473,7 +1706,10 @@
       "price": 24000,
       "variants": [],
       "ingredients": [
-        "Waffle",
+        {
+          "name": "Waffle",
+          "removable": false
+        },
         "Fresa",
         "Kiwi",
         "Arándanos",
@@ -1513,8 +1749,14 @@
       "price": 22000,
       "variants": [],
       "ingredients": [
-        "Waffle",
-        "Huevos",
+        {
+          "name": "Waffle",
+          "removable": false
+        },
+        {
+          "name": "Huevos",
+          "removable": false
+        },
         "Jamón",
         "Mozzarella"
       ],
@@ -1549,7 +1791,10 @@
       "price": 22000,
       "variants": [],
       "ingredients": [
-        "Waffle de pan de yuca",
+        {
+          "name": "Waffle de pan de yuca",
+          "removable": false
+        },
         "Chorizo santarrosano",
         "Hogao",
         "Queso campesino"
@@ -1633,7 +1878,10 @@
         }
       ],
       "ingredients": [
-        "Yogurt",
+        {
+          "name": "Yogurt",
+          "removable": false
+        },
         "Fresa",
         "Kiwi",
         "Arándanos",
@@ -1737,10 +1985,22 @@
         }
       ],
       "ingredients": [
-        "Harina de trigo",
-        "Huevos",
-        "Mantequilla",
-        "Azúcar"
+        {
+          "name": "Harina de trigo",
+          "removable": false
+        },
+        {
+          "name": "Huevos",
+          "removable": false
+        },
+        {
+          "name": "Mantequilla",
+          "removable": false
+        },
+        {
+          "name": "Azúcar",
+          "removable": false
+        }
       ],
       "includedToppings": 0,
       "modifierIds": [],
@@ -1783,11 +2043,26 @@
         }
       ],
       "ingredients": [
-        "Queso crema",
-        "Huevos",
-        "Base de galleta",
-        "Mantequilla",
-        "Azúcar"
+        {
+          "name": "Queso crema",
+          "removable": false
+        },
+        {
+          "name": "Huevos",
+          "removable": false
+        },
+        {
+          "name": "Base de galleta",
+          "removable": false
+        },
+        {
+          "name": "Mantequilla",
+          "removable": false
+        },
+        {
+          "name": "Azúcar",
+          "removable": false
+        }
       ],
       "includedToppings": 0,
       "modifierIds": [],
@@ -1830,10 +2105,22 @@
         }
       ],
       "ingredients": [
-        "Base de galleta",
-        "Leche condensada",
-        "Merengue italiano",
-        "Mantequilla"
+        {
+          "name": "Base de galleta",
+          "removable": false
+        },
+        {
+          "name": "Leche condensada",
+          "removable": false
+        },
+        {
+          "name": "Merengue italiano",
+          "removable": false
+        },
+        {
+          "name": "Mantequilla",
+          "removable": false
+        }
       ],
       "includedToppings": 0,
       "modifierIds": [],
@@ -1863,11 +2150,26 @@
       "price": 11000,
       "variants": [],
       "ingredients": [
-        "Queso Philadelphia",
-        "Moras de Castilla",
-        "Galleta",
-        "Crema de leche",
-        "Azúcar"
+        {
+          "name": "Queso Philadelphia",
+          "removable": false
+        },
+        {
+          "name": "Moras de Castilla",
+          "removable": false
+        },
+        {
+          "name": "Galleta",
+          "removable": false
+        },
+        {
+          "name": "Crema de leche",
+          "removable": false
+        },
+        {
+          "name": "Azúcar",
+          "removable": false
+        }
       ],
       "includedToppings": 0,
       "modifierIds": [],
@@ -1897,11 +2199,26 @@
       "price": 11000,
       "variants": [],
       "ingredients": [
-        "Huevos",
-        "Leche",
-        "Leche condensada",
-        "Caramelo",
-        "Vainilla"
+        {
+          "name": "Huevos",
+          "removable": false
+        },
+        {
+          "name": "Leche",
+          "removable": false
+        },
+        {
+          "name": "Leche condensada",
+          "removable": false
+        },
+        {
+          "name": "Caramelo",
+          "removable": false
+        },
+        {
+          "name": "Vainilla",
+          "removable": false
+        }
       ],
       "includedToppings": 0,
       "modifierIds": [],
@@ -1933,10 +2250,22 @@
       "price": 11000,
       "variants": [],
       "ingredients": [
-        "Masa brioche",
-        "Canela",
-        "Azúcar morena",
-        "Mantequilla",
+        {
+          "name": "Masa brioche",
+          "removable": false
+        },
+        {
+          "name": "Canela",
+          "removable": false
+        },
+        {
+          "name": "Azúcar morena",
+          "removable": false
+        },
+        {
+          "name": "Mantequilla",
+          "removable": false
+        },
         "Glaseado de queso crema"
       ],
       "includedToppings": 0,
@@ -1969,11 +2298,26 @@
       "price": 11000,
       "variants": [],
       "ingredients": [
-        "Mascarpone",
-        "Espresso",
-        "Bizcochos de soletilla",
-        "Huevos",
-        "Cacao amargo"
+        {
+          "name": "Mascarpone",
+          "removable": false
+        },
+        {
+          "name": "Espresso",
+          "removable": false
+        },
+        {
+          "name": "Bizcochos de soletilla",
+          "removable": false
+        },
+        {
+          "name": "Huevos",
+          "removable": false
+        },
+        {
+          "name": "Cacao amargo",
+          "removable": false
+        }
       ],
       "includedToppings": 0,
       "modifierIds": [],
@@ -2003,11 +2347,26 @@
       "price": 15000,
       "variants": [],
       "ingredients": [
-        "Chocolate semiamargo",
-        "Crema de leche",
-        "Claras de huevo",
-        "Azúcar",
-        "Sal marina"
+        {
+          "name": "Chocolate semiamargo",
+          "removable": false
+        },
+        {
+          "name": "Crema de leche",
+          "removable": false
+        },
+        {
+          "name": "Claras de huevo",
+          "removable": false
+        },
+        {
+          "name": "Azúcar",
+          "removable": false
+        },
+        {
+          "name": "Sal marina",
+          "removable": false
+        }
       ],
       "includedToppings": 0,
       "modifierIds": [],
@@ -2039,10 +2398,22 @@
       "price": 13000,
       "variants": [],
       "ingredients": [
-        "Pasta choux",
-        "Crema pastelera",
-        "Vainilla",
-        "Glaseado de chocolate"
+        {
+          "name": "Pasta choux",
+          "removable": false
+        },
+        {
+          "name": "Crema pastelera",
+          "removable": false
+        },
+        {
+          "name": "Vainilla",
+          "removable": false
+        },
+        {
+          "name": "Glaseado de chocolate",
+          "removable": false
+        }
       ],
       "includedToppings": 0,
       "modifierIds": [],
@@ -2072,10 +2443,22 @@
       "price": 13000,
       "variants": [],
       "ingredients": [
-        "Bizcocho de almendra",
-        "Café",
-        "Crema de mantequilla",
-        "Ganache de chocolate"
+        {
+          "name": "Bizcocho de almendra",
+          "removable": false
+        },
+        {
+          "name": "Café",
+          "removable": false
+        },
+        {
+          "name": "Crema de mantequilla",
+          "removable": false
+        },
+        {
+          "name": "Ganache de chocolate",
+          "removable": false
+        }
       ],
       "includedToppings": 0,
       "modifierIds": [],
@@ -2105,11 +2488,26 @@
       "price": 15000,
       "variants": [],
       "ingredients": [
-        "Hojaldre",
-        "Crema pastelera",
-        "Vainilla",
-        "Fondant",
-        "Chocolate"
+        {
+          "name": "Hojaldre",
+          "removable": false
+        },
+        {
+          "name": "Crema pastelera",
+          "removable": false
+        },
+        {
+          "name": "Vainilla",
+          "removable": false
+        },
+        {
+          "name": "Fondant",
+          "removable": false
+        },
+        {
+          "name": "Chocolate",
+          "removable": false
+        }
       ],
       "includedToppings": 0,
       "modifierIds": [],
@@ -2152,11 +2550,26 @@
         }
       ],
       "ingredients": [
-        "Harina de almendra",
-        "Claras de huevo",
-        "Pasta choux",
-        "Crema pastelera",
-        "Chocolate"
+        {
+          "name": "Harina de almendra",
+          "removable": false
+        },
+        {
+          "name": "Claras de huevo",
+          "removable": false
+        },
+        {
+          "name": "Pasta choux",
+          "removable": false
+        },
+        {
+          "name": "Crema pastelera",
+          "removable": false
+        },
+        {
+          "name": "Chocolate",
+          "removable": false
+        }
       ],
       "includedToppings": 0,
       "modifierIds": [],
@@ -2201,11 +2614,23 @@
         }
       ],
       "ingredients": [
-        "Chocolate semiamargo",
-        "Mantequilla",
-        "Huevos",
+        {
+          "name": "Chocolate semiamargo",
+          "removable": false
+        },
+        {
+          "name": "Mantequilla",
+          "removable": false
+        },
+        {
+          "name": "Huevos",
+          "removable": false
+        },
         "Nueces",
-        "Azúcar morena"
+        {
+          "name": "Azúcar morena",
+          "removable": false
+        }
       ],
       "includedToppings": 0,
       "modifierIds": [
@@ -2250,8 +2675,14 @@
         }
       ],
       "ingredients": [
-        "Canasta de galleta",
-        "Helado artesanal",
+        {
+          "name": "Canasta de galleta",
+          "removable": false
+        },
+        {
+          "name": "Helado artesanal",
+          "removable": false
+        },
         "Crema montada"
       ],
       "includedToppings": 1,
@@ -2297,8 +2728,14 @@
         }
       ],
       "ingredients": [
-        "Café de origen",
-        "Agua filtrada"
+        {
+          "name": "Café de origen",
+          "removable": false
+        },
+        {
+          "name": "Agua filtrada",
+          "removable": false
+        }
       ],
       "includedToppings": 0,
       "modifierIds": [
@@ -2355,8 +2792,14 @@
         }
       ],
       "ingredients": [
-        "Café de origen",
-        "Agua filtrada"
+        {
+          "name": "Café de origen",
+          "removable": false
+        },
+        {
+          "name": "Agua filtrada",
+          "removable": false
+        }
       ],
       "includedToppings": 0,
       "modifierIds": [
@@ -2419,9 +2862,18 @@
         }
       ],
       "ingredients": [
-        "Espresso",
-        "Leche entera",
-        "Espuma de leche"
+        {
+          "name": "Espresso",
+          "removable": false
+        },
+        {
+          "name": "Leche entera",
+          "removable": false
+        },
+        {
+          "name": "Espuma de leche",
+          "removable": false
+        }
       ],
       "includedToppings": 0,
       "modifierIds": [
@@ -2469,9 +2921,18 @@
         }
       ],
       "ingredients": [
-        "Espresso",
-        "Chocolate amargo",
-        "Leche entera",
+        {
+          "name": "Espresso",
+          "removable": false
+        },
+        {
+          "name": "Chocolate amargo",
+          "removable": false
+        },
+        {
+          "name": "Leche entera",
+          "removable": false
+        },
         "Cacao en polvo"
       ],
       "includedToppings": 0,
@@ -2505,8 +2966,14 @@
       "price": 11000,
       "variants": [],
       "ingredients": [
-        "Helado de vainilla",
-        "Espresso doble"
+        {
+          "name": "Helado de vainilla",
+          "removable": false
+        },
+        {
+          "name": "Espresso doble",
+          "removable": false
+        }
       ],
       "includedToppings": 0,
       "modifierIds": [
@@ -2553,8 +3020,14 @@
         }
       ],
       "ingredients": [
-        "Chocolate de mesa",
-        "Leche entera",
+        {
+          "name": "Chocolate de mesa",
+          "removable": false
+        },
+        {
+          "name": "Leche entera",
+          "removable": false
+        },
         "Canela"
       ],
       "includedToppings": 0,
@@ -2606,8 +3079,14 @@
         }
       ],
       "ingredients": [
-        "Panela de trapiche",
-        "Agua",
+        {
+          "name": "Panela de trapiche",
+          "removable": false
+        },
+        {
+          "name": "Agua",
+          "removable": false
+        },
         "Limón"
       ],
       "includedToppings": 0,
@@ -2665,7 +3144,10 @@
         }
       ],
       "ingredients": [
-        "Té en hoja",
+        {
+          "name": "Té en hoja",
+          "removable": false
+        },
         "Hierbas aromáticas",
         "Frutas frescas",
         "Especias"
@@ -2713,12 +3195,30 @@
         }
       ],
       "ingredients": [
-        "Aguapanela",
-        "Canela",
-        "Aguardiente",
-        "Vino tinto",
-        "Naranja",
-        "Clavos de olor"
+        {
+          "name": "Aguapanela",
+          "removable": false
+        },
+        {
+          "name": "Canela",
+          "removable": false
+        },
+        {
+          "name": "Aguardiente",
+          "removable": false
+        },
+        {
+          "name": "Vino tinto",
+          "removable": false
+        },
+        {
+          "name": "Naranja",
+          "removable": false
+        },
+        {
+          "name": "Clavos de olor",
+          "removable": false
+        }
       ],
       "includedToppings": 0,
       "modifierIds": [],
@@ -2767,9 +3267,18 @@
         }
       ],
       "ingredients": [
-        "Espresso",
-        "Leche",
-        "Hielo",
+        {
+          "name": "Espresso",
+          "removable": false
+        },
+        {
+          "name": "Leche",
+          "removable": false
+        },
+        {
+          "name": "Hielo",
+          "removable": false
+        },
         "Crema montada"
       ],
       "includedToppings": 0,
@@ -2803,8 +3312,14 @@
       "price": 12000,
       "variants": [],
       "ingredients": [
-        "Espresso doble",
-        "Leche fría",
+        {
+          "name": "Espresso doble",
+          "removable": false
+        },
+        {
+          "name": "Leche fría",
+          "removable": false
+        },
         "Hielo",
         "Jarabe de vainilla"
       ],
@@ -2854,8 +3369,14 @@
         }
       ],
       "ingredients": [
-        "Leche",
-        "Hielo",
+        {
+          "name": "Leche",
+          "removable": false
+        },
+        {
+          "name": "Hielo",
+          "removable": false
+        },
         "Crema montada"
       ],
       "includedToppings": 0,
@@ -2937,8 +3458,14 @@
         }
       ],
       "ingredients": [
-        "Helado artesanal",
-        "Leche",
+        {
+          "name": "Helado artesanal",
+          "removable": false
+        },
+        {
+          "name": "Leche",
+          "removable": false
+        },
         "Crema montada",
         "Galleta"
       ],
@@ -2985,7 +3512,10 @@
         }
       ],
       "ingredients": [
-        "Fruta fresca de temporada",
+        {
+          "name": "Fruta fresca de temporada",
+          "removable": false
+        },
         "Azúcar o panela",
         "Hielo"
       ],
@@ -3004,7 +3534,10 @@
         "alt": "Jugo natural"
       },
       "available": true,
-      "sortOrder": 58
+      "sortOrder": 58,
+      "optionGroupIds": [
+        "fruta-jugo"
+      ]
     },
     {
       "id": "limonada",
@@ -3030,7 +3563,10 @@
         }
       ],
       "ingredients": [
-        "Limón",
+        {
+          "name": "Limón",
+          "removable": false
+        },
         "Hielo",
         "Panela",
         "Yerbabuena",
@@ -3083,7 +3619,10 @@
         }
       ],
       "ingredients": [
-        "Soda",
+        {
+          "name": "Soda",
+          "removable": false
+        },
         "Limón",
         "Frutos rojos o amarillos",
         "Hielo"
@@ -3129,7 +3668,10 @@
         }
       ],
       "ingredients": [
-        "Cerveza Corona",
+        {
+          "name": "Cerveza Corona",
+          "removable": false
+        },
         "Limón",
         "Sal"
       ],
@@ -3186,8 +3728,14 @@
         }
       ],
       "ingredients": [
-        "Tortas de la casa",
-        "Caja para llevar"
+        {
+          "name": "Tortas de la casa",
+          "removable": false
+        },
+        {
+          "name": "Caja para llevar",
+          "removable": false
+        }
       ],
       "includedToppings": 0,
       "modifierIds": [],
@@ -3232,10 +3780,22 @@
         }
       ],
       "ingredients": [
-        "Harina de trigo",
-        "Masa madre",
-        "Agua",
-        "Sal marina"
+        {
+          "name": "Harina de trigo",
+          "removable": false
+        },
+        {
+          "name": "Masa madre",
+          "removable": false
+        },
+        {
+          "name": "Agua",
+          "removable": false
+        },
+        {
+          "name": "Sal marina",
+          "removable": false
+        }
       ],
       "includedToppings": 0,
       "modifierIds": [],
@@ -3286,11 +3846,26 @@
         }
       ],
       "ingredients": [
-        "Harina de trigo",
-        "Mantequilla",
-        "Huevos",
-        "Leche",
-        "Azúcar"
+        {
+          "name": "Harina de trigo",
+          "removable": false
+        },
+        {
+          "name": "Mantequilla",
+          "removable": false
+        },
+        {
+          "name": "Huevos",
+          "removable": false
+        },
+        {
+          "name": "Leche",
+          "removable": false
+        },
+        {
+          "name": "Azúcar",
+          "removable": false
+        }
       ],
       "includedToppings": 0,
       "modifierIds": [],
@@ -3333,11 +3908,26 @@
         }
       ],
       "ingredients": [
-        "Mantequilla",
-        "Harina de trigo",
-        "Azúcar",
-        "Claras de huevo",
-        "Chips de chocolate"
+        {
+          "name": "Mantequilla",
+          "removable": false
+        },
+        {
+          "name": "Harina de trigo",
+          "removable": false
+        },
+        {
+          "name": "Azúcar",
+          "removable": false
+        },
+        {
+          "name": "Claras de huevo",
+          "removable": false
+        },
+        {
+          "name": "Chips de chocolate",
+          "removable": false
+        }
       ],
       "includedToppings": 0,
       "modifierIds": [],

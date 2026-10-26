@@ -1,4 +1,6 @@
 @import "tailwindcss";
+/* V2 brings its own utilities (src/pedidos/pedidos.css), loaded with its chunk */
+@source not "./pedidos";
 
 /* Defaults (Terra). Each business overrides these from themes/<slug>/theme.json (see vite.config.ts). */
 @theme {

@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "tenantId": "d296fbdc-fe29-43ea-b894-13cf00d2581b",
   "updatedAt": "2026-10-25",
   "categories": [
@@ -253,8 +253,14 @@
         }
       ],
       "ingredients": [
-        "Pan brioche",
-        "Carne de res",
+        {
+          "name": "Pan brioche",
+          "removable": false
+        },
+        {
+          "name": "Carne de res",
+          "removable": false
+        },
         "Mozzarella",
         "Lechuga",
         "Tomate",
@@ -307,9 +313,18 @@
         }
       ],
       "ingredients": [
-        "Pan brioche",
-        "Carne de res",
-        "Cheddar",
+        {
+          "name": "Pan brioche",
+          "removable": false
+        },
+        {
+          "name": "Carne de res",
+          "removable": false
+        },
+        {
+          "name": "Cheddar",
+          "removable": false
+        },
         "Pepinillos",
         "Cebolla"
       ],
@@ -360,9 +375,18 @@
         }
       ],
       "ingredients": [
-        "Pan brioche",
-        "Carne de res",
-        "Tocineta",
+        {
+          "name": "Pan brioche",
+          "removable": false
+        },
+        {
+          "name": "Carne de res",
+          "removable": false
+        },
+        {
+          "name": "Tocineta",
+          "removable": false
+        },
         "Cheddar",
         "Aros de cebolla",
         "BBQ"
@@ -401,8 +425,14 @@
       "price": 21000,
       "variants": [],
       "ingredients": [
-        "Pan brioche",
-        "Pechuga apanada",
+        {
+          "name": "Pan brioche",
+          "removable": false
+        },
+        {
+          "name": "Pechuga apanada",
+          "removable": false
+        },
         "Lechuga",
         "Tomate",
         "Mayonesa de ajo"
@@ -438,8 +468,14 @@
       "price": 20000,
       "variants": [],
       "ingredients": [
-        "Pan brioche",
-        "Pechuga asada",
+        {
+          "name": "Pan brioche",
+          "removable": false
+        },
+        {
+          "name": "Pechuga asada",
+          "removable": false
+        },
         "Mozzarella",
         "Aguacate",
         "Lechuga"
@@ -475,8 +511,14 @@
       "price": 20000,
       "variants": [],
       "ingredients": [
-        "Pan brioche",
-        "Garbanzo",
+        {
+          "name": "Pan brioche",
+          "removable": false
+        },
+        {
+          "name": "Garbanzo",
+          "removable": false
+        },
         "Vegetales asados",
         "Mozzarella",
         "Yogur"
@@ -514,8 +556,14 @@
       "price": 32000,
       "variants": [],
       "ingredients": [
-        "Pan brioche",
-        "2 carnes de res",
+        {
+          "name": "Pan brioche",
+          "removable": false
+        },
+        {
+          "name": "2 carnes de res",
+          "removable": false
+        },
         "Cheddar",
         "Tocineta",
         "Huevo",
@@ -554,8 +602,14 @@
       "price": 27000,
       "variants": [],
       "ingredients": [
-        "Pan de papa",
-        "2 carnes smash",
+        {
+          "name": "Pan de papa",
+          "removable": false
+        },
+        {
+          "name": "2 carnes smash",
+          "removable": false
+        },
         "Cheddar",
         "Cebolla caramelizada",
         "Pepinillos"
@@ -593,8 +647,14 @@
       "price": 28000,
       "variants": [],
       "ingredients": [
-        "Pan brioche",
-        "Cerdo desmechado",
+        {
+          "name": "Pan brioche",
+          "removable": false
+        },
+        {
+          "name": "Cerdo desmechado",
+          "removable": false
+        },
         "BBQ",
         "Repollo",
         "Cebolla crocante"
@@ -642,10 +702,19 @@
         }
       ],
       "ingredients": [
-        "Pan brioche",
-        "Carne de res",
+        {
+          "name": "Pan brioche",
+          "removable": false
+        },
+        {
+          "name": "Carne de res",
+          "removable": false
+        },
         "Pepper jack",
-        "Jalapeños",
+        {
+          "name": "Jalapeños",
+          "removable": false
+        },
         "Guacamole"
       ],
       "includedToppings": 0,
@@ -684,8 +753,14 @@
       "price": 12000,
       "variants": [],
       "ingredients": [
-        "Pan de perro",
-        "Salchicha americana",
+        {
+          "name": "Pan de perro",
+          "removable": false
+        },
+        {
+          "name": "Salchicha americana",
+          "removable": false
+        },
         "Cebolla",
         "Papita ripio"
       ],
@@ -720,8 +795,14 @@
       "price": 17000,
       "variants": [],
       "ingredients": [
-        "Pan de perro",
-        "Salchicha",
+        {
+          "name": "Pan de perro",
+          "removable": false
+        },
+        {
+          "name": "Salchicha",
+          "removable": false
+        },
         "Queso",
         "Tocineta",
         "Huevos de codorniz",
@@ -759,8 +840,14 @@
       "price": 16000,
       "variants": [],
       "ingredients": [
-        "Pan de perro",
-        "Salchicha suiza",
+        {
+          "name": "Pan de perro",
+          "removable": false
+        },
+        {
+          "name": "Salchicha suiza",
+          "removable": false
+        },
         "Cebolla grillé",
         "Mozzarella",
         "Mostaza miel"
@@ -796,8 +883,14 @@
       "price": 18000,
       "variants": [],
       "ingredients": [
-        "Pan de perro",
-        "Salchicha",
+        {
+          "name": "Pan de perro",
+          "removable": false
+        },
+        {
+          "name": "Salchicha",
+          "removable": false
+        },
         "Pollo desmechado",
         "Maíz",
         "Queso gratinado"
@@ -845,8 +938,14 @@
         }
       ],
       "ingredients": [
-        "Papa",
-        "Salchicha",
+        {
+          "name": "Papa",
+          "removable": false
+        },
+        {
+          "name": "Salchicha",
+          "removable": false
+        },
         "Queso costeño"
       ],
       "includedToppings": 0,
@@ -893,8 +992,14 @@
         }
       ],
       "ingredients": [
-        "Papa",
-        "Salchicha",
+        {
+          "name": "Papa",
+          "removable": false
+        },
+        {
+          "name": "Salchicha",
+          "removable": false
+        },
         "Pollo",
         "Maíz",
         "Tocineta",
@@ -996,7 +1101,10 @@
         }
       ],
       "ingredients": [
-        "Papa",
+        {
+          "name": "Papa",
+          "removable": false
+        },
         "Sal"
       ],
       "includedToppings": 0,
@@ -1029,8 +1137,14 @@
       "price": 15000,
       "variants": [],
       "ingredients": [
-        "Papa",
-        "Cheddar",
+        {
+          "name": "Papa",
+          "removable": false
+        },
+        {
+          "name": "Cheddar",
+          "removable": false
+        },
         "Tocineta",
         "Cebollín"
       ],
@@ -1062,8 +1176,14 @@
       "price": 11000,
       "variants": [],
       "ingredients": [
-        "Cebolla",
-        "Masa de cerveza",
+        {
+          "name": "Cebolla",
+          "removable": false
+        },
+        {
+          "name": "Masa de cerveza",
+          "removable": false
+        },
         "BBQ"
       ],
       "includedToppings": 0,
@@ -1109,8 +1229,14 @@
         }
       ],
       "ingredients": [
-        "Pechuga",
-        "Apanado",
+        {
+          "name": "Pechuga",
+          "removable": false
+        },
+        {
+          "name": "Apanado",
+          "removable": false
+        },
         "Papas",
         "Miel mostaza"
       ],
@@ -1161,7 +1287,10 @@
         }
       ],
       "ingredients": [
-        "Alitas de pollo",
+        {
+          "name": "Alitas de pollo",
+          "removable": false
+        },
         "BBQ",
         "Apio",
         "Zanahoria",
@@ -1216,7 +1345,10 @@
         }
       ],
       "ingredients": [
-        "Alitas de pollo",
+        {
+          "name": "Alitas de pollo",
+          "removable": false
+        },
         "Salsa búfalo",
         "Apio",
         "Queso azul"
@@ -1272,7 +1404,10 @@
         }
       ],
       "ingredients": [
-        "Alitas de pollo",
+        {
+          "name": "Alitas de pollo",
+          "removable": false
+        },
         "Miel",
         "Mostaza",
         "Ajonjolí"
@@ -1309,8 +1444,14 @@
       "price": 22000,
       "variants": [],
       "ingredients": [
-        "Pollo",
-        "Apanado de especias",
+        {
+          "name": "Pollo",
+          "removable": false
+        },
+        {
+          "name": "Apanado de especias",
+          "removable": false
+        },
         "Papas",
         "Repollo"
       ],
@@ -1344,9 +1485,18 @@
       "price": 26000,
       "variants": [],
       "ingredients": [
-        "La sencilla",
-        "Papas personales",
-        "Gaseosa personal"
+        {
+          "name": "La sencilla",
+          "removable": false
+        },
+        {
+          "name": "Papas personales",
+          "removable": false
+        },
+        {
+          "name": "Gaseosa personal",
+          "removable": false
+        }
       ],
       "includedToppings": 0,
       "modifierIds": [
@@ -1379,9 +1529,18 @@
       "price": 24000,
       "variants": [],
       "ingredients": [
-        "Perro especial",
-        "Papas personales",
-        "Gaseosa personal"
+        {
+          "name": "Perro especial",
+          "removable": false
+        },
+        {
+          "name": "Papas personales",
+          "removable": false
+        },
+        {
+          "name": "Gaseosa personal",
+          "removable": false
+        }
       ],
       "includedToppings": 0,
       "modifierIds": [],
@@ -1411,9 +1570,18 @@
       "price": 52000,
       "variants": [],
       "ingredients": [
-        "2 hamburguesas clásicas",
-        "Papas grandes",
-        "2 gaseosas"
+        {
+          "name": "2 hamburguesas clásicas",
+          "removable": false
+        },
+        {
+          "name": "Papas grandes",
+          "removable": false
+        },
+        {
+          "name": "2 gaseosas",
+          "removable": false
+        }
       ],
       "includedToppings": 0,
       "modifierIds": [],
@@ -1445,9 +1613,18 @@
       "price": 95000,
       "variants": [],
       "ingredients": [
-        "4 hamburguesas sencillas",
-        "2 papas grandes",
-        "Gaseosa 1,5 L"
+        {
+          "name": "4 hamburguesas sencillas",
+          "removable": false
+        },
+        {
+          "name": "2 papas grandes",
+          "removable": false
+        },
+        {
+          "name": "Gaseosa 1,5 L",
+          "removable": false
+        }
       ],
       "includedToppings": 0,
       "modifierIds": [],
@@ -1493,7 +1670,10 @@
         }
       ],
       "ingredients": [
-        "Gaseosa"
+        {
+          "name": "Gaseosa",
+          "removable": false
+        }
       ],
       "includedToppings": 0,
       "modifierIds": [],
@@ -1542,7 +1722,10 @@
         }
       ],
       "ingredients": [
-        "Limón",
+        {
+          "name": "Limón",
+          "removable": false
+        },
         "Hielo",
         "Azúcar"
       ],
@@ -1601,8 +1784,14 @@
         }
       ],
       "ingredients": [
-        "Helado",
-        "Leche",
+        {
+          "name": "Helado",
+          "removable": false
+        },
+        {
+          "name": "Leche",
+          "removable": false
+        },
         "Crema chantilly"
       ],
       "includedToppings": 0,
@@ -1635,7 +1824,10 @@
       "price": 15000,
       "variants": [],
       "ingredients": [
-        "Helado de vainilla",
+        {
+          "name": "Helado de vainilla",
+          "removable": false
+        },
         "Arequipe",
         "Brownie",
         "Chantilly"
@@ -1671,7 +1863,10 @@
       "price": 12000,
       "variants": [],
       "ingredients": [
-        "Brownie",
+        {
+          "name": "Brownie",
+          "removable": false
+        },
         "Helado de vainilla",
         "Salsa de chocolate"
       ],
@@ -1724,7 +1919,10 @@
         }
       ],
       "ingredients": [
-        "Helado",
+        {
+          "name": "Helado",
+          "removable": false
+        },
         "Salsa",
         "Chantilly"
       ],
