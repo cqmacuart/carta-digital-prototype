@@ -1,0 +1,2405 @@
+{
+  "schemaVersion": 3,
+  "tenantId": "f24765d5-3ca4-4cd3-9536-871a0995a226",
+  "updatedAt": "2026-10-25",
+  "categories": [
+    {
+      "id": "florales",
+      "name": "Florales",
+      "icon": "flower-2",
+      "palette": {
+        "sheet": "#F3D6DC",
+        "ink": "#45192A",
+        "accent": "#8C2C4A"
+      },
+      "sortOrder": 1
+    },
+    {
+      "id": "citricas",
+      "name": "Cítricas",
+      "icon": "citrus",
+      "palette": {
+        "sheet": "#3E4A17",
+        "ink": "#F8F4DC",
+        "accent": "#E8DF7E"
+      },
+      "sortOrder": 2
+    },
+    {
+      "id": "frescas",
+      "name": "Frescas",
+      "icon": "waves",
+      "palette": {
+        "sheet": "#D2E7EB",
+        "ink": "#10313A",
+        "accent": "#1D5C6C"
+      },
+      "sortOrder": 3
+    },
+    {
+      "id": "amaderadas",
+      "name": "Amaderadas",
+      "icon": "trees",
+      "palette": {
+        "sheet": "#3A2A1F",
+        "ink": "#F6EBDF",
+        "accent": "#E6BC8E"
+      },
+      "sortOrder": 4
+    },
+    {
+      "id": "orientales",
+      "name": "Orientales",
+      "icon": "moon",
+      "palette": {
+        "sheet": "#F2DEBB",
+        "ink": "#3B220C",
+        "accent": "#874710"
+      },
+      "sortOrder": 5
+    },
+    {
+      "id": "sets",
+      "name": "Sets y regalos",
+      "icon": "gift",
+      "palette": {
+        "sheet": "#4A1E37",
+        "ink": "#FCF0F5",
+        "accent": "#F3BCD2"
+      },
+      "sortOrder": 6
+    },
+    {
+      "id": "cuerpo-hogar",
+      "name": "Cuerpo y hogar",
+      "icon": "droplets",
+      "palette": {
+        "sheet": "#E7E2DB",
+        "ink": "#2D2823",
+        "accent": "#6A5745"
+      },
+      "sortOrder": 7
+    }
+  ],
+  "subcategories": [
+    {
+      "id": "florales-ella",
+      "categoryId": "florales",
+      "name": "Para ella",
+      "sortOrder": 1
+    },
+    {
+      "id": "florales-unisex",
+      "categoryId": "florales",
+      "name": "Unisex",
+      "sortOrder": 2
+    },
+    {
+      "id": "citricas-unisex",
+      "categoryId": "citricas",
+      "name": "Unisex",
+      "sortOrder": 1
+    },
+    {
+      "id": "citricas-el",
+      "categoryId": "citricas",
+      "name": "Para él",
+      "sortOrder": 2
+    },
+    {
+      "id": "citricas-ella",
+      "categoryId": "citricas",
+      "name": "Para ella",
+      "sortOrder": 3
+    },
+    {
+      "id": "frescas-unisex",
+      "categoryId": "frescas",
+      "name": "Unisex",
+      "sortOrder": 1
+    },
+    {
+      "id": "frescas-el",
+      "categoryId": "frescas",
+      "name": "Para él",
+      "sortOrder": 2
+    },
+    {
+      "id": "amaderadas-el",
+      "categoryId": "amaderadas",
+      "name": "Para él",
+      "sortOrder": 1
+    },
+    {
+      "id": "amaderadas-unisex",
+      "categoryId": "amaderadas",
+      "name": "Unisex",
+      "sortOrder": 2
+    },
+    {
+      "id": "amaderadas-ella",
+      "categoryId": "amaderadas",
+      "name": "Para ella",
+      "sortOrder": 3
+    },
+    {
+      "id": "orientales-ella",
+      "categoryId": "orientales",
+      "name": "Para ella",
+      "sortOrder": 1
+    },
+    {
+      "id": "orientales-el",
+      "categoryId": "orientales",
+      "name": "Para él",
+      "sortOrder": 2
+    },
+    {
+      "id": "orientales-unisex",
+      "categoryId": "orientales",
+      "name": "Unisex",
+      "sortOrder": 3
+    },
+    {
+      "id": "sets-regalo",
+      "categoryId": "sets",
+      "name": "Sets",
+      "sortOrder": 1
+    },
+    {
+      "id": "cuerpo",
+      "categoryId": "cuerpo-hogar",
+      "name": "Cuerpo",
+      "sortOrder": 1
+    },
+    {
+      "id": "hogar",
+      "categoryId": "cuerpo-hogar",
+      "name": "Hogar",
+      "sortOrder": 2
+    }
+  ],
+  "groups": [],
+  "tags": [
+    {
+      "id": "casa",
+      "label": "Firma de la casa",
+      "icon": "crown"
+    },
+    {
+      "id": "nuevo",
+      "label": "Nuevo",
+      "icon": "sparkles"
+    },
+    {
+      "id": "picante",
+      "label": "Intenso",
+      "icon": "flame"
+    },
+    {
+      "id": "vegano",
+      "label": "Vegano",
+      "icon": "leaf"
+    },
+    {
+      "id": "compartir",
+      "label": "Para regalar",
+      "icon": "gift"
+    }
+  ],
+  "toppings": [],
+  "modifiers": [
+    {
+      "id": "empaque",
+      "name": "Empaque de regalo",
+      "price": 8000
+    },
+    {
+      "id": "tarjeta",
+      "name": "Tarjeta escrita a mano",
+      "price": 4000
+    },
+    {
+      "id": "grabado",
+      "name": "Nombre grabado en el frasco",
+      "price": 15000
+    }
+  ],
+  "optionGroups": [
+    {
+      "id": "tres-fragancias",
+      "name": "Tus 3 fragancias",
+      "min": 3,
+      "max": 3,
+      "options": [
+        {
+          "id": "jazmin-de-patio",
+          "name": "Jazmín de Patio",
+          "price": 0
+        },
+        {
+          "id": "peonia-al-alba",
+          "name": "Peonía al Alba",
+          "price": 0
+        },
+        {
+          "id": "rosa-de-paramo",
+          "name": "Rosa de Páramo",
+          "price": 0
+        },
+        {
+          "id": "azahar-y-sal",
+          "name": "Azahar y Sal",
+          "price": 0
+        },
+        {
+          "id": "mandarina-verde",
+          "name": "Mandarina Verde",
+          "price": 0
+        },
+        {
+          "id": "limon-de-tierra-caliente",
+          "name": "Limón de Tierra Caliente",
+          "price": 0
+        },
+        {
+          "id": "bergamota-de-cobre",
+          "name": "Bergamota de Cobre",
+          "price": 0
+        },
+        {
+          "id": "toronja-y-te",
+          "name": "Toronja y Té",
+          "price": 0
+        },
+        {
+          "id": "lluvia-en-chitaga",
+          "name": "Lluvia en Chitagá",
+          "price": 0
+        },
+        {
+          "id": "brisa-de-tayrona",
+          "name": "Brisa de Tayrona",
+          "price": 0
+        },
+        {
+          "id": "niebla-blanca",
+          "name": "Niebla Blanca",
+          "price": 0
+        },
+        {
+          "id": "cedro-de-pamplona",
+          "name": "Cedro de Pamplona",
+          "price": 0
+        },
+        {
+          "id": "vetiver-andino",
+          "name": "Vetiver Andino",
+          "price": 0
+        },
+        {
+          "id": "sandalo-y-leche",
+          "name": "Sándalo y Leche",
+          "price": 0
+        },
+        {
+          "id": "palo-santo",
+          "name": "Palo Santo",
+          "price": 0
+        },
+        {
+          "id": "higo-y-madera",
+          "name": "Higo y Madera",
+          "price": 0
+        },
+        {
+          "id": "ambar-de-noche",
+          "name": "Ámbar de Noche",
+          "price": 0
+        },
+        {
+          "id": "cacao-y-tonka",
+          "name": "Cacao y Tonka",
+          "price": 0
+        },
+        {
+          "id": "tabaco-de-barichara",
+          "name": "Tabaco de Barichara",
+          "price": 0
+        },
+        {
+          "id": "cafe-de-altura",
+          "name": "Café de Altura",
+          "price": 0
+        },
+        {
+          "id": "oud-de-selva",
+          "name": "Oud de Selva",
+          "price": 0
+        }
+      ]
+    },
+    {
+      "id": "dos-fragancias",
+      "name": "Tus 2 fragancias",
+      "min": 2,
+      "max": 2,
+      "options": [
+        {
+          "id": "jazmin-de-patio",
+          "name": "Jazmín de Patio",
+          "price": 0
+        },
+        {
+          "id": "peonia-al-alba",
+          "name": "Peonía al Alba",
+          "price": 0
+        },
+        {
+          "id": "rosa-de-paramo",
+          "name": "Rosa de Páramo",
+          "price": 0
+        },
+        {
+          "id": "azahar-y-sal",
+          "name": "Azahar y Sal",
+          "price": 0
+        },
+        {
+          "id": "mandarina-verde",
+          "name": "Mandarina Verde",
+          "price": 0
+        },
+        {
+          "id": "limon-de-tierra-caliente",
+          "name": "Limón de Tierra Caliente",
+          "price": 0
+        },
+        {
+          "id": "bergamota-de-cobre",
+          "name": "Bergamota de Cobre",
+          "price": 0
+        },
+        {
+          "id": "toronja-y-te",
+          "name": "Toronja y Té",
+          "price": 0
+        },
+        {
+          "id": "lluvia-en-chitaga",
+          "name": "Lluvia en Chitagá",
+          "price": 0
+        },
+        {
+          "id": "brisa-de-tayrona",
+          "name": "Brisa de Tayrona",
+          "price": 0
+        },
+        {
+          "id": "niebla-blanca",
+          "name": "Niebla Blanca",
+          "price": 0
+        },
+        {
+          "id": "cedro-de-pamplona",
+          "name": "Cedro de Pamplona",
+          "price": 0
+        },
+        {
+          "id": "vetiver-andino",
+          "name": "Vetiver Andino",
+          "price": 0
+        },
+        {
+          "id": "sandalo-y-leche",
+          "name": "Sándalo y Leche",
+          "price": 0
+        },
+        {
+          "id": "palo-santo",
+          "name": "Palo Santo",
+          "price": 0
+        },
+        {
+          "id": "higo-y-madera",
+          "name": "Higo y Madera",
+          "price": 0
+        },
+        {
+          "id": "ambar-de-noche",
+          "name": "Ámbar de Noche",
+          "price": 0
+        },
+        {
+          "id": "cacao-y-tonka",
+          "name": "Cacao y Tonka",
+          "price": 0
+        },
+        {
+          "id": "tabaco-de-barichara",
+          "name": "Tabaco de Barichara",
+          "price": 0
+        },
+        {
+          "id": "cafe-de-altura",
+          "name": "Café de Altura",
+          "price": 0
+        },
+        {
+          "id": "oud-de-selva",
+          "name": "Oud de Selva",
+          "price": 0
+        }
+      ]
+    }
+  ],
+  "products": [
+    {
+      "id": "jazmin-de-patio",
+      "categoryId": "florales",
+      "subcategoryId": "florales-ella",
+      "groupId": null,
+      "name": "Jazmín de Patio",
+      "tagline": "Jazmín y azahar, como un patio de casa vieja al atardecer.",
+      "description": "Eau de parfum. Abre con mandarina; en el corazón, azahar, jazmín sambac y tuberosa; de fondo, almizcle blanco. Blanco, luminoso y nada empalagoso.",
+      "price": 28000,
+      "variants": [
+        {
+          "id": "decant-5",
+          "name": "Decant 5 ml",
+          "detail": "Atomizador de viaje · unas 70 aplicaciones",
+          "price": 28000
+        },
+        {
+          "id": "frasco-30",
+          "name": "30 ml",
+          "detail": "Frasco de cartera",
+          "price": 109000
+        },
+        {
+          "id": "frasco-50",
+          "name": "50 ml",
+          "detail": "Frasco",
+          "price": 159000
+        },
+        {
+          "id": "frasco-100",
+          "name": "100 ml",
+          "detail": "Frasco grande",
+          "price": 239000
+        }
+      ],
+      "ingredients": [
+        {
+          "name": "Mandarina",
+          "removable": false
+        },
+        {
+          "name": "Azahar",
+          "removable": false
+        },
+        {
+          "name": "Jazmín sambac",
+          "removable": false
+        },
+        {
+          "name": "Tuberosa",
+          "removable": false
+        },
+        {
+          "name": "Almizcle blanco",
+          "removable": false
+        }
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "empaque",
+        "tarjeta",
+        "grabado"
+      ],
+      "tagIds": [
+        "casa"
+      ],
+      "note": "Eau de parfum · dura 8–10 h en la piel. El decant es la forma de probarlo antes del frasco.",
+      "image": {
+        "source": "unsplash",
+        "photoId": "1586025978898-43130390c617",
+        "focal": {
+          "x": 0.62,
+          "y": 0.68,
+          "zoom": 1.25
+        },
+        "alt": "Frasco de Jazmín de Patio"
+      },
+      "available": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "peonia-al-alba",
+      "categoryId": "florales",
+      "subcategoryId": "florales-ella",
+      "groupId": null,
+      "name": "Peonía al Alba",
+      "tagline": "Peonía, pera jugosa y un fondo limpio de almizcle.",
+      "description": "Eau de toilette. Abre con pera y lichi; en el corazón, peonía y rosa; de fondo, almizcle. Fresco para el día y la oficina.",
+      "price": 22000,
+      "variants": [
+        {
+          "id": "decant-5",
+          "name": "Decant 5 ml",
+          "detail": "Atomizador de viaje · unas 70 aplicaciones",
+          "price": 22000
+        },
+        {
+          "id": "frasco-30",
+          "name": "30 ml",
+          "detail": "Frasco de cartera",
+          "price": 89000
+        },
+        {
+          "id": "frasco-50",
+          "name": "50 ml",
+          "detail": "Frasco",
+          "price": 129000
+        },
+        {
+          "id": "frasco-100",
+          "name": "100 ml",
+          "detail": "Frasco grande",
+          "price": 199000
+        }
+      ],
+      "ingredients": [
+        {
+          "name": "Pera",
+          "removable": false
+        },
+        {
+          "name": "Lichi",
+          "removable": false
+        },
+        {
+          "name": "Peonía",
+          "removable": false
+        },
+        {
+          "name": "Rosa",
+          "removable": false
+        },
+        {
+          "name": "Almizcle",
+          "removable": false
+        }
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "empaque",
+        "tarjeta",
+        "grabado"
+      ],
+      "tagIds": [
+        "nuevo"
+      ],
+      "note": "Eau de toilette · dura 5–6 h en la piel. El decant es la forma de probarlo antes del frasco.",
+      "image": {
+        "source": "unsplash",
+        "photoId": "1789993563949-553f2395d528",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1
+        },
+        "alt": "Frasco de Peonía al Alba"
+      },
+      "available": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "rosa-de-paramo",
+      "categoryId": "florales",
+      "subcategoryId": "florales-ella",
+      "groupId": null,
+      "name": "Rosa de Páramo",
+      "tagline": "Rosa fría de montaña con un toque de té negro.",
+      "description": "Eau de parfum. Abre con pimienta rosa; en el corazón, rosa damascena y té negro; de fondo, pachulí y ámbar. Una rosa seria, con carácter.",
+      "price": 28000,
+      "variants": [
+        {
+          "id": "decant-5",
+          "name": "Decant 5 ml",
+          "detail": "Atomizador de viaje · unas 70 aplicaciones",
+          "price": 28000
+        },
+        {
+          "id": "frasco-30",
+          "name": "30 ml",
+          "detail": "Frasco de cartera",
+          "price": 109000
+        },
+        {
+          "id": "frasco-50",
+          "name": "50 ml",
+          "detail": "Frasco",
+          "price": 159000
+        },
+        {
+          "id": "frasco-100",
+          "name": "100 ml",
+          "detail": "Frasco grande",
+          "price": 239000
+        }
+      ],
+      "ingredients": [
+        {
+          "name": "Pimienta rosa",
+          "removable": false
+        },
+        {
+          "name": "Rosa damascena",
+          "removable": false
+        },
+        {
+          "name": "Té negro",
+          "removable": false
+        },
+        {
+          "name": "Pachulí",
+          "removable": false
+        },
+        {
+          "name": "Ámbar",
+          "removable": false
+        }
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "empaque",
+        "tarjeta",
+        "grabado"
+      ],
+      "tagIds": [],
+      "note": "Eau de parfum · dura 8–10 h en la piel. El decant es la forma de probarlo antes del frasco.",
+      "image": {
+        "source": "unsplash",
+        "photoId": "1586858249274-7922b9e404ac",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1
+        },
+        "alt": "Frasco de Rosa de Páramo"
+      },
+      "available": true,
+      "sortOrder": 3
+    },
+    {
+      "id": "azahar-y-sal",
+      "categoryId": "florales",
+      "subcategoryId": "florales-unisex",
+      "groupId": null,
+      "name": "Azahar y Sal",
+      "tagline": "Flor de naranjo con brisa de mar.",
+      "description": "Eau de toilette. Abre con neroli y limón; en el corazón, azahar; de fondo, sal marina y almizcle. Huele a vacaciones en la costa.",
+      "price": 22000,
+      "variants": [
+        {
+          "id": "decant-5",
+          "name": "Decant 5 ml",
+          "detail": "Atomizador de viaje · unas 70 aplicaciones",
+          "price": 22000
+        },
+        {
+          "id": "frasco-30",
+          "name": "30 ml",
+          "detail": "Frasco de cartera",
+          "price": 89000
+        },
+        {
+          "id": "frasco-50",
+          "name": "50 ml",
+          "detail": "Frasco",
+          "price": 129000
+        },
+        {
+          "id": "frasco-100",
+          "name": "100 ml",
+          "detail": "Frasco grande",
+          "price": 199000
+        }
+      ],
+      "ingredients": [
+        {
+          "name": "Neroli",
+          "removable": false
+        },
+        {
+          "name": "Limón",
+          "removable": false
+        },
+        {
+          "name": "Azahar",
+          "removable": false
+        },
+        {
+          "name": "Sal marina",
+          "removable": false
+        },
+        {
+          "name": "Almizcle",
+          "removable": false
+        }
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "empaque",
+        "tarjeta",
+        "grabado"
+      ],
+      "tagIds": [
+        "vegano"
+      ],
+      "note": "Eau de toilette · dura 5–6 h en la piel. El decant es la forma de probarlo antes del frasco.",
+      "image": {
+        "source": "unsplash",
+        "photoId": "1778434505577-28b8e26384f2",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1
+        },
+        "alt": "Frasco de Azahar y Sal"
+      },
+      "available": true,
+      "sortOrder": 4
+    },
+    {
+      "id": "mandarina-verde",
+      "categoryId": "citricas",
+      "subcategoryId": "citricas-unisex",
+      "groupId": null,
+      "name": "Mandarina Verde",
+      "tagline": "Mandarina recién pelada y hojas verdes aplastadas.",
+      "description": "Eau de toilette. Abre con mandarina y hoja de mandarino; en el corazón, albahaca; de fondo, vetiver. Chispeante y alegre, para el calor.",
+      "price": 22000,
+      "variants": [
+        {
+          "id": "decant-5",
+          "name": "Decant 5 ml",
+          "detail": "Atomizador de viaje · unas 70 aplicaciones",
+          "price": 22000
+        },
+        {
+          "id": "frasco-30",
+          "name": "30 ml",
+          "detail": "Frasco de cartera",
+          "price": 89000
+        },
+        {
+          "id": "frasco-50",
+          "name": "50 ml",
+          "detail": "Frasco",
+          "price": 129000
+        },
+        {
+          "id": "frasco-100",
+          "name": "100 ml",
+          "detail": "Frasco grande",
+          "price": 199000
+        }
+      ],
+      "ingredients": [
+        {
+          "name": "Mandarina",
+          "removable": false
+        },
+        {
+          "name": "Hoja de mandarino",
+          "removable": false
+        },
+        {
+          "name": "Albahaca",
+          "removable": false
+        },
+        {
+          "name": "Vetiver",
+          "removable": false
+        }
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "empaque",
+        "tarjeta",
+        "grabado"
+      ],
+      "tagIds": [
+        "nuevo"
+      ],
+      "note": "Eau de toilette · dura 5–6 h en la piel. El decant es la forma de probarlo antes del frasco.",
+      "image": {
+        "source": "unsplash",
+        "photoId": "1638295916768-459f6cf440bc",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.3
+        },
+        "alt": "Frasco de Mandarina Verde"
+      },
+      "available": true,
+      "sortOrder": 5
+    },
+    {
+      "id": "limon-de-tierra-caliente",
+      "categoryId": "citricas",
+      "subcategoryId": "citricas-el",
+      "groupId": null,
+      "name": "Limón de Tierra Caliente",
+      "tagline": "Limón, jengibre y vetiver: fresco hasta la tarde.",
+      "description": "Eau de toilette. Abre con limón y jengibre; en el corazón, romero; de fondo, vetiver y cedro. El clásico fresco, sin perfume de barbería.",
+      "price": 22000,
+      "variants": [
+        {
+          "id": "decant-5",
+          "name": "Decant 5 ml",
+          "detail": "Atomizador de viaje · unas 70 aplicaciones",
+          "price": 22000
+        },
+        {
+          "id": "frasco-30",
+          "name": "30 ml",
+          "detail": "Frasco de cartera",
+          "price": 89000
+        },
+        {
+          "id": "frasco-50",
+          "name": "50 ml",
+          "detail": "Frasco",
+          "price": 129000
+        },
+        {
+          "id": "frasco-100",
+          "name": "100 ml",
+          "detail": "Frasco grande",
+          "price": 199000
+        }
+      ],
+      "ingredients": [
+        {
+          "name": "Limón",
+          "removable": false
+        },
+        {
+          "name": "Jengibre",
+          "removable": false
+        },
+        {
+          "name": "Romero",
+          "removable": false
+        },
+        {
+          "name": "Vetiver",
+          "removable": false
+        },
+        {
+          "name": "Cedro",
+          "removable": false
+        }
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "empaque",
+        "tarjeta",
+        "grabado"
+      ],
+      "tagIds": [],
+      "note": "Eau de toilette · dura 5–6 h en la piel. El decant es la forma de probarlo antes del frasco.",
+      "image": {
+        "source": "unsplash",
+        "photoId": "1733660227168-444e3c751a1e",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1
+        },
+        "alt": "Frasco de Limón de Tierra Caliente"
+      },
+      "available": true,
+      "sortOrder": 6
+    },
+    {
+      "id": "bergamota-de-cobre",
+      "categoryId": "citricas",
+      "subcategoryId": "citricas-el",
+      "groupId": null,
+      "name": "Bergamota de Cobre",
+      "tagline": "Bergamota y cardamomo sobre un fondo cálido de cedro.",
+      "description": "Eau de parfum. Abre con bergamota y cardamomo; en el corazón, lavanda; de fondo, cedro y haba tonka. Cítrico que madura en algo cálido.",
+      "price": 28000,
+      "variants": [
+        {
+          "id": "decant-5",
+          "name": "Decant 5 ml",
+          "detail": "Atomizador de viaje · unas 70 aplicaciones",
+          "price": 28000
+        },
+        {
+          "id": "frasco-30",
+          "name": "30 ml",
+          "detail": "Frasco de cartera",
+          "price": 109000
+        },
+        {
+          "id": "frasco-50",
+          "name": "50 ml",
+          "detail": "Frasco",
+          "price": 159000
+        },
+        {
+          "id": "frasco-100",
+          "name": "100 ml",
+          "detail": "Frasco grande",
+          "price": 239000
+        }
+      ],
+      "ingredients": [
+        {
+          "name": "Bergamota",
+          "removable": false
+        },
+        {
+          "name": "Cardamomo",
+          "removable": false
+        },
+        {
+          "name": "Lavanda",
+          "removable": false
+        },
+        {
+          "name": "Cedro",
+          "removable": false
+        },
+        {
+          "name": "Haba tonka",
+          "removable": false
+        }
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "empaque",
+        "tarjeta",
+        "grabado"
+      ],
+      "tagIds": [],
+      "note": "Eau de parfum · dura 8–10 h en la piel. El decant es la forma de probarlo antes del frasco.",
+      "image": {
+        "source": "unsplash",
+        "photoId": "1709662217788-6a8a1b31562a",
+        "focal": {
+          "x": 0.5,
+          "y": 0.6,
+          "zoom": 1.2
+        },
+        "alt": "Frasco de Bergamota de Cobre"
+      },
+      "available": true,
+      "sortOrder": 7
+    },
+    {
+      "id": "toronja-y-te",
+      "categoryId": "citricas",
+      "subcategoryId": "citricas-ella",
+      "groupId": null,
+      "name": "Toronja y Té",
+      "tagline": "Toronja rosada sobre té blanco.",
+      "description": "Eau de toilette. Abre con toronja rosada; en el corazón, té blanco y fresia; de fondo, almizcle. Limpio, chispeante, para todos los días.",
+      "price": 22000,
+      "variants": [
+        {
+          "id": "decant-5",
+          "name": "Decant 5 ml",
+          "detail": "Atomizador de viaje · unas 70 aplicaciones",
+          "price": 22000
+        },
+        {
+          "id": "frasco-30",
+          "name": "30 ml",
+          "detail": "Frasco de cartera",
+          "price": 89000
+        },
+        {
+          "id": "frasco-50",
+          "name": "50 ml",
+          "detail": "Frasco",
+          "price": 129000
+        },
+        {
+          "id": "frasco-100",
+          "name": "100 ml",
+          "detail": "Frasco grande",
+          "price": 199000
+        }
+      ],
+      "ingredients": [
+        {
+          "name": "Toronja rosada",
+          "removable": false
+        },
+        {
+          "name": "Té blanco",
+          "removable": false
+        },
+        {
+          "name": "Fresia",
+          "removable": false
+        },
+        {
+          "name": "Almizcle",
+          "removable": false
+        }
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "empaque",
+        "tarjeta",
+        "grabado"
+      ],
+      "tagIds": [
+        "vegano"
+      ],
+      "note": "Eau de toilette · dura 5–6 h en la piel. El decant es la forma de probarlo antes del frasco.",
+      "image": {
+        "source": "unsplash",
+        "photoId": "1705899844877-81bb0a0665c1",
+        "focal": {
+          "x": 0.62,
+          "y": 0.5,
+          "zoom": 1
+        },
+        "alt": "Frasco de Toronja y Té"
+      },
+      "available": true,
+      "sortOrder": 8
+    },
+    {
+      "id": "lluvia-en-chitaga",
+      "categoryId": "frescas",
+      "subcategoryId": "frescas-unisex",
+      "groupId": null,
+      "name": "Lluvia en Chitagá",
+      "tagline": "Tierra mojada, menta y aire de páramo.",
+      "description": "Eau de toilette. Abre con menta y ozono; en el corazón, hierba recién cortada; de fondo, tierra húmeda y musgo. El olor del primer aguacero.",
+      "price": 22000,
+      "variants": [
+        {
+          "id": "decant-5",
+          "name": "Decant 5 ml",
+          "detail": "Atomizador de viaje · unas 70 aplicaciones",
+          "price": 22000
+        },
+        {
+          "id": "frasco-30",
+          "name": "30 ml",
+          "detail": "Frasco de cartera",
+          "price": 89000
+        },
+        {
+          "id": "frasco-50",
+          "name": "50 ml",
+          "detail": "Frasco",
+          "price": 129000
+        },
+        {
+          "id": "frasco-100",
+          "name": "100 ml",
+          "detail": "Frasco grande",
+          "price": 199000
+        }
+      ],
+      "ingredients": [
+        {
+          "name": "Menta",
+          "removable": false
+        },
+        {
+          "name": "Ozono",
+          "removable": false
+        },
+        {
+          "name": "Hierba recién cortada",
+          "removable": false
+        },
+        {
+          "name": "Tierra húmeda",
+          "removable": false
+        },
+        {
+          "name": "Musgo",
+          "removable": false
+        }
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "empaque",
+        "tarjeta",
+        "grabado"
+      ],
+      "tagIds": [
+        "casa"
+      ],
+      "note": "Eau de toilette · dura 5–6 h en la piel. El decant es la forma de probarlo antes del frasco.",
+      "image": {
+        "source": "unsplash",
+        "photoId": "1760920250029-36af9369a0bb",
+        "focal": {
+          "x": 0.5,
+          "y": 0.62,
+          "zoom": 1.6
+        },
+        "alt": "Frasco de Lluvia en Chitagá"
+      },
+      "available": true,
+      "sortOrder": 9
+    },
+    {
+      "id": "brisa-de-tayrona",
+      "categoryId": "frescas",
+      "subcategoryId": "frescas-el",
+      "groupId": null,
+      "name": "Brisa de Tayrona",
+      "tagline": "Agua de mar, limón y madera clara.",
+      "description": "Eau de toilette. Abre con limón y notas marinas; en el corazón, salvia; de fondo, madera de deriva y ámbar. Fresco de playa, ligero y fácil.",
+      "price": 22000,
+      "variants": [
+        {
+          "id": "decant-5",
+          "name": "Decant 5 ml",
+          "detail": "Atomizador de viaje · unas 70 aplicaciones",
+          "price": 22000
+        },
+        {
+          "id": "frasco-30",
+          "name": "30 ml",
+          "detail": "Frasco de cartera",
+          "price": 89000
+        },
+        {
+          "id": "frasco-50",
+          "name": "50 ml",
+          "detail": "Frasco",
+          "price": 129000
+        },
+        {
+          "id": "frasco-100",
+          "name": "100 ml",
+          "detail": "Frasco grande",
+          "price": 199000
+        }
+      ],
+      "ingredients": [
+        {
+          "name": "Limón",
+          "removable": false
+        },
+        {
+          "name": "Notas marinas",
+          "removable": false
+        },
+        {
+          "name": "Salvia",
+          "removable": false
+        },
+        {
+          "name": "Madera de deriva",
+          "removable": false
+        },
+        {
+          "name": "Ámbar",
+          "removable": false
+        }
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "empaque",
+        "tarjeta",
+        "grabado"
+      ],
+      "tagIds": [],
+      "note": "Eau de toilette · dura 5–6 h en la piel. El decant es la forma de probarlo antes del frasco.",
+      "image": {
+        "source": "unsplash",
+        "photoId": "1720423514789-15a33e59fc81",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1
+        },
+        "alt": "Frasco de Brisa de Tayrona"
+      },
+      "available": true,
+      "sortOrder": 10
+    },
+    {
+      "id": "niebla-blanca",
+      "categoryId": "frescas",
+      "subcategoryId": "frescas-unisex",
+      "groupId": null,
+      "name": "Niebla Blanca",
+      "tagline": "Algodón limpio, iris y almizcle: piel recién bañada.",
+      "description": "Eau de parfum. Abre con aldehídos; en el corazón, iris y flor de algodón; de fondo, almizcle blanco. Discreto y cercano, se siente al abrazar.",
+      "price": 28000,
+      "variants": [
+        {
+          "id": "decant-5",
+          "name": "Decant 5 ml",
+          "detail": "Atomizador de viaje · unas 70 aplicaciones",
+          "price": 28000
+        },
+        {
+          "id": "frasco-30",
+          "name": "30 ml",
+          "detail": "Frasco de cartera",
+          "price": 109000
+        },
+        {
+          "id": "frasco-50",
+          "name": "50 ml",
+          "detail": "Frasco",
+          "price": 159000
+        },
+        {
+          "id": "frasco-100",
+          "name": "100 ml",
+          "detail": "Frasco grande",
+          "price": 239000
+        }
+      ],
+      "ingredients": [
+        {
+          "name": "Aldehídos",
+          "removable": false
+        },
+        {
+          "name": "Iris",
+          "removable": false
+        },
+        {
+          "name": "Flor de algodón",
+          "removable": false
+        },
+        {
+          "name": "Almizcle blanco",
+          "removable": false
+        }
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "empaque",
+        "tarjeta",
+        "grabado"
+      ],
+      "tagIds": [
+        "vegano"
+      ],
+      "note": "Eau de parfum · dura 8–10 h en la piel. El decant es la forma de probarlo antes del frasco.",
+      "image": {
+        "source": "unsplash",
+        "photoId": "1594125311687-3b1b3eafa9f4",
+        "focal": {
+          "x": 0.5,
+          "y": 0.55,
+          "zoom": 1
+        },
+        "alt": "Frasco de Niebla Blanca"
+      },
+      "available": true,
+      "sortOrder": 11
+    },
+    {
+      "id": "cedro-de-pamplona",
+      "categoryId": "amaderadas",
+      "subcategoryId": "amaderadas-el",
+      "groupId": null,
+      "name": "Cedro de Pamplona",
+      "tagline": "Cedro, pimienta negra y cuero suave.",
+      "description": "Eau de parfum. Abre con pimienta negra; en el corazón, cedro y cuero; de fondo, vetiver y ámbar. Elegante, seco y muy de montaña.",
+      "price": 28000,
+      "variants": [
+        {
+          "id": "decant-5",
+          "name": "Decant 5 ml",
+          "detail": "Atomizador de viaje · unas 70 aplicaciones",
+          "price": 28000
+        },
+        {
+          "id": "frasco-30",
+          "name": "30 ml",
+          "detail": "Frasco de cartera",
+          "price": 109000
+        },
+        {
+          "id": "frasco-50",
+          "name": "50 ml",
+          "detail": "Frasco",
+          "price": 159000
+        },
+        {
+          "id": "frasco-100",
+          "name": "100 ml",
+          "detail": "Frasco grande",
+          "price": 239000
+        }
+      ],
+      "ingredients": [
+        {
+          "name": "Pimienta negra",
+          "removable": false
+        },
+        {
+          "name": "Cedro",
+          "removable": false
+        },
+        {
+          "name": "Cuero",
+          "removable": false
+        },
+        {
+          "name": "Vetiver",
+          "removable": false
+        },
+        {
+          "name": "Ámbar",
+          "removable": false
+        }
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "empaque",
+        "tarjeta",
+        "grabado"
+      ],
+      "tagIds": [
+        "casa"
+      ],
+      "note": "Eau de parfum · dura 8–10 h en la piel. El decant es la forma de probarlo antes del frasco.",
+      "image": {
+        "source": "unsplash",
+        "photoId": "1716857591457-7d7fa45199c6",
+        "focal": {
+          "x": 0.6,
+          "y": 0.5,
+          "zoom": 1.2
+        },
+        "alt": "Frasco de Cedro de Pamplona"
+      },
+      "available": true,
+      "sortOrder": 12
+    },
+    {
+      "id": "vetiver-andino",
+      "categoryId": "amaderadas",
+      "subcategoryId": "amaderadas-el",
+      "groupId": null,
+      "name": "Vetiver Andino",
+      "tagline": "Vetiver ahumado, pomelo y tierra.",
+      "description": "Eau de parfum. Abre con pomelo; en el corazón, vetiver y geranio; de fondo, tierra y humo. Terroso y distinto, para quien no quiere oler a todos.",
+      "price": 28000,
+      "variants": [
+        {
+          "id": "decant-5",
+          "name": "Decant 5 ml",
+          "detail": "Atomizador de viaje · unas 70 aplicaciones",
+          "price": 28000
+        },
+        {
+          "id": "frasco-30",
+          "name": "30 ml",
+          "detail": "Frasco de cartera",
+          "price": 109000
+        },
+        {
+          "id": "frasco-50",
+          "name": "50 ml",
+          "detail": "Frasco",
+          "price": 159000
+        },
+        {
+          "id": "frasco-100",
+          "name": "100 ml",
+          "detail": "Frasco grande",
+          "price": 239000
+        }
+      ],
+      "ingredients": [
+        {
+          "name": "Pomelo",
+          "removable": false
+        },
+        {
+          "name": "Vetiver",
+          "removable": false
+        },
+        {
+          "name": "Geranio",
+          "removable": false
+        },
+        {
+          "name": "Tierra",
+          "removable": false
+        },
+        {
+          "name": "Humo",
+          "removable": false
+        }
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "empaque",
+        "tarjeta",
+        "grabado"
+      ],
+      "tagIds": [],
+      "note": "Eau de parfum · dura 8–10 h en la piel. El decant es la forma de probarlo antes del frasco.",
+      "image": {
+        "source": "unsplash",
+        "photoId": "1705899853374-d91c048b81d2",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1
+        },
+        "alt": "Frasco de Vetiver Andino"
+      },
+      "available": true,
+      "sortOrder": 13
+    },
+    {
+      "id": "sandalo-y-leche",
+      "categoryId": "amaderadas",
+      "subcategoryId": "amaderadas-unisex",
+      "groupId": null,
+      "name": "Sándalo y Leche",
+      "tagline": "Sándalo cremoso con leche de coco.",
+      "description": "Eau de parfum. Abre con cardamomo; en el corazón, sándalo y leche de coco; de fondo, almizcle y vainilla. Suave como un suéter de lana.",
+      "price": 28000,
+      "variants": [
+        {
+          "id": "decant-5",
+          "name": "Decant 5 ml",
+          "detail": "Atomizador de viaje · unas 70 aplicaciones",
+          "price": 28000
+        },
+        {
+          "id": "frasco-30",
+          "name": "30 ml",
+          "detail": "Frasco de cartera",
+          "price": 109000
+        },
+        {
+          "id": "frasco-50",
+          "name": "50 ml",
+          "detail": "Frasco",
+          "price": 159000
+        },
+        {
+          "id": "frasco-100",
+          "name": "100 ml",
+          "detail": "Frasco grande",
+          "price": 239000
+        }
+      ],
+      "ingredients": [
+        {
+          "name": "Cardamomo",
+          "removable": false
+        },
+        {
+          "name": "Sándalo",
+          "removable": false
+        },
+        {
+          "name": "Leche de coco",
+          "removable": false
+        },
+        {
+          "name": "Almizcle",
+          "removable": false
+        },
+        {
+          "name": "Vainilla",
+          "removable": false
+        }
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "empaque",
+        "tarjeta",
+        "grabado"
+      ],
+      "tagIds": [],
+      "note": "Eau de parfum · dura 8–10 h en la piel. El decant es la forma de probarlo antes del frasco.",
+      "image": {
+        "source": "unsplash",
+        "photoId": "1733660227163-01bc46e0d7d7",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1
+        },
+        "alt": "Frasco de Sándalo y Leche"
+      },
+      "available": true,
+      "sortOrder": 14
+    },
+    {
+      "id": "palo-santo",
+      "categoryId": "amaderadas",
+      "subcategoryId": "amaderadas-unisex",
+      "groupId": null,
+      "name": "Palo Santo",
+      "tagline": "Palo santo, incienso y resina dulce.",
+      "description": "Extrait de parfum. Abre con elemí; en el corazón, palo santo y incienso; de fondo, resina de benjuí y cedro. Profundo y meditativo: dos atomizaciones bastan.",
+      "price": 35000,
+      "variants": [
+        {
+          "id": "decant-5",
+          "name": "Decant 5 ml",
+          "detail": "Atomizador de viaje · unas 70 aplicaciones",
+          "price": 35000
+        },
+        {
+          "id": "frasco-30",
+          "name": "30 ml",
+          "detail": "Frasco de cartera",
+          "price": 139000
+        },
+        {
+          "id": "frasco-50",
+          "name": "50 ml",
+          "detail": "Frasco",
+          "price": 199000
+        }
+      ],
+      "ingredients": [
+        {
+          "name": "Elemí",
+          "removable": false
+        },
+        {
+          "name": "Palo santo",
+          "removable": false
+        },
+        {
+          "name": "Incienso",
+          "removable": false
+        },
+        {
+          "name": "Resina de benjuí",
+          "removable": false
+        },
+        {
+          "name": "Cedro",
+          "removable": false
+        }
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "empaque",
+        "tarjeta",
+        "grabado"
+      ],
+      "tagIds": [
+        "picante"
+      ],
+      "note": "Extrait de parfum · dura más de 12 h en la piel. El decant es la forma de probarlo antes del frasco.",
+      "image": {
+        "source": "unsplash",
+        "photoId": "1647507653704-bde7f2d6dbf0",
+        "focal": {
+          "x": 0.5,
+          "y": 0.45,
+          "zoom": 1.3
+        },
+        "alt": "Frasco de Palo Santo"
+      },
+      "available": true,
+      "sortOrder": 15
+    },
+    {
+      "id": "higo-y-madera",
+      "categoryId": "amaderadas",
+      "subcategoryId": "amaderadas-ella",
+      "groupId": null,
+      "name": "Higo y Madera",
+      "tagline": "Higo verde y madera de higuera.",
+      "description": "Eau de toilette. Abre con hoja de higo; en el corazón, higo y leche de coco; de fondo, cedro. Verde, lechoso y diferente.",
+      "price": 22000,
+      "variants": [
+        {
+          "id": "decant-5",
+          "name": "Decant 5 ml",
+          "detail": "Atomizador de viaje · unas 70 aplicaciones",
+          "price": 22000
+        },
+        {
+          "id": "frasco-30",
+          "name": "30 ml",
+          "detail": "Frasco de cartera",
+          "price": 89000
+        },
+        {
+          "id": "frasco-50",
+          "name": "50 ml",
+          "detail": "Frasco",
+          "price": 129000
+        },
+        {
+          "id": "frasco-100",
+          "name": "100 ml",
+          "detail": "Frasco grande",
+          "price": 199000
+        }
+      ],
+      "ingredients": [
+        {
+          "name": "Hoja de higo",
+          "removable": false
+        },
+        {
+          "name": "Higo",
+          "removable": false
+        },
+        {
+          "name": "Leche de coco",
+          "removable": false
+        },
+        {
+          "name": "Cedro",
+          "removable": false
+        }
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "empaque",
+        "tarjeta",
+        "grabado"
+      ],
+      "tagIds": [
+        "nuevo"
+      ],
+      "note": "Eau de toilette · dura 5–6 h en la piel. El decant es la forma de probarlo antes del frasco.",
+      "image": {
+        "source": "unsplash",
+        "photoId": "1654867338064-062c9f61fc84",
+        "focal": {
+          "x": 0.5,
+          "y": 0.45,
+          "zoom": 1
+        },
+        "alt": "Frasco de Higo y Madera"
+      },
+      "available": true,
+      "sortOrder": 16
+    },
+    {
+      "id": "ambar-de-noche",
+      "categoryId": "orientales",
+      "subcategoryId": "orientales-ella",
+      "groupId": null,
+      "name": "Ámbar de Noche",
+      "tagline": "Ámbar, vainilla y sándalo para la noche.",
+      "description": "Eau de parfum. Abre con bergamota y pimienta rosa; en el corazón, jazmín y iris; de fondo, ámbar, vainilla y sándalo. El más pedido de la casa para salir.",
+      "price": 28000,
+      "variants": [
+        {
+          "id": "decant-5",
+          "name": "Decant 5 ml",
+          "detail": "Atomizador de viaje · unas 70 aplicaciones",
+          "price": 28000
+        },
+        {
+          "id": "frasco-30",
+          "name": "30 ml",
+          "detail": "Frasco de cartera",
+          "price": 109000
+        },
+        {
+          "id": "frasco-50",
+          "name": "50 ml",
+          "detail": "Frasco",
+          "price": 159000
+        },
+        {
+          "id": "frasco-100",
+          "name": "100 ml",
+          "detail": "Frasco grande",
+          "price": 239000
+        }
+      ],
+      "ingredients": [
+        {
+          "name": "Bergamota",
+          "removable": false
+        },
+        {
+          "name": "Pimienta rosa",
+          "removable": false
+        },
+        {
+          "name": "Jazmín",
+          "removable": false
+        },
+        {
+          "name": "Iris",
+          "removable": false
+        },
+        {
+          "name": "Ámbar",
+          "removable": false
+        },
+        {
+          "name": "Vainilla",
+          "removable": false
+        },
+        {
+          "name": "Sándalo",
+          "removable": false
+        }
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "empaque",
+        "tarjeta",
+        "grabado"
+      ],
+      "tagIds": [
+        "casa"
+      ],
+      "note": "Eau de parfum · dura 8–10 h en la piel. El decant es la forma de probarlo antes del frasco.",
+      "image": {
+        "source": "unsplash",
+        "photoId": "1617661338085-d1ec6a89a6d8",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1
+        },
+        "alt": "Frasco de Ámbar de Noche"
+      },
+      "available": true,
+      "sortOrder": 17
+    },
+    {
+      "id": "cacao-y-tonka",
+      "categoryId": "orientales",
+      "subcategoryId": "orientales-ella",
+      "groupId": null,
+      "name": "Cacao y Tonka",
+      "tagline": "Cacao amargo, haba tonka y un toque de rosa.",
+      "description": "Extrait de parfum. Abre con naranja amarga; en el corazón, cacao y rosa; de fondo, haba tonka y vainilla. Goloso pero adulto.",
+      "price": 35000,
+      "variants": [
+        {
+          "id": "decant-5",
+          "name": "Decant 5 ml",
+          "detail": "Atomizador de viaje · unas 70 aplicaciones",
+          "price": 35000
+        },
+        {
+          "id": "frasco-30",
+          "name": "30 ml",
+          "detail": "Frasco de cartera",
+          "price": 139000
+        },
+        {
+          "id": "frasco-50",
+          "name": "50 ml",
+          "detail": "Frasco",
+          "price": 199000
+        }
+      ],
+      "ingredients": [
+        {
+          "name": "Naranja amarga",
+          "removable": false
+        },
+        {
+          "name": "Cacao",
+          "removable": false
+        },
+        {
+          "name": "Rosa",
+          "removable": false
+        },
+        {
+          "name": "Haba tonka",
+          "removable": false
+        },
+        {
+          "name": "Vainilla",
+          "removable": false
+        }
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "empaque",
+        "tarjeta",
+        "grabado"
+      ],
+      "tagIds": [],
+      "note": "Extrait de parfum · dura más de 12 h en la piel. El decant es la forma de probarlo antes del frasco.",
+      "image": {
+        "source": "unsplash",
+        "photoId": "1617839400561-d55457a29da2",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1
+        },
+        "alt": "Frasco de Cacao y Tonka"
+      },
+      "available": true,
+      "sortOrder": 18
+    },
+    {
+      "id": "tabaco-de-barichara",
+      "categoryId": "orientales",
+      "subcategoryId": "orientales-el",
+      "groupId": null,
+      "name": "Tabaco de Barichara",
+      "tagline": "Hoja de tabaco, miel y cuero.",
+      "description": "Extrait de parfum. Abre con clavo; en el corazón, hoja de tabaco y miel; de fondo, cuero y haba tonka. Cálido y envolvente, mejor en clima frío.",
+      "price": 35000,
+      "variants": [
+        {
+          "id": "decant-5",
+          "name": "Decant 5 ml",
+          "detail": "Atomizador de viaje · unas 70 aplicaciones",
+          "price": 35000
+        },
+        {
+          "id": "frasco-30",
+          "name": "30 ml",
+          "detail": "Frasco de cartera",
+          "price": 139000
+        },
+        {
+          "id": "frasco-50",
+          "name": "50 ml",
+          "detail": "Frasco",
+          "price": 199000
+        }
+      ],
+      "ingredients": [
+        {
+          "name": "Clavo",
+          "removable": false
+        },
+        {
+          "name": "Hoja de tabaco",
+          "removable": false
+        },
+        {
+          "name": "Miel",
+          "removable": false
+        },
+        {
+          "name": "Cuero",
+          "removable": false
+        },
+        {
+          "name": "Haba tonka",
+          "removable": false
+        }
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "empaque",
+        "tarjeta",
+        "grabado"
+      ],
+      "tagIds": [
+        "picante"
+      ],
+      "note": "Extrait de parfum · dura más de 12 h en la piel. El decant es la forma de probarlo antes del frasco.",
+      "image": {
+        "source": "unsplash",
+        "photoId": "1720423738890-37689a6f6b95",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1
+        },
+        "alt": "Frasco de Tabaco de Barichara"
+      },
+      "available": true,
+      "sortOrder": 19
+    },
+    {
+      "id": "cafe-de-altura",
+      "categoryId": "orientales",
+      "subcategoryId": "orientales-unisex",
+      "groupId": null,
+      "name": "Café de Altura",
+      "tagline": "Café tostado, cardamomo y vainilla.",
+      "description": "Eau de parfum. Abre con cardamomo; en el corazón, café tostado y iris; de fondo, vainilla y cedro. Huele a la primera taza de la mañana.",
+      "price": 28000,
+      "variants": [
+        {
+          "id": "decant-5",
+          "name": "Decant 5 ml",
+          "detail": "Atomizador de viaje · unas 70 aplicaciones",
+          "price": 28000
+        },
+        {
+          "id": "frasco-30",
+          "name": "30 ml",
+          "detail": "Frasco de cartera",
+          "price": 109000
+        },
+        {
+          "id": "frasco-50",
+          "name": "50 ml",
+          "detail": "Frasco",
+          "price": 159000
+        },
+        {
+          "id": "frasco-100",
+          "name": "100 ml",
+          "detail": "Frasco grande",
+          "price": 239000
+        }
+      ],
+      "ingredients": [
+        {
+          "name": "Cardamomo",
+          "removable": false
+        },
+        {
+          "name": "Café tostado",
+          "removable": false
+        },
+        {
+          "name": "Iris",
+          "removable": false
+        },
+        {
+          "name": "Vainilla",
+          "removable": false
+        },
+        {
+          "name": "Cedro",
+          "removable": false
+        }
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "empaque",
+        "tarjeta",
+        "grabado"
+      ],
+      "tagIds": [],
+      "note": "Eau de parfum · dura 8–10 h en la piel. El decant es la forma de probarlo antes del frasco.",
+      "image": {
+        "source": "unsplash",
+        "photoId": "1515377905703-c4788e51af15",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1
+        },
+        "alt": "Frasco de Café de Altura"
+      },
+      "available": true,
+      "sortOrder": 20
+    },
+    {
+      "id": "oud-de-selva",
+      "categoryId": "orientales",
+      "subcategoryId": "orientales-unisex",
+      "groupId": null,
+      "name": "Oud de Selva",
+      "tagline": "Oud, rosa y azafrán: el más intenso del catálogo.",
+      "description": "Extrait de parfum. Abre con azafrán; en el corazón, rosa y oud; de fondo, pachulí y ámbar. Para quien ya sabe lo que le gusta.",
+      "price": 35000,
+      "variants": [
+        {
+          "id": "decant-5",
+          "name": "Decant 5 ml",
+          "detail": "Atomizador de viaje · unas 70 aplicaciones",
+          "price": 35000
+        },
+        {
+          "id": "frasco-30",
+          "name": "30 ml",
+          "detail": "Frasco de cartera",
+          "price": 139000
+        },
+        {
+          "id": "frasco-50",
+          "name": "50 ml",
+          "detail": "Frasco",
+          "price": 199000
+        }
+      ],
+      "ingredients": [
+        {
+          "name": "Azafrán",
+          "removable": false
+        },
+        {
+          "name": "Rosa",
+          "removable": false
+        },
+        {
+          "name": "Oud",
+          "removable": false
+        },
+        {
+          "name": "Pachulí",
+          "removable": false
+        },
+        {
+          "name": "Ámbar",
+          "removable": false
+        }
+      ],
+      "includedToppings": 0,
+      "modifierIds": [
+        "empaque",
+        "tarjeta",
+        "grabado"
+      ],
+      "tagIds": [
+        "picante"
+      ],
+      "note": "Extrait de parfum · dura más de 12 h en la piel. El decant es la forma de probarlo antes del frasco.",
+      "image": {
+        "source": "unsplash",
+        "photoId": "1723400123074-903abb1520ee",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1
+        },
+        "alt": "Frasco de Oud de Selva"
+      },
+      "available": true,
+      "sortOrder": 21
+    },
+    {
+      "groupId": null,
+      "available": true,
+      "sortOrder": 1,
+      "id": "set-descubrimiento",
+      "categoryId": "sets",
+      "subcategoryId": "sets-regalo",
+      "name": "Set de descubrimiento",
+      "tagline": "Tres decants de 5 ml para encontrar tu fragancia.",
+      "description": "Eliges tres fragancias del catálogo y te llegan en decants de 5 ml dentro de un estuche de cartón con tarjetas de notas para que sepas qué estás oliendo.",
+      "price": 75000,
+      "variants": [],
+      "ingredients": [],
+      "includedToppings": 0,
+      "optionGroupIds": [
+        "tres-fragancias"
+      ],
+      "modifierIds": [
+        "empaque",
+        "tarjeta"
+      ],
+      "tagIds": [
+        "compartir",
+        "casa"
+      ],
+      "note": "Si compras un frasco de 50 o 100 ml en los 30 días siguientes, te descontamos el valor del set.",
+      "image": {
+        "source": "unsplash",
+        "photoId": "1654524436517-c48a2f27c087",
+        "focal": {
+          "x": 0.5,
+          "y": 0.45,
+          "zoom": 1.6
+        },
+        "alt": "Dos frascos pequeños sobre una caja blanca"
+      }
+    },
+    {
+      "groupId": null,
+      "available": true,
+      "sortOrder": 2,
+      "id": "duo-de-viaje",
+      "categoryId": "sets",
+      "subcategoryId": "sets-regalo",
+      "name": "Dúo de viaje",
+      "tagline": "Dos atomizadores de 10 ml en estuche de tela.",
+      "description": "Dos fragancias en atomizadores recargables de 10 ml, en un estuche de tela que cabe en cualquier bolso. Ideal para llevar una de día y otra de noche.",
+      "price": 69000,
+      "variants": [],
+      "ingredients": [],
+      "includedToppings": 0,
+      "optionGroupIds": [
+        "dos-fragancias"
+      ],
+      "modifierIds": [
+        "empaque",
+        "tarjeta"
+      ],
+      "tagIds": [
+        "compartir"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1654524438960-ab0a67b4e22f",
+        "focal": {
+          "x": 0.5,
+          "y": 0.45,
+          "zoom": 1.5
+        },
+        "alt": "Dos frascos pequeños sobre tela roja"
+      }
+    },
+    {
+      "groupId": null,
+      "available": true,
+      "sortOrder": 3,
+      "id": "caja-nacar",
+      "categoryId": "sets",
+      "subcategoryId": "sets-regalo",
+      "name": "Caja Nácar",
+      "tagline": "Perfume de 50 ml, vela y crema a juego.",
+      "description": "La caja de regalo completa: un perfume de 50 ml, una vela de soya y una crema corporal de la misma fragancia, con papel de seda y tarjeta.",
+      "price": 219000,
+      "variants": [
+        {
+          "id": "jazmin",
+          "name": "Jazmín de Patio",
+          "detail": "Floral, blanco y luminoso",
+          "price": 219000
+        },
+        {
+          "id": "ambar",
+          "name": "Ámbar de Noche",
+          "detail": "Ámbar, vainilla y sándalo",
+          "price": 219000
+        },
+        {
+          "id": "cedro",
+          "name": "Cedro de Pamplona",
+          "detail": "Cedro, pimienta y cuero",
+          "price": 219000
+        }
+      ],
+      "ingredients": [],
+      "includedToppings": 0,
+      "modifierIds": [
+        "tarjeta"
+      ],
+      "tagIds": [
+        "compartir",
+        "nuevo"
+      ],
+      "note": "Pídela con dos días de anticipación.",
+      "image": {
+        "source": "unsplash",
+        "photoId": "1707944145479-12755f0434d8",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1
+        },
+        "alt": "Caja de regalo verde atada con cuerda junto a unas rosas"
+      }
+    },
+    {
+      "groupId": null,
+      "available": true,
+      "sortOrder": 4,
+      "id": "crema-corporal",
+      "categoryId": "cuerpo-hogar",
+      "subcategoryId": "cuerpo",
+      "name": "Crema corporal perfumada",
+      "tagline": "Hidratación ligera con la fragancia que elijas.",
+      "description": "Crema de karité y aloe de absorción rápida, perfumada con nuestras fragancias. Ayuda a que el perfume dure más en la piel.",
+      "price": 49000,
+      "variants": [
+        {
+          "id": "jazmin",
+          "name": "Jazmín de Patio",
+          "detail": "200 ml",
+          "price": 49000
+        },
+        {
+          "id": "niebla",
+          "name": "Niebla Blanca",
+          "detail": "200 ml",
+          "price": 49000
+        },
+        {
+          "id": "ambar",
+          "name": "Ámbar de Noche",
+          "detail": "200 ml",
+          "price": 49000
+        }
+      ],
+      "ingredients": [],
+      "includedToppings": 0,
+      "modifierIds": [
+        "empaque"
+      ],
+      "tagIds": [
+        "vegano"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1763503839418-2b45c3d7a3c3",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1.4
+        },
+        "alt": "Tarro de crema blanca sobre una piedra"
+      }
+    },
+    {
+      "groupId": null,
+      "available": true,
+      "sortOrder": 5,
+      "id": "gel-de-ducha",
+      "categoryId": "cuerpo-hogar",
+      "subcategoryId": "cuerpo",
+      "name": "Gel de ducha",
+      "tagline": "Espuma suave que deja la piel perfumada.",
+      "description": "Gel de ducha sin sulfatos agresivos, con la fragancia que elijas. Frasco con dosificador de 300 ml.",
+      "price": 39000,
+      "variants": [
+        {
+          "id": "mandarina",
+          "name": "Mandarina Verde",
+          "detail": "300 ml",
+          "price": 39000
+        },
+        {
+          "id": "lluvia",
+          "name": "Lluvia en Chitagá",
+          "detail": "300 ml",
+          "price": 39000
+        }
+      ],
+      "ingredients": [],
+      "includedToppings": 0,
+      "modifierIds": [],
+      "tagIds": [
+        "vegano"
+      ],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1597931752949-98c74b5b159f",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1
+        },
+        "alt": "Frasco blanco con dosificador"
+      }
+    },
+    {
+      "groupId": null,
+      "available": true,
+      "sortOrder": 6,
+      "id": "vela-de-soya",
+      "categoryId": "cuerpo-hogar",
+      "subcategoryId": "hogar",
+      "name": "Vela de soya",
+      "tagline": "Cera de soya y mecha de algodón, 40 horas.",
+      "description": "Vela de cera de soya en vaso de vidrio ámbar reutilizable. Mecha de algodón, unas 40 horas de duración.",
+      "price": 59000,
+      "variants": [
+        {
+          "id": "cafe",
+          "name": "Café de Altura",
+          "detail": "180 g",
+          "price": 59000
+        },
+        {
+          "id": "cedro",
+          "name": "Cedro de Pamplona",
+          "detail": "180 g",
+          "price": 59000
+        },
+        {
+          "id": "jazmin",
+          "name": "Jazmín de Patio",
+          "detail": "180 g",
+          "price": 59000
+        }
+      ],
+      "ingredients": [],
+      "includedToppings": 0,
+      "modifierIds": [
+        "empaque",
+        "tarjeta"
+      ],
+      "tagIds": [
+        "casa"
+      ],
+      "note": "Corta la mecha a 5 mm antes de cada uso para que no haga humo.",
+      "image": {
+        "source": "unsplash",
+        "photoId": "1612293905607-b003de9e54fb",
+        "focal": {
+          "x": 0.45,
+          "y": 0.5,
+          "zoom": 1
+        },
+        "alt": "Mano encendiendo una vela en un vaso ámbar"
+      }
+    },
+    {
+      "groupId": null,
+      "available": true,
+      "sortOrder": 7,
+      "id": "difusor",
+      "categoryId": "cuerpo-hogar",
+      "subcategoryId": "hogar",
+      "name": "Difusor de varillas",
+      "tagline": "Aroma continuo para la sala o el cuarto.",
+      "description": "Difusor con varillas de ratán y la fragancia que elijas. Voltea las varillas cada semana para avivar el aroma.",
+      "price": 69000,
+      "variants": [
+        {
+          "id": "difusor-100",
+          "name": "100 ml",
+          "detail": "Hasta 6 semanas",
+          "price": 69000
+        },
+        {
+          "id": "difusor-200",
+          "name": "200 ml",
+          "detail": "Hasta 12 semanas",
+          "price": 109000
+        }
+      ],
+      "ingredients": [],
+      "includedToppings": 0,
+      "modifierIds": [
+        "empaque",
+        "tarjeta"
+      ],
+      "tagIds": [],
+      "note": null,
+      "image": {
+        "source": "unsplash",
+        "photoId": "1750433101188-8284e112d250",
+        "focal": {
+          "x": 0.5,
+          "y": 0.5,
+          "zoom": 1
+        },
+        "alt": "Difusor de varillas sobre una base de madera"
+      }
+    }
+  ]
+}

@@ -3,6 +3,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { MenuScreen } from './components/MenuScreen'
 import { toMenu } from './data/adapter'
 import { fetchCarta } from './data/repository'
+import { L } from './lib/labels'
 import type { Menu } from './types'
 
 function useSize<T extends HTMLElement>() {
@@ -61,7 +62,7 @@ export default function App() {
                 {load.status === 'loading' ? (
                   <motion.span
                     role="status"
-                    aria-label="Cargando la carta"
+                    aria-label={`Cargando ${L.menu}`}
                     animate={{ opacity: [0.4, 1, 0.4] }}
                     transition={{ duration: 1.2, repeat: Infinity, ease: 'easeInOut' }}
                     className="grid size-14 place-items-center rounded-full bg-espresso font-display text-2xl font-semibold italic text-cream"
@@ -70,7 +71,7 @@ export default function App() {
                   </motion.span>
                 ) : (
                   <div role="alert">
-                    <p className="font-display text-xl font-semibold">No pudimos cargar la carta</p>
+                    <p className="font-display text-xl font-semibold">No pudimos cargar {L.menu}</p>
                     <p className="mt-1 text-sm text-cocoa">{load.message}</p>
                     <button type="button" onClick={retry} className="mt-5 min-h-11 rounded-full bg-espresso px-6 text-sm font-bold text-cream">
                       Reintentar

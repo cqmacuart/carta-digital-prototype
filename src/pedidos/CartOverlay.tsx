@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from 'motion/react'
 import { ChevronLeft, Clock, Minus, Pencil, Plus, ShoppingBag, Trash2 } from 'lucide-react'
 import { useMemo, useState, type ReactNode } from 'react'
 import { money } from '../lib/format'
+import { cap, L } from '../lib/labels'
 import { useOpenStatus } from '../lib/useOpenStatus'
 import type { Menu } from '../types'
 import {
@@ -164,9 +165,9 @@ function Panel({ menu, onOpened }: { menu: Menu; onOpened: () => void }) {
               <ShoppingBag size={28} strokeWidth={2} aria-hidden />
             </span>
             <p className="mt-4 font-display text-xl font-semibold text-espresso">Aún no has agregado nada</p>
-            <p className="mt-1 text-[14px] text-cocoa">Abre un plato y toca “Agregar”.</p>
+            <p className="mt-1 text-[14px] text-cocoa">Abre un {L.item[0]} y toca “Agregar”.</p>
             <button type="button" onClick={close} className="mt-6 min-h-11 rounded-full bg-espresso px-6 text-[14px] font-bold text-cream">
-              Ver la carta
+              Ver {L.menu}
             </button>
           </div>
         ) : (
@@ -184,7 +185,7 @@ function Panel({ menu, onOpened }: { menu: Menu; onOpened: () => void }) {
                   const d = describe(item, l)
                   const details = [
                     ...d.groups.map((g) => `${g.name}: ${g.values.join(', ')}`),
-                    d.toppings.length ? `Toppings: ${d.toppings.join(', ')}` : '',
+                    d.toppings.length ? `${cap(L.topping[1])}: ${d.toppings.join(', ')}` : '',
                     ...d.extras.map((e) => `+ ${e.name}`),
                     ...d.without.map((w) => `Sin ${w.toLowerCase()}`),
                     d.note ? `“${d.note}”` : '',

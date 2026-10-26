@@ -1,4 +1,5 @@
 import type { Menu, MenuItem } from '../types'
+import { cap, L } from './labels'
 
 /** Accent- and case-insensitive form used for matching ("Café" ≈ "cafe"). */
 export const fold = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
@@ -28,9 +29,9 @@ export function buildIndex(menu: Menu): SearchIndex {
         ...(cat.subcategories.length > 1 ? field('Subcategoría', sub?.name, 3) : []),
         ...field('Grupo', item.group, 3),
         ...(item.tags ?? []).flatMap((t) => field('Etiqueta', t.label, 3)),
-        ...(item.ingredients ?? []).flatMap((i) => field('Ingrediente', i, 2.5)),
-        ...(item.variants ?? []).flatMap((v) => [...field('Variante', v.name, 2.5), ...field('Variante', v.detail, 2)]),
-        ...(item.modifiers ?? []).flatMap((m) => field('Adición', m.name, 1.5)),
+        ...(item.ingredients ?? []).flatMap((i) => field(cap(L.ingredient[0]), i, 2.5)),
+        ...(item.variants ?? []).flatMap((v) => [...field(cap(L.variant[0]), v.name, 2.5), ...field(cap(L.variant[0]), v.detail, 2)]),
+        ...(item.modifiers ?? []).flatMap((m) => field(cap(L.modifier[0]), m.name, 1.5)),
         ...field('Descripción', item.tagline, 1.2),
         // toppings are left out on purpose: the same pool is on every dish that has toppings,
         // so "chocolate" would list every waffle instead of the dishes made with chocolate

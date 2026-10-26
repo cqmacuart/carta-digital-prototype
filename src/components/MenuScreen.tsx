@@ -10,6 +10,7 @@ import { SearchOverlay } from './SearchOverlay'
 import { buildIndex } from '../lib/search'
 import { useOpenStatus } from '../lib/useOpenStatus'
 import { usePedidos } from '../lib/pedidos'
+import { cap, count, L } from '../lib/labels'
 
 const HEADER = 64
 /** Category name + subcategory chips */
@@ -54,7 +55,7 @@ function Count({ n, active, fill, text, small = false }: { n: number; active: bo
         active ? '' : 'bg-espresso/10 text-espresso/70'
       }`}
       style={active ? { backgroundColor: fill, color: text } : undefined}
-      aria-label={`${n} ${n === 1 ? 'plato' : 'platos'}`}
+      aria-label={count(n, L.item)}
     >
       {n}
     </motion.span>
@@ -72,7 +73,7 @@ function SwipeHint({ side, left, word, onStep }: { side: 'prev' | 'next'; left?:
   return (
     <motion.button
       type="button"
-      aria-label={side === 'next' ? 'Plato siguiente' : 'Plato anterior'}
+      aria-label={`${cap(L.item[0])} ${side === 'next' ? 'siguiente' : 'anterior'}`}
       onClick={onStep}
       whileTap={{ scale: 0.85, x: side === 'next' ? 4 : -4 }}
       initial={{ opacity: 0, x: side === 'next' ? -6 : 6 }}
@@ -474,7 +475,7 @@ export function MenuScreen({ width, height, menu }: Props) {
           </p>
           <motion.button
             type="button"
-            aria-label="Buscar en la carta"
+            aria-label={`Buscar en ${L.menu}`}
             aria-haspopup="dialog"
             whileTap={{ scale: 0.9 }}
             transition={TAP}
@@ -693,7 +694,7 @@ export function MenuScreen({ width, height, menu }: Props) {
 
       {/* dish sheet, wearing the category's colour */}
       <motion.section
-        aria-label="Descripción del plato"
+        aria-label={`Descripción del ${L.item[0]}`}
         drag="y"
         dragListener={false}
         dragControls={dragControls}

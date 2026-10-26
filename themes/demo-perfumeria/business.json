@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "tenantId": "f24765d5-3ca4-4cd3-9536-871a0995a226",
+  "name": "Nácar",
+  "tagline": "perfumería",
+  "kind": "catalogo",
+  "legal": {
+    "name": null,
+    "taxId": null,
+    "dataPolicyUrl": "politica-datos.html"
+  },
+  "contact": {
+    "phone": null,
+    "whatsapp": null,
+    "email": null,
+    "website": null
+  },
+  "social": {
+    "instagram": null,
+    "facebook": null,
+    "tiktok": null
+  },
+  "payments": [
+    "efectivo",
+    "tarjeta",
+    "nequi",
+    "transferencia"
+  ],
+  "locale": "es-CO",
+  "currency": "COP",
+  "timezone": "America/Bogota",
+  "defaultBranchId": "centro",
+  "branches": [
+    {
+      "id": "centro",
+      "name": "Centro",
+      "address": "Calle 3 # 3-03",
+      "city": "Pamplona",
+      "region": "Norte de Santander",
+      "country": "CO",
+      "geo": null,
+      "mapsUrl": null,
+      "phone": null,
+      "whatsapp": null,
+      "services": [
+        "para-llevar",
+        "domicilio"
+      ],
+      "hours": [
+        {
+          "day": 1,
+          "open": "09:00",
+          "close": "19:30"
+        },
+        {
+          "day": 2,
+          "open": "09:00",
+          "close": "19:30"
+        },
+        {
+          "day": 3,
+          "open": "09:00",
+          "close": "19:30"
+        },
+        {
+          "day": 4,
+          "open": "09:00",
+          "close": "19:30"
+        },
+        {
+          "day": 5,
+          "open": "09:00",
+          "close": "19:30"
+        },
+        {
+          "day": 6,
+          "open": "09:00",
+          "close": "19:30"
+        },
+        {
+          "day": 0,
+          "open": "10:00",
+          "close": "14:00"
+        }
+      ]
+    }
+  ],
+  "ordering": {
+    "enabled": true,
+    "whatsapp": "+573184163107",
+    "modes": [
+      "domicilio",
+      "para-llevar"
+    ],
+    "minOrder": null,
+    "deliveryFee": 6000
+  }
+}
