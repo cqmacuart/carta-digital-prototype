@@ -12,10 +12,14 @@
       h2 { font-size: 18px; margin: 28px 0 6px; }
       .note { background: #fff8; border-radius: 14px; padding: 12px 16px; font-size: 14px; }
       a { color: #8e3b1d; }
+      .back { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 18px; border-radius: 999px;
+        background: #2a1a12; color: #f4ebdf; font-weight: 700; font-size: 15px; text-decoration: none; }
+      .back.top { margin-bottom: 20px; background: #fff9; color: #2a1a12; }
     </style>
   </head>
   <body>
     <main>
+      <a class="back top" href="./" onclick="if (document.referrer.startsWith(location.origin)) { history.back(); return false }">← Volver a la carta</a>
       <h1>Política de tratamiento de datos personales</h1>
       <p>Terra · café · cocina</p>
       <p class="note">
@@ -53,6 +57,8 @@
 
       <h2>Vigencia</h2>
       <p>Esta política rige desde su publicación y la actualizaremos si cambia el uso de tus datos.</p>
+
+      <p style="margin-top: 32px"><a class="back" href="./" onclick="if (document.referrer.startsWith(location.origin)) { history.back(); return false }">← Volver a la carta</a></p>
     </main>
   </body>
 </html>

@@ -4,7 +4,22 @@ import { useMemo, useState, type ReactNode } from 'react'
 import { money } from '../lib/format'
 import { useOpenStatus } from '../lib/useOpenStatus'
 import type { Menu } from '../types'
-import { clearCart, describe, setCartOpen, setForm, setQty, totals, unitPrice, updateLine, useCart, type Form, type Line } from './cart'
+import {
+  cashAmount,
+  clearCart,
+  describe,
+  leavingForPolicy,
+  setCartOpen,
+  setForm,
+  setQty,
+  totals,
+  unitPrice,
+  updateLine,
+  useCart,
+  type Form,
+  type Line,
+  type Totals,
+} from './cart'
 import { ItemOptions } from './ItemOptions'
 import { MODE_LABEL, orderMessage, PAYMENT_LABEL, whatsappLink } from './message'
 
@@ -17,8 +32,9 @@ type Props = {
 
 const TAP = { type: 'spring', stiffness: 520, damping: 15 } as const
 
-/** data policy: absolute URL as is, a relative one next to the carta (themes/<slug>/public/) */
-const policyHref = (url: string) => (/^https?:\/\//.test(url) ? url : `${import.meta.env.BASE_URL}${url.replace(/^\.?\//, '')}`)
+/** an absolute policy URL is someone else's page (new tab); a relative one sits next to the carta (themes/<slug>/public/) */
+const isExternal = (url: string) => /^https?:\/\//.test(url)
+const policyHref = (url: string) => (isExternal(url) ? url : `${import.meta.env.BASE_URL}${url.replace(/^\.?\//, '')}`)
 
 const field =
   'w-full rounded-2xl bg-white/85 px-4 py-3 text-[16px] font-semibold text-espresso outline-none ring-1 ring-white shadow-[0_6px_18px_-12px_rgba(42,26,18,.45)] placeholder:font-medium placeholder:text-cocoa/70 focus:ring-2 focus:ring-espresso/30'
@@ -44,15 +60,17 @@ function Heading({ children }: { children: ReactNode }) {
 }
 
 /** What is still missing before the order can go, in the customer's words; null = ready to send. */
-function blocker(menu: Menu, lines: Line[], form: Form, subtotal: number) {
+function blocker(menu: Menu, lines: Line[], form: Form, t: Totals) {
   const o = menu.order!
   if (!lines.length) return 'Tu pedido está vacío'
-  if (o.minOrder && subtotal < o.minOrder) return `El pedido mínimo es ${money(o.minOrder)}`
+  if (o.minOrder && t.subtotal < o.minOrder) return `El pedido mínimo es ${money(o.minOrder)}`
   if (!form.mode) return 'Elige cómo lo quieres'
   if (!form.name.trim()) return 'Escribe tu nombre'
   if (form.mode === 'domicilio' && !form.address.trim()) return 'Escribe la dirección'
   if (form.mode === 'mesa' && !form.table.trim()) return 'Escribe el número de mesa'
   if (o.payments.length && !form.payment) return 'Elige cómo pagas'
+  const cash = form.payment === 'efectivo' && form.mode === 'domicilio' ? cashAmount(form) : null
+  if (cash && cash < t.total) return `Con ${money(cash)} no alcanza para ${money(t.total)}`
   if (!form.consent) return 'Autoriza el uso de tus datos'
   return null
 }
@@ -77,7 +95,8 @@ function Panel({ menu, onOpened }: { menu: Menu; onOpened: () => void }) {
   const mode = form.mode ?? (order.modes.length === 1 ? order.modes[0] : null)
   const t = totals(menu, lines, mode)
   const filled = { ...form, mode }
-  const stop = blocker(menu, lines, filled, t.subtotal)
+  const stop = blocker(menu, lines, filled, t)
+  const cash = cashAmount(form)
   const [editing, setEditing] = useState<string | null>(null)
   const [confirmClear, setConfirmClear] = useState(false)
   const [sent, setSent] = useState(false)
@@ -322,12 +341,24 @@ function Panel({ menu, onOpened }: { menu: Menu; onOpened: () => void }) {
                 {form.payment === 'efectivo' && mode === 'domicilio' && (
                   <input
                     className={`${field} mt-2`}
-                    value={form.cashFor}
-                    onChange={(e) => setForm({ cashFor: e.target.value })}
+                    // digits in, pesos out: typing 100000 reads $100.000
+                    value={cash ? money(cash) : ''}
+                    onChange={(e) => {
+                      const typed = e.target.value
+                      let digits = typed.replace(/\D/g, '')
+                      // backspace over a "." or the "$" only removed formatting: take the digit before it instead
+                      if (cash && digits === String(cash) && typed.length < money(cash).length) digits = digits.slice(0, -1)
+                      setForm({ cashFor: digits.slice(0, 7) })
+                    }}
                     placeholder="¿Con cuánto pagas? (para el cambio)"
                     aria-label="Con cuánto pagas"
                     inputMode="numeric"
                   />
+                )}
+                {form.payment === 'efectivo' && mode === 'domicilio' && cash !== null && t.delivery !== null && cash >= t.total && (
+                  <p className="px-1 pt-1.5 text-[13px] font-semibold text-cocoa">
+                    Cambio: <span className="tabular-nums">{money(cash - t.total)}</span>
+                  </p>
                 )}
               </>
             )}
@@ -352,7 +383,12 @@ function Panel({ menu, onOpened }: { menu: Menu; onOpened: () => void }) {
               />
               <span>
                 Autorizo a {menu.business.name} a usar mis datos solo para atender este pedido, según su{' '}
-                <a href={policyHref(order.dataPolicyUrl)} target="_blank" rel="noopener" className="font-bold underline">
+                <a
+                  href={policyHref(order.dataPolicyUrl)}
+                  // the carta's own policy opens in this tab and its "volver" brings the cart back open
+                  {...(isExternal(order.dataPolicyUrl) ? { target: '_blank', rel: 'noopener' } : { onClick: () => leavingForPolicy() })}
+                  className="font-bold underline"
+                >
                   política de tratamiento de datos
                 </a>
                 . Quedan guardados solo en este teléfono.

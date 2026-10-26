@@ -1,7 +1,7 @@
 import { money } from '../lib/format'
 import type { PaymentMethod, Service } from '../models/business'
 import type { Menu } from '../types'
-import { describe, totals, unitPrice, type Form, type Line } from './cart'
+import { cashAmount, describe, totals, unitPrice, type Form, type Line } from './cart'
 
 export const MODE_LABEL: Record<Service, string> = {
   domicilio: 'Domicilio',
@@ -52,7 +52,12 @@ export function orderMessage(menu: Menu, lines: Line[], form: Form) {
   out.push(`Nombre: ${form.name.trim()}`)
   if (form.mode === 'domicilio') out.push(`Dirección: ${form.address.trim()}`)
   if (form.payment) out.push(`Pago: ${PAYMENT_LABEL[form.payment]}`)
-  if (form.payment === 'efectivo' && form.mode === 'domicilio' && form.cashFor.trim()) out.push(`Paga con: ${form.cashFor.trim()}`)
+  const cash = form.payment === 'efectivo' && form.mode === 'domicilio' ? cashAmount(form) : null
+  if (cash) {
+    out.push(`Paga con: ${money(cash)}`)
+    // with the delivery still to confirm, the change isn't known yet
+    if (t.delivery !== null && cash > t.total) out.push(`Cambio: ${money(cash - t.total)}`)
+  }
   if (form.note.trim()) out.push(`Nota: ${form.note.trim()}`)
   return out.join('\n')
 }

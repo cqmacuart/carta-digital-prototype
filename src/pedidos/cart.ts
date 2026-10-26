@@ -23,7 +23,7 @@ export type Form = {
   address: string
   table: string
   payment: PaymentMethod | null
-  /** cash on delivery: the note the customer pays with, for the change */
+  /** cash on delivery: what the customer pays with, for the change (digits only) */
   cashFor: string
   note: string
   consent: boolean
@@ -76,6 +76,13 @@ export function loadCart(menu: Menu) {
   const key = `carta-pedido:${menu.tenantId}`
   if (storageKey === key) return
   storageKey = key
+  // back from the data policy page: the cart opens where the customer left it
+  try {
+    if (sessionStorage.getItem(REOPEN)) state = { ...state, open: true }
+    sessionStorage.removeItem(REOPEN)
+  } catch {
+    // no session storage: the carta just opens as usual
+  }
   let saved: { v: number; savedAt: number; lines: Line[]; form: Form } | null = null
   try {
     saved = JSON.parse(localStorage.getItem(key) ?? 'null')
@@ -144,7 +151,24 @@ export const setQty = (key: string, qty: number) =>
 export const removeLine = (key: string) => set({ lines: state.lines.filter((l) => l.key !== key) })
 export const clearCart = () => set({ lines: [] })
 export const setForm = (patch: Partial<Form>) => set({ form: { ...state.form, ...patch } })
-export const setCartOpen = (open: boolean) => set({ open }, false)
+export function setCartOpen(open: boolean) {
+  if (!open) leavingForPolicy(false)
+  set({ open }, false)
+}
+
+const REOPEN = 'carta-pedido:reabrir'
+/** The data policy opens in this same tab; on the way back the cart reopens. */
+export function leavingForPolicy(leaving = true) {
+  try {
+    if (leaving) sessionStorage.setItem(REOPEN, '1')
+    else sessionStorage.removeItem(REOPEN)
+  } catch {
+    // no session storage: the customer reopens the bag by hand
+  }
+}
+
+/** The cash amount as a number (older carts stored it formatted, "$100.000"); null = not given. */
+export const cashAmount = (f: Form) => Number(f.cashFor.replace(/\D/g, '')) || null
 
 // ---- pricing and rules ------------------------------------------------------
 
