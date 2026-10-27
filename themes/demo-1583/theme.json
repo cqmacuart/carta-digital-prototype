@@ -1,0 +1,24 @@
+{
+  "tenantId": "b7c579e0-a743-4f06-970d-4c08cb914f5e",
+  "title": "1583 Café Origen · Carta",
+  "themeColor": "#f3ede3",
+  "proposal": "Propuesta de diseño para 1583 Café Origen",
+  "fontsHref": "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=Manrope:wght@400..800&display=swap",
+  "fonts": {
+    "display": "\"Fraunces\", Georgia, serif",
+    "sans": "\"Manrope\", system-ui, sans-serif"
+  },
+  "colors": {
+    "paper": "#faf6ef",
+    "cream": "#f3ede3",
+    "sand": "#e6dccb",
+    "canvas": "#eee6d9",
+    "clay": "#c9a25e",
+    "terra": "#6b4a32",
+    "terra-deep": "#4a3322",
+    "espresso": "#1e1a16",
+    "cocoa": "#5c5147",
+    "olive": "#5e6b3a",
+    "night": "#0e0c0b"
+  }
+}
