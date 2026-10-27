@@ -4,6 +4,7 @@
   "name": "Nácar",
   "tagline": "perfumería",
   "kind": "catalogo",
+  "imageShape": "circle",
   "legal": {
     "name": null,
     "taxId": null,

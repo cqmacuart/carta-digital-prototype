@@ -1,6 +1,7 @@
 import { AnimatePresence, motion, useAnimationControls, useTransform, type MotionValue } from 'motion/react'
 import { ShoppingBag } from 'lucide-react'
 import { useEffect } from 'react'
+import { CUTOUT, photoClass, thumbShadow } from '../lib/shape'
 import type { Menu } from '../types'
 import { land, loadCart, setCartOpen, setFlightSpace, useCart, type Flight } from './cart'
 
@@ -82,7 +83,7 @@ function Flyer({ flight: { id, from, to, img } }: { flight: Flight }) {
     <motion.img
       src={img}
       alt=""
-      className="absolute rounded-full object-cover shadow-[0_8px_18px_-6px_rgba(42,26,18,.6)] ring-2 ring-white"
+      className={`absolute ${photoClass} ${CUTOUT ? thumbShadow : 'shadow-[0_8px_18px_-6px_rgba(42,26,18,.6)] ring-2 ring-white'}`}
       style={{ left: from.x - FLYER / 2, top: from.y - FLYER / 2, width: FLYER, height: FLYER }}
       initial={{ x: 0, y: 0, scale: 0.6, opacity: 0 }}
       animate={{ x: to.x - from.x, y: to.y - from.y, scale: [0.6, 1.15, 0.45], opacity: [0, 1, 1, 0.9] }}

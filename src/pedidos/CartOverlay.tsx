@@ -3,6 +3,7 @@ import { ChevronLeft, Clock, Minus, Pencil, Plus, ShoppingBag, Trash2 } from 'lu
 import { useMemo, useState, type ReactNode } from 'react'
 import { money } from '../lib/format'
 import { cap, L } from '../lib/labels'
+import { photoClass, thumbShadow } from '../lib/shape'
 import { useOpenStatus } from '../lib/useOpenStatus'
 import type { Menu } from '../types'
 import {
@@ -143,7 +144,7 @@ function Panel({ menu, onOpened }: { menu: Menu; onOpened: () => void }) {
             return (
               <div className="rounded-[28px] px-6 pt-5" style={{ backgroundColor: category.sheet, color: category.ink }}>
                 <div className="flex items-center gap-3">
-                  <img src={item.imgThumb} alt="" className="size-14 rounded-full object-cover shadow-[0_4px_10px_-4px_rgba(0,0,0,.5)]" />
+                  <img src={item.imgThumb} alt="" className={`size-14 ${photoClass} ${thumbShadow}`} />
                   <h2 className="font-display text-[24px] font-semibold leading-tight">{item.name}</h2>
                 </div>
                 <ItemOptions
@@ -200,7 +201,7 @@ function Panel({ menu, onOpened }: { menu: Menu; onOpened: () => void }) {
                       className="overflow-hidden border-b border-espresso/8 last:border-0"
                     >
                       <div className="flex gap-3 px-3 pb-2 pt-3">
-                        <img src={item.imgThumb} alt="" loading="lazy" className="size-12 shrink-0 rounded-full object-cover shadow-[0_4px_10px_-4px_rgba(74,36,16,.5)]" />
+                        <img src={item.imgThumb} alt="" loading="lazy" className={`size-12 shrink-0 ${photoClass} ${thumbShadow}`} />
                         <div className="min-w-0 flex-1">
                           <div className="flex items-baseline justify-between gap-3">
                             <p className="text-[15px] font-bold leading-snug text-espresso">

@@ -63,7 +63,16 @@ export interface BusinessProfile {
   branches: Branch[]
   /** V2: orders sent by WhatsApp. Absent or disabled = carta only (V1), and the build carries no ordering code */
   ordering?: Ordering | null
+  /** how every product photo is framed; absent = 'circle' */
+  imageShape?: ImageShape
 }
+
+/**
+ * 'circle': photo cropped into a round plate (the default). 'rounded': square crop with rounded corners.
+ * 'cutout': no crop at all, for PNGs with a transparent background (burgers, pizzas, cocktails, bottles):
+ * the whole image fits its square and gets a floor shadow instead of a frame.
+ */
+export type ImageShape = 'circle' | 'rounded' | 'cutout'
 
 /** V2 settings: the customer builds an order and sends it by WhatsApp (no payments, no POS). */
 export interface Ordering {

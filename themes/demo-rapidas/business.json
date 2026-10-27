@@ -4,6 +4,7 @@
   "name": "Barrio",
   "tagline": "burgers & perros",
   "kind": "comidas-rapidas",
+  "imageShape": "cutout",
   "legal": {
     "name": null,
     "taxId": null,
