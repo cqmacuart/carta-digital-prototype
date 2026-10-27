@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "tenantId": "b7c579e0-a743-4f06-970d-4c08cb914f5e",
+  "name": "1583 Café Origen",
+  "tagline": "café · cocina · bar",
+  "kind": "cafeteria",
+  "imageShape": "circle",
+  "legal": {
+    "name": null,
+    "taxId": null,
+    "dataPolicyUrl": "politica-datos.html"
+  },
+  "contact": {
+    "phone": "+573134144407",
+    "whatsapp": "+573134144407",
+    "email": null,
+    "website": null
+  },
+  "social": {
+    "instagram": "1583cafeorigen",
+    "facebook": "profile.php?id=100076016329002",
+    "tiktok": null
+  },
+  "payments": [
+    "efectivo"
+  ],
+  "locale": "es-CO",
+  "currency": "COP",
+  "timezone": "America/Bogota",
+  "defaultBranchId": "pamplona",
+  "branches": [
+    {
+      "id": "pamplona",
+      "name": "Pamplona",
+      "address": "Cl. 9 #7-109",
+      "city": "Pamplona",
+      "region": "Norte de Santander",
+      "country": "CO",
+      "geo": {
+        "lat": 7.3717724,
+        "lng": -72.649053
+      },
+      "mapsUrl": "https://www.google.com/maps/dir/?api=1&destination=7.3717724,-72.649053&destination_place_id=ChIJpf3uGJuBaI4RY-a-H-6np50",
+      "phone": null,
+      "whatsapp": null,
+      "services": [
+        "mesa",
+        "para-llevar",
+        "domicilio"
+      ],
+      "hours": [
+        {
+          "day": 1,
+          "open": "07:00",
+          "close": "23:00"
+        },
+        {
+          "day": 2,
+          "open": "07:00",
+          "close": "23:00"
+        },
+        {
+          "day": 3,
+          "open": "07:00",
+          "close": "23:00"
+        },
+        {
+          "day": 4,
+          "open": "07:00",
+          "close": "23:00"
+        },
+        {
+          "day": 5,
+          "open": "07:00",
+          "close": "23:00"
+        },
+        {
+          "day": 6,
+          "open": "07:00",
+          "close": "23:00"
+        },
+        {
+          "day": 0,
+          "open": "07:00",
+          "close": "23:00"
+        }
+      ]
+    }
+  ],
+  "ordering": {
+    "enabled": true,
+    "whatsapp": "+573184163107",
+    "modes": [
+      "domicilio",
+      "para-llevar",
+      "mesa"
+    ],
+    "minOrder": null,
+    "deliveryFee": null
+  }
+}
