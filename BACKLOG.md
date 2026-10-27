@@ -25,3 +25,10 @@ Fuera de alcance: POS, pagos en línea, inventario.
 - V2 · validar en el celular de Cesar el envío real a WhatsApp (en el navegador del PC se probó hasta armar el enlace `wa.me`).
 - Fotos subidas por el dueño (V3; las locales en `themes/<slug>/assets/` ya funcionan): subida desde el editor a un CDN con recorte y desenfoque por URL (Cloudinary/ImageKit) o a Hostinger con PHP.
 - La Sablée: horarios reales (en su historia destacada de Instagram) y paletas de categoría según su marca (café oscuro + crema); hoy usa las de Terra.
+- (1583 Café Origen, oct 2026) Enlace directo a una categoría (p. ej. `?cat=licores`) para QR por zona (barra, vitrina) en una carta unificada. Hoy no existe: no prometerlo hasta hacerlo en un chat de Producto.
+- (1583 Café Origen) Si un negocio separa sus cartas porque cada área recibe sus pedidos (cocina/barra/repostería), V2 hoy manda todo a un solo WhatsApp. Confirmar con el cliente antes de diseñar algo.
+- (1583 Café Origen) Carta grande (~124 productos, 30 botellas de licor): reforzar el punto de vista lista/cuadrícula de arriba antes de armarla.
+- (1583 Café Origen, 2026-10-26) Encabezado a 360 px: "1583 Café Origen" se corta ("1583 Café Origer") junto a la píldora "Abierto"; y un lema largo ("Crea momentos con los que más quieres.") se corta también a 390 px. Nombres de ~16+ caracteres necesitan otro layout (reducir la fuente, ocultar la píldora o pasarla a otra línea).
+- (1583 Café Origen) Ícono de botella para un riel de licores por botella: hoy se usa `wine` (copa). Tampoco hay ícono de cóctel distinto de `martini` ni de cerveza de barril.
+- (1583 Café Origen) Carta grande (225 productos; Bar 84 con 29 clásicos, Licores 42): confirma la necesidad de la vista lista/cuadrícula por categoría (ver arriba).
+- (1583 Café Origen) Micheladas como precio por michelar una cerveza: se modeló con un `optionGroup` de precio variable en el producto "Cerveza". Si se repite en otro bar, documentarlo como patrón en `themes/README.md`.
