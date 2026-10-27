@@ -4,6 +4,7 @@
   "name": "1583 Café Origen",
   "tagline": "café · cocina · bar",
   "kind": "cafeteria",
+  "imageShape": "circle",
   "legal": {
     "name": null,
     "taxId": null,

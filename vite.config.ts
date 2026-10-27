@@ -8,7 +8,7 @@ import sharp from 'sharp'
 import { defineConfig, type Plugin } from 'vite'
 import { mediaName, RENDITIONS, type Rendition } from './src/lib/media.ts'
 import { DEFAULT_LABELS, type Labels } from './src/lib/vocabulary.ts'
-import type { BusinessKind, BusinessProfile, TenantId } from './src/models/business.ts'
+import type { BusinessKind, BusinessProfile, ImageShape, TenantId } from './src/models/business.ts'
 import type { LocalImage, MenuDatabase } from './src/models/db.ts'
 
 const root = fileURLToPath(new URL('.', import.meta.url))
@@ -64,9 +64,11 @@ function readCarta() {
   }
   checkOrdering(business, db)
   checkLabels(theme)
+  const shape = business.imageShape ?? 'circle'
+  if (!SHAPES.includes(shape)) throw new Error(`themes/${client}/business.json: imageShape va como ${SHAPES.map((s) => `"${s}"`).join(', ')}`)
 
   // stamp each local photo with a version and list the files the app will ask for under media/
-  const photos = new Map<string, { image: LocalImage; rendition: Rendition }>()
+  const photos = new Map<string, { image: LocalImage; rendition: Rendition; shape: ImageShape }>()
   for (const p of db.products) {
     if (p.image.source !== 'local') continue
     const image = p.image
@@ -74,11 +76,13 @@ function readCarta() {
     if (!existsSync(file)) throw new Error(`Falta la foto de "${p.name}": themes/${client}/assets/${image.file}`)
     const { size, mtimeMs } = statSync(file)
     const { x, y, zoom } = image.focal
-    image.version = createHash('sha1').update(`${image.file}|${size}|${mtimeMs}|${x}|${y}|${zoom}`).digest('hex').slice(0, 8)
-    for (const r of Object.keys(RENDITIONS) as Rendition[]) photos.set(mediaName(image.file, image.version, r), { image, rendition: r })
+    image.version = createHash('sha1').update(`${image.file}|${size}|${mtimeMs}|${x}|${y}|${zoom}|${shape === 'cutout'}`).digest('hex').slice(0, 8)
+    for (const r of Object.keys(RENDITIONS) as Rendition[]) photos.set(mediaName(image.file, image.version, r), { image, rendition: r, shape })
   }
-  return { menu: JSON.stringify(db), business, theme, photos }
+  return { menu: JSON.stringify(db), business, theme, photos, shape }
 }
+
+const SHAPES: ImageShape[] = ['circle', 'rounded', 'cutout']
 
 /** V2 (orders by WhatsApp) can't be switched on half-configured: the build stops instead of shipping a cart that fails */
 function checkOrdering(business: BusinessProfile, db: MenuDatabase) {
@@ -188,8 +192,11 @@ function jsonLd(b: BusinessProfile) {
   })
 }
 
-/** One rendition of a local photo: square crop around the focal point (like imgix's crop=focalpoint), resized, optionally blurred, as WebP. */
-async function renderPhoto(image: LocalImage, r: Rendition) {
+/**
+ * One rendition of a local photo, as WebP: square crop around the focal point (like imgix's crop=focalpoint), resized,
+ * optionally blurred. A cutout (transparent PNG) is not cropped: it fits whole in a transparent square, standing on its bottom edge.
+ */
+async function renderPhoto(image: LocalImage, r: Rendition, shape: ImageShape) {
   const cached = resolve(cacheDir, mediaName(image.file, image.version!, r))
   if (existsSync(cached)) return readFileSync(cached)
 
@@ -198,9 +205,13 @@ async function renderPhoto(image: LocalImage, r: Rendition) {
   const side = Math.round(Math.min(info.width, info.height) / Math.max(1, image.focal.zoom))
   const at = (centre: number, full: number) => Math.min(full - side, Math.max(0, Math.round(centre * full - side / 2)))
   const { size, blur } = RENDITIONS[r]
-  let out = sharp(data)
-    .extract({ left: at(image.focal.x, info.width), top: at(image.focal.y, info.height), width: side, height: side })
-    .resize(size, size)
+  let out =
+    shape === 'cutout'
+      ? // trim the transparent margin and stand the product on the bottom edge, where its floor shadow is
+        sharp(await sharp(data).trim().toBuffer()).resize(size, size, { fit: 'contain', position: 'bottom', background: { r: 0, g: 0, b: 0, alpha: 0 } })
+      : sharp(data)
+          .extract({ left: at(image.focal.x, info.width), top: at(image.focal.y, info.height), width: side, height: side })
+          .resize(size, size)
   // imgix blur units → Gaussian sigma, scaled to the output so both blurred sizes read like the CDN's
   if (blur) out = out.blur((size * blur) / 1000)
   const buf = await out.webp({ quality: blur ? 50 : 80 }).toBuffer()
@@ -265,7 +276,7 @@ function cartaClient(): Plugin {
       server.middlewares.use('/media', (req, res, next) => {
         const hit = readCarta().photos.get(decodeURIComponent((req.url ?? '').slice(1).split('?')[0]))
         if (!hit) return next()
-        renderPhoto(hit.image, hit.rendition)
+        renderPhoto(hit.image, hit.rendition, hit.shape)
           .then((buf) => {
             res.setHeader('Content-Type', 'image/webp')
             res.end(buf)
@@ -283,7 +294,7 @@ function cartaClient(): Plugin {
       const { menu, business, photos } = readCarta()
       this.emitFile({ type: 'asset', fileName: 'data/menu.json', source: menu })
       this.emitFile({ type: 'asset', fileName: 'data/business.json', source: JSON.stringify(business) })
-      const rendered = await Promise.all([...photos].map(async ([name, { image, rendition }]) => [name, await renderPhoto(image, rendition)] as const))
+      const rendered = await Promise.all([...photos].map(async ([name, { image, rendition, shape }]) => [name, await renderPhoto(image, rendition, shape)] as const))
       for (const [name, source] of rendered) this.emitFile({ type: 'asset', fileName: `media/${name}`, source })
       for (const file of publicFiles()) this.emitFile({ type: 'asset', fileName: file, source: readFileSync(resolve(publicDir, file)) })
     },
@@ -301,6 +312,8 @@ export default defineConfig({
     __PEDIDOS__: JSON.stringify(Boolean(readCarta().business.ordering?.enabled)),
     // the business's own words; an empty object keeps every default
     __LABELS__: JSON.stringify(readCarta().theme.labels ?? {}),
+    // business.json → imageShape: round plate, rounded square or transparent cutout
+    __IMAGE_SHAPE__: JSON.stringify(readCarta().shape),
   },
   build: {
     outDir: `dist/${client}`,

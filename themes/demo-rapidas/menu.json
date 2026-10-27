@@ -277,12 +277,12 @@
       "tagIds": [],
       "note": null,
       "image": {
-        "source": "unsplash",
-        "photoId": "1568901346375-23c9450c58cd",
+        "source": "local",
+        "file": "sencilla.webp",
         "focal": {
           "x": 0.5,
           "y": 0.5,
-          "zoom": 1.15
+          "zoom": 1
         },
         "alt": "La sencilla"
       },
@@ -339,12 +339,12 @@
       "tagIds": [],
       "note": null,
       "image": {
-        "source": "unsplash",
-        "photoId": "1757834787931-ddd70f3379a5",
+        "source": "local",
+        "file": "cheeseburger.webp",
         "focal": {
           "x": 0.5,
           "y": 0.5,
-          "zoom": 1.15
+          "zoom": 1
         },
         "alt": "Cheeseburger"
       },
@@ -402,12 +402,12 @@
       "tagIds": [],
       "note": null,
       "image": {
-        "source": "unsplash",
-        "photoId": "1776260486895-a35357e2505b",
+        "source": "local",
+        "file": "bacon.webp",
         "focal": {
           "x": 0.5,
           "y": 0.5,
-          "zoom": 1.2
+          "zoom": 1
         },
         "alt": "Bacon burger"
       },
@@ -445,12 +445,12 @@
       "tagIds": [],
       "note": null,
       "image": {
-        "source": "unsplash",
-        "photoId": "1671106571674-a89083d27e60",
+        "source": "local",
+        "file": "crispy-chicken.webp",
         "focal": {
           "x": 0.5,
           "y": 0.5,
-          "zoom": 1.15
+          "zoom": 1
         },
         "alt": "Crispy chicken"
       },
@@ -488,12 +488,12 @@
       "tagIds": [],
       "note": null,
       "image": {
-        "source": "unsplash",
-        "photoId": "1606755962773-d324e0a13086",
+        "source": "local",
+        "file": "pollo-plancha.webp",
         "focal": {
           "x": 0.5,
           "y": 0.5,
-          "zoom": 1.15
+          "zoom": 1
         },
         "alt": "Pollo a la plancha"
       },
@@ -533,12 +533,12 @@
       ],
       "note": null,
       "image": {
-        "source": "unsplash",
-        "photoId": "1571091718767-18b5b1457add",
+        "source": "local",
+        "file": "veggie.webp",
         "focal": {
           "x": 0.5,
           "y": 0.5,
-          "zoom": 1.15
+          "zoom": 1
         },
         "alt": "Veggie de garbanzo"
       },
@@ -579,12 +579,12 @@
       ],
       "note": null,
       "image": {
-        "source": "unsplash",
-        "photoId": "1607013251379-e6eecfffe234",
+        "source": "local",
+        "file": "barrio.webp",
         "focal": {
           "x": 0.5,
           "y": 0.5,
-          "zoom": 1.2
+          "zoom": 1
         },
         "alt": "La Barrio"
       },
@@ -624,12 +624,12 @@
       ],
       "note": null,
       "image": {
-        "source": "unsplash",
-        "photoId": "1667329829058-ac191ba4a905",
+        "source": "local",
+        "file": "smash.webp",
         "focal": {
           "x": 0.5,
           "y": 0.5,
-          "zoom": 1.15
+          "zoom": 1
         },
         "alt": "Smash doble"
       },
@@ -666,12 +666,12 @@
       "tagIds": [],
       "note": null,
       "image": {
-        "source": "unsplash",
-        "photoId": "1760533536289-9e4106eaf62e",
+        "source": "local",
+        "file": "pulled-pork.webp",
         "focal": {
           "x": 0.5,
           "y": 0.5,
-          "zoom": 1.15
+          "zoom": 1
         },
         "alt": "Pulled pork BBQ"
       },
@@ -730,12 +730,12 @@
       ],
       "note": null,
       "image": {
-        "source": "unsplash",
-        "photoId": "1586190848861-99aa4a171e90",
+        "source": "local",
+        "file": "jalapena.webp",
         "focal": {
           "x": 0.5,
           "y": 0.5,
-          "zoom": 1.15
+          "zoom": 1
         },
         "alt": "Jalapeña"
       },
@@ -772,12 +772,12 @@
       "tagIds": [],
       "note": null,
       "image": {
-        "source": "unsplash",
-        "photoId": "1638368593249-7cadb261e8b3",
+        "source": "local",
+        "file": "perro-sencillo.webp",
         "focal": {
           "x": 0.5,
           "y": 0.5,
-          "zoom": 1.25
+          "zoom": 1
         },
         "alt": "Perro sencillo"
       },
@@ -817,12 +817,12 @@
       ],
       "note": null,
       "image": {
-        "source": "unsplash",
-        "photoId": "1768250708131-23da8d1cb5ad",
+        "source": "local",
+        "file": "perro-especial.webp",
         "focal": {
           "x": 0.5,
           "y": 0.5,
-          "zoom": 1.2
+          "zoom": 1
         },
         "alt": "Perro especial"
       },
@@ -860,12 +860,12 @@
       "tagIds": [],
       "note": null,
       "image": {
-        "source": "unsplash",
-        "photoId": "1721648373511-fb220d7f043f",
+        "source": "local",
+        "file": "perro-suizo.webp",
         "focal": {
           "x": 0.5,
           "y": 0.5,
-          "zoom": 1.2
+          "zoom": 1
         },
         "alt": "Perro suizo"
       },
@@ -902,12 +902,12 @@
       "tagIds": [],
       "note": null,
       "image": {
-        "source": "unsplash",
-        "photoId": "1627054248949-21f77275a15f",
+        "source": "local",
+        "file": "perro-gratinado.webp",
         "focal": {
           "x": 0.5,
           "y": 0.5,
-          "zoom": 1.2
+          "zoom": 1
         },
         "alt": "Perro gratinado"
       },
@@ -956,12 +956,12 @@
       "tagIds": [],
       "note": null,
       "image": {
-        "source": "unsplash",
-        "photoId": "1684815495679-f6e6bc0634ec",
+        "source": "local",
+        "file": "salchipapa.webp",
         "focal": {
           "x": 0.5,
           "y": 0.5,
-          "zoom": 1.15
+          "zoom": 1
         },
         "alt": "Salchipapa"
       },
@@ -1015,12 +1015,12 @@
       ],
       "note": null,
       "image": {
-        "source": "unsplash",
-        "photoId": "1771818708792-d671ae9b4b46",
+        "source": "local",
+        "file": "salchipapa-especial.webp",
         "focal": {
           "x": 0.5,
           "y": 0.5,
-          "zoom": 1.15
+          "zoom": 1
         },
         "alt": "Salchipapa especial"
       },
@@ -1065,12 +1065,12 @@
       ],
       "note": null,
       "image": {
-        "source": "unsplash",
-        "photoId": "1639744210631-209fce3e256c",
+        "source": "local",
+        "file": "picada.webp",
         "focal": {
           "x": 0.5,
           "y": 0.5,
-          "zoom": 1.1
+          "zoom": 1
         },
         "alt": "Picada de la casa"
       },
@@ -1114,12 +1114,12 @@
       ],
       "note": null,
       "image": {
-        "source": "unsplash",
-        "photoId": "1768252452214-38f555002147",
+        "source": "local",
+        "file": "papas-francesa.webp",
         "focal": {
           "x": 0.5,
           "y": 0.5,
-          "zoom": 1.15
+          "zoom": 1
         },
         "alt": "Papas a la francesa"
       },
@@ -1153,12 +1153,12 @@
       "tagIds": [],
       "note": null,
       "image": {
-        "source": "unsplash",
-        "photoId": "1666304752980-678d5c35c911",
+        "source": "local",
+        "file": "papas-queso.webp",
         "focal": {
           "x": 0.5,
           "y": 0.5,
-          "zoom": 1.15
+          "zoom": 1
         },
         "alt": "Papas con queso y tocineta"
       },
@@ -1193,12 +1193,12 @@
       ],
       "note": null,
       "image": {
-        "source": "unsplash",
-        "photoId": "1639024471283-03518883512d",
+        "source": "local",
+        "file": "aros-cebolla.webp",
         "focal": {
           "x": 0.5,
           "y": 0.5,
-          "zoom": 1.15
+          "zoom": 1
         },
         "alt": "Aros de cebolla"
       },
@@ -1245,12 +1245,12 @@
       "tagIds": [],
       "note": null,
       "image": {
-        "source": "unsplash",
-        "photoId": "1627662168223-7df99068099a",
+        "source": "local",
+        "file": "nuggets.webp",
         "focal": {
           "x": 0.5,
           "y": 0.5,
-          "zoom": 1.15
+          "zoom": 1
         },
         "alt": "Nuggets de pollo"
       },
@@ -1303,12 +1303,12 @@
       "tagIds": [],
       "note": null,
       "image": {
-        "source": "unsplash",
-        "photoId": "1567620832903-9fc6debc209f",
+        "source": "local",
+        "file": "alitas-bbq.webp",
         "focal": {
           "x": 0.5,
           "y": 0.5,
-          "zoom": 1.15
+          "zoom": 1
         },
         "alt": "Alitas BBQ"
       },
@@ -1362,12 +1362,12 @@
       ],
       "note": null,
       "image": {
-        "source": "unsplash",
-        "photoId": "1608039755401-742074f0548d",
+        "source": "local",
+        "file": "alitas-bufalo.webp",
         "focal": {
           "x": 0.5,
           "y": 0.5,
-          "zoom": 1.15
+          "zoom": 1
         },
         "alt": "Alitas búfalo"
       },
@@ -1421,12 +1421,12 @@
       ],
       "note": null,
       "image": {
-        "source": "unsplash",
-        "photoId": "1650939986300-ce9609921fa7",
+        "source": "local",
+        "file": "alitas-miel.webp",
         "focal": {
           "x": 0.5,
           "y": 0.5,
-          "zoom": 1.15
+          "zoom": 1
         },
         "alt": "Alitas miel mostaza"
       },
@@ -1462,12 +1462,12 @@
       "tagIds": [],
       "note": null,
       "image": {
-        "source": "unsplash",
-        "photoId": "1569058242253-92a9c755a0ec",
+        "source": "local",
+        "file": "pollo-apanado.webp",
         "focal": {
           "x": 0.5,
           "y": 0.5,
-          "zoom": 1.15
+          "zoom": 1
         },
         "alt": "Pollo apanado"
       },
@@ -1506,12 +1506,12 @@
       "tagIds": [],
       "note": "Cambia a cualquier hamburguesa clásica pagando la diferencia.",
       "image": {
-        "source": "unsplash",
-        "photoId": "1561758033-d89a9ad46330",
+        "source": "local",
+        "file": "combo-clasico.webp",
         "focal": {
           "x": 0.5,
           "y": 0.5,
-          "zoom": 1.1
+          "zoom": 1
         },
         "alt": "Combo clásico"
       },
@@ -1547,12 +1547,12 @@
       "tagIds": [],
       "note": null,
       "image": {
-        "source": "unsplash",
-        "photoId": "1612392062631-94dd858cba88",
+        "source": "local",
+        "file": "combo-perro.webp",
         "focal": {
           "x": 0.5,
           "y": 0.5,
-          "zoom": 1.1
+          "zoom": 1
         },
         "alt": "Combo perro"
       },
@@ -1590,12 +1590,12 @@
       ],
       "note": "Las hamburguesas de la casa suman $5.000 cada una.",
       "image": {
-        "source": "unsplash",
-        "photoId": "1594212699903-ec8a3eca50f5",
+        "source": "local",
+        "file": "combo-pareja.webp",
         "focal": {
           "x": 0.5,
           "y": 0.5,
-          "zoom": 1.1
+          "zoom": 1
         },
         "alt": "Combo pareja"
       },
@@ -1634,12 +1634,12 @@
       ],
       "note": null,
       "image": {
-        "source": "unsplash",
-        "photoId": "1551782450-a2132b4ba21d",
+        "source": "local",
+        "file": "combo-familiar.webp",
         "focal": {
           "x": 0.5,
           "y": 0.5,
-          "zoom": 1.1
+          "zoom": 1
         },
         "alt": "Combo familiar"
       },
@@ -1680,12 +1680,12 @@
       "tagIds": [],
       "note": null,
       "image": {
-        "source": "unsplash",
-        "photoId": "1581636625402-29b2a704ef13",
+        "source": "local",
+        "file": "gaseosa.webp",
         "focal": {
           "x": 0.5,
           "y": 0.5,
-          "zoom": 1.1
+          "zoom": 1
         },
         "alt": "Gaseosa"
       },
@@ -1736,12 +1736,12 @@
       ],
       "note": null,
       "image": {
-        "source": "unsplash",
-        "photoId": "1623084921164-4a8c5c37a912",
+        "source": "local",
+        "file": "limonada.webp",
         "focal": {
           "x": 0.5,
           "y": 0.5,
-          "zoom": 1.1
+          "zoom": 1
         },
         "alt": "Limonada"
       },
@@ -1801,12 +1801,12 @@
       ],
       "note": null,
       "image": {
-        "source": "unsplash",
-        "photoId": "1572490122747-3968b75cc699",
+        "source": "local",
+        "file": "malteada.webp",
         "focal": {
           "x": 0.5,
           "y": 0.5,
-          "zoom": 1.15
+          "zoom": 1
         },
         "alt": "Malteada"
       },
@@ -1840,12 +1840,12 @@
       ],
       "note": null,
       "image": {
-        "source": "unsplash",
-        "photoId": "1577805947697-89e18249d767",
+        "source": "local",
+        "file": "malteada-arequipe.webp",
         "focal": {
           "x": 0.5,
           "y": 0.5,
-          "zoom": 1.15
+          "zoom": 1
         },
         "alt": "Malteada de arequipe"
       },
@@ -1877,12 +1877,12 @@
       ],
       "note": null,
       "image": {
-        "source": "unsplash",
-        "photoId": "1780148686706-4af0349a6003",
+        "source": "local",
+        "file": "brownie.webp",
         "focal": {
           "x": 0.5,
           "y": 0.5,
-          "zoom": 1.15
+          "zoom": 1
         },
         "alt": "Brownie con helado"
       },
@@ -1933,12 +1933,12 @@
       ],
       "note": null,
       "image": {
-        "source": "unsplash",
-        "photoId": "1704006158609-2fe604e3e76f",
+        "source": "local",
+        "file": "sundae.webp",
         "focal": {
           "x": 0.5,
           "y": 0.5,
-          "zoom": 1.15
+          "zoom": 1
         },
         "alt": "Sundae"
       },

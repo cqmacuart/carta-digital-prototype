@@ -4,6 +4,7 @@ import { useDeferredValue, useMemo, useState } from 'react'
 import { money } from '../lib/format'
 import { cap, L } from '../lib/labels'
 import { highlight, search, type SearchIndex } from '../lib/search'
+import { photoClass, thumbShadow } from '../lib/shape'
 import type { Menu, MenuItem } from '../types'
 
 type Props = {
@@ -146,7 +147,7 @@ export function SearchOverlay({ menu, index, onClose, onSelect, onOpened }: Prop
                     return (
                       <li key={item.id} className="border-b border-espresso/8 last:border-0">
                         <button type="button" onClick={() => onSelect(item)} className="flex w-full items-center gap-3 px-3 py-2.5 text-left active:bg-white/60">
-                          <img src={item.imgThumb} alt="" loading="lazy" className="size-12 shrink-0 rounded-full object-cover shadow-[0_4px_10px_-4px_rgba(74,36,16,.5)]" />
+                          <img src={item.imgThumb} alt="" loading="lazy" className={`size-12 shrink-0 ${photoClass} ${thumbShadow}`} />
                           <span className="min-w-0 flex-1">
                             <span className="block truncate text-[15px] font-bold text-espresso">
                               <Marked text={item.name} query={deferred} />

@@ -4,6 +4,7 @@
   "name": "Terra",
   "tagline": "café · cocina",
   "kind": "cafeteria",
+  "imageShape": "circle",
   "legal": {
     "name": null,
     "taxId": null,

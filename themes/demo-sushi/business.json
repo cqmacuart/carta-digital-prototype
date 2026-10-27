@@ -4,6 +4,7 @@
   "name": "Nami",
   "tagline": "sushi bar",
   "kind": "sushi-bar",
+  "imageShape": "rounded",
   "legal": {
     "name": null,
     "taxId": null,

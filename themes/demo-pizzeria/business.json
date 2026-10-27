@@ -4,6 +4,7 @@
   "name": "Forno",
   "tagline": "pizzería",
   "kind": "pizzeria",
+  "imageShape": "circle",
   "legal": {
     "name": null,
     "taxId": null,

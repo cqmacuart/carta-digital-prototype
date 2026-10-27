@@ -1,6 +1,7 @@
 import { animate, motion, useMotionValue, useMotionValueEvent, useTransform, type MotionValue } from 'motion/react'
 import { memo, useEffect, useRef, useState, type RefObject } from 'react'
 import { clamp } from '../lib/format'
+import { CUTOUT, rounding } from '../lib/shape'
 import type { MenuItem } from '../types'
 
 /** Angle (radians) between neighbouring plates on the orbit. */
@@ -255,7 +256,7 @@ function Plate({ item, index, progress, open, size, radius, onSelect }: PlatePro
       tabIndex={-1}
       aria-hidden
       onClick={onSelect}
-      className="absolute left-1/2 top-1/2 rounded-full"
+      className={`absolute left-1/2 top-1/2 ${rounding}`}
       style={{
         x,
         y,
@@ -267,18 +268,31 @@ function Plate({ item, index, progress, open, size, radius, onSelect }: PlatePro
         marginLeft: -size / 2,
         marginTop: -size / 2,
         willChange: 'transform, opacity',
-        boxShadow: '0 34px 40px -20px rgba(74,36,16,.5), 0 10px 18px -8px rgba(74,36,16,.3)',
+        boxShadow: CUTOUT ? undefined : '0 34px 40px -20px rgba(74,36,16,.5), 0 10px 18px -8px rgba(74,36,16,.3)',
       }}
     >
-      <motion.div className="pointer-events-none absolute inset-0 overflow-hidden rounded-full" style={{ rotate }}>
-        <img src={item.imgBlur} alt="" draggable={false} className="absolute inset-0 h-full w-full scale-110 object-cover" />
+      {/* a cutout has no frame to cast a shadow: it stands on a soft one on the floor (a gradient, never a filter) */}
+      {CUTOUT && (
+        <span
+          aria-hidden
+          className="pointer-events-none absolute inset-x-[10%] bottom-[-7%] h-[14%]"
+          style={{ background: 'radial-gradient(closest-side, rgba(42,26,18,.42), rgba(42,26,18,0))' }}
+        />
+      )}
+      <motion.div className={`pointer-events-none absolute inset-0 ${CUTOUT ? '' : `overflow-hidden ${rounding}`}`} style={{ rotate }}>
+        <img
+          src={item.imgBlur}
+          alt=""
+          draggable={false}
+          className={`absolute inset-0 h-full w-full ${CUTOUT ? 'object-contain' : 'scale-110 object-cover'}`}
+        />
         <motion.img
           src={item.img}
           alt=""
           draggable={false}
           decoding="async"
           style={{ opacity: sharp }}
-          className="absolute inset-0 h-full w-full select-none object-cover"
+          className={`absolute inset-0 h-full w-full select-none ${CUTOUT ? 'object-contain' : 'object-cover'}`}
         />
       </motion.div>
     </motion.button>
